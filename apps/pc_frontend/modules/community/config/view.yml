@@ -1,0 +1,6 @@
+homeSuccess:
+  customize:
+    test:
+      template: [community_topic, test]
+      parts: [communityHome]
+      target: [lastRaw]

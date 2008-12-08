@@ -1,0 +1,18 @@
+propel:
+  _attributes: { package: plugins.opTopicPlugin.lib.model }
+
+  community_topic:
+    id: ~
+    community_id: { type: integer, foreignTable: community, foreignReference: id }
+    name: { type: longvarchar }
+    member_id: { type: integer, foreignTable: member, foreignReference: id }
+    created_at: ~
+    updated_at: ~
+
+  community_topic_comment:
+    id: ~
+    community_topic_id: { type: integer, foreignTable: community_topic, foreignReference: id }
+    member_id: { type: integer, foreignTable: member, foreignReference: id }
+    body: { type: longvarchar }
+    created_at: ~
+    updated_at: ~
