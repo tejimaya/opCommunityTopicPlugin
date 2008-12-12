@@ -19,7 +19,11 @@ foreach ($list as $value):
 <li>
 <?php
 echo $value->getCreatedAt();
-echo link_to($value->getName(), 'community_topic/edit?id='.$value->getId())
+echo link_to($value->getName(), 'community_topic/edit?id='.$value->getId());
+echo ' ';
+echo link_to('詳細', 'community_topic/detail?id='.$value->getId());
+echo ' ';
+echo link_to('削除', 'community_topic/delete?id='.$value->getId())
 ?>
 </li>
 <?php endforeach; ?>
