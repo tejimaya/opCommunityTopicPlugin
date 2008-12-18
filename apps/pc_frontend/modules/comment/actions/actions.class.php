@@ -12,7 +12,7 @@ class commentActions extends sfActions
 {
   public function preExecute()
   {
-    $this->community_topic_id = $this->getRequestParameter('id');
+    $this->communityTopicId = $this->getRequestParameter('id');
   }
  /**
   * Executes index action
@@ -39,11 +39,11 @@ class commentActions extends sfActions
   */
   public function executeDelete($request)
   {
-    $this->community_topic = CommunityTopicPeer::retrieveByPk($this->community_topic_id);
+    $this->communityTopic = CommunityTopicPeer::retrieveByPk($this->communityTopicId);
     $this->comment = CommunityTopicCommentPeer::retrieveByPk($request->getParameter('comment_id'));
 
     $this->comment->delete();
-    $this->redirect('community_topic/detail?id='.$this->community_topic_id);
+    $this->redirect('community_topic/detail?id='.$this->communityTopicId);
 
   }
 }

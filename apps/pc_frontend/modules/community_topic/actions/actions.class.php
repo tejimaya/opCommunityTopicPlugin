@@ -12,11 +12,27 @@ class community_topicActions extends sfActions
 {
   public function preExecute()
   {
-    $this->community_topic_id = $this->getRequestParameter('id');
+    $this->communityTopicId = $this->getRequestParameter('id');
+    $this->communityTopic = CommunityTopicPeer::retrieveByPk($this->communityTopicId);
 
-//    $this->isCommunityMember = CommunityMemberPeer::isMember($this->getUser()->getMemberId(), $this->community_topic_id);
-//    $this->isAdmin = CommunityMemberPeer::isAdmin($this->getUser()->getMemberId(), $this->community_topic_id);
-//    $this->isEditCommunity = $this->isAdmin;
+    if ($this->communityTopic)
+    {
+      $this->community = $this->communityTopic->getCommunity();
+    } else {
+      $this->community = new Community();
+      $this->community->setId($this->getRequestParameter('community_id'));
+    }
+    $this->communityId = $this->community->getId();
+
+    $this->communityConfigTopicAuthority = CommunityConfigPeer::retrieveByNameAndCommunityId('topic_authority', $this->communityId);
+    if ($this->communityConfigTopicAuthority && $this->communityConfigTopicAuthority->getValue() === 'admin_only')
+    {
+      $this->checkOwner = true;
+    }
+    else
+    {
+      $this->checkOwner = false;
+    }
   }
 
  /**
@@ -26,7 +42,6 @@ class community_topicActions extends sfActions
   */
   public function executeIndex($request)
   {
-    //$this->forward('default', 'module');
   }
 
  /**
@@ -36,41 +51,23 @@ class community_topicActions extends sfActions
   */
   public function executeEdit($request)
   {
-/*
-    if ($this->community_topic_id && !$this->isEditCommunity)
+    $this->community->checkPrivilegeBelong($this->getUser()->getMemberId());
+    if ($this->checkOwner)
     {
-      $this->forward('default', 'secure');
+      $this->community->checkPrivilegeOwner($this->getUser()->getMemberId());
     }
-*/
 
-    $this->community_topic = CommunityTopicPeer::retrieveByPk($this->community_topic_id);
-    if ($this->community_topic)
-    {
-      $this->community_id = $this->community_topic->getCommunityId();
-    } else {
-      $this->community_id = $this->getRequestParameter('community_id');
-    }
-    $this->form = new CommunityTopicForm($this->community_topic, array('community_id' => $request->getParameter('community_id')));
+    $this->form = new CommunityTopicForm($this->communityTopic, array('community_id' => $this->communityId));
 
     if ($request->isMethod('post'))
     {
       $this->form->bind($request->getParameter('community_topic'));
       if ($this->form->isValid())
       {
-        $community_topic = $this->form->save();
-//        $this->redirect('community/edit?id=' . $community_topic->getId());
-        //$this->redirect('community/?id=' . $request->getParameter('community_id'));
-        $this->redirect('community/home?id='.$this->community_id);
-
+        $communityTopic = $this->form->save();
+        $this->redirect('community/home?id='.$this->communityId);
       }
     }
-
-/*
-    if (!$this->community_topic) {
-      sfConfig::set('sf_navi_type', 'default');
-    }
-*/
-  //  return $result;
   }
 
  /**
@@ -80,23 +77,24 @@ class community_topicActions extends sfActions
   */
   public function executeDetail($request)
   {
-    $this->community_topic = CommunityTopicPeer::retrieveByPk($this->community_topic_id);
-    $this->comments = CommunityTopicCommentPeer::retrieveByCommunityTopicId($this->community_topic_id);
+    $this->communityConfigPublicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $this->communityId);
+    if ($this->communityConfigPublicFlag && $this->communityConfigPublicFlag->getValue() === 'auth_commu_member')
+    {
+      $this->community->checkPrivilegeBelong($this->getUser()->getMemberId());
+    }
+
+    $this->comments = CommunityTopicCommentPeer::retrieveByCommunityTopicId($this->communityTopicId);
     $this->comment = CommunityTopicCommentPeer::retrieveByPk($request->getParameter('comment_id'));
 
-
-    $this->form = new CommunityTopicCommentForm($this->comment, array('community_topic_id' => $this->community_topic_id));
+    $this->form = new CommunityTopicCommentForm($this->comment, array('community_topic_id' => $this->communityTopicId));
 
     if ($request->isMethod('post'))
     {
       $this->form->bind($request->getParameter('community_topic_comment'));
       if ($this->form->isValid())
       {
-        $community_topic_comment = $this->form->save();
-//        $this->redirect('community/edit?id=' . $community_topic->getId());
-        //$this->redirect('community/?id=' . $request->getParameter('community_id'));
-        $this->redirect('community_topic/detail?id='.$this->community_topic_id);
-
+        $communityTopicComment = $this->form->save();
+        $this->redirect('community_topic/detail?id='.$this->communityTopicId);
       }
     }
   }
@@ -108,16 +106,20 @@ class community_topicActions extends sfActions
   */
   public function executeDelete($request)
   {
-    $this->community_topic = CommunityTopicPeer::retrieveByPk($this->community_topic_id);
-    $this->comments = CommunityTopicCommentPeer::retrieveByCommunityTopicId($this->community_topic_id);
-    $this->community_id = $this->community_topic->getCommunityId();
+    $this->community->checkPrivilegeBelong($this->getUser()->getMemberId());
+    if ($this->checkOwner)
+    {
+      $this->community->checkPrivilegeOwner($this->getUser()->getMemberId());
+    }
+
+    $this->comments = CommunityTopicCommentPeer::retrieveByCommunityTopicId($this->communityTopicId);
 
     foreach ($this->comments as $comment)
     {
       echo $comment->delete();
     }
 
-    $this->community_topic->delete();
-    $this->redirect('community/home?id='.$this->community_id);
+    $this->communityTopic->delete();
+    $this->redirect('community/home?id='.$this->communityId);
   }
 }

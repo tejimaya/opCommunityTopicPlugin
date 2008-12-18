@@ -12,24 +12,10 @@ class CommunityTopicForm extends BaseCommunityTopicForm
 {
   public function configure()
   {
+    unset($this['created_at'], $this['updated_at']);
+
     $this->widgetSchema['community_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['member_id'] = new sfWidgetFormInputHidden();
     $this->setDefaults(array('community_id' => $this->getOption('community_id'), 'member_id' => sfContext::getInstance()->getUser()->getMemberId()));
-  }
-
-  public function save($con = null)
-  {
-    $community_topic = parent::save($con);
-/*
-    if ($this->isNew()) {
-      $communityMember = new CommunityTopic();
-      $communityMember->setMemberId(sfContext::getInstance()->getUser()->getMemberId());
-      $communityMember->setCommunityId($community_topic->getId());
-      $communityMember->save();
-    }
-*/
-
-//    print "save";
-    return $community_topic;
   }
 }

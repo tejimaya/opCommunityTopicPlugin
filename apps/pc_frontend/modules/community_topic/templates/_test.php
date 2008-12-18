@@ -1,12 +1,6 @@
 <?php
-//$list = array('てすと' => 'tet');
-//include_list_box('topic', $list, array('title' => 'トピック'))
-?>
-
-<?php
-//  $test = CommunityTopicPeer::retrieveByPk(1);
-//  print_r($test);
-//  print '<tr><th>test</th><td>tetetetetete</td></tr>';
+$communityConfigPublicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $community->getId());
+if ($communityConfigPublicFlag === null || $community->isPrivilegeBelong($sf_user->getMemberId()) || $communityConfigPublicFlag->getValue() === 'public') :
 ?>
 <tr>
 <th>コミュニティ掲示板</th>
@@ -19,9 +13,10 @@ foreach ($list as $value):
 <li>
 <?php
 echo $value->getCreatedAt();
-echo link_to($value->getName(), 'community_topic/edit?id='.$value->getId());
 echo ' ';
-echo link_to('詳細', 'community_topic/detail?id='.$value->getId());
+echo link_to($value->getName(), 'community_topic/detail?id='.$value->getId());
+echo ' ';
+echo link_to('編集', 'community_topic/edit?id='.$value->getId());
 echo ' ';
 echo link_to('削除', 'community_topic/delete?id='.$value->getId())
 ?>
@@ -32,3 +27,4 @@ echo link_to('削除', 'community_topic/delete?id='.$value->getId())
 </ul>
 </td>
 </tr>
+<?php endif; ?>
