@@ -1,0 +1,15 @@
+recentCommunityTopicComment:
+  caption:
+    ja_JP: "コミュニティ最新書き込みリスト"
+  description:
+    ja_JP: "メンバーが参加しているコミュニティトピックの最新書き込みリストを表示します"
+  component: [community_topic, topicCommentListBox]
+  config:
+    col:
+      Name:      "col"
+      Caption:   "表示するトピック数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    3
+      Choices:    {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}

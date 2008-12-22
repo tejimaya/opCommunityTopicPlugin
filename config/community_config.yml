@@ -1,0 +1,21 @@
+general:
+  public_flag:
+    Name:       "public_flag"
+    Caption:    "トピック公開範囲"
+    FormType:   "radio"
+    ValueType:  "string"
+    IsUnique:   false
+    IsRequired: true
+    Choices:
+      public: "全員に公開"
+      auth_commu_member: "コミュニティ参加者にのみ公開"
+  topic_authority:
+    Name:       "topic_authority"
+    Caption:    "トピック作成権限"
+    FormType:   "radio"
+    ValueType:  "string"
+    IsUnique:   false
+    IsRequired: true
+    Choices:
+      public: "コミュニティ参加者全員が作成可能"
+      admin_only: "コミュニティ管理者のみ作成可能"

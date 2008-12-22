@@ -18,4 +18,12 @@ class CommunityTopicCommentForm extends BaseCommunityTopicCommentForm
     $this->widgetSchema['member_id'] = new sfWidgetFormInputHidden();
     $this->setDefaults(array('community_topic_id' => $this->getOption('community_topic_id'), 'member_id' => sfContext::getInstance()->getUser()->getMemberId()));
   }
+
+  public function save($con = null)
+  {
+    $communityTopicComment = parent::save($con);
+    $communityTopic = $communityTopicComment->getCommunityTopic();
+    $communityTopic->setUpdatedAt($communityTopicComment->getUpdatedAt());
+    $communityTopic->save();
+  }
 }

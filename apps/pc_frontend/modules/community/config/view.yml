@@ -4,9 +4,3 @@ homeSuccess:
       template: [community_topic, test]
       parts: [communityHome]
       target: [lastRaw]
-editSuccess:
-  customize:
-    privilege:
-      template: [community_topic, privilege]
-      parts: [formCommunity]
-      target: [lastRaw]
