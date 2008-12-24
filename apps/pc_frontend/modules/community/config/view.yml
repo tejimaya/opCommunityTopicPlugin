@@ -1,6 +1,6 @@
 homeSuccess:
   customize:
-    test:
-      template: [community_topic, test]
+    communityTopicList:
+      template: [communityTopic, communityTopicList]
       parts: [communityHome]
       target: [lastRaw]

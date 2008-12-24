@@ -14,16 +14,16 @@ foreach ($list as $value):
 <?php
 echo $value->getCreatedAt();
 echo ' ';
-echo link_to($value->getName(), 'community_topic/detail?id='.$value->getId());
+echo link_to($value->getName(), 'communityTopic/detail?id='.$value->getId());
 echo ' ';
-echo link_to('編集', 'community_topic/edit?id='.$value->getId());
+echo link_to('編集', 'communityTopic/edit?id='.$value->getId());
 echo ' ';
-echo link_to('削除', 'community_topic/delete?id='.$value->getId())
+echo link_to('削除', 'communityTopic/delete?id='.$value->getId())
 ?>
 </li>
 <?php endforeach; ?>
 <li>もっと読む</li>
-<li><?php echo link_to('トピック追加', 'community_topic/edit?community_id='.$community->getId()) ?></li>
+<li><?php echo link_to('トピック追加', 'communityTopic/edit?community_id='.$community->getId()) ?></li>
 </ul>
 </td>
 </tr>

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * community_topic actions.
+ * communityTopic actions.
  *
  * @package    OpenPNE
- * @subpackage community_topic
+ * @subpackage communityTopic
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 9301 2008-05-27 01:08:46Z dwhittle $
  */
-class community_topicActions extends sfActions
+class communityTopicActions extends sfActions
 {
   public function preExecute()
   {
@@ -94,7 +94,7 @@ class community_topicActions extends sfActions
       if ($this->form->isValid())
       {
         $communityTopicComment = $this->form->save();
-        $this->redirect('community_topic/detail?id='.$this->communityTopicId);
+        $this->redirect('communityTopic/detail?id='.$this->communityTopicId);
       }
     }
   }

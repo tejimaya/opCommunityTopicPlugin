@@ -10,25 +10,12 @@
  */
 class commentActions extends sfActions
 {
-  public function preExecute()
-  {
-    $this->communityTopicId = $this->getRequestParameter('id');
-  }
  /**
   * Executes index action
   *
   * @param sfRequest $request A request object
   */
   public function executeIndex($request)
-  {
-  }
-  
- /**
-  * Executes edit action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeEdit($request)
   {
   }
 
@@ -39,11 +26,12 @@ class commentActions extends sfActions
   */
   public function executeDelete($request)
   {
+    $this->communityTopicId = $this->getRequestParameter('id');
     $this->communityTopic = CommunityTopicPeer::retrieveByPk($this->communityTopicId);
     $this->comment = CommunityTopicCommentPeer::retrieveByPk($request->getParameter('comment_id'));
 
     $this->comment->delete();
-    $this->redirect('community_topic/detail?id='.$this->communityTopicId);
+    $this->redirect('communityTopic/detail?id='.$this->communityTopicId);
 
   }
 }

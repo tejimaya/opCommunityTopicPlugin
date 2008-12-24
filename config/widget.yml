@@ -3,7 +3,7 @@ recentCommunityTopicComment:
     ja_JP: "コミュニティ最新書き込みリスト"
   description:
     ja_JP: "メンバーが参加しているコミュニティトピックの最新書き込みリストを表示します"
-  component: [community_topic, topicCommentListBox]
+  component: [communityTopic, topicCommentListBox]
   config:
     col:
       Name:      "col"
