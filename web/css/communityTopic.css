@@ -1,0 +1,21 @@
+div.parts tr td.border-left {
+  border-left-width: 1px;
+}
+
+div.parts .align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+div.parts th {
+  width: 160px;
+  padding: 5px;
+}
+
+div.parts li,
+div.parts td {
+  padding: 5px;
+}

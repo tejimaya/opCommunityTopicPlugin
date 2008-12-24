@@ -1,3 +1,5 @@
+<?php use_helper('Pagination', 'Date'); ?>
+
 <?php
 $communityConfigPublicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $community->getId());
 if ($communityConfigPublicFlag === null || $community->isPrivilegeBelong($sf_user->getMemberId()) || $communityConfigPublicFlag->getValue() === 'public') :
@@ -7,23 +9,21 @@ if ($communityConfigPublicFlag === null || $community->isPrivilegeBelong($sf_use
 <td>
 <ul>
 <?php
-$list = CommunityTopicPeer::retrieveByCommunityId($community->getId());
-foreach ($list as $value):
+$communityTopics = CommunityTopicPeer::getTopics($community->getId());
+if ($communityTopics) :
+for ($i = 0; $i < 7; $i++) :
 ?>
 <li>
 <?php
-echo $value->getCreatedAt();
+echo format_datetime($communityTopics[$i]->getUpdatedAt(), 'f');
 echo ' ';
-echo link_to($value->getName(), 'communityTopic/detail?id='.$value->getId());
-echo ' ';
-echo link_to('編集', 'communityTopic/edit?id='.$value->getId());
-echo ' ';
-echo link_to('削除', 'communityTopic/delete?id='.$value->getId())
+echo link_to($communityTopics[$i]->getName().'('.$communityTopics[$i]->countCommunityTopicComments().')', 'communityTopic/detail?id='.$communityTopics[$i]->getId());
 ?>
 </li>
-<?php endforeach; ?>
-<li>もっと読む</li>
-<li><?php echo link_to('トピック追加', 'communityTopic/edit?community_id='.$community->getId()) ?></li>
+<?php endfor; ?>
+<li><?php echo link_to('もっと読む', 'communityTopic/list?community_id='.$community->getId()); ?></li>
+<?php endif; ?>
+<li><?php echo link_to('トピック作成', 'communityTopic/edit?community_id='.$community->getId()); ?></li>
 </ul>
 </td>
 </tr>

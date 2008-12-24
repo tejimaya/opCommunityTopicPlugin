@@ -45,6 +45,22 @@ class communityTopicActions extends sfActions
   }
 
  /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeList($request)
+  {
+    $this->communityConfigPublicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $this->communityId);
+    if ($this->communityConfigPublicFlag && $this->communityConfigPublicFlag->getValue() === 'auth_commu_member')
+    {
+      $this->community->checkPrivilegeBelong($this->getUser()->getMemberId());
+    }
+
+    $this->pager = CommunityTopicPeer::getCommunityTopicListPager($this->communityId, $request->getParameter('page'), 20);
+  }
+
+ /**
   * Executes edit action
   *
   * @param sfRequest $request A request object
@@ -83,8 +99,8 @@ class communityTopicActions extends sfActions
       $this->community->checkPrivilegeBelong($this->getUser()->getMemberId());
     }
 
-    $this->comments = CommunityTopicCommentPeer::retrieveByCommunityTopicId($this->communityTopicId);
     $this->comment = CommunityTopicCommentPeer::retrieveByPk($request->getParameter('comment_id'));
+    $this->commentPager = CommunityTopicCommentPeer::getCommunityTopicCommentListPager($this->communityTopicId, $request->getParameter('page'), 20);
 
     $this->form = new CommunityTopicCommentForm($this->comment, array('community_topic_id' => $this->communityTopicId));
 
