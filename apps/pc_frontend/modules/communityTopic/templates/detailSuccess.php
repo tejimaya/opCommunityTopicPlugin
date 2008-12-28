@@ -1,4 +1,4 @@
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <div class="dparts topicTitle"><div class="parts">
 <div class="partsHeading">
