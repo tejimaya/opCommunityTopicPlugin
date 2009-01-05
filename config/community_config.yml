@@ -6,8 +6,9 @@ general:
     ValueType:  "string"
     IsUnique:   false
     IsRequired: true
+    Default: "public"
     Choices:
-      public: "全員に公開"
+      public:            "全員に公開"
       auth_commu_member: "コミュニティ参加者にのみ公開"
   topic_authority:
     Name:       "topic_authority"
@@ -16,6 +17,7 @@ general:
     ValueType:  "string"
     IsUnique:   false
     IsRequired: true
+    Default:    "public"
     Choices:
-      public: "コミュニティ参加者全員が作成可能"
+      public:     "コミュニティ参加者全員が作成可能"
       admin_only: "コミュニティ管理者のみ作成可能"
