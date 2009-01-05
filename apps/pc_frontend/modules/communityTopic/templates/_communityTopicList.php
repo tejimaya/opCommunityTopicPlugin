@@ -8,19 +8,19 @@ if ($communityConfigPublicFlag === null || $community->isPrivilegeBelong($sf_use
 <th>コミュニティ掲示板</th>
 <td>
 <ul>
-<?php
-$communityTopics = CommunityTopicPeer::getTopics($community->getId());
-if ($communityTopics) :
-for ($i = 0; $i < 7; $i++) :
-?>
+<?php $communityTopics = CommunityTopicPeer::getTopics($community->getId()); ?>
+<?php if ($communityTopics) : ?>
+<?php foreach ($communityTopics as $key => $communityTopic) : ?>
+<?php if (5 <= $key)
+{
+  break;
+} ?>
 <li>
-<?php
-echo format_datetime($communityTopics[$i]->getUpdatedAt(), 'f');
-echo ' ';
-echo link_to($communityTopics[$i]->getName().'('.$communityTopics[$i]->countCommunityTopicComments().')', 'communityTopic/detail?id='.$communityTopics[$i]->getId());
-?>
+<?php echo format_datetime($communityTopic->getUpdatedAt(), 'f'); ?>
+&nbsp;
+<?php echo link_to(sprintf('%s(%d)', $communityTopic->getName(), $communityTopic->countCommunityTopicComments()), 'communityTopic/detail?id='.$communityTopic->getId()); ?>
 </li>
-<?php endfor; ?>
+<?php endforeach; ?>
 <li><?php echo link_to('もっと読む', 'communityTopic/list?community_id='.$community->getId()); ?></li>
 <?php endif; ?>
 <li><?php echo link_to('トピック作成', 'communityTopic/edit?community_id='.$community->getId()); ?></li>
