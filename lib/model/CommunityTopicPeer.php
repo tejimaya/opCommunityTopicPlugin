@@ -29,4 +29,14 @@ class CommunityTopicPeer extends BaseCommunityTopicPeer
 
     return $pager;
   }
+
+  public static function retrivesByMemberId($memberId, $limit = 5)
+  {
+    $c = new Criteria();
+    $communityIds = CommunityPeer::getIdsByMemberId($memberId);
+    $c->add(CommunityTopicPeer::COMMUNITY_ID, $communityIds, Criteria::IN);
+    $c->setLimit($limit);
+    $c->addDescendingOrderByColumn(CommunityTopicPeer::UPDATED_AT);
+    return CommunityTopicPeer::doSelect($c);
+  }
 }
