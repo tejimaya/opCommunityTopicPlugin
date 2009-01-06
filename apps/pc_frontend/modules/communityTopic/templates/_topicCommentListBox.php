@@ -4,12 +4,18 @@ $option = array(
 );
 $list = array();
 $displayNum = $sf_data->getRaw('widget')->getConfig('col');
-for ($i = 0; $i < $displayNum; $i++) {
-  $topicId = $communityTopic[$i]->getId();
-  $topicName = $communityTopic[$i]->getName();
-  $communityName = $communityTopic[$i]->getCommunity()->getName();
-  $countComment = $communityTopic[$i]->countCommunityTopicComments();
-  $updateTopic = $communityTopic[$i]->getUpdatedAt();
+foreach ($communityTopic as $key => $value)
+{
+  if ($key >= $displayNum)
+  {
+    break;
+  }
+
+  $topicId = $value->getId();
+  $topicName = $value->getName();
+  $communityName = $value->getCommunity()->getName();
+  $countComment = $value->countCommunityTopicComments();
+  $updateTopic = $value->getUpdatedAt();
 
   $list[$updateTopic] = link_to($topicName.' ('.$countComment.')', 'communityTopic/detail?id='.$topicId).' ('.$communityName.')';
 }
