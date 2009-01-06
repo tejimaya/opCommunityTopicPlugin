@@ -9,9 +9,10 @@ class CommunityTopicPeer extends BaseCommunityTopicPeer
     return $list;
   }
 
-  public static function getTopics($communityId) {
+  public static function getTopics($communityId, $limit = 5) {
     $c = new Criteria();
     $c->add(self::COMMUNITY_ID, $communityId);
+    $c->setLimit($limit);
     $c->addDescendingOrderByColumn(self::UPDATED_AT);
     $list = self::doSelect($c);
     return $list;

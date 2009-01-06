@@ -4,3 +4,4 @@ homeSuccess:
       template: [communityTopic, communityTopicList]
       parts: [communityHome]
       target: [lastRaw]
+      is_component: true
