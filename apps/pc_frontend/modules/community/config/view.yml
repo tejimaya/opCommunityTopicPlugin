@@ -3,5 +3,5 @@ homeSuccess:
     communityTopicList:
       template: [communityTopic, communityTopicList]
       parts: [communityHome]
-      target: [lastRaw]
+      target: [lastRow]
       is_component: true
