@@ -20,6 +20,17 @@ class CommunityTopic extends BaseCommunityTopic
     return ($this->getMemberId() === $memberId || $this->getCommunity()->isAdmin($memberId));
   }
 
+  public function isViewable($memberId)
+  {
+    if ($this->getCommunity()->getConfig('public_flag') === 'auth_commu_member')
+    {
+      return $this->getCommunity()->isPrivilegeBelong($memberId);
+    }
+
+    // all of the SNS members are viewable this topic comment
+    return true;
+  }
+
   public function isCreatableComment($memberId)
   {
     return $this->getCommunity()->isPrivilegeBelong($memberId);

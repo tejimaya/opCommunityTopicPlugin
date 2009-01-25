@@ -3,7 +3,7 @@
 include(dirname(__FILE__).'/../../bootstrap/unit.php');
 include(dirname(__FILE__).'/../../bootstrap/database.php');
 
-$t = new lime_test(52, new lime_output_color());
+$t = new lime_test(72, new lime_output_color());
 
 //------------------------------------------------------------
 // Community::isCreatableCommunityTopic()
@@ -139,4 +139,53 @@ $t->cmp_ok($topic_e->isEditable(3), '===', false, 'returns false for a community
 $t->cmp_ok($topic_e->isEditable(4), '===', false, 'returns false for a non-community member');
 $topic_e = CommunityTopicPeer::retrieveByPk(8);
 $t->cmp_ok($topic_e->isEditable(4), '===', false, 'returns false for the community topic author but a non-community member now');
+
+//------------------------------------------------------------
+// CommunityTopic::isViewable()
+//------------------------------------------------------------
+$t->diag('CommunityTopic::isViewable()');
+
+// * public_flag:     auth_commu_member
+// * topic_authority: admin_only
+$t->diag('public_flag: auth_commu_member, topic_authority: admin_only');
+$topic_a = CommunityTopicPeer::retrieveByPk(1);
+$t->cmp_ok($topic_a->isViewable(1), '===', true, 'returns true for the community admin');
+$t->cmp_ok($topic_a->isViewable(2), '===', true, 'returns true for the community topic author');
+$t->cmp_ok($topic_a->isViewable(3), '===', true, 'returns true for a community member');
+$t->cmp_ok($topic_a->isViewable(4), '===', false, 'returns false for a non-community member');
+$topic_a = CommunityTopicPeer::retrieveByPk(5);
+$t->cmp_ok($topic_a->isViewable(4), '===', false, 'returns false for the community topic author but a non-community member now');
+
+// * public_flag:     public
+// * topic_authority: admin_only
+$t->diag('public_flag: public, topic_authority: admin_only');
+$topic_i = CommunityTopicPeer::retrieveByPk(2);
+$t->cmp_ok($topic_i->isViewable(1), '===', true, 'returns true for the community admin');
+$t->cmp_ok($topic_i->isViewable(2), '===', true, 'returns true for the community topic author');
+$t->cmp_ok($topic_i->isViewable(3), '===', true, 'returns true for a community member');
+$t->cmp_ok($topic_i->isViewable(4), '===', true, 'returns true for a non-community member');
+$topic_i = CommunityTopicPeer::retrieveByPk(6);
+$t->cmp_ok($topic_i->isViewable(4), '===', true, 'returns true for the community topic author but a non-community member now');
+
+// * public_flag:     auth_commu_member
+// * topic_authority: public
+$t->diag('public_flag: auth_commu_member, topic_authority: public');
+$topic_u = CommunityTopicPeer::retrieveByPk(3);
+$t->cmp_ok($topic_u->isViewable(1), '===', true, 'returns true for the community admin');
+$t->cmp_ok($topic_u->isViewable(2), '===', true, 'returns true for the community topic author');
+$t->cmp_ok($topic_u->isViewable(3), '===', true, 'returns true for a community member');
+$t->cmp_ok($topic_u->isViewable(4), '===', false, 'returns false for a non-community member');
+$topic_u = CommunityTopicPeer::retrieveByPk(7);
+$t->cmp_ok($topic_u->isViewable(4), '===', false, 'returns false for the community topic author but a non-community member now');
+
+// * public_flag:     public
+// * topic_authority: public
+$t->diag('public_flag: public, topic_authority: public');
+$topic_e = CommunityTopicPeer::retrieveByPk(4);
+$t->cmp_ok($topic_e->isViewable(1), '===', true, 'returns true for the community admin');
+$t->cmp_ok($topic_e->isViewable(2), '===', true, 'returns true for the community topic author');
+$t->cmp_ok($topic_e->isViewable(3), '===', true, 'returns true for a community member');
+$t->cmp_ok($topic_e->isViewable(4), '===', true, 'returns true for a non-community member');
+$topic_e = CommunityTopicPeer::retrieveByPk(8);
+$t->cmp_ok($topic_e->isViewable(4), '===', true, 'returns true for the community topic author but a non-community member now');
 
