@@ -19,6 +19,27 @@
  */
 class communityTopicActions extends sfActions
 {
+  public function preExecute()
+  {
+    $object = $this->getRoute()->getObject();
+
+    if ($object instanceof Community)
+    {
+      $this->community = $object;
+    }
+    elseif ($object instanceof CommunityTopic)
+    {
+      $this->communityTopic = $object;
+      $this->community = $this->communityTopic->getCommunity();
+    }
+  }
+
+  public function postExecute()
+  {
+    sfConfig::set('sf_nav_type', 'community');
+    sfConfig::set('sf_nav_id', $this->community->getId());
+  }
+
  /**
   * Executes listCommunity action
   *
@@ -26,8 +47,6 @@ class communityTopicActions extends sfActions
   */
   public function executeListCommunity(sfWebRequest $request)
   {
-    $this->community = $this->getRoute()->getObject();
-
     if ($this->community->getConfig('public_flag') === 'auth_commu_member')
     {
       $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
@@ -43,9 +62,6 @@ class communityTopicActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
-
     if ($this->community->getConfig('public_flag') === 'auth_commu_member')
     {
       $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
@@ -61,8 +77,6 @@ class communityTopicActions extends sfActions
   */
   public function executeNew(sfWebRequest $request)
   {
-    $this->community = $this->getRoute()->getObject();
-
     if ($this->community->getConfig('topic_authority') === 'admin_only')
     {
       $this->forward404Unless($this->community->isAdmin($this->getUser()->getMemberId()));
@@ -82,8 +96,6 @@ class communityTopicActions extends sfActions
   */
   public function executeCreate(sfWebRequest $request)
   {
-    $this->community = $this->getRoute()->getObject();
-
     if ($this->community->getConfig('topic_authority') === 'admin_only')
     {
       $this->forward404Unless($this->community->isAdmin($this->getUser()->getMemberId()));
@@ -108,9 +120,6 @@ class communityTopicActions extends sfActions
   */
   public function executeEdit(sfWebRequest $request)
   {
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
-
     $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm($this->communityTopic);
@@ -123,9 +132,6 @@ class communityTopicActions extends sfActions
   */
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
-
     $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm($this->communityTopic);
@@ -141,9 +147,6 @@ class communityTopicActions extends sfActions
   */
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
-
     $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new sfForm();
@@ -157,9 +160,6 @@ class communityTopicActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
-
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
 
     $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 

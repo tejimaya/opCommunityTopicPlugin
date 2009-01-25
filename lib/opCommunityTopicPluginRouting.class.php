@@ -90,12 +90,11 @@ class opCommunityTopicPluginRouting
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'CommunityTopicComment', 'type' => 'object')
       ),
-/*
+
       'communityTopic_nodefaults' => new sfRoute(
         '/communityTopic/*',
         array('module' => 'default', 'action' => 'error')
       ),
-      */
     );
 
     $routes = array_reverse($routes);

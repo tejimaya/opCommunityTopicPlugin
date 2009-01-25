@@ -18,6 +18,29 @@
  */
 class communityTopicCommentActions extends sfActions
 {
+  public function preExecute()
+  {
+    $object = $this->getRoute()->getObject();
+
+    if ($object instanceof CommunityTopic)
+    {
+      $this->communityTopic = $object;
+      $this->community = $this->communityTopic->getCommunity();
+    }
+    elseif ($object instanceof CommunityTopicComment)
+    {
+      $this->communityTopicComment = $object;
+      $this->communityTopic = $this->communityTopicComment->getCommunityTopic();
+      $this->community = $this->communityTopic->getCommunity();
+    }
+  }
+
+  public function postExecute()
+  {
+    sfConfig::set('sf_nav_type', 'community');
+    sfConfig::set('sf_nav_id', $this->community->getId());
+  }
+
  /**
   * Executes create action
   *
@@ -25,9 +48,6 @@ class communityTopicCommentActions extends sfActions
   */
   public function executeCreate(sfWebRequest $request)
   {
-    $this->communityTopic = $this->getRoute()->getObject();
-    $this->community = $this->communityTopic->getCommunity();
-
     $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicCommentForm();
@@ -45,10 +65,6 @@ class communityTopicCommentActions extends sfActions
 
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->communityTopicComment = $this->getRoute()->getObject();
-    $this->communityTopic = $this->communityTopicComment->getCommunityTopic();
-    $this->community = $this->communityTopic->getCommunity();
-
     $this->forward404Unless($this->communityTopicComment->isDeletable($this->getUser()->getMemberId()));
 
     $this->form = new sfForm();
@@ -57,10 +73,6 @@ class communityTopicCommentActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
-
-    $this->communityTopicComment = $this->getRoute()->getObject();
-    $this->communityTopic = $this->communityTopicComment->getCommunityTopic();
-    $this->community = $this->communityTopic->getCommunity();
 
     $this->forward404Unless($this->communityTopicComment->isDeletable($this->getUser()->getMemberId()));
 
