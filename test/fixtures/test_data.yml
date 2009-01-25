@@ -1,0 +1,142 @@
+Member:
+  member_1:
+    id: ~
+    name: "OpenPNE君"
+    is_active: 1
+  member_2:
+    name: "Tanaka"
+    is_active: 1
+  member_3:
+    name: "Sasaki"
+    is_active: 1
+  member_4:
+    name: "Yamada"
+    is_active: 1
+
+Community:
+  community_a:
+    name: "「あ」コミュニティ"
+  community_i:
+    name: "「い」コミュニティ"
+  community_u:
+    name: "「う」コミュニティ"
+  community_e:
+    name: "「え」コミュニティ"
+
+CommunityConfig:
+  community_a_public_flag:
+    community_id: community_a
+    name: "public_flag"
+    value: "auth_commu_member"
+  community_a_topic_authority:
+    community_id: community_a
+    name: "topic_authority"
+    value: "admin_only"
+  community_i_public_flag:
+    community_id: community_i
+    name: "public_flag"
+    value: "public"
+  community_i_topic_authority:
+    community_id: community_i
+    name: "topic_authority"
+    value: "admin_only"
+  community_u_public_flag:
+    community_id: community_u
+    name: "public_flag"
+    value: "auth_commu_member"
+  community_u_topic_authority:
+    community_id: community_u
+    name: "topic_authority"
+    value: "public"
+  community_e_public_flag:
+    community_id: community_e
+    name: "public_flag"
+    value: "public"
+  community_e_topic_authority:
+    community_id: community_e
+    name: "topic_authority"
+    value: "public"
+
+CommunityMember:
+  community_member_a_1:
+    community_id: community_a
+    member_id: member_1
+    position: "admin"
+  community_member_i_1:
+    community_id: community_i
+    member_id: member_1
+    position: "admin"
+  community_member_u_1:
+    community_id: community_u
+    member_id: member_1
+    position: "admin"
+  community_member_e_1:
+    community_id: community_e
+    member_id: member_1
+    position: "admin"
+  community_member_a_2:
+    community_id: community_a
+    member_id: member_2
+  community_member_i_2:
+    community_id: community_i
+    member_id: member_2
+  community_member_u_2:
+    community_id: community_u
+    member_id: member_2
+  community_member_e_2:
+    community_id: community_e
+    member_id: member_2
+  community_member_a_3:
+    community_id: community_a
+    member_id: member_3
+  community_member_i_3:
+    community_id: community_i
+    member_id: member_3
+  community_member_u_3:
+    community_id: community_u
+    member_id: member_3
+  community_member_e_3:
+    community_id: community_e
+    member_id: member_3
+
+CommunityTopic:
+  community_topic_a_2:
+    name: "_aトピ主"
+    body: "こんにちは"
+    community_id: community_a
+    member_id: member_2
+  community_topic_i_2:
+    name: "_iトピ主"
+    body: "こんにちは"
+    community_id: community_i
+    member_id: member_2
+  community_topic_u_2:
+    name: "_uトピ主"
+    body: "こんにちは"
+    community_id: community_u
+    member_id: member_2
+  community_topic_e_2:
+    name: "_eトピ主"
+    body: "こんにちは"
+    community_id: community_e
+    member_id: member_2
+  community_topic_a_4:
+    name: "_a外"
+    body: "こんにちは"
+    community_id: community_a
+    member_id: member_4
+  community_topic_i_4:
+    name: "_i外"
+    body: "こんにちは"
+    community_id: community_i
+    member_id: member_4
+  community_topic_u_4:
+    name: "_u外"
+    body: "こんにちは"
+    community_id: community_u
+    member_id: member_4
+  community_topic_e_4:
+    name: "_e外"
+    body: "こんにちは"
+    community_id: community_e
+    member_id: member_4
