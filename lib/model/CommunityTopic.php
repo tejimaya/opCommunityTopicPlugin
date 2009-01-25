@@ -14,4 +14,9 @@ class CommunityTopic extends BaseCommunityTopic
   {
     return ($this->getMemberId() === $memberId || $this->getCommunity()->isAdmin($memberId));
   }
+
+  public function isCreatableComment($memberId)
+  {
+    return $this->getCommunity()->isPrivilegeBelong($memberId);
+  }
 }
