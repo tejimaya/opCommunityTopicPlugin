@@ -12,17 +12,6 @@ class CommunityTopicComment extends BaseCommunityTopicComment
 {
   public function isDeletable($memberId)
   {
-    if (
-         $this->getCommunityTopic()->getCommunity()->isAdmin($memberId)
-      || $this->getCommunityTopic()->getMemberId() === $memberId
-      || $this->getMemberId() === $memberId
-    )
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    return ($this->getMemberId() === $memberId || $this->getCommunityTopic()->isEditable($memberId));
   }
 }

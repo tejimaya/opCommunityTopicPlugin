@@ -10,4 +10,8 @@
 
 class CommunityTopic extends BaseCommunityTopic
 {
+  public function isEditable($memberId)
+  {
+    return ($this->getMemberId() === $memberId || $this->getCommunity()->isAdmin($memberId));
+  }
 }

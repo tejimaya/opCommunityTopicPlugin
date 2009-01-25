@@ -19,34 +19,6 @@
  */
 class communityTopicActions extends sfActions
 {
-  public function preExecute()
-  {
-    $this->communityTopicId = $this->getRequestParameter('id');
-    $this->communityTopic = CommunityTopicPeer::retrieveByPk($this->communityTopicId);
-
-    if ($this->communityTopic)
-    {
-      $this->community = $this->communityTopic->getCommunity();
-    } else {
-      $this->community = new Community();
-      $this->community->setId($this->getRequestParameter('community_id'));
-    }
-    if ($this->community)
-    {
-    $this->communityId = $this->community->getId();
-    }
-
-    $this->communityConfigTopicAuthority = CommunityConfigPeer::retrieveByNameAndCommunityId('topic_authority', $this->communityId);
-    if ($this->communityConfigTopicAuthority && $this->communityConfigTopicAuthority->getValue() === 'admin_only')
-    {
-      $this->checkOwner = true;
-    }
-    else
-    {
-      $this->checkOwner = false;
-    }
-  }
-
  /**
   * Executes listCommunity action
   *
@@ -139,10 +111,7 @@ class communityTopicActions extends sfActions
     $this->communityTopic = $this->getRoute()->getObject();
     $this->community = $this->communityTopic->getCommunity();
 
-    $this->forward404Unless(
-         $this->community->isAdmin($this->getUser()->getMemberId())
-      || $this->communityTopic->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm($this->communityTopic);
   }
@@ -157,10 +126,7 @@ class communityTopicActions extends sfActions
     $this->communityTopic = $this->getRoute()->getObject();
     $this->community = $this->communityTopic->getCommunity();
 
-    $this->forward404Unless(
-         $this->community->isAdmin($this->getUser()->getMemberId())
-      || $this->communityTopic->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm($this->communityTopic);
     $this->processForm($request, $this->form);
@@ -178,10 +144,7 @@ class communityTopicActions extends sfActions
     $this->communityTopic = $this->getRoute()->getObject();
     $this->community = $this->communityTopic->getCommunity();
 
-    $this->forward404Unless(
-         $this->community->isAdmin($this->getUser()->getMemberId())
-      || $this->communityTopic->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new sfForm();
   }
@@ -198,10 +161,7 @@ class communityTopicActions extends sfActions
     $this->communityTopic = $this->getRoute()->getObject();
     $this->community = $this->communityTopic->getCommunity();
 
-    $this->forward404Unless(
-         $this->community->isAdmin($this->getUser()->getMemberId())
-      || $this->communityTopic->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->communityTopic->delete();
 
