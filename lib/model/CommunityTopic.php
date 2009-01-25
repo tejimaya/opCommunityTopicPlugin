@@ -12,6 +12,11 @@ class CommunityTopic extends BaseCommunityTopic
 {
   public function isEditable($memberId)
   {
+    if (!$this->getCommunity()->isPrivilegeBelong($memberId))
+    {
+      return false;
+    }
+
     return ($this->getMemberId() === $memberId || $this->getCommunity()->isAdmin($memberId));
   }
 
