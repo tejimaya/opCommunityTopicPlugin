@@ -1,11 +1,10 @@
 <?php
-$options = array('form' => array($form));
-if ($form->isNew()) {
-  $title = 'トピック作成';
-  $options['url'] = 'communityTopic/edit?community_id='.$sf_params->get('community_id');
-} else {
-  $title = 'トピック編集';
-  $options['url'] = 'communityTopic/edit?id='.$communityTopic->getId();
-}
-include_box('formCommunityTopic', $title, '', $options);
+$options = array();
+$options['title'] = 'トピック編集';
+$options['url'] = '@communityTopic_update?id='.$communityTopic->getId();
+op_include_form('formCommunityTopic', $form, $options);
+?>
+
+<?php
+op_include_box('toDelete', link_to(__('削除'), 'communityTopic_delete_confirm', $communityTopic), array('title' => __('トピックと書き込みを削除する')));
 ?>

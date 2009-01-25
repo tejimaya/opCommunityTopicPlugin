@@ -1,5 +1,0 @@
-listSuccess:
-  stylesheets: [/plugins/opCommunityTopicPlugin/css/communityTopic]
-
-detailSuccess:
-  stylesheets: [/plugins/opCommunityTopicPlugin/css/communityTopic]

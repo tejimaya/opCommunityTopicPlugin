@@ -11,7 +11,7 @@ foreach ($communityTopic as $key => $value)
   $countComment = $value->countCommunityTopicComments();
   $updateTopic = $value->getUpdatedAt();
 
-  $list[$updateTopic] = link_to($topicName.' ('.$countComment.')', 'communityTopic/detail?id='.$topicId).' ('.$communityName.')';
+  $list[$updateTopic] = link_to($topicName.' ('.$countComment.')', 'communityTopic_show', $value).' ('.$communityName.')';
 }
 
 include_list_box('recentCommunityTopicComment', $list, $option);
