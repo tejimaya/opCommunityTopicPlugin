@@ -47,10 +47,7 @@ class communityTopicActions extends sfActions
   */
   public function executeListCommunity(sfWebRequest $request)
   {
-    if ($this->community->getConfig('public_flag') === 'auth_commu_member')
-    {
-      $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
-    }
+    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
 
     $this->pager = CommunityTopicPeer::getCommunityTopicListPager($this->community->getId(), $request->getParameter('page'), 20);
   }
@@ -62,10 +59,7 @@ class communityTopicActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    if ($this->community->getConfig('public_flag') === 'auth_commu_member')
-    {
-      $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
-    }
+    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicCommentForm();
   }
@@ -77,14 +71,7 @@ class communityTopicActions extends sfActions
   */
   public function executeNew(sfWebRequest $request)
   {
-    if ($this->community->getConfig('topic_authority') === 'admin_only')
-    {
-      $this->forward404Unless($this->community->isAdmin($this->getUser()->getMemberId()));
-    }
-    else
-    {
-      $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
-    }
+    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm();
   }
@@ -96,14 +83,7 @@ class communityTopicActions extends sfActions
   */
   public function executeCreate(sfWebRequest $request)
   {
-    if ($this->community->getConfig('topic_authority') === 'admin_only')
-    {
-      $this->forward404Unless($this->community->isAdmin($this->getUser()->getMemberId()));
-    }
-    else
-    {
-      $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
-    }
+    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());

@@ -48,7 +48,7 @@ class communityTopicCommentActions extends sfActions
   */
   public function executeCreate(sfWebRequest $request)
   {
-    $this->forward404Unless($this->community->isPrivilegeBelong($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->communityTopic->isCreatableCommunityTopicComment($this->getUser()->getMemberId()));
 
     $this->form = new CommunityTopicCommentForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());

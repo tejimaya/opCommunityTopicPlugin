@@ -12,6 +12,9 @@ Member:
   member_4:
     name: "Yamada"
     is_active: 1
+  member_5:
+    name: "Tom"
+    is_active: 1
 
 Community:
   community_a:
@@ -98,6 +101,18 @@ CommunityMember:
   community_member_e_3:
     community_id: community_e
     member_id: member_3
+  community_member_a_5:
+    community_id: community_a
+    member_id: member_5
+  community_member_i_5:
+    community_id: community_i
+    member_id: member_5
+  community_member_u_5:
+    community_id: community_u
+    member_id: member_5
+  community_member_e_5:
+    community_id: community_e
+    member_id: member_5
 
 CommunityTopic:
   community_topic_a_2:
@@ -140,3 +155,37 @@ CommunityTopic:
     body: "こんにちは"
     community_id: community_e
     member_id: member_4
+
+CommunityTopicComment:
+  community_topic_comment_a_2:
+    body: "こんにちは"
+    community_topic_id: community_topic_a_2
+    member_id: member_5
+  community_topic_comment_i_2:
+    body: "こんにちは"
+    community_topic_id: community_topic_i_2
+    member_id: member_5
+  community_topic_comment_u_2:
+    body: "こんにちは"
+    community_topic_id: community_topic_u_2
+    member_id: member_5
+  community_topic_comment_e_2:
+    body: "こんにちは"
+    community_topic_id: community_topic_e_2
+    member_id: member_5
+  community_topic_comment_a_4:
+    body: "こんにちは"
+    community_topic_id: community_topic_a_4
+    member_id: member_5
+  community_topic_comment_i_4:
+    body: "こんにちは"
+    community_topic_id: community_topic_i_4
+    member_id: member_5
+  community_topic_comment_u_4:
+    body: "こんにちは"
+    community_topic_id: community_topic_u_4
+    member_id: member_5
+  community_topic_comment_e_4:
+    body: "こんにちは"
+    community_topic_id: community_topic_e_4
+    member_id: member_5

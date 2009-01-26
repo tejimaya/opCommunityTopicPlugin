@@ -3,5 +3,6 @@ $this->dispatcher->connect('routing.load_configuration', array('opCommunityTopic
 
 sfPropelBehavior::registerMethods('community_is_creatable_community_topic', array(
   array('opIsCreatableCommunityTopicBehavior', 'isCreatableCommunityTopic'),
+  array('opIsCreatableCommunityTopicBehavior', 'isViewableCommunityTopic'),
 ));
 sfPropelBehavior::add('Community', array('community_is_creatable_community_topic' => array()));
