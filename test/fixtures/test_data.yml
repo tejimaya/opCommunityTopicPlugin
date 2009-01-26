@@ -16,6 +16,48 @@ Member:
     name: "Tom"
     is_active: 1
 
+MemberConfig:
+  member_address_1:
+    name: "pc_address"
+    value: "sns@example.com"
+    member_id: member_1
+  member_address_2:
+    name: "pc_address"
+    value: "tanaka@example.com"
+    member_id: member_2
+  member_address_3:
+    name: "pc_address"
+    value: "sasaki@example.com"
+    member_id: member_3
+  member_address_4:
+    name: "pc_address"
+    value: "yamada@example.com"
+    member_id: member_4
+  member_address_5:
+    name: "pc_address"
+    value: "tom@example.com"
+    member_id: member_5
+  member_password_1:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    member_id: member_1
+  member_password_2:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    member_id: member_2
+  member_password_3:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    member_id: member_3
+  member_password_4:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    member_id: member_4
+  member_password_5:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    member_id: member_5
+
 Community:
   community_a:
     name: "「あ」コミュニティ"

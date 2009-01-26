@@ -1,0 +1,138 @@
+<?php
+
+include(dirname(__FILE__).'/../../bootstrap/functional.php');
+include(dirname(__FILE__).'/../../bootstrap/database.php');
+include(dirname(__FILE__).'/../../bootstrap/functional.php');
+
+function createUser($mailAddress)
+{
+  $params = array('authMailAddress' => array(
+    'mail_address' => $mailAddress,
+    'password'     => 'password',
+  ));
+
+  $user = new sfTestFunctional(new sfBrowser(), new lime_test(48, new lime_output_color()));
+  $user->post('/member/login/authMode/MailAddress', $params);
+
+  return $user;
+}
+
+// create a test user: Mr_OpenPNE (community admin)
+$Mr_OpenPNE = createUser('sns@example.com');
+$Mr_OpenPNE
+->get('/community/1')
+  ->info('1. Mr. OpenPNE accesses the community home')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'community')
+    ->isParameter('action', 'home')
+  ->end()
+  ->with('response')->begin()
+    ->info('1-a. Mr. OpenPNE can see "コミュニティ掲示板"')
+    ->checkElement('#communityHome th:contains("コミュニティ掲示板")', true)
+    ->info('1-b. Mr. OpenPNE can see "トピック作成"')
+    ->checkElement('#communityHome td a:contains("トピック作成")', true)
+  ->end()
+->get('/communityTopic/listCommunity/1')
+  ->info('2. Mr. OpenPNE can access the community topic list')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'listCommunity')
+  ->end()
+  ->with('response')->begin()
+    ->info('2-a. Mr. OpenPNE can see "トピックを作成する"')
+    ->checkElement('#communityTopicList h3:contains("トピックを作成する")', true)
+    ->info('2-b. Mr. OpenPNE can see "トピック一覧"')
+    ->checkElement('.topicList h3:contains("トピック一覧")', true)
+    ->info('2-c. Mr. OpenPNE can see two "もっと見る(1)"')
+    ->checkElement('.topicList td a:contains("もっと見る(1)")', true, array('count' => 2))
+    ->info('2-d. Mr. OpenPNE can see two "編集"')
+    ->checkElement('.topicList td a:contains("編集")', true, array('count' => 2))
+  ->end()
+->get('/communityTopic/1')
+  ->info('3. Mr. OpenPNE can access the community topic')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'show')
+  ->end()
+  ->with('response')->begin()
+    ->info('3-a. Mr. OpenPNE can see "トピック編集"')
+    ->checkElement('.topicTitle .operation:contains("トピック編集")', true)
+    ->info('3-b. Mr. OpenPNE can see "書き込み"')
+    ->checkElement('.commentList h3:contains("書き込み")', true)
+    ->info('3-c. Mr. OpenPNE can see "削除"')
+    ->checkElement('.commentList td:contains("削除")', true)
+    ->info('3-d. Mr. OpenPNE can see "コメント書き込み"')
+    ->checkElement('#formCommunityTopicComment h3:contains("コメント書き込み")', true)
+  ->end()
+  ->info('3e. Mr. OpenPNE can create a new topic comment')
+  ->click('送信', array('community_topic_comment' => array(
+    'body' => 'test',
+  )))
+  ->isStatusCode(302)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopicComment')
+    ->isParameter('action', 'create')
+  ->end()
+->get('/communityTopic/new/1')
+  ->info('4. Mr. OpenPNE can access communityTopic_new')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'new')
+  ->end()
+  ->info('4a. Mr. OpenPNE can create a new topic')
+  ->click('送信', array('community_topic' => array(
+    'name' => 'test',
+    'body' => 'test',
+  )))
+  ->isStatusCode(302)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'create')
+  ->end()
+->get('/communityTopic/edit/1')
+  ->info('5. Mr. OpenPNE can access communityTopic_edit')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'edit')
+  ->end()
+  ->info('5a. Mr. OpenPNE can edit the community topic')
+  ->click('送信')
+  ->isStatusCode(302)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'update')
+  ->end()
+->get('/communityTopic/comment/deleteConfirm/1')
+  ->info('6. Mr. OpenPNE can access communityTopicComment_deleteConfirm')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopicComment')
+    ->isParameter('action', 'deleteConfirm')
+  ->end()
+  ->info('6a. Mr. OpenPNE can delete the community topic comment')
+  ->click('削除')
+  ->isStatusCode(302)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopicComment')
+    ->isParameter('action', 'delete')
+  ->end()
+->get('/communityTopic/deleteConfirm/1')
+  ->info('7. Mr. OpenPNE can access communityTopic_deleteConfirm')
+  ->isStatusCode(200)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'deleteConfirm')
+  ->end()
+  ->info('7a. Mr. OpenPNE can delete the community topic')
+  ->click('削除')
+  ->isStatusCode(302)
+  ->with('request')->begin()
+    ->isParameter('module', 'communityTopic')
+    ->isParameter('action', 'delete')
+  ->end()
+;
