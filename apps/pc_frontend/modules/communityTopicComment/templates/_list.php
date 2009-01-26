@@ -13,7 +13,7 @@
 <td><?php echo $comment->getMember()->getName() ?><?php if ($comment->isDeletable($sf_user->getMemberId())): ?> <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?><?php endif; ?></td>
 </tr>
 <tr>
-<td class="border-left"><?php echo $comment->getBody() ?></td>
+<td class="border-left"><?php echo op_url_cmd(nl2br($comment->getBody())) ?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>

@@ -10,7 +10,7 @@
 <dd>
 <div class="title"><?php echo $communityTopic->getName() ?></div>
 <div class="name"><?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?></div>
-<div class="body"><?php echo nl2br($communityTopic->getBody()) ?></div>
+<div class="body"><?php echo op_url_cmd(nl2br($communityTopic->getBody())) ?></div>
 </dd>
 </dl>
 <?php if ($communityTopic->isEditable($sf_user->getMemberId())): ?>
