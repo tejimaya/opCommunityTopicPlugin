@@ -1,22 +1,34 @@
 <?php use_helper('Date'); ?>
 
-<div class="dparts topicTitle"><div class="parts">
+<div class="dparts topicDetailBox"><div class="parts">
 <div class="partsHeading">
 <h3><?php echo '['.$community->getName().'] '.'トピック' ?></h3>
 </div>
-
 <dl>
-<dt><?php echo format_datetime($communityTopic->getCreatedAt(), 'f') ?></dt>
+<dt><?php echo nl2br(op_format_date($communityTopic->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
-<div class="title"><?php echo $communityTopic->getName() ?></div>
-<div class="name"><?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?></div>
-<div class="body"><?php echo op_url_cmd(nl2br($communityTopic->getBody())) ?></div>
+<div class="title">
+<p><?php echo $communityTopic->getName() ?></p>
+</div>
+<div class="name">
+<p><?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?></p>
+</div>
+<div class="body">
+<p class="text">
+<?php echo op_url_cmd(nl2br($communityTopic->getBody())) ?>
+</p>
+</div>
 </dd>
 </dl>
 <?php if ($communityTopic->isEditable($sf_user->getMemberId())): ?>
-<div class="operation"><?php echo link_to('トピック編集', 'communityTopic/edit?id='.$communityTopic->getId()) ?></div>
+<div class="operation">
+<form action="<?php echo url_for('communityTopic_edit', $communityTopic) ?>" method="get">
+<ul class="moreInfo button">
+<li><input class="input_submit" type="submit" value="<?php echo __('Edit') ?>" /></li>
+</ul>
+</form>
+</div>
 <?php endif; ?>
-
 </div>
 </div>
 
@@ -25,12 +37,12 @@
 <?php if ($communityTopic->isCreatableCommunityTopicComment($sf_user->getMemberId())): ?>
 <?php
 $options = array();
-$options['title'] = 'コメント書き込み';
+$options['title'] = __('コメント書き込み');
 $options['url'] = '@communityTopic_comment_create?id='.$communityTopic->getId();
 op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>
 
 <ul>
-<li class="align-center"><?php echo link_to('['.$community->getName().']'.'コミュニティトップへ', 'community/home?id='.$community->getId());?></li>
+<li><?php echo link_to('['.$community->getName().']'.'コミュニティトップへ', 'community/home?id='.$community->getId());?></li>
 </ul>

@@ -1,21 +1,36 @@
-div.parts tr td.border-left {
-  border-left-width: 1px;
+.topicDetailBox dl {
+  border-top: 1px solid #CCCCCC;
 }
-
-div.parts .align-right {
-  text-align: right;
-}
-
-.align-center {
+.topicDetailBox dt {
+  float: left;
+  width: 100px;
+  padding: 5px;
   text-align: center;
 }
-
-div.parts th {
-  width: 160px;
+.topicDetailBox dd {
+  zoom: 1;
+  margin-left: 110px;
+  border-left: 1px solid #CCCCCC;
+}
+.topicDetailBox dd div {
+  border-top: 1px solid #CCCCCC;
+}
+.topicDetailBox dd div p {
   padding: 5px;
 }
-
-div.parts li,
-div.parts td {
+.topicDetailBox dd div.title {
+  border-top: none;
+}
+.topicDetailBox dd ul.photo {
   padding: 5px;
+}
+.topicDetailBox dd ul.photo li {
+  display: inline;
+  margin-left: 6px;
+}
+.topicDetailBox dd div.attachFile {
+  padding: 16px 5px;
+}
+.topicDetailBox div.operation {
+  padding: 10px 0;
 }

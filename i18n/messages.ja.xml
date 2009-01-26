@@ -6,6 +6,22 @@
         <source>The community topic was deleted successfully.</source>
         <target>トピックの削除が完了しました。</target>
       </trans-unit>
+      <trans-unit id="2">
+        <source>Create a new topic</source>
+        <target>トピックを作成する</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Create</source>
+        <target>新規作成</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>List of topics</source>
+        <target>トピック一覧</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Delete the topic and comments</source>
+        <target>トピックと書き込みを削除する</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
