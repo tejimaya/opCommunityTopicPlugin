@@ -1,4 +1,4 @@
-<?php if ($hasPermission): ?>
+<?php if ($community->isViewableCommunityTopic($sf_user->getMemberId())): ?>
 <?php use_helper('Date'); ?>
 <tr>
 <th>コミュニティ掲示板</th>
@@ -14,7 +14,9 @@
 <?php endforeach; ?>
 <li><?php echo link_to('もっと読む', 'communityTopic_list_community', $community); ?></li>
 <?php endif; ?>
+<?php if ($community->isCreatableCommunityTopic($sf_user->getMemberId())): ?>
 <li><?php echo link_to('トピック作成', 'communityTopic_new', $community); ?></li>
+<?php endif; ?>
 </ul>
 </td>
 </tr>

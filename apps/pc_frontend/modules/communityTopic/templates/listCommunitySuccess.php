@@ -1,10 +1,12 @@
 <?php use_helper('Date'); ?>
 
+<?php if ($community->isCreatableCommunityTopic($sf_user->getMemberId())): ?>
 <?php
 $title = 'トピックを作成する';
 $body = link_to('新規作成', 'communityTopic_new', $community);
 include_box('communityTopicList', $title, $body);
 ?>
+<?php endif; ?>
 
 <div class="dparts topicList"><div class="parts">
 <div class="partsHeading">
@@ -21,11 +23,11 @@ include_box('communityTopicList', $title, $body);
 </tr>
 <tr>
 <td class="border-left align-right">
-<?php
-echo link_to('編集', 'communityTopic/edit?id='.$topic->getId());
-echo ' | ';
-echo link_to('もっと見る'.'('.$topic->countCommunityTopicComments().')', 'communityTopic_show', $topic);
-?></td>
+<?php if ($topic->isEditable($sf_user->getMemberId())): ?>
+<?php echo link_to('編集', 'communityTopic/edit?id='.$topic->getId()); ?>
+<?php endif; ?>
+ <?php echo link_to('もっと見る'.'('.$topic->countCommunityTopicComments().')', 'communityTopic_show', $topic); ?>
+</td>
 </tr>
 <?php endforeach; ?>
 </tbody>
