@@ -11,7 +11,7 @@
 <dt><?php echo nl2br(op_format_date($comment->getUpdatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
-<?php echo $comment->getMember()->getName() ?><?php if ($comment->isDeletable($sf_user->getMemberId())): ?> <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?><?php endif; ?>
+<?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMember()->getId()) ?><?php if ($comment->isDeletable($sf_user->getMemberId())): ?> <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?><?php endif; ?>
 </div>
 <div class="body"><?php echo op_url_cmd(nl2br($comment->getBody())) ?></div>
 </dl>
