@@ -1,17 +1,14 @@
-<?php
-$option = array(
-  'title' => 'コミュニティ最新書き込み',
-);
-$list = array();
-foreach ($communityTopic as $key => $value)
-{
-  $topicId = $value->getId();
-  $topicName = $value->getName();
-  $communityName = $value->getCommunity()->getName();
-  $countComment = $value->countCommunityTopicComments();
-  $updateTopic = $value->getUpdatedAt();
+<div class="dparts homeRecentList"><div class="parts">
+<div class="partsHeading"><h3><?php echo __('コミュニティ最新書き込み') ?></h3></div>
+<div class="block">
 
-  $list[$updateTopic] = link_to($topicName.' ('.$countComment.')', 'communityTopic_show', $value).' ('.$communityName.')';
-}
+<?php if (count($communityTopic)): ?>
+<ul class="articleList">
+<?php foreach ($communityTopic as $topic): ?>
+<li><span class="date"><?php echo op_format_date($topic->getCreatedAt(), 'XShortDateJa') ?></span><?php echo link_to($topic->getName().' ('.$topic->countCommunityTopicComments().')', 'communityTopic_show', $topic).' ('.$topic->getCommunity()->getName().')' ?></li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
 
-include_list_box('recentCommunityTopicComment', $list, $option);
+</div>
+</div></div>

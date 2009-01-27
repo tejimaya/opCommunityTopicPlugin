@@ -1,0 +1,5 @@
+Gadget:
+  community_comment_list:
+    type: "contents"
+    name: "recentCommunityTopicComment"
+    sort_order: 131
