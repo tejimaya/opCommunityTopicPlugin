@@ -11,6 +11,7 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 ?>
 <?php endif; ?>
 
+<?php if ($pager->getNbResults()): ?>
 <div class="dparts recentList"><div class="parts">
 <div class="partsHeading">
 <h3><?php echo __('List of topics') ?></h3>
@@ -29,3 +30,4 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 
 </div>
 </div>
+<?php endif; ?>

@@ -43,6 +43,4 @@ op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>
 
-<ul>
-<li><?php echo link_to('['.$community->getName().']'.'コミュニティトップへ', 'community/home?id='.$community->getId());?></li>
-</ul>
+<?php op_include_line('linkLine', link_to('['.$community->getName().']'.__('コミュニティトップへ'), 'community/home?id='.$community->getId())) ?>

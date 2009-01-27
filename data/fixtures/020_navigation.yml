@@ -1,0 +1,15 @@
+Navigation:
+  community_navigation_topic:
+    type: "community"
+    uri: "communityTopic/listCommunity"
+    sort_order: 5
+
+NavigationI18n:
+  community_navigation_topic_i18n_en:
+    id: community_navigation_topic
+    caption: "Topics"
+    culture: "en"
+  community_navigation_topic_i18n_ja:
+    id: community_navigation_topic
+    caption: "トピックリスト"
+    culture: "ja_JP"
