@@ -2,7 +2,7 @@
 
 <div class="dparts topicDetailBox"><div class="parts">
 <div class="partsHeading">
-<h3><?php echo '['.$community->getName().'] '.'トピック' ?></h3>
+<h3><?php echo '['.$community->getName().'] '.__('Topic') ?></h3>
 </div>
 <dl>
 <dt><?php echo nl2br(op_format_date($communityTopic->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
@@ -37,10 +37,10 @@
 <?php if ($communityTopic->isCreatableCommunityTopicComment($sf_user->getMemberId())): ?>
 <?php
 $options = array();
-$options['title'] = __('コメント書き込み');
+$options['title'] = __('Post a new topic comment');
 $options['url'] = '@communityTopic_comment_create?id='.$communityTopic->getId();
 op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>
 
-<?php op_include_line('linkLine', link_to('['.$community->getName().']'.__('コミュニティトップへ'), 'community/home?id='.$community->getId())) ?>
+<?php op_include_line('linkLine', link_to('['.$community->getName().'] '.__('Community Top Page'), 'community/home?id='.$community->getId())) ?>

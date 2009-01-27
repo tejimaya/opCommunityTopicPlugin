@@ -1,6 +1,6 @@
 <?php op_include_form('deleteConfirmForm', $form, array(
   'button' => __('Delete'),
-  'title'  => '本当に削除しますか？',
+  'title'  => __('Do you really delete this comment?'),
   'url'    => '@communityTopic_comment_delete?id='.$communityTopicComment->getId(),
 )) ?>
 

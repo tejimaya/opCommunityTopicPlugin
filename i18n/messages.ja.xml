@@ -22,6 +22,34 @@
         <source>Delete the topic and comments</source>
         <target>トピックと書き込みを削除する</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Post a new topic comment</source>
+        <target>コメントを書く</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic</source>
+        <target>トピック</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Community Topics</source>
+        <target>コミュニティ掲示板</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Community Top Page</source>
+        <target>コミュニティトップページ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Edit the topic</source>
+        <target>トピックを編集する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really delete this topic?</source>
+        <target>本当にこのトピックを削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted Community Topics</source>
+        <target>コミュニティ最新書き込み</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

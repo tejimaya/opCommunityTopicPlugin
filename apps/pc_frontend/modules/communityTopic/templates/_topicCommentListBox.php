@@ -1,5 +1,5 @@
 <div class="dparts homeRecentList"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('コミュニティ最新書き込み') ?></h3></div>
+<div class="partsHeading"><h3><?php echo __('Recently Posted Community Topics') ?></h3></div>
 <div class="block">
 
 <?php if (count($communityTopic)): ?>
