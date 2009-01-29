@@ -5,7 +5,7 @@
 op_include_parts('buttonBox', 'communityTopicList', array(
   'title'  => __('Create a new topic'),
   'button' => __('Create'),
-  'url' => '@communityTopic_new?id='.$community->getId(),
+  'url' => url_for('communityTopic_new', $community),
   'method' => 'get',
 ));
 ?>
