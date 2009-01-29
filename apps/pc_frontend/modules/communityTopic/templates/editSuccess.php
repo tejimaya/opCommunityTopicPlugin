@@ -1,7 +1,7 @@
 <?php
 $options = array();
 $options['title'] = __('Edit the topic');
-$options['url'] = '@communityTopic_update?id='.$communityTopic->getId();
+$options['url'] = url_for('communityTopic_update', $communityTopic);
 op_include_form('formCommunityTopic', $form, $options);
 ?>
 
@@ -9,7 +9,7 @@ op_include_form('formCommunityTopic', $form, $options);
 op_include_parts('buttonBox', 'toDelete', array(
   'title'  => __('Delete the topic and comments'),
   'button' => __('Delete'),
-  'url' => '@communityTopic_delete_confirm?id='.$communityTopic->getId(),
+  'url' => url_for('communityTopic_delete_confirm', $communityTopic),
   'method' => 'get',
 ));
 ?>

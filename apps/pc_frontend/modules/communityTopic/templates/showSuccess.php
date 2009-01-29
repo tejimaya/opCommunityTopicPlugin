@@ -38,7 +38,7 @@
 <?php
 $options = array();
 $options['title'] = __('Post a new topic comment');
-$options['url'] = '@communityTopic_comment_create?id='.$communityTopic->getId();
+$options['url'] = url_for('communityTopic_comment_create', $communityTopic);
 op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>
