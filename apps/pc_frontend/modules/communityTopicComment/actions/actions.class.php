@@ -80,6 +80,6 @@ class communityTopicCommentActions extends sfActions
 
     $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
 
-    $this->redirect('communityTopic_show?id='.$this->communityTopic->getId());
+    $this->redirect('@communityTopic_show?id='.$this->communityTopic->getId());
   }
 }
