@@ -57,7 +57,7 @@ class communityTopicCommentActions extends sfActions
     if ($this->form->isValid())
     {
       $this->form->save();
-      $this->redirect($this->generateUrl('communityTopic_show', $this->communityTopic));
+      $this->redirect('@communityTopic_show?id='.$this->communityTopic->getId());
     }
 
     $this->setTemplate('../../communityTopic/templates/show');
@@ -80,6 +80,6 @@ class communityTopicCommentActions extends sfActions
 
     $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
 
-    $this->redirect($this->generateUrl('communityTopic_show', $this->communityTopic));
+    $this->redirect('communityTopic_show?id='.$this->communityTopic->getId());
   }
 }

@@ -160,7 +160,7 @@ class communityTopicActions extends sfActions
     {
       $communityTopic = $form->save();
 
-      $this->redirect($this->generateUrl('communityTopic_show', $communityTopic));
+      $this->redirect('@communityTopic_show?id='.$communityTopic->getId());
     }
   }
 }
