@@ -5,16 +5,16 @@
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>opCommunityTopicPlugin</name>
  <channel>plugins.openpne.jp</channel>
- <summary> </summary>
- <description> </description>
+ <summary>opCommunityTopicPlugin</summary>
+ <description>opCommunityTopicPlugin</description>
  <lead>
-  <name />
-  <user />
-  <email>maintainer@example.com</email>
+  <name>masabon</name>
+  <user>masabon</user>
+  <email />
   <active>yes</active>
  </lead>
- <date>2009-01-27</date>
- <time>08:18:26</time>
+ <date>2009-02-05</date>
+ <time>08:17:48</time>
  <version>
   <release>0.8.0</release>
   <api>0.8.0</api>
@@ -23,63 +23,53 @@
   <release>beta</release>
   <api>beta</api>
  </stability>
- <license>Apache 2.0</license>
+ <license>Apache</license>
  <notes>First release</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="66546810e83edc75cc1956925da22c2d" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
-   <file baseinstalldir="/" md5sum="642babb20217cb012b4c0a3a812abddb" name="apps/pc_frontend/modules/communityTopic/actions/actions.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="5128d25f46265ca011771accf899d6a5" name="apps/pc_frontend/modules/communityTopic/actions/components.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="642babb20217cb012b4c0a3a812abddb" name="apps/pc_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5128d25f46265ca011771accf899d6a5" name="apps/pc_frontend/modules/communityTopic/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopic/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopic/config/view.yml" role="data" />
-   <file baseinstalldir="/" md5sum="e03621d8fd4d2cb7f0c87aef0d6e3d51" name="apps/pc_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="9345571d5efa2293b6682cf4f3a3b301" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_frontend/modules/communityTopic/templates/indexSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="f6da51cac915d6edddabf025025494eb" name="apps/pc_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="694149216f84598cbda0fb14284de1c7" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="58235e7fac9e031e30efaf200f7ba762" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="e9201891b83a675eb13d21768736e827" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="php" />
-   <file baseinstalldir="/" md5sum="75cd3aa426e90d6c71dcac323b67c5c0" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="php" />
-   <file baseinstalldir="/" md5sum="9c622e0e1e26871eeaaeebeca15045ff" name="apps/pc_frontend/modules/communityTopicComment/actions/actions.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="3918605c020399b91edffb8e39680d8c" name="apps/pc_frontend/modules/communityTopicComment/actions/components.class.php" role="php" />
+   <file baseinstalldir="/" md5sum="e03621d8fd4d2cb7f0c87aef0d6e3d51" name="apps/pc_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="9345571d5efa2293b6682cf4f3a3b301" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_frontend/modules/communityTopic/templates/indexSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="f6da51cac915d6edddabf025025494eb" name="apps/pc_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="694149216f84598cbda0fb14284de1c7" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="58235e7fac9e031e30efaf200f7ba762" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="e9201891b83a675eb13d21768736e827" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="75cd3aa426e90d6c71dcac323b67c5c0" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="9c622e0e1e26871eeaaeebeca15045ff" name="apps/pc_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="3918605c020399b91edffb8e39680d8c" name="apps/pc_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopicComment/config/security.yml" role="data" />
-   <file baseinstalldir="/" md5sum="4b6b7eeae91e9835592ed7cef7acd815" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="php" />
-   <file baseinstalldir="/" md5sum="17ef00f003692b5365295bba6016b8d1" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="php" />
+   <file baseinstalldir="/" md5sum="4b6b7eeae91e9835592ed7cef7acd815" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="17ef00f003692b5365295bba6016b8d1" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="ea92a297574861aa770fdb0d95bffc22" name="config/community_config.yml" role="data" />
-   <file baseinstalldir="/" md5sum="23899a90ab6ed279d6fb8c802a8c175e" name="config/config.php" role="php" />
+   <file baseinstalldir="/" md5sum="23899a90ab6ed279d6fb8c802a8c175e" name="config/config.php" role="data" />
    <file baseinstalldir="/" md5sum="f38a6a50797f45ab5beb67e90805a97d" name="config/gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="45517b5506df9394488da3f117cda40f" name="config/schema.yml" role="data" />
    <file baseinstalldir="/" md5sum="24525e028df818333e575d4d6f7fe802" name="data/fixtures/010_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="0efcef60a0db17a40c0c09d28be4f3e5" name="data/fixtures/020_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="9ac8d7060aca541e21da80c2d5a7981a" name="i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="d1bc398c23201a27bb61f5270e8e17e8" name="i18n/messages.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="87e0fb951acaed741d13cbac4be51e6d" name="lib/opCommunityTopicPluginRouting.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="111bdd47b3c1ac2d380e6fd4f79fea00" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="f6ba1d25037e484e0596e48693f2f545" name="lib/filter/CommunityTopicCommentFormFilter.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="e2d55a0cc093934163c3c4f2a3b419a0" name="lib/filter/CommunityTopicFormFilter.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="8f9d207b51b886eb4559359fbcf98b75" name="lib/filter/base/BaseCommunityTopicCommentFormFilter.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="fde832c12856e0f2e4cbecdcb1e8e586" name="lib/filter/base/BaseCommunityTopicFormFilter.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="1dad0e6c611b547568ff05bcd16976c4" name="lib/form/CommunityTopicCommentForm.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="0e8d4ed7c8492291ba0e36ec83290f08" name="lib/form/CommunityTopicForm.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="edb5b0ec480275871bd8b29aa6323c8a" name="lib/form/base/BaseCommunityTopicCommentForm.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="e608cffdf062dca6c65032ddea31505f" name="lib/form/base/BaseCommunityTopicForm.class.php" role="php" />
-   <file baseinstalldir="/" md5sum="8c1a859d5f4a3c0da566008714c76dc2" name="lib/helper/opCommunityTopicHelper.php" role="php" />
-   <file baseinstalldir="/" md5sum="f6027a8884bcf704009247af26ff6939" name="lib/model/CommunityTopic.php" role="php" />
-   <file baseinstalldir="/" md5sum="c2edd9032d559cdbf80cde903e74ad40" name="lib/model/CommunityTopicComment.php" role="php" />
-   <file baseinstalldir="/" md5sum="1d18e12f1f6fb280c9a25b223130a0df" name="lib/model/CommunityTopicCommentPeer.php" role="php" />
-   <file baseinstalldir="/" md5sum="966dab13fd0fd433be8c731d6501b90f" name="lib/model/CommunityTopicPeer.php" role="php" />
-   <file baseinstalldir="/" md5sum="66d1712baa399f75d4d7b89313899b4f" name="lib/model/map/CommunityTopicCommentMapBuilder.php" role="php" />
-   <file baseinstalldir="/" md5sum="1f0151dd1b09eb48a4ec5f23b7a363cb" name="lib/model/map/CommunityTopicMapBuilder.php" role="php" />
-   <file baseinstalldir="/" md5sum="1c4789f56a2d30e8c2e5f23e9fcd6606" name="lib/model/om/BaseCommunityTopic.php" role="php" />
-   <file baseinstalldir="/" md5sum="7bb0270e96971376c2d05beacd8156bd" name="lib/model/om/BaseCommunityTopicComment.php" role="php" />
-   <file baseinstalldir="/" md5sum="774ea716ecb0b6c2281615dfeeb27c88" name="lib/model/om/BaseCommunityTopicCommentPeer.php" role="php" />
-   <file baseinstalldir="/" md5sum="4f87b520d930e97c6c2e9ab5892dfac5" name="lib/model/om/BaseCommunityTopicPeer.php" role="php" />
-   <file baseinstalldir="/" md5sum="44cd0ec73812e8ca54cef675b39de867" name="test/bootstrap/database.php" role="php" />
-   <file baseinstalldir="/" md5sum="7b67aeba96120dbf406886b9d3ac3b2c" name="test/bootstrap/functional.php" role="php" />
-   <file baseinstalldir="/" md5sum="b54ed1b5a0d2266646de8a8f4dbe9933" name="test/bootstrap/unit.php" role="php" />
+   <file baseinstalldir="/" md5sum="87e0fb951acaed741d13cbac4be51e6d" name="lib/opCommunityTopicPluginRouting.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="111bdd47b3c1ac2d380e6fd4f79fea00" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f6ba1d25037e484e0596e48693f2f545" name="lib/filter/CommunityTopicCommentFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="e2d55a0cc093934163c3c4f2a3b419a0" name="lib/filter/CommunityTopicFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="1dad0e6c611b547568ff05bcd16976c4" name="lib/form/CommunityTopicCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="0e8d4ed7c8492291ba0e36ec83290f08" name="lib/form/CommunityTopicForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="8c1a859d5f4a3c0da566008714c76dc2" name="lib/helper/opCommunityTopicHelper.php" role="data" />
+   <file baseinstalldir="/" md5sum="f6027a8884bcf704009247af26ff6939" name="lib/model/CommunityTopic.php" role="data" />
+   <file baseinstalldir="/" md5sum="c2edd9032d559cdbf80cde903e74ad40" name="lib/model/CommunityTopicComment.php" role="data" />
+   <file baseinstalldir="/" md5sum="1d18e12f1f6fb280c9a25b223130a0df" name="lib/model/CommunityTopicCommentPeer.php" role="data" />
+   <file baseinstalldir="/" md5sum="966dab13fd0fd433be8c731d6501b90f" name="lib/model/CommunityTopicPeer.php" role="data" />
+   <file baseinstalldir="/" md5sum="44cd0ec73812e8ca54cef675b39de867" name="test/bootstrap/database.php" role="data" />
+   <file baseinstalldir="/" md5sum="7b67aeba96120dbf406886b9d3ac3b2c" name="test/bootstrap/functional.php" role="data" />
+   <file baseinstalldir="/" md5sum="b54ed1b5a0d2266646de8a8f4dbe9933" name="test/bootstrap/unit.php" role="data" />
    <file baseinstalldir="/" md5sum="6d4ca494269a43838562df6585ba19a8" name="test/fixtures/test_data.yml" role="data" />
-   <file baseinstalldir="/" md5sum="a24e21eafb4114286bd0824fd46dd02f" name="test/functional/pc_frontend/communityTopicActionsTest.php" role="php" />
-   <file baseinstalldir="/" md5sum="d7fc17c16ecab29738695f0148720012" name="test/unit/model/CommunityTopicTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="a24e21eafb4114286bd0824fd46dd02f" name="test/functional/pc_frontend/communityTopicActionsTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="d7fc17c16ecab29738695f0148720012" name="test/unit/model/CommunityTopicTest.php" role="data" />
    <file baseinstalldir="/" md5sum="a72b87ebfc1b9a5c77dc09a3cdeb3389" name="web/css/communityTopic.css" role="data" />
    <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
   </dir>
@@ -87,7 +77,7 @@
  <dependencies>
   <required>
    <php>
-    <min>5.2.0</min>
+    <min>5.2.3</min>
    </php>
    <pearinstaller>
     <min>1.4.0</min>
@@ -110,8 +100,8 @@
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2009-01-27</date>
-   <license>Apache 2.0</license>
+   <date>2009-02-05</date>
+   <license>Apache</license>
    <notes>First release</notes>
   </release>
  </changelog>
