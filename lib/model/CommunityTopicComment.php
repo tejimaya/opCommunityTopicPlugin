@@ -14,4 +14,14 @@ class CommunityTopicComment extends BaseCommunityTopicComment
   {
     return ($this->getMemberId() === $memberId || $this->getCommunityTopic()->isEditable($memberId));
   }
+
+  public function save(PropelPDO $con = null)
+  {
+    if ($this->isNew() && !$this->isColumnModified(CommunityTopicCommentPeer::NUMBER))
+    {
+      $this->setNumber(CommunityTopicCommentPeer::getMaxNumber($this->getCommunityTopicId()) + 1);
+    }
+
+    parent::save($con);
+  }
 }

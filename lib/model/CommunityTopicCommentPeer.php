@@ -28,4 +28,19 @@ class CommunityTopicCommentPeer extends BaseCommunityTopicCommentPeer
 
     return $pager;
   }
+
+  public static function getMaxNumber($communityTopicId)
+  {
+    $criteria = new Criteria();
+    $criteria->clearSelectColumns()->addSelectColumn(self::NUMBER);
+    $criteria->add(self::COMMUNITY_TOPIC_ID, $communityTopicId);
+    $criteria->addDescendingOrderByColumn(self::NUMBER);
+    $criteria->setLimit(1);
+
+    $stmt = self::doSelectStmt($criteria);
+    $row = $stmt->fetch(PDO::FETCH_NUM);
+
+
+    return (int)$row[0];
+  }
 }

@@ -23,15 +23,15 @@ class CommunityTopicCommentForm extends BaseCommunityTopicCommentForm
     unset($this['id']);
     unset($this['community_topic_id']);
     unset($this['member_id']);
+    unset($this['number']);
     unset($this['created_at']);
-    unset($this['updated_at']);
   }
 
   public function save($con = null)
   {
     $communityTopicComment = parent::save($con);
     $communityTopic = $communityTopicComment->getCommunityTopic();
-    $communityTopic->setUpdatedAt($communityTopicComment->getUpdatedAt());
+    $communityTopic->setUpdatedAt($communityTopicComment->getCreatedAt());
     $communityTopic->save();
   }
 }

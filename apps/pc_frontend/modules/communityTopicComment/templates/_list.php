@@ -8,12 +8,22 @@
 
 <?php foreach ($commentPager->getResults() as $comment): ?>
 <dl>
-<dt><?php echo nl2br(op_format_date($comment->getUpdatedAt(), 'XDateTimeJaBr')) ?></dt>
+<dt><?php echo nl2br(op_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
-<?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMember()->getId()) ?><?php if ($comment->isDeletable($sf_user->getMemberId())): ?> <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?><?php endif; ?>
+<p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:
+<?php if ($_member = $comment->getMember()) : ?> <?php echo link_to($_member->getName(), 'member/profile?id='.$_member->getId()) ?><?php endif; ?>
+<?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
+ <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>
+<?php endif; ?>
+</p>
 </div>
-<div class="body"><?php echo op_url_cmd(nl2br($comment->getBody())) ?></div>
+<div class="body">
+<p class="text">
+<?php echo op_url_cmd(nl2br($comment->getBody())) ?>
+</p>
+</div>
+</dd>
 </dl>
 <?php endforeach; ?>
 

@@ -4,16 +4,17 @@ propel:
   community_topic:
     id: ~
     community_id: { type: integer, required: true, foreignTable: community, foreignReference: id, onDelete: cascade }
-    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id }
+    member_id: { type: integer, foreignTable: member, foreignReference: id, onDelete: setnull }
     name: { type: longvarchar, required: true }
     body: { type: longvarchar, required: true }
     created_at: ~
     updated_at: ~
+    topic_updated_at: { type: timestamp }
 
   community_topic_comment:
     id: ~
     community_topic_id: { type: integer, required: true, foreignTable: community_topic, foreignReference: id, onDelete: cascade }
-    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id }
+    member_id: { type: integer, foreignTable: member, foreignReference: id, onDelete: setnull }
+    number: { type: integer, required: true, default: 0 }
     body: { type: longvarchar, required: true }
     created_at: ~
-    updated_at: ~

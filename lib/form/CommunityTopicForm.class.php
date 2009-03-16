@@ -26,6 +26,7 @@ class CommunityTopicForm extends BaseCommunityTopicForm
     unset($this['member_id']);
     unset($this['created_at']);
     unset($this['updated_at']);
+    unset($this['topic_updated_at']);
 
     $this->setWidget('name', new sfWidgetFormInput());
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_topic_form');

@@ -24,4 +24,22 @@ class CommunityTopic extends BaseCommunityTopic
   {
     return $this->getCommunity()->isPrivilegeBelong($memberId);
   }
+
+  public function isTopicModified()
+  {
+    return (
+      $this->isColumnModified(CommunityTopicPeer::NAME) ||
+      $this->isColumnModified(CommunityTopicPeer::BODY)
+    );
+  }
+
+  public function save(PropelPDO $con = null)
+  {
+    if ($this->isTopicModified() && !$this->isColumnModified(CommunityTopicPeer::TOPIC_UPDATED_AT))
+    {
+      $this->setTopicUpdatedAt(time());
+    }
+    
+    parent::save($con);
+  }
 }
