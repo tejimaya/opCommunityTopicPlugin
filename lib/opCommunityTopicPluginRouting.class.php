@@ -71,6 +71,10 @@ class opCommunityTopicPluginRouting
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'CommunityTopic', 'type' => 'object')
       ),
+      'communityTopic_recently_topic_list' => new sfRoute(
+        '/communityTopic/recentlyTopicList',
+        array('module' => 'communityTopic', 'action' => 'recentlyTopicList')
+      ),
 
       'communityTopic_comment_create' => new sfPropelRoute(
         '/communityTopic/:id/comment/create',

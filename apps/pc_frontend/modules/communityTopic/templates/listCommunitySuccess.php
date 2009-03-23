@@ -17,7 +17,10 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 <h3><?php echo __('List of topics') ?></h3>
 </div>
 
-<div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, '@communityTopic_list_community?page=%d&id='.$community->getId()) ?></p></div>
+<?php ob_start() ?>
+<?php op_include_pager_navigation($pager, '@communityTopic_list_community?page=%d&id='.$community->getId()) ?>
+<?php $pager_navi = ob_get_contents() ?>
+<?php ob_end_flush() ?>
 
 <?php foreach ($pager->getResults() as $topic): ?>
 <dl>
@@ -26,7 +29,7 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 </dl>
 <?php endforeach; ?>
 
-<div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, '@communityTopic_list_community?page=%d&id='.$community->getId()) ?></p></div>
+<?php echo $pager_navi ?>
 
 </div>
 </div>

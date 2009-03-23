@@ -48,4 +48,19 @@ class CommunityTopicPeer extends BaseCommunityTopicPeer
     $c->addDescendingOrderByColumn(CommunityTopicPeer::UPDATED_AT);
     return CommunityTopicPeer::doSelect($c);
   }
+
+  public static function getRecentlyTopicListPager($memberId, $page = 1, $size = 50)
+  {
+    $c = new Criteria();
+    $communityIds = CommunityPeer::getIdsByMemberId($memberId);
+    $c->add(CommunityTopicPeer::COMMUNITY_ID, $communityIds, Criteria::IN);
+    $c->addDescendingOrderByColumn(CommunityTopicPeer::UPDATED_AT);
+    
+    $pager = new sfPropelPager('CommunityTopic', $size);
+    $pager->setCriteria($c);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
 }

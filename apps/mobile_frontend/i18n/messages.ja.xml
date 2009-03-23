@@ -2,53 +2,53 @@
 <xliff version="1.0">
   <file original="global" source-language="en" datatype="plaintext">
     <body>
-      <trans-unit id="1">
+      <trans-unit id="">
         <source>The community topic was deleted successfully.</source>
-        <target>トピックの削除が完了しました。</target>
+        <target>ﾄﾋﾟｯｸの削除が完了しました。</target>
       </trans-unit>
-      <trans-unit id="2">
+      <trans-unit id="">
         <source>Create a new topic</source>
-        <target>トピックを作成する</target>
+        <target>ﾄﾋﾟｯｸを作成する</target>
       </trans-unit>
-      <trans-unit id="3">
+      <trans-unit id="">
         <source>Create</source>
         <target>新規作成</target>
       </trans-unit>
-      <trans-unit id="4">
-        <source>List of topics</source>
-        <target>トピック一覧</target>
+      <trans-unit id="">
+        <source>Topic List</source>
+        <target>ﾄﾋﾟｯｸﾘｽﾄ</target>
       </trans-unit>
-      <trans-unit id="5">
+      <trans-unit id="">
         <source>Delete the topic and comments</source>
-        <target>トピックと書き込みを削除する</target>
+        <target>ﾄﾋﾟｯｸと書き込みを削除する</target>
       </trans-unit>
       <trans-unit id="">
         <source>Post a new topic comment</source>
-        <target>コメントを書く</target>
+        <target>ｺﾒﾝﾄを書く</target>
       </trans-unit>
       <trans-unit id="">
         <source>Topic</source>
-        <target>トピック</target>
+        <target>ﾄﾋﾟｯｸ</target>
       </trans-unit>
       <trans-unit id="">
         <source>Community Topics</source>
-        <target>コミュニティ掲示板</target>
+        <target>ｺﾐｭﾆﾃｨﾄﾋﾟｯｸ</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Community Top Page</source>
-        <target>コミュニティトップページ</target>
+        <source>Community Top</source>
+        <target>ｺﾐｭﾆﾃｨﾄｯﾌﾟ</target>
       </trans-unit>
       <trans-unit id="">
         <source>Edit the topic</source>
-        <target>トピックを編集する</target>
+        <target>ﾄﾋﾟｯｸを編集する</target>
       </trans-unit>
       <trans-unit id="">
         <source>Do you really delete this topic?</source>
-        <target>本当にこのトピックを削除しますか？</target>
+        <target>本当にこのﾄﾋﾟｯｸを削除しますか？</target>
       </trans-unit>
       <trans-unit id="">
         <source>Recently Posted Community Topics</source>
-        <target>コミュニティ最新書き込み</target>
+        <target>ｺﾐｭﾆﾃｨ最新書き込み</target>
       </trans-unit>
     </body>
   </file>

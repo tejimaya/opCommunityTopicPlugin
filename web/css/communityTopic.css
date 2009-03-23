@@ -43,3 +43,18 @@
 .topicDetailBox div.operation {
   padding: 10px 0;
 }
+
+.communityTopic ul.articleList {
+  background:transparent url(../../images/icon_2.gif) no-repeat scroll 3px 0.4em;
+  padding-bottom:5px;
+  padding-left:85px;
+  text-indent:-72px;
+}
+
+.communityTopic div.moreInfo ul.moreInfo {
+  margin: 0 2px 0 auto;
+  width: 10em;
+}
+
+
+

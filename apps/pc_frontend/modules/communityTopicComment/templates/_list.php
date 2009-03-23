@@ -4,7 +4,10 @@
 <h3><?php echo __('Comments') ?></h3>
 </div>
 
-<div class="pagerRelative"><p class="number"><?php echo pager_navigation($commentPager, '@communityTopic_show?page=%d&id='.$communityTopic->getId()); ?></p></div>
+<?php ob_start() ?>
+<?php op_include_pager_navigation($commentPager, '@communityTopic_show?page=%d&id='.$communityTopic->getId()); ?>
+<?php $pagerNavi = ob_get_contents() ?>
+<?php ob_end_flush() ?>
 
 <?php foreach ($commentPager->getResults() as $comment): ?>
 <dl>
@@ -27,7 +30,7 @@
 </dl>
 <?php endforeach; ?>
 
-<div class="pagerRelative"><p class="number"><?php echo pager_navigation($commentPager, '@communityTopic_show?page=%d&id='.$communityTopic->getId()); ?></p></div>
+<?php echo $pagerNavi ?>
 
 </div>
 </div>

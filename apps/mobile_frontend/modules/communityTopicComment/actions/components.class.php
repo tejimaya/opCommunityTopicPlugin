@@ -13,9 +13,13 @@
  *
  * @package    OpenPNE
  * @subpackage action
- * @author     Kousuke Ebihara <ebihara@tejimaya.com>
- * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ * @author     Shogo Kawahara <kawahara@tejimaya.net>
  */
 class communityTopicCommentComponents extends opCommunityTopicCommentComponents
 {
+  public function executeList($request)
+  {
+    $this->size = 5;
+    parent::executeList($request);
+  }
 }

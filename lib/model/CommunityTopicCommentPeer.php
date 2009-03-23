@@ -17,13 +17,18 @@ class CommunityTopicCommentPeer extends BaseCommunityTopicCommentPeer
     return $list;
   }
 
-  public static function getCommunityTopicCommentListPager($communityTopicId, $page = 1, $size = 20) {
+  public static function getCommunityTopicCommentListPager($communityTopicId, $page = 1, $size = 20, $order = 'DESC')
+  {
     $c = new Criteria();
     $c->add(self::COMMUNITY_TOPIC_ID, $communityTopicId);
-
-    $pager = new sfPropelPager('CommunityTopicComment', $size);
+    
+    $pager = new sfReversiblePropelPager('CommunityTopicComment', $size);
     $pager->setCriteria($c);
     $pager->setPage($page);
+    $pager->setSqlOrderColumn(CommunityTopicCommentPeer::ID);
+    $pager->setSqlOrder($order);
+    $pager->setListOrder(Criteria::ASC);
+    $pager->setMaxPerPage($size);
     $pager->init();
 
     return $pager;

@@ -3,3 +3,8 @@ Gadget:
     type: "contents"
     name: "recentCommunityTopicComment"
     sort_order: 131
+
+  mobile_community_comment_list:
+    type: "mobileContents"
+    name: "recentCommunityTopicComment"
+    sort_order: 110

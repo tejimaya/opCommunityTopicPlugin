@@ -1,0 +1,7 @@
+homeSuccess:
+  customize:
+    communityTopicList:
+      template: [communityTopic, communityTopicList]
+      parts:    [communityMember]
+      target:   [after]
+      is_component: true
