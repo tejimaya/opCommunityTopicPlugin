@@ -25,6 +25,11 @@ class CommunityEvent extends BaseCommunityEvent
     return $this->getCommunity()->isPrivilegeBelong($memberId);
   }
 
+  public function isEventMember($memberId)
+  {
+    return (bool)CommunityEventMemberPeer::retrieveByEventIdAndMemberId($this->getId(), $memberId);
+  }
+
   public function isEventModified()
   {
     return (
@@ -41,5 +46,22 @@ class CommunityEvent extends BaseCommunityEvent
     }
     
     parent::save($con);
+  }
+
+  public function toggleEventMember($memberId)
+  {
+    if ($this->isEventMember($memberId))
+    {
+      $eventMember = CommunityEventMemberPeer::retrieveByEventIdAndMemberId($this->getId(), $memberId);
+      $eventMember->delete();
+    }
+    else
+    {
+      $eventMember = new CommunityEventMember();
+      $eventMember->setCommunityEventId($this->getId());
+      $eventMember->setMemberId($memberId);
+
+      $this->addCommunityEventMember($eventMember);
+    }
   }
 }

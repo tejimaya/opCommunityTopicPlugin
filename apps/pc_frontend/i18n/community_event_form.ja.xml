@@ -28,7 +28,11 @@
       </trans-unit>
       <trans-unit id="7">
         <source>Capacity</source>
-        <target>定員</target>
+        <target>募集人数</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Count of Member</source>
+        <target>参加人数</target>
       </trans-unit>
     </body>
   </file>

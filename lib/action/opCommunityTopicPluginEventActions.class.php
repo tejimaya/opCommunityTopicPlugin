@@ -76,6 +76,26 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   }
 
   /**
+   * Executes memberList action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeMemberList($request)
+  {
+    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
+
+    if (!$this->size)
+    {
+      $this->size = 20;
+    }
+    $this->pager = CommunityEventPeer::getEventMemberListPager($this->communityEvent->getId(), $request->getParameter('page', 1), $this->size);
+
+    if (!$this->pager->getNbResults()) {
+      return sfView::ERROR;
+    }
+  }
+
+  /**
    * Executes new action
    *
    * @param sfRequest $request A request object

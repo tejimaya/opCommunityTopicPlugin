@@ -65,4 +65,18 @@ class CommunityEventPeer extends BaseCommunityEventPeer
 
     return $pager;
   }
+
+  public static function getEventMemberListPager($eventId, $page = 1, $size = 20)
+  {
+    $c = new Criteria();
+    $c->add(CommunityEventMemberPeer::COMMUNITY_EVENT_ID, $eventId);
+    $c->addJoin(MemberPeer::ID, CommunityEventMemberPeer::MEMBER_ID);
+
+    $pager = new sfPropelPager('Member', $size);
+    $pager->setCriteria($c);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
 }

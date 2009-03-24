@@ -16,4 +16,9 @@ class CommunityEventComment extends BaseCommunityEventComment
 
     parent::save($con);
   }
+
+  public function toggleEventMember($memberId)
+  {
+    $this->getCommunityEvent()->toggleEventMember($memberId);
+  }
 }

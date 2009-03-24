@@ -50,6 +50,58 @@
         <source>Recently Posted Community Topics</source>
         <target>コミュニティ最新書き込み</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>See Member List</source>
+        <target>参加者一覧を見る</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event</source>
+        <target>イベント</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Community Events</source>
+        <target>コミュニティイベント</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Post a new event comment</source>
+        <target>コメントを書く</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Add a comment only</source>
+        <target>コメントのみ書き込む</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Cancel</source>
+        <target>参加を取り消す</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Participate in this event</source>
+        <target>このイベントに参加する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Create a new event</source>
+        <target>イベントを作成する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete the event and comments</source>
+        <target>イベントと書き込みを削除する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of events</source>
+        <target>イベント一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The community event was deleted successfully.</source>
+        <target>イベントの削除が完了しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Edit the event</source>
+        <target>イベントを編集する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really delete this event?</source>
+        <target>本当にこのイベントを削除しますか？</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -28,7 +28,7 @@ propel:
     created_at: ~
     updated_at: ~
     event_updated_at: { type: timestamp }
-    open_date: { type: timestamp }
+    open_date: { type: timestamp, required: true }
     open_date_comment: { type: longvarchar }
     area: { type: longvarchar }
     application_deadline: { type: timestamp }
@@ -41,3 +41,8 @@ propel:
     number: { type: integer, required: true, default: 0 }
     body: { type: longvarchar, required: true }
     created_at: ~
+
+  community_event_member:
+    id: ~
+    community_event_id: { type: integer, required: true, foreignTable: community_event, foreignReference: id, onDelete: cascade }
+    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, onDelete: cascade }

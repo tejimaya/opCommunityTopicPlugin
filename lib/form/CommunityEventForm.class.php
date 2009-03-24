@@ -26,7 +26,17 @@ class CommunityEventForm extends BaseCommunityEventForm
     unset($this['updated_at']);
     unset($this['event_updated_at']);
 
+    $dateParam = array(
+      'culture'      => sfContext::getInstance()->getUser()->getCulture(),
+      'month_format' => 'number',
+    );
+
     $this->setWidget('name', new sfWidgetFormInput());
+    $this->setWidget('open_date', new opWidgetFormDate($dateParam));
+    $this->setWidget('application_deadline', new opWidgetFormDate(array_merge($dateParam, array('can_be_empty' => true))));
+    $this->setWidget('open_date_comment', new sfWidgetFormInput());
+    $this->setWidget('area', new sfWidgetFormInput());
+
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_event_form');
   }
 }

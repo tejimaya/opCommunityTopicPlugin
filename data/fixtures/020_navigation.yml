@@ -4,6 +4,11 @@ Navigation:
     uri: "communityTopic/listCommunity"
     sort_order: 5
 
+  community_navigation_event:
+    type: "community"
+    uri: "communityEvent/listCommunity"
+    sort_order: 6
+
 NavigationI18n:
   community_navigation_topic_i18n_en:
     id: community_navigation_topic
@@ -12,4 +17,12 @@ NavigationI18n:
   community_navigation_topic_i18n_ja:
     id: community_navigation_topic
     caption: "トピックリスト"
+    culture: "ja_JP"
+  community_navigation_event_i18n_en:
+    id: community_navigation_event
+    caption: "Events"
+    culture: "en"
+  community_navigation_event_i18n_ja:
+    id: community_navigation_event
+    caption: "イベントリスト"
     culture: "ja_JP"

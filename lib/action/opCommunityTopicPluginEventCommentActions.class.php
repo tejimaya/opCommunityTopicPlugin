@@ -52,7 +52,12 @@ abstract class opCommunityTopicPluginEventCommentActions extends sfActions
     $this->form->bind($request->getParameter($this->form->getName()));
     if ($this->form->isValid())
     {
+      if (!$request->getParameter('comment'))
+      {
+        $this->form->getObject()->toggleEventMember($this->getUser()->getMemberId());
+      }
       $this->form->save();
+
       $this->redirect('@communityEvent_show?id='.$this->communityEvent->getId());
     }
 
