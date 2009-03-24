@@ -5,3 +5,9 @@ homeSuccess:
       parts: [communityHome]
       target: [lastRow]
       is_component: true
+
+    communityEventList:
+      template: [communityEvent, communityEventList]
+      parts: [communityHome]
+      target: [lastRow]
+      is_component: true

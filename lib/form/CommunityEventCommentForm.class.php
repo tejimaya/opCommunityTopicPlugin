@@ -9,20 +9,18 @@
  */
 
 /**
- * CommunityTopicComment form.
+ * CommunityEventComment form.
  *
  * @package    OpenPNE
  * @subpackage form
- * @author     masabon
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
- * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class CommunityTopicCommentForm extends BaseCommunityTopicCommentForm
+class CommunityEventCommentForm extends BaseCommunityEventCommentForm
 {
   public function configure()
   {
     unset($this['id']);
-    unset($this['community_topic_id']);
+    unset($this['community_event_id']);
     unset($this['member_id']);
     unset($this['number']);
     unset($this['created_at']);
@@ -30,9 +28,9 @@ class CommunityTopicCommentForm extends BaseCommunityTopicCommentForm
 
   public function save($con = null)
   {
-    $communityTopicComment = parent::save($con);
-    $communityTopic = $communityTopicComment->getCommunityTopic();
-    $communityTopic->setUpdatedAt($communityTopicComment->getCreatedAt());
-    $communityTopic->save();
+    $communityEventComment = parent::save($con);
+    $communityEvent = $communityEventComment->getCommunityEvent();
+    $communityEvent->setUpdatedAt($communityEventComment->getCreatedAt());
+    $communityEvent->save();
   }
 }
