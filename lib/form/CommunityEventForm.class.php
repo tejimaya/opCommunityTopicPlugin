@@ -37,6 +37,39 @@ class CommunityEventForm extends BaseCommunityEventForm
     $this->setWidget('open_date_comment', new sfWidgetFormInput());
     $this->setWidget('area', new sfWidgetFormInput());
 
+    $this->setValidator('application_deadline', new sfValidatorDate(array(
+      'required' => false,
+      'min' => time()
+    ), array('min' => 'The date must be after now.')));
+
+    $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateOpenDate'))));
+    $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateApplicationDeadline'))));
+
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_event_form');
   }
+
+  public function validateOpenDate($validator, $value)
+  {
+    if ($this->isNew())
+    {
+      $dateValidator = new sfValidatorDate(array('min' => time()), array('min' => 'The date must be after now.'));
+      $value['open_date'] = $dateValidator->clean($value['open_date']);
+    }
+
+    return $value;
+  }
+
+  public function validateApplicationDeadline($validator, $value)
+  {
+    if ($value['application_deadline'])
+    {
+      if (strtotime($value['application_deadline']) > strtotime($value['open_date']))
+      {
+        throw new sfValidatorError($validator, 'invalid');
+      }
+    }
+
+    return $value;
+  }
+
 }
