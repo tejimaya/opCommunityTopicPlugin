@@ -5,3 +5,9 @@ homeSuccess:
       parts:    [communityMember]
       target:   [after]
       is_component: true
+
+    communityEventList:
+      template: [communityEvent, communityEventList]
+      parts:    [communityMember]
+      target:   [after]
+      is_component: true

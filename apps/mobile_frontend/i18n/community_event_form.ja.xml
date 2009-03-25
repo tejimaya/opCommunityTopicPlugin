@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Name</source>
+        <target>タイトル</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Body</source>
+        <target>本文</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Open date</source>
+        <target>開催日時</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Open date comment</source>
+        <target>開催日時補足</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Area</source>
+        <target>開催場所</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Application deadline</source>
+        <target>募集期日</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Capacity</source>
+        <target>募集人数</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Count of Member</source>
+        <target>参加人数</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
