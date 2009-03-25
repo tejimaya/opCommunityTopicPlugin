@@ -102,6 +102,18 @@
         <source>Do you really delete this event?</source>
         <target>本当にこのイベントを削除しますか？</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been finished.</source>
+        <target>このイベントは既に終了しています。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been expired.</source>
+        <target>このイベントは募集期日が切れています。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been at capacity.</source>
+        <target>このイベントは定員に達しています。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

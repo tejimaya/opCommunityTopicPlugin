@@ -50,6 +50,16 @@ class CommunityEvent extends BaseCommunityEvent
 
   public function toggleEventMember($memberId)
   {
+    if ($this->isClosed())
+    {
+      throw new opCommunityEventMemberAppendableException('This event has already been finished.');
+    }
+
+    if ($this->isExpired())
+    {
+      throw new opCommunityEventMemberAppendableException('This event has already been expired.');
+    }
+
     if ($this->isEventMember($memberId))
     {
       $eventMember = CommunityEventMemberPeer::retrieveByEventIdAndMemberId($this->getId(), $memberId);
@@ -57,11 +67,31 @@ class CommunityEvent extends BaseCommunityEvent
     }
     else
     {
+      if ($this->isAtCapacity())
+      {
+        throw new opCommunityEventMemberAppendableException('This event has already been at capacity.');
+      }
+
       $eventMember = new CommunityEventMember();
       $eventMember->setCommunityEventId($this->getId());
       $eventMember->setMemberId($memberId);
 
       $this->addCommunityEventMember($eventMember);
     }
+  }
+
+  public function isClosed()
+  {
+    return (time() > $this->getOpenDate('U'));
+  }
+
+  public function isExpired()
+  {
+    return (!is_null($this->getApplicationDeadline()) && time() > $this->getApplicationDeadline('U'));
+  }
+
+  public function isAtCapacity()
+  {
+    return (!is_null($this->getCapacity()) && $this->countCommunityEventMembers() >= $this->getCapacity());
   }
 }
