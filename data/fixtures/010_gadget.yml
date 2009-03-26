@@ -8,3 +8,13 @@ Gadget:
     type: "mobileContents"
     name: "recentCommunityTopicComment"
     sort_order: 110
+
+  community _event_comment_list:
+    type: "contents"
+    name: "recentCommunityEventComment"
+    sort_order: 132
+
+  mobile_community_event_comment_list:
+    type: "mobileContents"
+    name: "recentCommunityEventComment"
+    sort_order: 111
