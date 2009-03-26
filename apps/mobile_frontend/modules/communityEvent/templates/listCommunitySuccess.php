@@ -1,4 +1,4 @@
-<?php op_mobile_page_title($community->getName(), __('Event List')) ?>
+<?php op_mobile_page_title($community->getName(), __('List of events')) ?>
 
 <?php if ($pager->getNbResults()): ?>
 

@@ -57,5 +57,5 @@ foreach ($list as $key => $value)
 <?php endif; ?>
 <hr>
 
-<?php echo link_to(__('Event List'), 'communityEvent_list_community', $community) ?><br>
+<?php echo link_to(__('List of events'), 'communityEvent_list_community', $community) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

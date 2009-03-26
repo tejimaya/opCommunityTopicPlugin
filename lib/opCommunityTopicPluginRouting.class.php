@@ -32,6 +32,16 @@ class opCommunityTopicPluginRouting
         array('model' => 'CommunityEvent', 'type' => 'object')
       ),
 
+      'communityTopic_recently_topic_list' => new sfRoute(
+        '/communityTopic/recentlyTopicList',
+        array('module' => 'communityTopic', 'action' => 'recentlyTopicList')
+      ),
+
+      'communityEvent_recently_event_list' => new sfRoute(
+        '/communityEvent/recentlyEventList',
+        array('module' => 'communityEvent', 'action' => 'recentlyEventList')
+      ),
+
       'communityTopic_nodefaults' => new sfRoute(
         '/communityTopic/*',
         array('module' => 'default', 'action' => 'error')

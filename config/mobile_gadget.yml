@@ -1,6 +1,6 @@
 recentCommunityTopicComment:
   caption:
-    ja_JP: "コミュニティ最新書き込みリスト"
+    ja_JP: "コミュニティ最新トピックリスト"
   description:
     ja_JP: "メンバーが参加しているコミュニティトピックの最新書き込みリストを表示します"
   component: [communityTopic, topicCommentListBox]
@@ -8,6 +8,22 @@ recentCommunityTopicComment:
     col:
       Name:       "col"
       Caption:    "表示するトピック数"
+      FormType:   "select"
+      ValueType:  "integer"
+      IsRequired: true
+      Default:    5
+      Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}
+
+recentCommunityEventComment:
+  caption:
+    ja_JP: "コミュニティ最新イベントリスト"
+  description:
+    ja_JP: "メンバーが参加しているコミュニティイベントの最新書き込みリストを表示します"
+  component: [communityEvent, eventCommentListBox]
+  config:
+    col:
+      Name:       "col"
+      Caption:    "表示するイベント数"
       FormType:   "select"
       ValueType:  "integer"
       IsRequired: true

@@ -50,6 +50,70 @@
         <source>Recently Posted Community Topics</source>
         <target>ｺﾐｭﾆﾃｨ最新書き込み</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>See Member List</source>
+        <target>参加者一覧を見る</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event</source>
+        <target>ｲﾍﾞﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Community Events</source>
+        <target>ｺﾐｭﾆﾃｨｲﾍﾞﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Post a new event comment</source>
+        <target>ｺﾒﾝﾄを書く</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Add a comment only</source>
+        <target>ｺﾒﾝﾄのみ書き込む</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Cancel</source>
+        <target>参加を取り消す</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Participate in this event</source>
+        <target>このｲﾍﾞﾝﾄに参加する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Create a new event</source>
+        <target>ｲﾍﾞﾝﾄを作成する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete the event and comments</source>
+        <target>ｲﾍﾞﾝﾄと書き込みを削除する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of events</source>
+        <target>ｲﾍﾞﾝﾄ一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The community event was deleted successfully.</source>
+        <target>ｲﾍﾞﾝﾄの削除が完了しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Edit the event</source>
+        <target>ｲﾍﾞﾝﾄを編集する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really delete this event?</source>
+        <target>本当にこのｲﾍﾞﾝﾄを削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been finished.</source>
+        <target>このｲﾍﾞﾝﾄは既に終了しています。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been expired.</source>
+        <target>このｲﾍﾞﾝﾄは募集期日が切れています。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>This event has already been at capacity.</source>
+        <target>このｲﾍﾞﾝﾄは定員に達しています。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

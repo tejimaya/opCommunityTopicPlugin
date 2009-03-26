@@ -66,10 +66,6 @@ class opCommunityTopicPluginRouteCollection extends sfRouteCollection
       'requirements' => array('id' => '\d+', 'sf_method' => array('post')),
       'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
     ),
-    'recently_topic_list' => array(
-      'url'          => '/recentlyTopicList',
-      'action'       => 'recentlyTopicList',
-    ),
     'comment_create' => array(
       'url'          => '/:id/comment/create',
       'module'       => 'comment',
