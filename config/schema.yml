@@ -29,8 +29,8 @@ propel:
     updated_at: ~
     event_updated_at: { type: timestamp }
     open_date: { type: timestamp, required: true }
-    open_date_comment: { type: longvarchar }
-    area: { type: longvarchar }
+    open_date_comment: { type: longvarchar, required: true }
+    area: { type: longvarchar, required: true }
     application_deadline: { type: timestamp }
     capacity: { type: integer }
 

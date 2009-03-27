@@ -1,4 +1,4 @@
 SnsConfig:
   op_community_topic_plugin_current_revision:
     name: "opCommunityTopicPlugin_revision"
-    value: 2
+    value: 3
