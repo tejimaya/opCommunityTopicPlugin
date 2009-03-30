@@ -200,5 +200,8 @@ class update_op_community_topic_plugin_0_8_1_3 extends opMigration
 
   public function down()
   {
+    $this->dropTable('community_event_comment');
+    $this->dropTable('community_event_member');
+    $this->dropTable('community_event');
   }
 }

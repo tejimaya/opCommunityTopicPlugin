@@ -35,5 +35,13 @@ class update_op_community_topic_plugin_0_8_1_4 extends opMigration
 
   public function down()
   {
+    $c = new Criteria();
+    $c->add(NavigationPeer::TYPE, 'community');
+    $c->add(NavigationPeer::URI, 'communityEvent/listCommunity');
+    NavigationPeer::doDelete($c);
+
+    $c = new Criteria();
+    $c->add(GadgetPeer::NAME, 'recentCommunityEventComment');
+    GadgetPeer::doDelete($c);
   }
 }
