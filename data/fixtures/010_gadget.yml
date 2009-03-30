@@ -9,7 +9,7 @@ Gadget:
     name: "recentCommunityTopicComment"
     sort_order: 110
 
-  community _event_comment_list:
+  community_event_comment_list:
     type: "contents"
     name: "recentCommunityEventComment"
     sort_order: 132
