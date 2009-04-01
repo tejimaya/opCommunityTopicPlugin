@@ -130,6 +130,10 @@
         <source>This event has already been at capacity.</source>
         <target>このイベントは定員に達しています。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted Community Events</source>
+        <target>コミュニティ最新イベント</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
