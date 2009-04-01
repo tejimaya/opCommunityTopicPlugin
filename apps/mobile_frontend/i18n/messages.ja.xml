@@ -51,6 +51,22 @@
         <target>ｺﾐｭﾆﾃｨ最新書き込み</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Everyone can read</source>
+        <target>全員に公開</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Only community's members can read</source>
+        <target>ｺﾐｭﾆﾃｨ参加者のみ公開</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Community's members can create</source>
+        <target>ｺﾐｭﾆﾃｨ参加者が作成可能</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Only community's admin can create</source>
+        <target>ｺﾐｭﾆﾃｨ管理者のみ作成可能</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>See Member List</source>
         <target>参加者一覧を見る</target>
       </trans-unit>
