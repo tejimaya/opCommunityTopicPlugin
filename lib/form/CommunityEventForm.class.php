@@ -39,7 +39,7 @@ class CommunityEventForm extends BaseCommunityEventForm
 
     $this->setValidator('application_deadline', new sfValidatorDate(array(
       'required' => false,
-      'min' => time()
+      'min' => strtotime(date('Y-m-d'))
     ), array('min' => 'The date must be after now.')));
 
     $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateOpenDate'))));
@@ -52,7 +52,7 @@ class CommunityEventForm extends BaseCommunityEventForm
   {
     if ($this->isNew())
     {
-      $dateValidator = new sfValidatorDate(array('min' => time()), array('min' => 'The date must be after now.'));
+      $dateValidator = new sfValidatorDate(array('min' => strtotime(date('Y-m-d'))), array('min' => 'The date must be after now.'));
       $value['open_date'] = $dateValidator->clean($value['open_date']);
     }
 
