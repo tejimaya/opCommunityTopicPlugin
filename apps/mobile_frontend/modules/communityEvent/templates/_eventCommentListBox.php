@@ -8,7 +8,7 @@ foreach ($communityEvent as $event)
     $event->getCommunity()->getName(),
     link_to(sprintf("%s(%d)",
         op_truncate($event->getName(), 28),
-        $event->countCommunityEventComments()
+        $event->getCommunityEventComment()->count()
       ),'communityEvent_show', $event
     )
   );

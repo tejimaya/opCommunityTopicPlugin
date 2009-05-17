@@ -1,6 +1,7 @@
 <?php use_helper('Date'); ?>
+<?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
 
-<?php if ($community->isCreatableCommunityTopic($sf_user->getMemberId())): ?>
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
 <?php
 op_include_parts('buttonBox', 'communityTopicList', array(
   'title'  => __('Create a new topic'),
@@ -25,7 +26,7 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 <?php foreach ($pager->getResults() as $topic): ?>
 <dl>
 <dt><?php echo format_datetime($topic->getUpdatedAt(), 'f') ?></dt>
-<dd><?php echo link_to(sprintf($topic->getName().'(%d)', $topic->countCommunityTopicComments()), 'communityTopic_show', $topic) ?></dd>
+<dd><?php echo link_to(sprintf($topic->getName().'(%d)', $topic->getCommunityTopicComment()->count()), 'communityTopic_show', $topic) ?></dd>
 </dl>
 <?php endforeach; ?>
 

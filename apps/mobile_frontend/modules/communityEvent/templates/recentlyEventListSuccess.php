@@ -13,7 +13,7 @@ foreach ($pager->getResults() as $event)
     op_format_date($event->getUpdatedAt(), 'XDateTime'),
     link_to(sprintf("%s(%d)",
         op_truncate($event->getName(), 28),
-        $event->countCommunityEventComments()
+        $event->getCommunityEventComment()->count()
       ),'communityEvent_show', $event
     ),
     op_truncate($event->getCommunity()->getName(), 28)

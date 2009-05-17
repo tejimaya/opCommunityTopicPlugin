@@ -13,7 +13,7 @@ foreach ($pager->getResults() as $topic)
     op_format_date($topic->getUpdatedAt(), 'XDateTime'),
     link_to(sprintf("%s(%d)",
       op_truncate($topic->getName(), 28),
-      $topic->countCommunityTopicComments()
+      $topic->getCommunityTopicComment()->count()
     ), 'communityTopic_show', $topic)
   );
 }

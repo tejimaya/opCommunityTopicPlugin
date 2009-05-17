@@ -25,7 +25,7 @@ class opCommunityTopicPluginRouting
       'topic' => new opCommunityTopicPluginRouteCollection(array('name' => 'topic')),
       'event' => new opCommunityTopicPluginRouteCollection(array('name' => 'event')),
 
-      'communityEvent_memberList' => new sfPropelRoute(
+      'communityEvent_memberList' => new sfDoctrineRoute(
         '/communityEvent/:id/memberList',
         array('module' => 'communityEvent', 'action' => 'memberList'),
         array('id' => '\d+'),

@@ -1,4 +1,6 @@
-<?php if ($community->isViewableCommunityTopic($sf_user->getMemberId())): ?>
+<?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
+
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'view')): ?>
 <?php $sf_response->addStylesheet('/opCommunityTopicPlugin/css/communityTopic') ?>
 <?php use_helper('Date'); ?>
 <tr class="communityEvent">
@@ -9,7 +11,7 @@
 <?php foreach ($communityEvents as $key => $communityEvent): ?>
 <li>
 <span class="date"><?php echo op_format_date($communityEvent->getUpdatedAt(), 'XShortDateJa'); ?></span>
-<?php echo link_to(sprintf('%s(%d)', op_truncate($communityEvent->getName(), 36), $communityEvent->countCommunityEventComments()), 'communityEvent_show', $communityEvent) ?>
+<?php echo link_to(sprintf('%s(%d)', op_truncate($communityEvent->getName(), 36), $communityEvent->getCommunityEventComment()->count()), 'communityEvent_show', $communityEvent) ?>
 </li>
 <?php endforeach; ?>
 </ul>
@@ -19,7 +21,7 @@
 <?php if($count): ?>
 <li><?php echo link_to(__('More'), 'communityEvent_list_community', $community); ?></li>
 <?php endif; ?>
-<?php if ($community->isCreatableCommunityTopic($sf_user->getMemberId())): ?>
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
 <li><?php echo link_to(__('Create a new event'), 'communityEvent_new', $community); ?></li>
 <?php endif; ?>
 </ul>

@@ -1,0 +1,67 @@
+options:
+  charset: utf8
+actAs: [Timestampable]
+
+CommunityTopic:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    community_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4) }
+    name: { type: string, notnull: true }
+    body: { type: string, notnull: true }
+    topic_updated_at: { type: timestamp }
+  relations:
+    Member:
+      onDelete: set null
+    Community:
+
+CommunityTopicComment:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    community_topic_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4) }
+    number: { type: integer(4), notnull: true, default: 0 }
+    body: { type: string, notnull: true }
+  relations:
+    Member:
+      onDelete: set null
+    CommunityTopic:
+
+CommunityEvent:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    community_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4) }
+    name: { type: string, notnull: true }
+    body: { type: string, notnull: true }
+    event_updated_at: { type: timestamp }
+    open_date: { type: timestamp, notnull: true }
+    open_date_comment: { type: string, notnull: true }
+    area: { type: string, notnull: true }
+    application_deadline: { type: timestamp }
+    capacity: { type: integer(4) }
+  relations:
+    Member:
+      onDelete: set null
+    Community:
+
+CommunityEventComment:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    community_event_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4) }
+    number: { type: integer(4), notnull: true, default: 0 }
+    body: { type: string, notnull: true }
+  relations:
+    Member:
+      onDelete: set null
+    CommunityEvent:
+
+CommunityEventMember:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    community_event_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4), notnull: true }
+  relations:
+    Member:
+    CommunityEvent:

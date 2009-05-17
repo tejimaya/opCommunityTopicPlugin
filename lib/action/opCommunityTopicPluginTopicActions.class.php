@@ -26,18 +26,20 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function preExecute()
   {
-    if ($this->getRoute() instanceof sfPropelRoute)
+    if ($this->getRoute() instanceof sfDoctrineRoute)
     {
       $object = $this->getRoute()->getObject();
 
       if ($object instanceof Community)
       {
         $this->community = $object;
+        $this->acl = opCommunityTopicAclBuilder::buildCollection($this->community, array($this->getUser()->getMember()));
       }
       elseif ($object instanceof CommunityTopic)
       {
         $this->communityTopic = $object;
         $this->community = $this->communityTopic->getCommunity();
+        $this->acl = opCommunityTopicAclBuilder::buildResource($this->communityTopic, array($this->getUser()->getMember()));
       }
     }
   }
@@ -49,14 +51,14 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeListCommunity($request)
   {
-    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
 
     if (!$this->size)
     {
       $this->size = 20;
     }
 
-    $this->pager = CommunityTopicPeer::getCommunityTopicListPager(
+    $this->pager = Doctrine::getTable('CommunityTopic')->getCommunityTopicListPager(
       $this->community->getId(),
       $request->getParameter('page'),
       $this->size
@@ -72,8 +74,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeShow($request)
   {
-    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
-
     $this->form = new CommunityTopicCommentForm();
 
     return sfView::SUCCESS;
@@ -86,7 +86,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeNew($request)
   {
-    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
 
     $this->form = new CommunityTopicForm();
 
@@ -100,7 +100,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeCreate($request)
   {
-    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
 
     $this->form = new CommunityTopicForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
@@ -119,8 +119,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeEdit($request)
   {
-    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
-
     $this->form = new CommunityTopicForm($this->communityTopic);
     
     return sfView::SUCCESS;
@@ -133,8 +131,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeUpdate($request)
   {
-    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
-
     $this->form = new CommunityTopicForm($this->communityTopic);
     $this->processForm($request, $this->form);
 
@@ -143,7 +139,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     return sfView::SUCCESS;
   }
 
-
   /**
    * Executes deleteConfirm action
    *
@@ -151,8 +146,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
-
     $this->form = new sfForm();
     
     return sfView::SUCCESS;
@@ -166,8 +159,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeDelete($request)
   {
     $request->checkCSRFProtection();
-
-    $this->forward404Unless($this->communityTopic->isEditable($this->getUser()->getMemberId()));
 
     $this->communityTopic->delete();
 
@@ -188,7 +179,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $this->size = 50;
     }
 
-    $this->pager = CommunityTopicPeer::getRecentlyTopicListPager(
+    $this->pager = Doctrine::getTable('CommunityTopic')->getRecentlyTopicListPager(
       $this->getUser()->getMemberId(),
       $request->getParameter('page', 1),
       $this->size

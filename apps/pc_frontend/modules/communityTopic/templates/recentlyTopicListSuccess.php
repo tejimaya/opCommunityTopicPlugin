@@ -17,7 +17,7 @@
 <?php echo sprintf('%s (%s)',
   link_to(sprintf('%s(%d)',
     $topic->getName(),
-    $topic->countCommunityTopicComments()
+    $topic->getCommunityTopicComment()->count()
   ),'communityTopic_show', $topic),
   $topic->getCommunity()->getName()
 )

@@ -19,7 +19,7 @@ abstract class opCommunityTopicPluginEventComponents extends sfComponents
 {
   public function executeCommunityEventList()
   {
-    $publicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $this->community->getId());
+    $publicFlag = Doctrine::getTable('CommunityConfig')->retrieveByNameAndCommunityId('public_flag', $this->community->getId());
     $isBelong = $this->community->isPrivilegeBelong($this->getUser()->getMemberId());
     $this->hasPermission = true;
 
@@ -29,11 +29,11 @@ abstract class opCommunityTopicPluginEventComponents extends sfComponents
       return sfView::SUCCESS;
     }
 
-    $this->communityEvents = CommunityEventPeer::getEvents($this->community->getId());
+    $this->communityEvents = Doctrine::getTable('CommunityEvent')->getEvents($this->community->getId());
   }
 
   public function executeEventCommentListBox()
   {
-    $this->communityEvent = CommunityEventPeer::retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));
+    $this->communityEvent = Doctrine::getTable('CommunityEvent')->retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));
   }
 }

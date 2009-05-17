@@ -9,7 +9,7 @@ $list = array(
   'Body'                 => nl2br($communityEvent->getBody()),
   'Application deadline' => op_format_date($communityEvent->getApplicationDeadline(), 'D'),
   'Capacity'             => $communityEvent->getCapacity(),
-  'Count of Member'      => $communityEvent->countCommunityEventMembers(),
+  'Count of Member'      => $communityEvent->getCommunityEventMember()->count(),
 );
 
 if ($list['Count of Member'])

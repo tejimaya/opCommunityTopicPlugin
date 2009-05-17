@@ -22,18 +22,20 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function preExecute()
   {
-    if ($this->getRoute() instanceof sfPropelRoute)
+    if ($this->getRoute() instanceof sfDoctrineRoute)
     {
       $object = $this->getRoute()->getObject();
 
       if ($object instanceof Community)
       {
         $this->community = $object;
+        $this->acl = opCommunityTopicAclBuilder::buildCollection($this->community, array($this->getUser()->getMember()));
       }
       elseif ($object instanceof CommunityEvent)
       {
         $this->communityEvent = $object;
         $this->community = $this->communityEvent->getCommunity();
+        $this->acl = opCommunityTopicAclBuilder::buildResource($this->communityEvent, array($this->getUser()->getMember()));
       }
     }
   }
@@ -45,14 +47,14 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function executeListCommunity($request)
   {
-    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
 
     if (!$this->size)
     {
       $this->size = 20;
     }
 
-    $this->pager = CommunityEventPeer::getCommunityEventListPager(
+    $this->pager = Doctrine::getTable('CommunityEvent')->getCommunityEventListPager(
       $this->community->getId(),
       $request->getParameter('page'),
       $this->size
@@ -68,7 +70,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function executeShow($request)
   {
-    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
 
     $this->form = new CommunityEventCommentForm();
 
@@ -82,13 +84,13 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function executeMemberList($request)
   {
-    $this->forward404Unless($this->community->isViewableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
 
     if (!$this->size)
     {
       $this->size = 20;
     }
-    $this->pager = CommunityEventPeer::getEventMemberListPager($this->communityEvent->getId(), $request->getParameter('page', 1), $this->size);
+    $this->pager = Doctrine::getTable('CommunityEvent')->getEventMemberListPager($this->communityEvent->getId(), $request->getParameter('page', 1), $this->size);
 
     if (!$this->pager->getNbResults()) {
       return sfView::ERROR;
@@ -102,7 +104,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function executeNew($request)
   {
-    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
 
     $this->form = new CommunityEventForm();
 
@@ -116,7 +118,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
    */
   public function executeCreate($request)
   {
-    $this->forward404Unless($this->community->isCreatableCommunityTopic($this->getUser()->getMemberId()));
+    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
 
     $this->form = new CommunityEventForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
@@ -204,7 +206,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
       $this->size = 50;
     }
 
-    $this->pager = CommunityEventPeer::getRecentlyEventListPager(
+    $this->pager = Doctrine::getTable('CommunityEvent')->getRecentlyEventListPager(
       $this->getUser()->getMemberId(),
       $request->getParameter('page', 1),
       $this->size

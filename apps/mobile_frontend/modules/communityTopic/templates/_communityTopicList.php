@@ -1,4 +1,6 @@
-<?php if ($community->isViewableCommunityTopic($sf_user->getMemberId())): ?>
+<?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
+
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'view')): ?>
 <?php use_helper('Date') ?>
 <?php
 $list = array();
@@ -8,7 +10,7 @@ foreach ($communityTopics as $communityTopic)
     op_format_date($communityTopic->getUpdatedAt(), 'XShortDate'),
     link_to(sprintf("%s(%d)",
       op_truncate($communityTopic->getName(), 28),
-      $communityTopic->countCommunityTopicComments()
+      $communityTopic->getCommunityTopicComment()->count()
     ), 'communityTopic_show', $communityTopic
   ));
 }
@@ -17,7 +19,7 @@ if (count($communityTopics))
 {
   $moreInfo[] = link_to(__('More'), 'communityTopic_list_community', $community);
 }
-if ($community->isCreatableCommunityTopic($sf_user->getMemberId()))
+if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
 {
   $moreInfo[] = link_to(__('Create a new topic'), 'communityTopic_new', $community);
 }

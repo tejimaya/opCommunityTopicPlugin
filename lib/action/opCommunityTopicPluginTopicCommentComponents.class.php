@@ -27,11 +27,11 @@ abstract class opCommunityTopicCommentComponents extends sfComponents
     }
 
     $this->commentPager = 
-      CommunityTopicCommentPeer::getCommunityTopicCommentListPager(
+      Doctrine::getTable('CommunityTopicComment')->getCommunityTopicCommentListPager(
       $this->communityTopic->getId(),
       $request->getParameter('page', 1),
       $this->size,
-      $request->getParameter('order', Criteria::DESC)
+      $request->getParameter('order', 'DESC')
     );
   }
 }

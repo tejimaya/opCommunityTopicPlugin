@@ -22,7 +22,7 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
 {
   public function executeCommunityTopicList()
   {
-    $publicFlag = CommunityConfigPeer::retrieveByNameAndCommunityId('public_flag', $this->community->getId());
+    $publicFlag = Doctrine::getTable('CommunityConfig')->retrieveByNameAndCommunityId('public_flag', $this->community->getId());
     $isBelong = $this->community->isPrivilegeBelong($this->getUser()->getMemberId());
     $this->hasPermission = true;
 
@@ -32,11 +32,11 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
       return sfView::SUCCESS;
     }
 
-    $this->communityTopics = CommunityTopicPeer::getTopics($this->community->getId());
+    $this->communityTopics = Doctrine::getTable('CommunityTopic')->getTopics($this->community->getId());
   }
 
   public function executeTopicCommentListBox()
   {
-    $this->communityTopic = CommunityTopicPeer::retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));
+    $this->communityTopic = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));
   }
 }

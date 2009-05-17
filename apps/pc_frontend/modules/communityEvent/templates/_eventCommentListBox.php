@@ -8,7 +8,7 @@
 <?php echo sprintf('%s (%s)',
   link_to(sprintf('%s(%d)',
     op_truncate($event->getName(), 36),
-    $event->countCommunityEventComments()
+    $event->getCommunityEventComment()->count()
   ), 'communityEvent_show', $event),
   $event->getCommunity()->getName()
 ) ?></li>

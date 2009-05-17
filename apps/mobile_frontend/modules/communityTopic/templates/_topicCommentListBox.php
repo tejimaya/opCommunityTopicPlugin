@@ -8,7 +8,7 @@ foreach ($communityTopic as $topic)
     $topic->getCommunity()->getName(),
     link_to(sprintf("%s(%d)",
         op_truncate($topic->getName(), 28),
-        $topic->countCommunityTopicComments()
+        $topic->getCommunityTopicComment()->count()
       ),'communityTopic_show', $topic
     )
   );

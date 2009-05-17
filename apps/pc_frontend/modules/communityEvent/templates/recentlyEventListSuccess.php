@@ -17,7 +17,7 @@
 <?php echo sprintf('%s (%s)',
   link_to(sprintf('%s(%d)',
     $event->getName(),
-    $event->countCommunityEventComments()
+    $event->getCommunityEventComment()->count()
   ),'communityEvent_show', $event),
   $event->getCommunity()->getName()
 )

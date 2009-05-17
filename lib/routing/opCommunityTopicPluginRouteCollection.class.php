@@ -28,7 +28,7 @@ class opCommunityTopicPluginRouteCollection extends sfRouteCollection
       'url'          => '/:id',
       'action'       => 'show',
       'requirements' => array('id' => '\d+'),
-      'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
+      'option'       => array('model' => 'CommunityTopic', 'type' => 'object', 'privilege' => 'view'),
     ),
     'new' => array(
       'url'          => '/new/:id',
@@ -46,25 +46,25 @@ class opCommunityTopicPluginRouteCollection extends sfRouteCollection
       'url'          => '/edit/:id',
       'action'       => 'edit',
       'requirements' => array('id' => '\d+'),
-      'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
+      'option'       => array('model' => 'CommunityTopic', 'type' => 'object', 'privilege' => 'edit'),
     ),
     'update' => array(
       'url'          => '/update/:id',
       'action'       => 'update',
       'requirements' => array('id' => '\d+', 'sf_method' => array('post')),
-      'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
+      'option'       => array('model' => 'CommunityTopic', 'type' => 'object', 'privilege' => 'edit'),
     ),
     'delete_confirm' => array(
       'url'          => '/deleteConfirm/:id',
       'action'       => 'deleteConfirm',
       'requirements' => array('id' => '\d+'),
-      'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
+      'option'       => array('model' => 'CommunityTopic', 'type' => 'object', 'privilege' => 'edit'),
     ),
     'delete' => array(
       'url'          => '/delete/:id',
       'action'       => 'delete',
       'requirements' => array('id' => '\d+', 'sf_method' => array('post')),
-      'option'       => array('model' => 'CommunityTopic', 'type' => 'object'),
+      'option'       => array('model' => 'CommunityTopic', 'type' => 'object', 'privilege' => 'edit'),
     ),
     'comment_create' => array(
       'url'          => '/:id/comment/create',
@@ -104,7 +104,14 @@ class opCommunityTopicPluginRouteCollection extends sfRouteCollection
       $routeClass = 'sfRoute';
       if (isset($template['option']['model']))
       {
-        $routeClass = 'sfPropelRoute';
+        if (isset($template['option']['privilege']))
+        {
+          $routeClass = 'opDynamicAclRoute';
+        }
+        else
+        {
+          $routeClass = 'sfDoctrineRoute';
+        }
         $template['option']['model'] = str_replace('Topic', ucfirst($type), $template['option']['model']);
       }
 

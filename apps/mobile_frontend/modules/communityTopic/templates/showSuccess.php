@@ -1,3 +1,4 @@
+<?php $acl = opCommunityTopicAclBuilder::buildResource($communityTopic, array($sf_user->getMember())) ?>
 <?php op_mobile_page_title($community->getName(), $communityTopic->getName()) ?>
 
 <?php echo op_within_page_link() ?>
@@ -14,7 +15,7 @@
 <?php include_component('communityTopicComment', 'list', array('communityTopic' => $communityTopic)) ?>
 
 <?php echo op_within_page_link('') ?>
-<?php if ($communityTopic->isCreatableCommunityTopicComment($sf_user->getMemberId())): ?>
+<?php if ($acl->isAllow($sf_user->getMemberId(), null, 'addComment')): ?>
 <hr>
 <?php
 $options['title'] = __('Post a new topic comment');

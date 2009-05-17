@@ -1,6 +1,6 @@
 <?php
 
-class opIsCreatableCommunityTopicBehavior
+class opIsCreatableCommunityTopicBehavior extends Doctrine_Template
 {
   public function isCreatableCommunityTopic($community, $memberId)
   {
