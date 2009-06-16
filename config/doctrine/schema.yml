@@ -26,6 +26,7 @@ CommunityTopicComment:
     Member:
       onDelete: set null
     CommunityTopic:
+      onDelete: cascade
 
 CommunityEvent:
   columns:
@@ -56,6 +57,7 @@ CommunityEventComment:
     Member:
       onDelete: set null
     CommunityEvent:
+      onDelete: cascade
 
 CommunityEventMember:
   columns:
