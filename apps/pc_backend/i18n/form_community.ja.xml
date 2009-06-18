@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Authority to Read Topic</source>
+        <target>トピック公開範囲</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Authority to Create Topic</source>
+        <target>トピック作成権限</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
