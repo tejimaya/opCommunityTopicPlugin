@@ -14,6 +14,7 @@
  * @package    opCommunityTopicPlugin
  * @subpackage CommunityEvent
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
+ * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 abstract class PluginCommunityEvent extends BaseCommunityEvent
 {
@@ -96,5 +97,15 @@ abstract class PluginCommunityEvent extends BaseCommunityEvent
   public function isAtCapacity()
   {
     return (!is_null($this->getCapacity()) && $this->countCommunityEventMembers() >= $this->getCapacity());
+  }
+
+  public function countCommunityEventMembers()
+  {
+    return Doctrine_Query::create()
+      ->select('count(*) as count')
+      ->from('CommunityEventMember m')
+      ->where('m.community_event_id = ?', $this->getId())
+      ->fetchOne()
+      ->getCount();
   }
 }
