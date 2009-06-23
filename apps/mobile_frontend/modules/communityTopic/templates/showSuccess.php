@@ -15,7 +15,7 @@
 <?php include_component('communityTopicComment', 'list', array('communityTopic' => $communityTopic)) ?>
 
 <?php echo op_within_page_link('') ?>
-<?php if ($acl->isAllow($sf_user->getMemberId(), null, 'addComment')): ?>
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'addComment')): ?>
 <hr>
 <?php
 $options['title'] = __('Post a new topic comment');
