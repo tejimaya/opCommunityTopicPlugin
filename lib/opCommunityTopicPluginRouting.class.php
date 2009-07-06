@@ -42,18 +42,6 @@ class opCommunityTopicPluginRouting
         array('module' => 'communityEvent', 'action' => 'recentlyEventList')
       ),
 
-      'communityTopic_search_topic' => new sfDoctrineRoute(
-        '/communityTopic/search/:id',
-        array('module' => 'communityTopic', 'action' => 'search'),
-        array('id' => '\d+'),
-        array('model' => 'CommunityTopic', 'type' => 'object')
-      ),
-
-      'communityTopic_search_topic_all' => new sfRoute(
-        '/communityTopic/search',
-        array('module' => 'communityTopic', 'action' => 'search')
-      ),
-
       'communityTopic_nodefaults' => new sfRoute(
         '/communityTopic/*',
         array('module' => 'default', 'action' => 'error')

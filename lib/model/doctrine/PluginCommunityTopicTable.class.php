@@ -14,7 +14,6 @@
  * @package    opCommunityTopicPlugin
  * @subpackage CommunityTopicComment
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
- * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 class PluginCommunityTopicTable extends Doctrine_Table
 {
@@ -63,31 +62,6 @@ class PluginCommunityTopicTable extends Doctrine_Table
     $q = $this->createQuery()
       ->whereIn('community_id', $communityIds)
       ->orderBy('updated_at DESC');
-
-    $pager = new sfDoctrinePager('CommunityTopic', $size);
-    $pager->setQuery($q);
-    $pager->setPage($page);
-    $pager->init();
-
-    return $pager;
-  }
-
-  public function getSearchingTopicListPager($communityId, $page = 1, $keyword = null, $size = 50)
-  {
-    $q = $this->createQuery();
-
-    if ($communityId)
-    {
-      $q->where('community_id = ?', $communityId);
-    }
-
-    if (!is_null($keyword))
-    {
-      $q->andWhere('name LIKE ?', '%'.$keyword.'%')
-        ->orWhere('body LIKE ?', '%'.$keyword.'%');
-    }
-
-    $q->orderBy('updated_at DESC');
 
     $pager = new sfDoctrinePager('CommunityTopic', $size);
     $pager->setQuery($q);

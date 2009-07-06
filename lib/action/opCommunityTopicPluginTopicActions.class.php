@@ -17,7 +17,6 @@
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
- * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 
 abstract class opCommunityTopicPluginTopicActions extends sfActions
@@ -183,28 +182,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     $this->pager = Doctrine::getTable('CommunityTopic')->getRecentlyTopicListPager(
       $this->getUser()->getMemberId(),
       $request->getParameter('page', 1),
-      $this->size
-    );
-
-    return sfView::SUCCESS;
-  }
-
-  /**
-   * Executes search action
-   *
-   * @param sfRequest $request A request object
-   */
-  public function executeSearch($request)
-  {
-    if (!$this->size)
-    {
-      $this->size = 50;
-    }
-
-    $this->pager = Doctrine::getTable('CommunityTopic')->getSearchingTopicListPager(
-      $this->community ? $this->community->getId() : null,
-      $request->getParameter('page', 1),
-      $request->getParameter('keyword'),
       $this->size
     );
 
