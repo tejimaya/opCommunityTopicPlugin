@@ -84,4 +84,37 @@ class PluginCommunityEventTable extends Doctrine_Table
 
     return $pager;
   }
+
+  public function getSearchQuery($communityId = null, $target = null, $keyword = null)
+  {
+    $q = $this->createQuery();
+
+    if ('all' !== $target && $communityId)
+    {
+      $q->where('community_id = ?', $communityId);
+    }
+
+    if (!is_null($keyword))
+    {
+      $values = preg_split('/[\s　]+/u', $keyword);
+      foreach ($values as $value)
+      {
+        $q->andWhere('(name LIKE ? OR body LIKE ?)', array('%'.$value.'%', '%'.$value.'%'));
+      }
+    }
+
+    $q->orderBy('updated_at DESC');
+
+    return $q;
+  }
+
+  public function getResultListPager(Doctrine_Query $query, $page = 1, $size = 20)
+  {
+    $pager = new sfDoctrinePager('CommunityEvent', $size);
+    $pager->setQuery($query);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
 }

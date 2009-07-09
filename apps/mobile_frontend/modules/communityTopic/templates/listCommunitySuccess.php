@@ -9,13 +9,20 @@
 $list = array();
 foreach ($pager->getResults() as $topic)
 {
-  $list[] = sprintf("%s<br>%s",
-    op_format_date($topic->getUpdatedAt(), 'XDateTime'),
-    link_to(sprintf("%s(%d)",
+  $list_str = op_format_date($topic->getUpdatedAt(), 'XDateTime');
+
+  if ($topic->getMemberId() === $sf_user->getMemberId())
+  {
+    $list_str .= sprintf('&nbsp;[%s]', link_to(__('Edit') ,'communityEvent_edit', $topic));
+  }
+
+  $list_str .= '<br>'
+    .link_to(sprintf("%s(%d)",
       op_truncate($topic->getName(), 28),
       $topic->getCommunityTopicComment()->count()
-    ), 'communityTopic_show', $topic)
-  );
+    ), 'communityTopic_show', $topic);
+
+  $list[] = $list_str;
 }
 $options = array(
   'border' => true,
@@ -33,4 +40,5 @@ op_include_list('communityTopicList', $list, $options);
 
 <?php endif; ?>
 
+<?php echo link_to(__('Create a new topic'), 'communityTopic_new', $community) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

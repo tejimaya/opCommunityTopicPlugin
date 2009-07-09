@@ -1,7 +1,7 @@
 <?php if ($commentPager->getNbResults()) : ?>
 <div class="dparts commentList"><div class="parts">
 <div class="partsHeading">
-<h3><?php echo __('Comments') ?></h3>
+<h3><?php echo __('Comments', array(), 'form_community') ?></h3>
 </div>
 
 <?php ob_start() ?>

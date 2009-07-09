@@ -17,6 +17,7 @@
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
+ * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 
 abstract class opCommunityTopicPluginTopicActions extends sfActions
@@ -184,6 +185,49 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $request->getParameter('page', 1),
       $this->size
     );
+
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes search action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSearch($request)
+  {
+    $params = array(
+      'keyword' => $request->getParameter('keyword'),
+      'target' => $request->getParameter('target', 'in_community'),
+      'type' => $request->getParameter('type', 'topic'),
+      'id' => $request->getParameter('id'),
+    );
+
+    $this->form = new PluginCommunityTopicSearchForm();
+    $this->form->bind($params);
+
+    if ('event' === $request->getParameter('type'))
+    {
+      $table = Doctrine::getTable('CommunityEvent');
+      $this->link_to_detail = 'communityEvent/show?id=%d';
+      $this->type = 'event';
+    }
+    else
+    {
+      $table = Doctrine::getTable('CommunityTopic');
+      $this->link_to_detail = 'communityTopic/show?id=%d';
+      $this->type = 'topic';
+    }
+    $this->communityId = $request->getParameter('id');
+
+    $q = $table->getSearchQuery($request->getParameter('id'), $request->getParameter('target'), $request->getParameter('keyword'));
+    $this->pager = $table->getResultListPager($q);
+
+    $this->isResult = false;
+    if (null !== $request->getParameter('keyword') || null !== $request->getParameter('target') || null !== $request->getParameter('type'))
+    {
+      $this->isResult = true;
+    }
 
     return sfView::SUCCESS;
   }

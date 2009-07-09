@@ -1,0 +1,50 @@
+<?php op_mobile_page_title(__('Search Community Topics')) ?>
+
+<?php if ($isResult): ?>
+<?php if ($pager->getNbResults()): ?>
+
+<center>
+<?php echo pager_total($pager) ?>
+</center>
+
+<?php
+$options = array(
+  'pager'          => $pager,
+  'link_to_page'   => 'communityTopic/search?page=%d',
+  'type'           => $type,
+  'link_to_detail' => $link_to_detail,
+);
+
+include_partial('partsSearchResultList', $options);
+?>
+<?php else: ?>
+<?php
+if ('topic' === $type)
+{
+  $message = __('Your search queries did not match any community topics.');
+}
+else if ('event' === $type)
+{
+  $message = __('Your search queries did not match any community events.');
+}
+op_include_box('searchCommunityTopicResult', $message);
+?>
+<?php endif; ?>
+<?php endif; ?>
+
+<?php
+$options = array(
+  'title'    => __('Search Community Topics'),
+  'url'      => url_for('communityTopic/search'),
+  'button'   => __('Search'),
+  'method'   => 'get'
+);
+if (!$communityId)
+{
+    unset($form['target']);
+    unset($form['id']);
+}
+
+op_include_form('searchCommunityTopic', $form, $options);
+?>
+

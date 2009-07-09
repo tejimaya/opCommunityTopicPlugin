@@ -11,3 +11,17 @@ homeSuccess:
       parts: [communityHome]
       target: [lastRow]
       is_component: true
+
+    searchFormLine:
+      template: [communityTopic, searchFormLine]
+      parts: [communityHome]
+      target: [after]
+      is_component: false
+
+searchSuccess:
+  customize:
+    topicSearchLink:
+      template: [communityTopic, topicSearchLink]
+      parts:    [searchCommunity]
+      target:   [after]
+      is_component: false

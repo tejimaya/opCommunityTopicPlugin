@@ -10,6 +10,34 @@
         <source>Authority to Create Topic</source>
         <target>トピック作成権限</target>
       </trans-unit>
+      <trans-unit id="3">
+        <source>Date Updated</source>
+        <target>更新日時</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Keyword</source>
+        <target>キーワード</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Target</source>
+        <target>検索対象</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Type</source>
+        <target>種類</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>In Community</source>
+        <target>コミュニティ内</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>All Community</source>
+        <target>すべてのコミュニティ</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Comments</source>
+        <target>コメント</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -27,6 +27,8 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     unset($this['number']);
     unset($this['created_at']);
     unset($this['updated_at']);
+
+    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Body', array(), 'community_event_form'));
   }
 
   public function save($con = null)

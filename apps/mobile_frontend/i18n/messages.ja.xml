@@ -43,6 +43,10 @@
         <target>ﾄﾋﾟｯｸを編集する</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Edit</source>
+        <target>編集</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>Do you really delete this topic?</source>
         <target>本当にこのﾄﾋﾟｯｸを削除しますか？</target>
       </trans-unit>
@@ -133,6 +137,18 @@
       <trans-unit id="">
         <source>Recently Posted Community Events</source>
         <target>ｺﾐｭﾆﾃｨ最新ｲﾍﾞﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Search Community Topics</source>
+        <target>ﾄﾋﾟｯｸ検索</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Your search queries did not match any community topics.</source>
+        <target>該当するﾄﾋﾟｯｸはありませんでした。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Your search queries did not match any community events.</source>
+        <target>該当するｲﾍﾞﾝﾄはありませんでした。</target>
       </trans-unit>
     </body>
   </file>

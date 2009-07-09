@@ -1,7 +1,7 @@
 <?php if ($commentPager->getNbResults()): ?>
 <hr>
 <center>
-<?php echo __('Comments') ?><br>
+<?php echo __('Comments', array(), 'form_community') ?><br>
 <?php op_include_pager_total($commentPager) ?>
 </center>
 
