@@ -74,8 +74,9 @@ class PluginCommunityEventTable extends Doctrine_Table
 
   public function getEventMemberListPager($eventId, $page = 1, $size = 20)
   {
-    $q = Doctrine::getTable('Member')->createQuery()
-      ->where('CommunityEventMember.community_event_id = ?', $eventId);
+    $q = Doctrine::getTable('Member')->createQuery('m')
+      ->where('e.community_event_id = ?', $eventId)
+      ->leftJoin('m.CommunityEventMember e on m.id = e.member_id');
 
     $pager = new sfDoctrinePager('CommunityEventMember', $size);
     $pager->setQuery($q);
