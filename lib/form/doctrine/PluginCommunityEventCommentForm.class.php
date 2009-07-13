@@ -14,6 +14,7 @@
  * @package    opCommunityTopicPlugin
  * @subpackage form
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
+ * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 abstract class PluginCommunityEventCommentForm extends BaseCommunityEventCommentForm
 {
@@ -29,6 +30,7 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     unset($this['updated_at']);
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Body', array(), 'community_event_form'));
+    $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
   }
 
   public function save($con = null)

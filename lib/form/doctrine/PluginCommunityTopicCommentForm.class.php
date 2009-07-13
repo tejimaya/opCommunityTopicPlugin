@@ -16,6 +16,7 @@
  * @author     masabon
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
 abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicCommentForm
 {
@@ -31,6 +32,7 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['updated_at']);
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Body', array(), 'community_topic_form'));
+    $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
   }
 
   public function save($con = null)
