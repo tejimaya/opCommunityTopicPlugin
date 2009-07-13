@@ -37,7 +37,7 @@ class PluginCommunityTopicTable extends Doctrine_Table
   public function getCommunityTopicListPager($communityId, $page = 1, $size = 20)
   {
     $q = $this->createQuery()
-      ->where('community_id', $communityId)
+      ->where('community_id = ?', $communityId)
       ->orderBy('updated_at DESC');
     $pager = new sfDoctrinePager('CommunityTopic', $size);
     $pager->setQuery($q);
