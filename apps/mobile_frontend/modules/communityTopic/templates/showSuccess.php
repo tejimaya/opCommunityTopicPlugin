@@ -7,7 +7,7 @@
 <?php endif; ?><br>
 <?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?>
 <?php if ($communityTopic->isEditable($sf_user->getMemberId())): ?>
-&nbsp;[<?php echo link_to(__('Edit') ,'communityTopic_edit', $communityTopic) ?>]
+&nbsp;[<?php echo link_to(__('Edit'), '@communityTopic_edit?id='.$communityTopic->getId()) ?>]
 <?php endif ?>
 <br>
 <?php echo nl2br($communityTopic->getBody()) ?><br>
@@ -27,5 +27,5 @@ op_include_form('formTopicComment', $form, $options);
 <?php endif; ?>
 <hr>
 
-<?php echo link_to(__('Topic List'), 'communityTopic_list_community', $community) ?><br>
+<?php echo link_to(__('Topic List'), '@communityTopic_list_community'.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

@@ -9,7 +9,7 @@ foreach ($communityEvent as $event)
     link_to(sprintf("%s(%d)",
         op_truncate($event->getName(), 28),
         $event->getCommunityEventComment()->count()
-      ),'communityEvent_show', $event
+      ), '@communityEvent_show?id='.$event->getId()
     )
   );
 }

@@ -5,7 +5,7 @@
 <?php if ($communityEvent->getMemberId() === $sf_user->getMemberId()): ?>
 <?php endif; ?>
 <?php if ($communityEvent->isEditable($sf_user->getMemberId())): ?>
-&nbsp;[<?php echo link_to(__('Edit') ,'communityEvent_edit', $communityEvent) ?>]
+&nbsp;[<?php echo link_to(__('Edit'), '@communityEvent_edit?id='.$communityEvent->getId()) ?>]
 <?php endif ?>
 <br>
 <?php
@@ -57,5 +57,5 @@ foreach ($list as $key => $value)
 <?php endif; ?>
 <hr>
 
-<?php echo link_to(__('List of events'), 'communityEvent_list_community', $community) ?><br>
+<?php echo link_to(__('List of events'), '@communityEvent_list_community?id='.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

@@ -11,17 +11,17 @@ foreach ($communityTopics as $communityTopic)
     link_to(sprintf("%s(%d)",
       op_truncate($communityTopic->getName(), 28),
       $communityTopic->getCommunityTopicComment()->count()
-    ), 'communityTopic_show', $communityTopic
+    ), '@communityTopic_show?id='.$communityTopic->getId()
   ));
 }
 $moreInfo = array();
 if (count($communityTopics))
 {
-  $moreInfo[] = link_to(__('More'), 'communityTopic_list_community', $community);
+  $moreInfo[] = link_to(__('More'), '@communityTopic_list_community?id='.$community->getId());
 }
 if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
 {
-  $moreInfo[] = link_to(__('Create a new topic'), 'communityTopic_new', $community);
+  $moreInfo[] = link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId());
 }
 $option = array(
   'title' => __('Community Topics'),

@@ -18,7 +18,7 @@
   link_to(sprintf('%s(%d)',
     $event->getName(),
     $event->getCommunityEventComment()->count()
-  ),'communityEvent_show', $event),
+  ), '@communityEvent_show?id='.$event->getId()),
   $event->getCommunity()->getName()
 )
 ?></dd>

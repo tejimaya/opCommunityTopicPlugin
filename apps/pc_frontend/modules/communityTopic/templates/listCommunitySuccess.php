@@ -26,7 +26,7 @@ op_include_parts('buttonBox', 'communityTopicList', array(
 <?php foreach ($pager->getResults() as $topic): ?>
 <dl>
 <dt><?php echo format_datetime($topic->getUpdatedAt(), 'f') ?></dt>
-<dd><?php echo link_to(sprintf($topic->getName().'(%d)', $topic->getCommunityTopicComment()->count()), 'communityTopic_show', $topic) ?></dd>
+<dd><?php echo link_to(sprintf($topic->getName().'(%d)', $topic->getCommunityTopicComment()->count()), '@communityTopic_show?id='.$topic->getId()) ?></dd>
 </dl>
 <?php endforeach; ?>
 

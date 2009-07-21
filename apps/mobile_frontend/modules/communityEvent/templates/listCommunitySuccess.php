@@ -11,16 +11,16 @@ foreach ($pager->getResults() as $event)
 {
   $list_str = op_format_date($event->getUpdatedAt(), 'XDateTime');
 
-  if ($event->getMemberId() === $sf_user->getMemberId())
+  if ($event->isEditable($sf_user->getMemberId()))
   {
-    $list_str .= sprintf('&nbsp;[%s]', link_to(__('Edit') ,'communityEvent_edit', $event));
+    $list_str .= sprintf('&nbsp;[%s]', link_to(__('Edit'), '@communityEvent_edit?id='.$event->getId()));
   }
 
   $list_str .= '<br>'
     .link_to(sprintf("%s(%d)",
       op_truncate($event->getName(), 28),
       $event->getCommunityEventComment()->count()
-    ), 'communityEvent_show', $event);
+    ), '@communityEvent_show?id='.$event->getId());
 
   $list[] = $list_str;
 }
@@ -40,5 +40,5 @@ op_include_list('communityEventList', $list, $options);
 
 <?php endif; ?>
 
-<?php echo link_to(__('Create a new event'), 'communityEvent_new', $community) ?><br>
+<?php echo link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

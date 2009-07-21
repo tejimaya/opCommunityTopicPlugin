@@ -11,17 +11,17 @@ foreach ($communityEvents as $communityEvent)
     link_to(sprintf("%s(%d)",
       op_truncate($communityEvent->getName(), 28),
       $communityEvent->getCommunityEventComment()->count()
-    ), 'communityEvent_show', $communityEvent
+    ), '@communityEvent_show?id='.$communityEvent->getId()
   ));
 }
 $moreInfo = array();
 if (count($communityEvents))
 {
-  $moreInfo[] = link_to(__('More'), 'communityEvent_list_community', $community);
+  $moreInfo[] = link_to(__('More'), '@communityEvent_list_community?id='.$community->getId());
 }
 if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
 {
-  $moreInfo[] = link_to(__('Create a new event'), 'communityEvent_new', $community);
+  $moreInfo[] = link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId());
 }
 $option = array(
   'title' => __('Community Events'),

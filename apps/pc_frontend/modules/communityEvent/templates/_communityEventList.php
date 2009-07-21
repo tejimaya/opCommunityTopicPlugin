@@ -11,7 +11,7 @@
 <?php foreach ($communityEvents as $key => $communityEvent): ?>
 <li>
 <span class="date"><?php echo op_format_date($communityEvent->getUpdatedAt(), 'XShortDateJa'); ?></span>
-<?php echo link_to(sprintf('%s(%d)', op_truncate($communityEvent->getName(), 36), $communityEvent->getCommunityEventComment()->count()), 'communityEvent_show', $communityEvent) ?>
+<?php echo link_to(sprintf('%s(%d)', op_truncate($communityEvent->getName(), 36), $communityEvent->getCommunityEventComment()->count()), '@communityEvent_show?id='.$communityEvent->getId()) ?>
 </li>
 <?php endforeach; ?>
 </ul>
@@ -19,10 +19,10 @@
 <div class="moreInfo">
 <ul class="moreInfo">
 <?php if($count): ?>
-<li><?php echo link_to(__('More'), 'communityEvent_list_community', $community); ?></li>
+<li><?php echo link_to(__('More'), '@communityEvent_list_community?id='.$community->getId()); ?></li>
 <?php endif; ?>
 <?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
-<li><?php echo link_to(__('Create a new event'), 'communityEvent_new', $community); ?></li>
+<li><?php echo link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId()); ?></li>
 <?php endif; ?>
 </ul>
 </div>

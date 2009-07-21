@@ -9,7 +9,7 @@ foreach ($communityTopic as $topic)
     link_to(sprintf("%s(%d)",
         op_truncate($topic->getName(), 28),
         $topic->getCommunityTopicComment()->count()
-      ),'communityTopic_show', $topic
+      ), '@communityTopic_show?id='.$topic->getId()
     )
   );
 }
