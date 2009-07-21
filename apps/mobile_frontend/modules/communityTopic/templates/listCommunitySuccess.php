@@ -13,7 +13,7 @@ foreach ($pager->getResults() as $topic)
 
   if ($topic->getMemberId() === $sf_user->getMemberId())
   {
-    $list_str .= sprintf('&nbsp;[%s]', link_to(__('Edit') ,'communityEvent_edit', $topic));
+    $list_str .= sprintf('&nbsp;[%s]', link_to(__('Edit') ,'communityTopic_edit', $topic));
   }
 
   $list_str .= '<br>'
