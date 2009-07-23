@@ -27,5 +27,5 @@ op_include_form('formTopicComment', $form, $options);
 <?php endif; ?>
 <hr>
 
-<?php echo link_to(__('Topic List'), '@communityTopic_list_community'.$community->getId()) ?><br>
+<?php echo link_to(__('Topic List'), '@communityTopic_list_community?id='.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>
