@@ -18,6 +18,110 @@
         <source>Only community's admin can create</source>
         <target>コミュニティ管理者のみ作成可能</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Manage Topic/Event</source>
+        <target>コミュニティトピック・イベント管理</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic List</source>
+        <target>トピックリスト</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Comment List</source>
+        <target>トピックコメントリスト</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no topics matches search condition.</source>
+        <target>該当するコミュニティトピックは存在しません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Search</source>
+        <target>検索</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete</source>
+        <target>削除</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really want to delete this topic?</source>
+        <target>本当にこのコミュニティトピックを削除してもよろしいですか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic ID</source>
+        <target>トピックID</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Title</source>
+        <target>トピックタイトル</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Description</source>
+        <target>本文</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Comment ID</source>
+        <target>トピックコメントID</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Comment Description</source>
+        <target>コメント本文</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Created Date</source>
+        <target>作成日時</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Comment Number</source>
+        <target>コメント番号</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event List</source>
+        <target>イベントリスト</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event ID</source>
+        <target>イベントID</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Title</source>
+        <target>イベントタイトル</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Description</source>
+        <target>本文</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Open Date</source>
+        <target>開催日時</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no events matches search condition.</source>
+        <target>該当するコミュニティイベントは存在しません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really want to delete this event?</source>
+        <target>本当にこのコミュニティイベントを削除してもよろしいですか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Deleted successfully.</source>
+        <target>コミュニティトピックを削除しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Deleted successfully.</source>
+        <target>コミュニティイベントを削除しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Topic Comment Deleted successfully.</source>
+        <target>コメントを削除しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete Community Topic</source>
+        <target>コミュニティトピック削除確認画面</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete Community Event</source>
+        <target>コミュニティイベント削除確認画面</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

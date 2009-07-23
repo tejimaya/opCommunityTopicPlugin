@@ -10,7 +10,7 @@
 
 /**
  * PluginCommunityTopicTable
- * 
+ *
  * @package    opCommunityTopicPlugin
  * @subpackage CommunityTopicComment
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
@@ -103,5 +103,11 @@ class PluginCommunityTopicTable extends Doctrine_Table
     $pager->init();
 
     return $pager;
+  }
+
+  public function retrieveByPk($communityTopicId)
+  {
+    $result = $this->createQuery()->where('id = ?', $communityTopicId)->execute();
+    return $result->getFirst();
   }
 }

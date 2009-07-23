@@ -9,4 +9,8 @@
  */
 abstract class PluginCommunityTopicFormFilter extends BaseCommunityTopicFormFilter
 {
+  public function __construct($defaults = array(), $options = array(), $CSRFSecret = null)
+  {
+    return parent::__construct($defaults, $options, false);
+  }
 }
