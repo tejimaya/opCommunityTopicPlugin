@@ -14,6 +14,7 @@ CommunityTopic:
     Member:
       onDelete: set null
     Community:
+      onDelete: cascade
 
 CommunityTopicComment:
   columns:
@@ -45,6 +46,7 @@ CommunityEvent:
     Member:
       onDelete: set null
     Community:
+      onDelete: cascade
 
 CommunityEventComment:
   columns:
@@ -66,4 +68,6 @@ CommunityEventMember:
     member_id: { type: integer(4), notnull: true }
   relations:
     Member:
+      onDelete: cascade
     CommunityEvent:
+      onDelete: cascade
