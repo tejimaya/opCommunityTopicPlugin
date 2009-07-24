@@ -12,7 +12,9 @@
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
+<?php if ($comment->getMember()): ?>
 <?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMemberId()) ?><br>
+<?php endif; ?>
 <?php echo nl2br($comment->getBody()) ?>
 <?php endforeach; ?>
 <?php if ($commentPager->haveToPaginate()): ?>
