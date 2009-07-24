@@ -72,7 +72,7 @@
       </trans-unit>
       <trans-unit id="">
         <source>See Member List</source>
-        <target>参加者一覧を見る</target>
+        <target>参加者ﾘｽﾄを見る</target>
       </trans-unit>
       <trans-unit id="">
         <source>Event Members</source>
@@ -153,6 +153,22 @@
       <trans-unit id="">
         <source>Your search queries did not match any community events.</source>
         <target>該当するｲﾍﾞﾝﾄはありませんでした。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Limitless</source>
+        <target>無制限</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>%1% persons</source>
+        <target>%1%人</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Edit this event</source>
+        <target>ｲﾍﾞﾝﾄ編集</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>See event edit form</source>
+        <target>ｲﾍﾞﾝﾄ編集画面を見る</target>
       </trans-unit>
     </body>
   </file>

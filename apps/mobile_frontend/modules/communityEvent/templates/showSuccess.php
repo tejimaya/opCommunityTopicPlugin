@@ -1,33 +1,34 @@
 <?php op_mobile_page_title($community->getName(), $communityEvent->getName()) ?>
 
 <?php echo op_within_page_link() ?>
-<?php echo op_format_date($communityEvent->getEventUpdatedAt(), 'XDateTime') ?>
-<?php if ($communityEvent->getMemberId() === $sf_user->getMemberId()): ?>
-<?php endif; ?>
-<?php if ($communityEvent->isEditable($sf_user->getMemberId())): ?>
-&nbsp;[<?php echo link_to(__('Edit'), '@communityEvent_edit?id='.$communityEvent->getId()) ?>]
-<?php endif ?>
-<br>
 <?php
 $list = array(
   'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
-  'Name'                 => $communityEvent->getName(),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D'),
   'Area'                 => $communityEvent->getArea(),
+  'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
+  'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
   'Body'                 => nl2br($communityEvent->getBody()),
-  'Application deadline' => op_format_date($communityEvent->getApplicationDeadline(), 'D'),
-  'Capacity'             => $communityEvent->getCapacity(),
-  'Count of Member'      => $communityEvent->countCommunityEventMembers(),
 );
 
 if ($list['Count of Member'])
 {
-  $list['Count of Member'] .= '('.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId()).')';
+  $list['Count of Member'] .= '<br>'.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId());
+}
+
+if ($communityEvent->getApplicationDeadline())
+{
+  $list['Application deadline'] = op_format_date($communityEvent->getApplicationDeadline(), 'D');
+}
+
+if ($communityEvent->isEditable($sf_user->getMemberId()))
+{
+  $list[__('Edit this event')] = link_to(__('See event edit form'), '@communityEvent_edit?id='.$communityEvent->getId());
 }
 
 foreach ($list as $key => $value)
 {
-  echo '<font color="#999966">'.__($key, array(), 'community_event_form').':</font><br>'.$value.'<br>';
+  echo '<br>'.__($key, array(), 'community_event_form').':<br>'.$value.'<br>';
 }
 ?>
 

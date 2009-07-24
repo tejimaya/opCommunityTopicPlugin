@@ -8,7 +8,7 @@
       </trans-unit>
       <trans-unit id="2">
         <source>Body</source>
-        <target>本文</target>
+        <target>詳細</target>
       </trans-unit>
       <trans-unit id="3">
         <source>Open date</source>
@@ -32,11 +32,11 @@
       </trans-unit>
       <trans-unit id="8">
         <source>Count of Member</source>
-        <target>参加人数</target>
+        <target>参加者</target>
       </trans-unit>
       <trans-unit id="">
         <source>Writer</source>
-        <target>作成者</target>
+        <target>企画者</target>
       </trans-unit>
     </body>
   </file>
