@@ -75,6 +75,10 @@
         <target>参加者一覧を見る</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Event Members</source>
+        <target>ｲﾍﾞﾝﾄ参加者一覧</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>Event</source>
         <target>ｲﾍﾞﾝﾄ</target>
       </trans-unit>
