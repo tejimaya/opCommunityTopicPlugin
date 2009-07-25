@@ -79,7 +79,17 @@ class communityTopicActions extends sfActions
     $this->pager = new sfDoctrinePager('CommunityTopicComment', 20);
     if ($request->hasParameter('communityTopicComment'))
     {
-      $this->pager->setQuery($this->form->getQuery());
+      $parameter = $request->getParameter('communityTopicComment');
+      $community_topic_id = $parameter['community_topic_id']['text'];
+      $number = $parameter['number']['text'];
+      $member_name = $parameter['member_name']['text'];
+      $body = $parameter['body']['text'];
+      $query = Doctrine_Query::create()->from('CommunityTopicComment c')->leftJoin('c.Member m');
+      if (!empty($community_topic_id)) $query->andWhere('c.community_topic_id = ?', $community_topic_id);
+      if (!empty($number)) $query->andWhere('c.number = ?', $number);
+      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+      if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
+      $this->pager->setQuery($query);
     }
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
@@ -140,6 +150,100 @@ class communityTopicActions extends sfActions
       $this->event->delete();
       $this->getUser()->setFlash('notice', 'Event Deleted successfully.');
       $this->redirect('communitytopic/eventList');
+    }
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes eventCommentList action
+   *
+   * @param sfWebRequest $request A request object
+   */
+  public function executeEventMemberList(sfWebRequest $request)
+  {
+    $this->form = new CommunityEventMemberSearchForm();
+    $this->form->bind($request->getParameter('communityEventMember'), array());
+
+    $this->pager = new sfDoctrinePager('CommunityEventMember', 20);
+    if ($request->hasParameter('communityEventMember'))
+    {
+      $parameter = $request->getParameter('communityEventMember');
+      $community_event_id = $parameter['community_event_id']['text'];
+      $member_name = $parameter['member_name']['text'];
+      $query = Doctrine_Query::create()->from('CommunityEventMember c')->leftJoin('c.Member m')->leftJoin('c.CommunityEvent ce');
+      if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
+      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+      $this->pager->setQuery($query);
+    }
+    $this->pager->setPage($request->getParameter('page', 1));
+    $this->pager->init();
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes eventMemberDelete action
+   *
+   * @param sfWebRequest $request A request object
+   */
+  public function executeEventMemberDelete(sfWebRequest $request)
+  {
+    $this->eventMember = Doctrine::getTable('CommunityEventMember')->retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->eventMember);
+
+    if ($request->isMethod(sfRequest::POST))
+    {
+      $this->eventMember->delete();
+      $this->getUser()->setFlash('notice', 'Event Member Deleted successfully.');
+      $this->redirect('communitytopic/eventMemberList');
+    }
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes eventCommentList action
+   *
+   * @param sfWebRequest $request A request object
+   */
+  public function executeEventCommentList(sfWebRequest $request)
+  {
+    $this->form = new CommunityEventCommentSearchForm();
+    $this->form->bind($request->getParameter('communityEventComment'), array());
+
+    $this->pager = new sfDoctrinePager('CommunityEventComment', 20);
+    if ($request->hasParameter('communityEventComment'))
+    {
+      $parameter = $request->getParameter('communityEventComment');
+      $community_event_id = $parameter['community_event_id']['text'];
+      $number = $parameter['number']['text'];
+      $member_name = $parameter['member_name']['text'];
+      $body = $parameter['body']['text'];
+      $query = Doctrine_Query::create()->from('CommunityEventComment c')->leftJoin('c.Member m');
+      if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
+      if (!empty($number)) $query->andWhere('c.number = ?', $number);
+      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+      if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
+      $this->pager->setQuery($query);
+    }
+    $this->pager->setPage($request->getParameter('page', 1));
+    $this->pager->init();
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes eventCommentDelete action
+   *
+   * @param sfWebRequest $request A request object
+   */
+  public function executeEventCommentDelete(sfWebRequest $request)
+  {
+    $this->eventComment = Doctrine::getTable('CommunityEventComment')->retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->eventComment);
+
+    if ($request->isMethod(sfRequest::POST))
+    {
+      $this->eventComment->delete();
+      $this->getUser()->setFlash('notice', 'Event Comment Deleted successfully.');
+      $this->redirect('communitytopic/eventCommentList');
     }
     return sfView::SUCCESS;
   }

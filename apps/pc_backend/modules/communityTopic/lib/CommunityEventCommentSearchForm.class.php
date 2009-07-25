@@ -9,14 +9,14 @@
  */
 
 /**
- * Community Topic Comment Search Form
+ * Community Event Comment Search Form
  *
  * @package    OpenPNE
  * @subpackage filter
  * @author     Yoichiro SAKURAI <saku2saku@gmail.com>
  */
 
-class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFilter
+class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFilter
 {
   public function __construct($defaults = array(), $options = array(), $CSRFSecret = null)
   {
@@ -26,26 +26,26 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
   public function configure()
   {
     $this->setWidgets(array(
-      'community_topic_id'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'community_event_id'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'number'                => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'member_name'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'body'                  => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'community_topic_id' => new sfValidatorPass(),
+      'community_event_id' => new sfValidatorPass(),
       'number' => new sfValidatorPass(),
       'member_name' => new sfValidatorPass(),
       'body' => new sfValidatorPass(),
     ));
 
-    $this->widgetSchema->setLabel('community_topic_id', sfContext::getInstance()->getI18N()->__('Topic ID'));
+    $this->widgetSchema->setLabel('community_event_id', sfContext::getInstance()->getI18N()->__('Event ID'));
     $this->widgetSchema->setLabel('number', sfContext::getInstance()->getI18N()->__('Comment Number'));
     $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('Nickname'));
-    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Topic Comment Description'));
+    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Event Comment Description'));
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
-    $this->widgetSchema->setNameFormat('communityTopicComment[%s]');
+    $this->widgetSchema->setNameFormat('communityEventComment[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
 }

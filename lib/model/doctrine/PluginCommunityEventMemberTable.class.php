@@ -10,7 +10,7 @@
 
 /**
  * PluginCommunityEventMemberTable
- * 
+ *
  * @package    opCommunityTopicPlugin
  * @subpackage CommunityEventMember
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
@@ -23,5 +23,11 @@ class PluginCommunityEventMemberTable extends Doctrine_Table
       ->where('community_event_id = ?', $eventId)
       ->andWhere('member_id = ?', $memberId)
       ->fetchOne();
+  }
+
+  public function retrieveByPk($communityEventMemberId)
+  {
+    $result = $this->createQuery()->where('id = ?', $communityEventMemberId)->execute();
+    return $result->getFirst();
   }
 }

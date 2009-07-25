@@ -10,7 +10,7 @@
 
 /**
  * PluginCommunityEventCommentTable
- * 
+ *
  * @package    opCommunityTopicPlugin
  * @subpackage CommunityEventComment
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
@@ -55,5 +55,11 @@ class PluginCommunityEventCommentTable extends Doctrine_Table
     }
 
     return 0;
+  }
+
+  public function retrieveByPk($communityEventCommentId)
+  {
+    $result = $this->createQuery()->where('id = ?', $communityEventCommentId)->execute();
+    return $result->getFirst();
   }
 }

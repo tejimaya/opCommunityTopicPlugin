@@ -18,9 +18,13 @@
 
 class CommunityEventSearchForm extends PluginCommunityEventFormFilter
 {
+  public function __construct($defaults = array(), $options = array(), $CSRFSecret = null)
+  {
+    return parent::__construct($defaults, $options, false);
+  }
+
   public function configure()
   {
-    $q = Doctrine::getTable('CommunityEvent')->createQuery()->where('id > 0');
     $this->setWidgets(array(
       'id'                    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'name'                  => new sfWidgetFormFilterInput(array('with_empty' => false)),

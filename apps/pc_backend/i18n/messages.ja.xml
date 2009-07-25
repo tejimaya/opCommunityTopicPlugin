@@ -122,6 +122,54 @@
         <source>Delete Community Event</source>
         <target>コミュニティイベント削除確認画面</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Nickname</source>
+        <target>ニックネーム</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Member List</source>
+        <target>イベントメンバーリスト</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no event members matches search condition.</source>
+        <target>該当するイベントメンバーは存在しません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no topic comments matches search condition.</source>
+        <target>該当するコメントは存在しません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really want to delete this topic comment?</source>
+        <target>本当にこのコメントを削除してもよろしいですか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete Community Topic Comment</source>
+        <target>コメント削除確認画面</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Comment Description</source>
+        <target>コメント本文</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Comment List</source>
+        <target>イベントコメントリスト</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no event comments matches search condition.</source>
+        <target>該当するコメントは存在しません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete Community Event Comment</source>
+        <target>コメント削除確認画面</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really want to delete this event comment?</source>
+        <target>本当にこのコメントを削除してもよろしいですか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Comment Deleted successfully.</source>
+        <target>コメントを削除しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
