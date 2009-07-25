@@ -8,7 +8,7 @@
 <?php foreach ($commentPager->getResults() as $comment): ?>
 <hr>
 <?php echo op_within_page_link() ?>
-[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_format_date($comment->getCreatedAt(), 'XDateTime') ?>
+[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_format_date($comment->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
