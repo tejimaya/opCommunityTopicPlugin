@@ -24,10 +24,4 @@ class PluginCommunityEventMemberTable extends Doctrine_Table
       ->andWhere('member_id = ?', $memberId)
       ->fetchOne();
   }
-
-  public function retrieveByPk($communityEventMemberId)
-  {
-    $result = $this->createQuery()->where('id = ?', $communityEventMemberId)->execute();
-    return $result->getFirst();
-  }
 }

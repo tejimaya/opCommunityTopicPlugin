@@ -54,7 +54,7 @@ class communityTopicActions extends sfActions
    */
   public function executeTopicDelete(sfWebRequest $request)
   {
-    $this->topic = Doctrine::getTable('CommunityTopic')->retrieveByPk($request->getParameter('id'));
+    $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request->getParameter('id'));
     $this->forward404Unless($this->topic);
 
     if ($request->isMethod(sfRequest::POST))
@@ -103,7 +103,7 @@ class communityTopicActions extends sfActions
    */
   public function executeTopicCommentDelete(sfWebRequest $request)
   {
-    $this->topicComment = Doctrine::getTable('CommunityTopicComment')->retrieveByPk($request->getParameter('id'));
+    $this->topicComment = Doctrine::getTable('CommunityTopicComment')->findOneById($request->getParameter('id'));
     $this->forward404Unless($this->topicComment);
 
     if ($request->isMethod(sfRequest::POST))
@@ -142,7 +142,7 @@ class communityTopicActions extends sfActions
    */
   public function executeEventDelete(sfWebRequest $request)
   {
-    $this->event = Doctrine::getTable('CommunityEvent')->retrieveByPk($request->getParameter('id'));
+    $this->event = Doctrine::getTable('CommunityEvent')->findOneById($request->getParameter('id'));
     $this->forward404Unless($this->event);
 
     if ($request->isMethod(sfRequest::POST))
@@ -187,7 +187,7 @@ class communityTopicActions extends sfActions
    */
   public function executeEventMemberDelete(sfWebRequest $request)
   {
-    $this->eventMember = Doctrine::getTable('CommunityEventMember')->retrieveByPk($request->getParameter('id'));
+    $this->eventMember = Doctrine::getTable('CommunityEventMember')->findOneById($request->getParameter('id'));
     $this->forward404Unless($this->eventMember);
 
     if ($request->isMethod(sfRequest::POST))
@@ -236,7 +236,7 @@ class communityTopicActions extends sfActions
    */
   public function executeEventCommentDelete(sfWebRequest $request)
   {
-    $this->eventComment = Doctrine::getTable('CommunityEventComment')->retrieveByPk($request->getParameter('id'));
+    $this->eventComment = Doctrine::getTable('CommunityEventComment')->findOneById($request->getParameter('id'));
     $this->forward404Unless($this->eventComment);
 
     if ($request->isMethod(sfRequest::POST))

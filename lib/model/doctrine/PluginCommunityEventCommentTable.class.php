@@ -56,10 +56,4 @@ class PluginCommunityEventCommentTable extends Doctrine_Table
 
     return 0;
   }
-
-  public function retrieveByPk($communityEventCommentId)
-  {
-    $result = $this->createQuery()->where('id = ?', $communityEventCommentId)->execute();
-    return $result->getFirst();
-  }
 }

@@ -104,10 +104,4 @@ class PluginCommunityTopicTable extends Doctrine_Table
 
     return $pager;
   }
-
-  public function retrieveByPk($communityTopicId)
-  {
-    $result = $this->createQuery()->where('id = ?', $communityTopicId)->execute();
-    return $result->getFirst();
-  }
 }

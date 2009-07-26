@@ -118,10 +118,4 @@ class PluginCommunityEventTable extends Doctrine_Table
 
     return $pager;
   }
-
-  public function retrieveByPk($communityEventId)
-  {
-    $result = $this->createQuery()->where('id = ?', $communityEventId)->execute();
-    return $result->getFirst();
-  }
 }

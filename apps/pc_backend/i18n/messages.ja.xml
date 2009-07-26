@@ -170,6 +170,18 @@
         <source>Event Comment Deleted successfully.</source>
         <target>コメントを削除しました。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Delete Community Event Member</source>
+        <target>イベントメンバー削除確認画面</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Do you really want to delete this event member?</source>
+        <target>本当にこのメンバーをイベント参加者から削除してもよろしいですか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Event Member Deleted successfully.</source>
+        <target>メンバーをイベント参加者から削除しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

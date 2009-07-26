@@ -56,10 +56,4 @@ class PluginCommunityTopicCommentTable extends Doctrine_Table
 
     return 0;
   }
-
-  public function retrieveByPk($communityTopicCommentId)
-  {
-    $result = $this->createQuery()->where('id = ?', $communityTopicCommentId)->execute();
-    return $result->getFirst();
-  }
 }
