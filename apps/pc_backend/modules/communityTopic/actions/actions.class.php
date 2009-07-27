@@ -79,17 +79,7 @@ class communityTopicActions extends sfActions
     $this->pager = new sfDoctrinePager('CommunityTopicComment', 20);
     if ($request->hasParameter('communityTopicComment'))
     {
-      $parameter = $request->getParameter('communityTopicComment');
-      $community_topic_id = $parameter['community_topic_id']['text'];
-      $number = $parameter['number']['text'];
-      $member_name = $parameter['member_name']['text'];
-      $body = $parameter['body']['text'];
-      $query = Doctrine_Query::create()->from('CommunityTopicComment c')->leftJoin('c.Member m');
-      if (!empty($community_topic_id)) $query->andWhere('c.community_topic_id = ?', $community_topic_id);
-      if (!empty($number)) $query->andWhere('c.number = ?', $number);
-      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
-      if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
-      $this->pager->setQuery($query);
+      $this->pager->setQuery($this->form->getQuery());
     }
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
@@ -167,13 +157,7 @@ class communityTopicActions extends sfActions
     $this->pager = new sfDoctrinePager('CommunityEventMember', 20);
     if ($request->hasParameter('communityEventMember'))
     {
-      $parameter = $request->getParameter('communityEventMember');
-      $community_event_id = $parameter['community_event_id']['text'];
-      $member_name = $parameter['member_name']['text'];
-      $query = Doctrine_Query::create()->from('CommunityEventMember c')->leftJoin('c.Member m')->leftJoin('c.CommunityEvent ce');
-      if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
-      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
-      $this->pager->setQuery($query);
+      $this->pager->setQuery($this->form->getQuery());
     }
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
@@ -212,17 +196,7 @@ class communityTopicActions extends sfActions
     $this->pager = new sfDoctrinePager('CommunityEventComment', 20);
     if ($request->hasParameter('communityEventComment'))
     {
-      $parameter = $request->getParameter('communityEventComment');
-      $community_event_id = $parameter['community_event_id']['text'];
-      $number = $parameter['number']['text'];
-      $member_name = $parameter['member_name']['text'];
-      $body = $parameter['body']['text'];
-      $query = Doctrine_Query::create()->from('CommunityEventComment c')->leftJoin('c.Member m');
-      if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
-      if (!empty($number)) $query->andWhere('c.number = ?', $number);
-      if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
-      if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
-      $this->pager->setQuery($query);
+      $this->pager->setQuery($this->form->getQuery());
     }
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();

@@ -48,4 +48,18 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
     $this->widgetSchema->setNameFormat('communityTopicComment[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
+
+  public function getQuery(){
+    $parameter = $this->getTaintedValues();
+    $community_topic_id = $parameter['community_topic_id']['text'];
+    $number = $parameter['number']['text'];
+    $member_name = $parameter['member_name']['text'];
+    $body = $parameter['body']['text'];
+    $query = Doctrine_Query::create()->from('CommunityTopicComment c')->leftJoin('c.Member m');
+    if (!empty($community_topic_id)) $query->andWhere('c.community_topic_id = ?', $community_topic_id);
+    if (!empty($number)) $query->andWhere('c.number = ?', $number);
+    if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+    if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
+    return $query;
+  }
 }

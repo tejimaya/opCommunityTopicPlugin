@@ -48,4 +48,18 @@ class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFil
     $this->widgetSchema->setNameFormat('communityEventComment[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
+
+  public function getQuery(){
+    $parameter = $this->getTaintedValues();
+    $community_event_id = $parameter['community_event_id']['text'];
+    $number = $parameter['number']['text'];
+    $member_name = $parameter['member_name']['text'];
+    $body = $parameter['body']['text'];
+    $query = Doctrine_Query::create()->from('CommunityEventComment c')->leftJoin('c.Member m');
+    if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
+    if (!empty($number)) $query->andWhere('c.number = ?', $number);
+    if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+    if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
+    return $query;
+  }
 }

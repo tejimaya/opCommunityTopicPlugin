@@ -42,4 +42,14 @@ class CommunityEventMemberSearchForm extends PluginCommunityEventMemberFormFilte
     $this->widgetSchema->setNameFormat('communityEventMember[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
+
+  public function getQuery(){
+    $parameter = $this->getTaintedValues();
+    $community_event_id = $parameter['community_event_id']['text'];
+    $member_name = $parameter['member_name']['text'];
+    $query = Doctrine_Query::create()->from('CommunityEventMember c')->leftJoin('c.Member m')->leftJoin('c.CommunityEvent ce');
+    if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
+    if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
+    return $query;
+  }
 }
