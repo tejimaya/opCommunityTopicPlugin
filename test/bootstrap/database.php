@@ -8,6 +8,8 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-new sfDatabaseManager(ProjectConfiguration::getApplicationConfiguration('pc_frontend', 'test', true));
+$configuration = ProjectConfiguration::getApplicationConfiguration('pc_frontend', 'test', true);
+new sfDatabaseManager($configuration);
 
-Doctrine::loadData(dirname(__FILE__).'/../fixtures');
+$task = new sfDoctrineBuildAllReloadTask($configuration->getEventDispatcher(), new sfFormatter());
+$task->run(array('--no-confirmation', '--dir='.dirname(__FILE__).'/../fixtures', '--skip-forms'));

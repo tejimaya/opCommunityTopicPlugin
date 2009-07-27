@@ -260,3 +260,11 @@ CommunityEventComment:
     CommunityEvent: community_event_i_2
     Member: member_5
     body: 'こんにちは'
+
+CommunityEventMember:
+  community_event_member_a_1:
+    CommunityEvent: community_event_a_2
+    Member: member_1
+  community_event_member_a_2:
+    CommunityEvent: community_event_a_2
+    Member: member_2
