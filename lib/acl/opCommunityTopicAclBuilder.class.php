@@ -91,7 +91,7 @@ class opCommunityTopicAclBuilder extends opAclBuilder
     $acl = self::buildCollection($topic->getCommunity(), $targetMembers);
 
     $role = new Zend_Acl_Role($topic->getMemberId());
-    if ($acl->hasRole($role))
+    if ($acl->hasRole($role) && $topic->getCommunity()->isPrivilegeBelong($topic->getMemberId()))
     {
       $acl->removeRole($role);
       $acl->addRole($role, 'writer');
