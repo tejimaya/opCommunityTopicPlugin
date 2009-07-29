@@ -46,6 +46,7 @@ foreach ($list as $key => $value)
 <?php else: ?>
 <input name="participate" class="input_submit" type="submit" value="<?php echo __('Participate in this event') ?>" />
 <?php endif; ?>
+<br>
 <input name="comment" class="input_submit" type="submit" value="<?php echo __('Add a comment only') ?>" />
 </form>
 </table>
