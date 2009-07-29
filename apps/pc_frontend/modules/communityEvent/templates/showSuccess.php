@@ -54,10 +54,12 @@ op_include_parts('listBox', 'communityEvent', $options);
 </table>
 <div class="operation">
 <ul class="moreInfo button">
+<?php if (!$communityEvent->isClosed()): ?>
 <?php if ($communityEvent->isEventMember($sf_user->getMemberId())): ?>
 <li><input name="cancel" class="input_submit" type="submit" value="<?php echo __('Cancel') ?>" /></li>
 <?php else: ?>
 <li><input name="participate" class="input_submit" type="submit" value="<?php echo __('Participate in this event') ?>" /></li>
+<?php endif; ?>
 <?php endif; ?>
 <li><input name="comment" class="input_submit" type="submit" value="<?php echo __('Add a comment only') ?>" /></li>
 </ul>
