@@ -8,7 +8,6 @@ $list = array(
   'Area'                 => $communityEvent->getArea(),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
-  'Body'                 => nl2br($communityEvent->getBody()).'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm'),
 );
 
 if ($communityEvent->countCommunityEventMembers())
@@ -20,6 +19,8 @@ if ($communityEvent->getApplicationDeadline())
 {
   $list['Application deadline'] = op_format_date($communityEvent->getApplicationDeadline(), 'D');
 }
+
+$list['Body'] = nl2br($communityEvent->getBody()).'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm');
 
 if ($communityEvent->isEditable($sf_user->getMemberId()))
 {
