@@ -158,6 +158,10 @@
         <source>Nobody joins this event.</source>
         <target>このイベントの参加者はいません。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Comment</source>
+        <target>コメント</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

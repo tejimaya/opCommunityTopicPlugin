@@ -18,9 +18,8 @@
 <?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'addComment')): ?>
 <hr>
 <?php
-$options['title'] = __('Post a new topic comment');
 $options['url'] = url_for('communityTopic_comment_create', $communityTopic);
-$options['button'] = __('Save');
+$options['button'] = __('Post');
 $options['isMultipart'] = true;
 op_include_form('formTopicComment', $form, $options);
 ?>

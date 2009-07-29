@@ -38,11 +38,6 @@ foreach ($list as $key => $value)
 <?php if ($communityEvent->isCreatableCommunityEventComment($sf_user->getMemberId())): ?>
 <hr>
 <div id="formEventComment">
-<table width="100%">
-<tbody><tr><td bgcolor="#7ddadf">
-<font color="#000000"><?php echo __('Post a new event comment') ?></font><br>
-</td></tr>
-</tbody></table>
 <table>
 <form action="<?php echo url_for('communityEvent_comment_create', $communityEvent) ?>" method="post">
 <?php echo $form ?>

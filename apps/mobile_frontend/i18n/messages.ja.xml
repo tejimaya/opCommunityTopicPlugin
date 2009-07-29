@@ -182,6 +182,14 @@
         <source>Nobody joins this event.</source>
         <target>このｲﾍﾞﾝﾄの参加者はいません。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Comment</source>
+        <target>ｺﾒﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Post</source>
+        <target>書き込む</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

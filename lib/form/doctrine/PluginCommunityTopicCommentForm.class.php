@@ -31,7 +31,7 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['created_at']);
     unset($this['updated_at']);
 
-    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Body', array(), 'community_topic_form'));
+    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment'));
     $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
   }
 
