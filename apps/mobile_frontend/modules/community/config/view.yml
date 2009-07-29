@@ -1,21 +1,21 @@
 homeSuccess:
   customize:
-    communityTopicList:
+    01_communityTopicList:
       template: [communityTopic, communityTopicList]
       parts:    [communityMember]
-      target:   [after]
+      target:   [before]
       is_component: true
 
-    communityEventList:
+    02_communityEventList:
       template: [communityEvent, communityEventList]
       parts:    [communityMember]
-      target:   [after]
+      target:   [before]
       is_component: true
 
-    searchFormLine:
+    03_searchFormLine:
       template: [communityTopic, searchFormLine]
       parts:    [communityMember]
-      target:   [after]
+      target:   [before]
       is_component: false
 
 searchSuccess:

@@ -24,7 +24,7 @@ if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
   $moreInfo[] = link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId());
 }
 $option = array(
-  'title' => __('Community Events'),
+  'title' => __('Recently Posted This Community Events'),
   'border' => true,
   'moreInfo' => $moreInfo,
 );

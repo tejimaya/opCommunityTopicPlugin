@@ -24,7 +24,7 @@ if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
   $moreInfo[] = link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId());
 }
 $option = array(
-  'title' => __('Community Topics'),
+  'title' => __('Recently Posted This Community Topics'),
   'border' => true,
   'moreInfo' => $moreInfo
 );

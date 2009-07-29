@@ -55,6 +55,10 @@
         <target>ｺﾐｭﾆﾃｨ最新書き込み</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Recently Posted This Community Topics</source>
+        <target>新着ｺﾐｭﾆﾃｨﾄﾋﾟｯｸ</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>Everyone can read</source>
         <target>全員に公開</target>
       </trans-unit>
@@ -141,6 +145,10 @@
       <trans-unit id="">
         <source>Recently Posted Community Events</source>
         <target>ｺﾐｭﾆﾃｨ最新ｲﾍﾞﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted This Community Events</source>
+        <target>新着ｺﾐｭﾆﾃｨｲﾍﾞﾝﾄ</target>
       </trans-unit>
       <trans-unit id="">
         <source>Search Community Topics</source>
