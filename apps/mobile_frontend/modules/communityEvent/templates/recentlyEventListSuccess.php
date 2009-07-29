@@ -1,3 +1,5 @@
+<?php op_mobile_page_title(__('Recently Posted Community Events')) ?>
+
 <?php if ($pager->getNbResults()): ?>
 <?php use_helper('Date') ?>
 
@@ -20,7 +22,6 @@ foreach ($pager->getResults() as $event)
   );
 }
 $options = array(
-  'title' => __('Recently Posted Community Events'),
   'border' => true,
 );
 op_include_list('communityList', $list, $options);
