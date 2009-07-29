@@ -1,12 +1,12 @@
 <?php if ($commentPager->getNbResults()): ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 <center>
 <?php echo __('Comments', array(), 'form_community') ?><br>
 <?php op_include_pager_total($commentPager) ?>
 </center>
 
 <?php foreach ($commentPager->getResults() as $comment): ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_12'] ?>">
 <?php echo op_within_page_link() ?>
 [<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_format_date($comment->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
@@ -17,8 +17,8 @@
 <?php endif; ?>
 <?php echo nl2br($comment->getBody()) ?>
 <?php endforeach; ?>
+<hr color="<?php echo $op_color['core_color_12'] ?>">
 <?php if ($commentPager->haveToPaginate()): ?>
-<hr>
 <?php op_include_pager_navigation($commentPager, '@communityTopic_show?id='.$communityTopic->getId().'&page=%d') ?>
 <?php endif; ?>
 <?php endif; ?>

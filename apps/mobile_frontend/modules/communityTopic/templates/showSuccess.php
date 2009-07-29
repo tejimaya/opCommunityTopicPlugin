@@ -18,7 +18,7 @@
 
 <?php echo op_within_page_link('') ?>
 <?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'addComment')): ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 <?php
 $options['url'] = url_for('communityTopic_comment_create', $communityTopic);
 $options['button'] = __('Post');
@@ -26,7 +26,7 @@ $options['isMultipart'] = true;
 op_include_form('formTopicComment', $form, $options);
 ?>
 <?php endif; ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 
 <?php echo link_to(__('Topic List'), '@communityTopic_list_community?id='.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

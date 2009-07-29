@@ -42,7 +42,7 @@ foreach ($list as $key => $value)
 
 <?php echo op_within_page_link('') ?>
 <?php if ($communityEvent->isCreatableCommunityEventComment($sf_user->getMemberId())): ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 <div id="formEventComment">
 <table>
 <form action="<?php echo url_for('communityEvent_comment_create', $communityEvent) ?>" method="post">
@@ -60,7 +60,7 @@ foreach ($list as $key => $value)
 </table>
 </div>
 <?php endif; ?>
-<hr>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 
 <?php echo link_to(__('List of events'), '@communityEvent_list_community?id='.$community->getId()) ?><br>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>
