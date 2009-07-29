@@ -11,7 +11,7 @@ $list = array(
   'Body'                 => nl2br($communityEvent->getBody()),
 );
 
-if ($list['Count of Member'])
+if ($communityEvent->countCommunityEventMembers())
 {
   $list['Count of Member'] .= '<br>'.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId());
 }
