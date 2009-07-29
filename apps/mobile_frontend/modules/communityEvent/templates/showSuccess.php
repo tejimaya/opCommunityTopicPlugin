@@ -10,6 +10,11 @@ $list = array(
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
 );
 
+if (!$communityEvent->getMember() || !$communityEvent->getMember()->getName())
+{
+  $list['Writer'] = '';
+}
+
 if ($communityEvent->countCommunityEventMembers())
 {
   $list['Count of Member'] .= '<br>'.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId());

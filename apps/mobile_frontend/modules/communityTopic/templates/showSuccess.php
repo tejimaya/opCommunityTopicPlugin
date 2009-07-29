@@ -5,7 +5,9 @@
 <?php echo op_format_date($communityTopic->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($communityTopic->getMemberId() === $sf_user->getMemberId()): ?>
 <?php endif; ?><br>
+<?php if ($communityTopic->getMember() && $communityTopic->getMember()->getName()): ?>
 <?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?>
+<?php endif; ?>
 <?php if ($communityTopic->isEditable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Edit'), '@communityTopic_edit?id='.$communityTopic->getId()) ?>]
 <?php endif ?>
