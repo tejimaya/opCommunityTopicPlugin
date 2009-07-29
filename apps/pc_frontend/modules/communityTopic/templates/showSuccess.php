@@ -6,7 +6,7 @@
 <h3><?php echo '['.$community->getName().'] '.__('Topic') ?></h3>
 </div>
 <dl>
-<dt><?php echo nl2br(op_format_date($communityTopic->getTopicUpdatedAt(), 'XDateTimeJaBr')) ?></dt>
+<dt><?php echo nl2br(op_format_date($communityTopic->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
 <p><?php echo $communityTopic->getName() ?></p>

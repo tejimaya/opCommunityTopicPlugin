@@ -2,7 +2,7 @@
 <?php op_mobile_page_title($community->getName(), $communityTopic->getName()) ?>
 
 <?php echo op_within_page_link() ?>
-<?php echo op_format_date($communityTopic->getTopicUpdatedAt(), 'MM/dd HH:mm') ?>
+<?php echo op_format_date($communityTopic->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($communityTopic->getMemberId() === $sf_user->getMemberId()): ?>
 <?php endif; ?><br>
 <?php echo link_to($communityTopic->getMember()->getName(), 'member/profile?id='.$communityTopic->getMember()->getId()) ?>
