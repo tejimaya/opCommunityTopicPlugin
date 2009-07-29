@@ -41,12 +41,14 @@ foreach ($list as $key => $value)
 <table>
 <form action="<?php echo url_for('communityEvent_comment_create', $communityEvent) ?>" method="post">
 <?php echo $form ?>
+<?php if (!$communityEvent->isClosed()): ?>
 <?php if ($communityEvent->isEventMember($sf_user->getMemberId())): ?>
 <input name="cancel" class="input_submit" type="submit" value="<?php echo __('Cancel') ?>" />
 <?php else: ?>
 <input name="participate" class="input_submit" type="submit" value="<?php echo __('Participate in this event') ?>" />
 <?php endif; ?>
 <br>
+<?php endif; ?>
 <input name="comment" class="input_submit" type="submit" value="<?php echo __('Add a comment only') ?>" />
 </form>
 </table>
