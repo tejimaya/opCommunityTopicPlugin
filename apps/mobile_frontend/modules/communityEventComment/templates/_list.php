@@ -9,7 +9,7 @@
 <hr>
 <?php echo op_within_page_link() ?>
 [<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_format_date($comment->getCreatedAt(), 'MM/dd HH:mm') ?><br>
-<?php if ($comment->getMember()): ?>
+<?php if ($comment->getMember() && $comment->getMember()->getName()): ?>
 <?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMemberId()) ?>
 <?php endif; ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
