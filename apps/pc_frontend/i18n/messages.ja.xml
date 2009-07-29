@@ -154,6 +154,10 @@
         <source>Your search queries did not match any community events.</source>
         <target>該当するイベントはありませんでした。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Nobody joins this event.</source>
+        <target>このイベントの参加者はいません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -170,6 +170,10 @@
         <source>See event edit form</source>
         <target>ｲﾍﾞﾝﾄ編集画面を見る</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Nobody joins this event.</source>
+        <target>このｲﾍﾞﾝﾄの参加者はいません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
