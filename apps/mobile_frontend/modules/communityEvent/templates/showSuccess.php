@@ -42,7 +42,7 @@ foreach ($list as $key => $value)
 <table>
 <form action="<?php echo url_for('communityEvent_comment_create', $communityEvent) ?>" method="post">
 <?php echo $form ?>
-<?php if (!$communityEvent->isClosed()): ?>
+<?php if (!$communityEvent->isClosed() && !$communityEvent->isExpired() && !$communityEvent->isAtCapacity()): ?>
 <?php if ($communityEvent->isEventMember($sf_user->getMemberId())): ?>
 <input name="cancel" class="input_submit" type="submit" value="<?php echo __('Cancel') ?>" />
 <?php else: ?>

@@ -54,7 +54,7 @@ op_include_parts('listBox', 'communityEvent', $options);
 </table>
 <div class="operation">
 <ul class="moreInfo button">
-<?php if (!$communityEvent->isClosed()): ?>
+<?php if (!$communityEvent->isClosed() && !$communityEvent->isExpired() && !$communityEvent->isAtCapacity()): ?>
 <?php if ($communityEvent->isEventMember($sf_user->getMemberId())): ?>
 <li><input name="cancel" class="input_submit" type="submit" value="<?php echo __('Cancel') ?>" /></li>
 <?php else: ?>
