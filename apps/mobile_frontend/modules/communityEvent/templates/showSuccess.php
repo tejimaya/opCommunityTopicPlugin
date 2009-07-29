@@ -8,7 +8,7 @@ $list = array(
   'Area'                 => $communityEvent->getArea(),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
-  'Body'                 => nl2br($communityEvent->getBody()),
+  'Body'                 => nl2br($communityEvent->getBody()).'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm'),
 );
 
 if ($communityEvent->countCommunityEventMembers())
