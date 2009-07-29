@@ -6,7 +6,7 @@ $getCommunityComment = 'event' === $type
   : 'getCommunityTopicComment';
 foreach ($pager->getResults() as $communityTopic)
 {
-  $list[] = sprintf("[%s]<br>%s(%s)",
+  $list[] = sprintf("%s<br>%s(%s)",
     op_format_date($communityTopic->getUpdatedAt(), 'XDateTime'),
     link_to(
       sprintf("%s(%d)",
