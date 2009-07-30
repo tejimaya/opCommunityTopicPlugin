@@ -34,6 +34,8 @@ op_include_list('communityEventList', $list, $options);
 <?php op_include_pager_navigation($pager, 'communityEvent/listCommunity?id='.$community->getId().'&page=%d', array('is_total' => false)) ?>
 <?php endif; ?>
 
+<hr color="<?php echo $op_color['core_color_11'] ?>">
+
 <?php else: ?>
 
 <?php echo __('There are no events') ?>
