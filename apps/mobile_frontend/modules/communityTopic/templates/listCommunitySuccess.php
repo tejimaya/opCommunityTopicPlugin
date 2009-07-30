@@ -1,5 +1,7 @@
 <?php op_mobile_page_title($community->getName(), __('Topic List')) ?>
 
+<?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
+
 <?php if ($pager->getNbResults()): ?>
 
 <center>
@@ -42,5 +44,7 @@ op_include_list('communityTopicList', $list, $options);
 
 <?php endif; ?>
 
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
 <?php echo link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId()) ?><br>
+<?php endif; ?>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>
