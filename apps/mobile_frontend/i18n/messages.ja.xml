@@ -190,6 +190,10 @@
         <source>Post</source>
         <target>書き込む</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Do you really delete this comment?</source>
+        <target>本当にこのｺﾒﾝﾄを削除しますか？</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
