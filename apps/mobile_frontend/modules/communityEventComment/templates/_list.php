@@ -8,7 +8,7 @@
 <?php
 foreach ($commentPager->getResults() as $comment)
 {
-  $list[] = get_partial('communityTopicComment/comment', array('comment' => $comment));
+  $list[] = get_partial('communityEventComment/comment', array('comment' => $comment));
 }
 
 op_include_list('commentList', $list, array('border' => true));
