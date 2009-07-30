@@ -29,7 +29,6 @@ $options = array(
 );
 op_include_list('communityEventList', $list, $options);
 ?>
-<hr color="<?php echo $op_color['core_color_11'] ?>">
 
 <?php if ($pager->haveToPaginate()): ?>
 <?php op_include_pager_navigation($pager, 'communityEvent/listCommunity?id='.$community->getId().'&page=%d', array('is_total' => false)) ?>
