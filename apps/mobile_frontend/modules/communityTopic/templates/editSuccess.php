@@ -1,6 +1,7 @@
+<?php op_mobile_page_title($communityTopic->getCommunity()->getName(), __('Edit the topic')) ?>
+
 <?php
 $options = array(
-  'title' => __('Edit the topic'),
   'url' => url_for('communityTopic_update', $communityTopic),
   'button' => __('Edit')
 );
