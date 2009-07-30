@@ -48,3 +48,13 @@ if (!$communityId)
 op_include_form('searchCommunityTopic', $form, $options);
 ?>
 
+<hr color="<?php echo $op_color['core_color_11'] ?>">
+<?php
+if ($communityId)
+{
+  echo link_to(__('Community Top'), 'community/home?id='.$communityId);
+}
+else
+{
+  echo link_to(__('Search Communities'), 'community/search');
+}
