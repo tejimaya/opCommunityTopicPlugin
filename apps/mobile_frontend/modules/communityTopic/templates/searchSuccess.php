@@ -17,6 +17,13 @@ $options = array(
 
 include_partial('partsSearchResultList', $options);
 ?>
+
+<?php
+if ($pager->haveToPaginate())
+{
+  op_include_pager_navigation($pager, 'communityTopic/search?page=%d', array('is_total' => false, 'use_current_query_string' => true));
+}
+?>
 <?php else: ?>
 <?php
 if ('topic' === $type)
