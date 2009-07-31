@@ -1,6 +1,7 @@
+<?php op_mobile_page_title($communityEvent->getCommunity()->getName(), __('Edit the event')) ?>
+
 <?php
 $options = array(
-  'title' => __('Edit the event'),
   'url' => url_for('communityEvent_update', $communityEvent),
   'button' => __('Edit')
 );
