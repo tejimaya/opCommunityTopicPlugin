@@ -45,8 +45,12 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
       'min' => strtotime(date('Y-m-d'))
     ), array('min' => 'The date must be after now.')));
 
-    $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateOpenDate'))));
-    $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateApplicationDeadline'))));
+    $validatorOpenDate = new sfValidatorCallback(array('callback' => array($this, 'validateOpenDate')));
+    $this->mergePostValidator($validatorOpenDate);
+
+    $validatorApplicationDeadline = new sfValidatorCallback(array('callback' => array($this, 'validateApplicationDeadline')));
+    $validatorApplicationDeadline->addMessage('invalid_application_deadline', 'The application deadline must be before the open date.');
+    $this->mergePostValidator($validatorApplicationDeadline);
 
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_event_form');
   }
@@ -55,7 +59,7 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
   {
     if ($this->isNew())
     {
-      $dateValidator = new sfValidatorDate(array('min' => strtotime(date('Y-m-d'))), array('min' => 'The date must be after now.'));
+      $dateValidator = new sfValidatorDate(array('min' => strtotime(date('Y-m-d'))), array('min' => 'The open date must be after now.'));
       $value['open_date'] = $dateValidator->clean($value['open_date']);
     }
 
@@ -68,7 +72,7 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
     {
       if (strtotime($value['application_deadline']) > strtotime($value['open_date']))
       {
-        throw new sfValidatorError($validator, 'invalid');
+        throw new sfValidatorError($validator, 'invalid_application_deadline');
       }
     }
 
