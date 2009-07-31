@@ -100,7 +100,7 @@ abstract class opCommunityTopicPluginEventCommentActions extends sfActions
 
     $this->communityEventComment->delete();
 
-    $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
+    $this->getUser()->setFlash('notice', sfContext::getInstance()->getI18N()->__('The comment was deleted successfully.'));
 
     $this->redirect('@communityEvent_show?id='.$this->communityEvent->getId());
   }

@@ -194,6 +194,10 @@
         <source>Do you really delete this comment?</source>
         <target>本当にこのｺﾒﾝﾄを削除しますか？</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>The comment was deleted successflly.</source>
+        <target>ｺﾒﾝﾄの削除が完了しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
