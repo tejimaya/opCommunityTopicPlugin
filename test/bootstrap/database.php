@@ -8,7 +8,17 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-$configuration = ProjectConfiguration::getApplicationConfiguration('pc_frontend', 'test', true);
+// guess current application
+if (!isset($app))
+{
+  $traces = debug_backtrace();
+  $caller = $traces[0];
+
+  $dirPieces = explode(DIRECTORY_SEPARATOR, dirname($caller['file']));
+  $app = array_pop($dirPieces);
+}
+
+$configuration = ProjectConfiguration::getApplicationConfiguration($app, 'test', true);
 new sfDatabaseManager($configuration);
 
 $task = new sfDoctrineBuildAllReloadTask($configuration->getEventDispatcher(), new sfFormatter());

@@ -21,20 +21,40 @@ MemberConfig:
     name: "pc_address"
     value: "sns@example.com"
     Member: member_1
+  member_mobile_address_1:
+    name: "mobile_address"
+    value: "sns@example.com"
+    Member: member_1
   member_address_2:
     name: "pc_address"
+    value: "tanaka@example.com"
+    Member: member_2
+  member_mobile_address_2:
+    name: "mobile_address"
     value: "tanaka@example.com"
     Member: member_2
   member_address_3:
     name: "pc_address"
     value: "sasaki@example.com"
     Member: member_3
+  member_mobile_address_3:
+    name: "mobile_address"
+    value: "sasaki@example.com"
+    Member: member_3
   member_address_4:
     name: "pc_address"
     value: "yamada@example.com"
     Member: member_4
+  member_mobile_address_4:
+    name: "mobile_address"
+    value: "yamada@example.com"
+    Member: member_4
   member_address_5:
     name: "pc_address"
+    value: "tom@example.com"
+    Member: member_5
+  member_mobile_address_5:
+    name: "mobile_address"
     value: "tom@example.com"
     Member: member_5
   member_password_1:
