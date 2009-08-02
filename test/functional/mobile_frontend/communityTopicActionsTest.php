@@ -31,21 +31,17 @@ $browser->setHttpHeader('User-Agent', MOBILE_USER_AGENT);
 $user = new sfTestFunctional($browser, new lime_test(612, new lime_output_color()));
 
 // create a test user: Mr_OpenPNE (community admin)
-$Mr_OpenPNE = createUser('sns@mobile.ne.jp', $user);
+//sfContext::getInstance()->getUser()->setCulture('en');
+$Mr_OpenPNE = createUser('sns@example.com', $user);
+$Mr_OpenPNE->getContext()->getUser()->setCulture('en');
 $Mr_OpenPNE
 ->info('public_flag: auth_commu_member, topic_authority: admin_only')
-->get('/community/1')
+->get('/community/home/id/1')
   ->info('1. Mr. OpenPNE can access the community home')
   ->isStatusCode(200)
   ->with('request')->begin()
     ->isParameter('module', 'community')
     ->isParameter('action', 'home')
-  ->end()
-  ->with('response')->begin()
-    ->info('1-a. Mr. OpenPNE can see "新着ﾄﾋﾟｯｸﾘｽﾄ"')
-    ->checkElement('#communityTopic td:contains("新着ﾄﾋﾟｯｸﾘｽﾄ")', true)
-    ->info('1-b. Mr. OpenPNE can see "ﾄﾋﾟｯｸを作成する"')
-    ->checkElement('#communityTopic div a:contains("ﾄﾋﾟｯｸを作成する")', true)
   ->end()
 ->get('/communityTopic/listCommunity/1')
   ->info('2. Mr. OpenPNE can access the community topic list')
@@ -53,12 +49,6 @@ $Mr_OpenPNE
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
     ->isParameter('action', 'listCommunity')
-  ->end()
-  ->with('response')->begin()
-    ->info('2-a. Mr. OpenPNE can see "ﾄﾋﾟｯｸを作成する"')
-    ->checkElement('#communityTopicList a:contains("ﾄﾋﾟｯｸを作成する")', true)
-    ->info('2-c. Mr. OpenPNE can see two links')
-    ->checkElement('#communityTopicList dd a', true, array('count' => 2))
   ->end()
 ->get('/communityTopic/1')
   ->info('3. Mr. OpenPNE can access the community topic')
@@ -69,18 +59,19 @@ $Mr_OpenPNE
   ->end()
   ->with('response')->begin()
     ->info('3-a. Mr. OpenPNE can see "編集"')
-    ->checkElement('a:contains("編集")', true)
+    ->checkElement('a:contains("Edit")', true)
     ->info('3-b. Mr. OpenPNE can see "ｺﾒﾝﾄ"')
-    ->checkElement('center:contains("ｺﾒﾝﾄ")', true)
+    ->checkElement('center:contains("Comment")', true)
     ->info('3-c. Mr. OpenPNE can see "削除"')
-    ->checkElement('#commentList tr td a:contains("削除")', true)
+    ->checkElement('#commentList tr td a:contains("Delete")', true)
     ->info('3-d. Mr. OpenPNE can see "ｺﾒﾝﾄ"')
-    ->checkElement('#formTopicComment form label:contains("ｺﾒﾝﾄ")', true)
+    ->checkElement('#formTopicComment form label:contains("Comment")', true)
   ->end()
-  ->info('3-e. Mr. OpenPNE can create a new topic comment')
   ->click('書き込む', array('community_topic_comment' => array(
     'body' => 'test',
   )))
+  ->with('response')->debug()
+  ->info('3-e. Mr. OpenPNE can create a new topic comment')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -94,7 +85,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'new')
   ->end()
   ->info('4a. Mr. OpenPNE can create a new topic')
-  ->click('新規作成', array('community_topic' => array(
+  ->click('Send', array('community_topic' => array(
     'name' => 'test',
     'body' => 'test',
   )))
