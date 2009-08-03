@@ -221,7 +221,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     $this->communityId = $request->getParameter('id');
 
     $q = $table->getSearchQuery($request->getParameter('id'), $request->getParameter('target'), $request->getParameter('keyword'));
-    $this->pager = $table->getResultListPager($q);
+    $this->pager = $table->getResultListPager($q, $request->getParameter('page'));
 
     $this->isResult = false;
     if (null !== $request->getParameter('keyword') || null !== $request->getParameter('target') || null !== $request->getParameter('type'))

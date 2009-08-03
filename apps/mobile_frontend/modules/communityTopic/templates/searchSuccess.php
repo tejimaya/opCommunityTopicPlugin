@@ -24,6 +24,7 @@ if ($pager->haveToPaginate())
   op_include_pager_navigation($pager, 'communityTopic/search?page=%d', array('is_total' => false, 'use_current_query_string' => true));
 }
 ?>
+<hr color="<?php echo $op_color['core_color_11'] ?>">
 <?php else: ?>
 <?php
 if ('topic' === $type)
