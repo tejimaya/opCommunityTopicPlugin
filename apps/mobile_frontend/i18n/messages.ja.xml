@@ -198,6 +198,18 @@
         <source>The comment was deleted successfully.</source>
         <target>ｺﾒﾝﾄの削除が完了しました。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>The open date must be after now.</source>
+        <target>開催日時に過去は指定できません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The date must be after now.</source>
+        <target>期日に過去は指定できません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The application deadline must be before the open date.</source>
+        <target>募集期限は開催日時より後に指定できません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
