@@ -195,7 +195,7 @@
         <target>本当にこのｺﾒﾝﾄを削除しますか？</target>
       </trans-unit>
       <trans-unit id="">
-        <source>The comment was deleted successflly.</source>
+        <source>The comment was deleted successfully.</source>
         <target>ｺﾒﾝﾄの削除が完了しました。</target>
       </trans-unit>
     </body>
