@@ -39,4 +39,10 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
   {
     $this->communityTopic = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));
   }
+
+  public function executeTopSearchForm()
+  {
+    $this->topicSearchCaption = sfContext::getInstance()->getI18N()->__('Topic');
+    $this->eventSearchCaption = sfContext::getInstance()->getI18N()->__('Event');
+  }
 }

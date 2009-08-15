@@ -54,6 +54,11 @@ class opCommunityTopicPluginRouting
         array('module' => 'communityTopic', 'action' => 'search')
       ),
 
+      'communityTopic_search_form' => new sfRoute(
+        '/communityTopic/searchForm',
+        array('module' => 'communityTopic', 'action' => 'searchForm')
+      ),
+
       'communityTopic_nodefaults' => new sfRoute(
         '/communityTopic/*',
         array('module' => 'default', 'action' => 'error')

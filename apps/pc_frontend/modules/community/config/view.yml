@@ -18,6 +18,12 @@ homeSuccess:
       target: [after]
       is_component: false
 
+    topSearchForm:
+      template: [communityTopic, topSearchForm]
+      parts: [communityImageBox]
+      target: [before]
+      is_component: true
+
 searchSuccess:
   customize:
     topicSearchLink:
