@@ -1,0 +1,43 @@
+topic:
+  class: opCommunityTopicPluginRouteCollection
+  options: { name: topic }
+
+event:
+  class: opCommunityTopicPluginRouteCollection
+  options: { name: event }
+
+communityEvent_memberList:
+  url: /communityEvent/:id/memberList
+  class: sfDoctrineRoute
+  options: { model: CommunityEvent, type: object }
+  param:   { module: communityEvent, action: memberList }
+  requirements:
+    id: \d+
+
+communityTopic_recently_topic_list:
+  url: /communityTopic/recentlyTopicList
+  param: { module: communityTopic, action: recentlyTopicList }
+
+communityEvent_recently_event_list:
+  url: /communityEvent/recentlyEventList
+  param: { module: communityEvent, action: recentlyEventList }
+
+communityTopic_search:
+  class: sfDoctrineRoute
+  url: /communityTopic/search/:id
+  options: { model: CommunityTopic, type: object }
+  param: { module: communityTopic, action: search }
+  requirements:
+    id: \d+
+
+communityTopic_search_all:
+  url: /communityTopic/search
+  param: { module: communityTopic, action: search }
+
+communityTopic_search_form:
+  url: /communityTopic/searchForm
+  param: { module: communityTopic, action: searchForm }
+
+communityTopic_nodefaults:
+  url: /communityTopic/*
+  param: { module: default, action: error }
