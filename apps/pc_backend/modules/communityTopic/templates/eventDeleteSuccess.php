@@ -6,8 +6,8 @@
 
 <p><?php echo __('Do you really want to delete this event?') ?></p>
 
-<form action="<?php url_for('communitytopic/eventDelete?id='.$event->getId()) ?>" method="post">
-<?php include_partial('communitytopic/eventInfo', array(
+<form action="<?php url_for('communityTopic/eventDelete?id='.$event->getId()) ?>" method="post">
+<?php include_partial('communityTopic/eventInfo', array(
   'event' => $event,
   'moreInfo' => array('<input type="submit" value="' . __('Delete') . '" />')
 )); ?>

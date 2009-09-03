@@ -1,7 +1,7 @@
 Navigation:
   backend_side_community_topic:
     type: "backend_side"
-    uri: "communitytopic/topicList"
+    uri: "communityTopic/topicList"
     sort_order: 25
     Translation:
       ja_JP:

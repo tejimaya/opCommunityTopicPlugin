@@ -4,7 +4,7 @@
 
 <?php slot('title', __('Topic List')); ?>
 
-<?php echo $form->renderFormTag(url_for('communitytopic/topicList')) ?>
+<?php echo $form->renderFormTag(url_for('communityTopic/topicList')) ?>
 <table>
 <?php echo $form ?>
 <tr>
@@ -16,13 +16,13 @@
 <?php echo __('There are no topics matches search condition.') ?>
 <?php else: ?>
 <?php ob_start() ?>
-<p><?php op_include_pager_navigation($pager, 'communitytopic/topicList?page=%d') ?></p>
+<p><?php op_include_pager_navigation($pager, 'communityTopic/topicList?page=%d') ?></p>
 <?php $pagerNavi = ob_get_flush() ?>
 <?php foreach ($pager->getResults() as $topic): ?>
-<?php include_partial('communitytopic/topicInfo', array(
+<?php include_partial('communityTopic/topicInfo', array(
   'topic' => $topic,
   'moreInfo' => array(
-    link_to(__('Delete'), 'communitytopic/topicDelete?id='.$topic->getId())
+    link_to(__('Delete'), 'communityTopic/topicDelete?id='.$topic->getId())
   )
 )); ?>
 <?php endforeach; ?>

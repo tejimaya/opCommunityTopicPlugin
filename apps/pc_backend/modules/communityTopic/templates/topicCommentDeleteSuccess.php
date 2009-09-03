@@ -6,8 +6,8 @@
 
 <p><?php echo __('Do you really want to delete this topic comment?') ?></p>
 
-<form action="<?php url_for('communitytopic/topicCommentDelete?id='.$topicComment->getId()) ?>" method="post">
-<?php include_partial('communitytopic/topicCommentInfo', array(
+<form action="<?php url_for('communityTopic/topicCommentDelete?id='.$topicComment->getId()) ?>" method="post">
+<?php include_partial('communityTopic/topicCommentInfo', array(
   'topicComment' => $topicComment,
   'moreInfo' => array('<input type="submit" value="' . __('Delete') . '" />')
 )); ?>

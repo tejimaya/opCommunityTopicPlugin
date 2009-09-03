@@ -24,7 +24,7 @@ class communityTopicActions extends sfActions
    */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('communitytopic', 'topicList');
+    $this->forward('communityTopic', 'topicList');
   }
 
   /**
@@ -54,14 +54,14 @@ class communityTopicActions extends sfActions
    */
   public function executeTopicDelete(sfWebRequest $request)
   {
-    $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request->getParameter('id'));
+    $this->topic = Doctrine::getTable('CommunityTopic')->find($request->getParameter('id'));
     $this->forward404Unless($this->topic);
 
     if ($request->isMethod(sfRequest::POST))
     {
       $this->topic->delete();
       $this->getUser()->setFlash('notice', 'Topic Deleted successfully.');
-      $this->redirect('communitytopic/topicList');
+      $this->redirect('communityTopic/topicList');
     }
     return sfView::SUCCESS;
   }
@@ -93,14 +93,14 @@ class communityTopicActions extends sfActions
    */
   public function executeTopicCommentDelete(sfWebRequest $request)
   {
-    $this->topicComment = Doctrine::getTable('CommunityTopicComment')->findOneById($request->getParameter('id'));
+    $this->topicComment = Doctrine::getTable('CommunityTopicComment')->find($request->getParameter('id'));
     $this->forward404Unless($this->topicComment);
 
     if ($request->isMethod(sfRequest::POST))
     {
       $this->topicComment->delete();
       $this->getUser()->setFlash('notice', 'Topic Comment Deleted successfully.');
-      $this->redirect('communitytopic/topicCommentList');
+      $this->redirect('communityTopic/topicCommentList');
     }
     return sfView::SUCCESS;
   }
@@ -132,14 +132,14 @@ class communityTopicActions extends sfActions
    */
   public function executeEventDelete(sfWebRequest $request)
   {
-    $this->event = Doctrine::getTable('CommunityEvent')->findOneById($request->getParameter('id'));
+    $this->event = Doctrine::getTable('CommunityEvent')->find($request->getParameter('id'));
     $this->forward404Unless($this->event);
 
     if ($request->isMethod(sfRequest::POST))
     {
       $this->event->delete();
       $this->getUser()->setFlash('notice', 'Event Deleted successfully.');
-      $this->redirect('communitytopic/eventList');
+      $this->redirect('communityTopic/eventList');
     }
     return sfView::SUCCESS;
   }
@@ -171,14 +171,14 @@ class communityTopicActions extends sfActions
    */
   public function executeEventMemberDelete(sfWebRequest $request)
   {
-    $this->eventMember = Doctrine::getTable('CommunityEventMember')->findOneById($request->getParameter('id'));
+    $this->eventMember = Doctrine::getTable('CommunityEventMember')->find($request->getParameter('id'));
     $this->forward404Unless($this->eventMember);
 
     if ($request->isMethod(sfRequest::POST))
     {
       $this->eventMember->delete();
       $this->getUser()->setFlash('notice', 'Event Member Deleted successfully.');
-      $this->redirect('communitytopic/eventMemberList');
+      $this->redirect('communityTopic/eventMemberList');
     }
     return sfView::SUCCESS;
   }
@@ -210,14 +210,14 @@ class communityTopicActions extends sfActions
    */
   public function executeEventCommentDelete(sfWebRequest $request)
   {
-    $this->eventComment = Doctrine::getTable('CommunityEventComment')->findOneById($request->getParameter('id'));
+    $this->eventComment = Doctrine::getTable('CommunityEventComment')->find($request->getParameter('id'));
     $this->forward404Unless($this->eventComment);
 
     if ($request->isMethod(sfRequest::POST))
     {
       $this->eventComment->delete();
       $this->getUser()->setFlash('notice', 'Event Comment Deleted successfully.');
-      $this->redirect('communitytopic/eventCommentList');
+      $this->redirect('communityTopic/eventCommentList');
     }
     return sfView::SUCCESS;
   }

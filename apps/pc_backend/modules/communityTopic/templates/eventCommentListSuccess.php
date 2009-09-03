@@ -4,7 +4,7 @@
 
 <?php slot('title', __('Event Comment List')); ?>
 
-<?php echo $form->renderFormTag(url_for('communitytopic/eventCommentList')) ?>
+<?php echo $form->renderFormTag(url_for('communityTopic/eventCommentList')) ?>
 <table>
 <?php echo $form ?>
 <tr>
@@ -16,13 +16,13 @@
 <?php echo __('There are no event comments matches search condition.') ?>
 <?php else: ?>
 <?php ob_start() ?>
-<p><?php op_include_pager_navigation($pager, 'communitytopic/eventCommentList?page=%d') ?></p>
+<p><?php op_include_pager_navigation($pager, 'communityTopic/eventCommentList?page=%d') ?></p>
 <?php $pagerNavi = ob_get_flush() ?>
 <?php foreach ($pager->getResults() as $eventComment): ?>
-<?php include_partial('communitytopic/eventCommentInfo', array(
+<?php include_partial('communityTopic/eventCommentInfo', array(
   'eventComment' => $eventComment,
   'moreInfo' => array(
-    link_to(__('Delete'), 'communitytopic/eventCommentDelete?id='.$eventComment->getId())
+    link_to(__('Delete'), 'communityTopic/eventCommentDelete?id='.$eventComment->getId())
   )
 )); ?>
 <?php endforeach; ?>
