@@ -1,18 +1,22 @@
 Member:
   member_1:
-    id: ~
+    id: 1
     name: "OpenPNE君"
     is_active: 1
   member_2:
+    id: 2
     name: "Tanaka"
     is_active: 1
   member_3:
+    id: 3
     name: "Sasaki"
     is_active: 1
   member_4:
+    id: 4
     name: "Yamada"
     is_active: 1
   member_5:
+    id: 5
     name: "Tom"
     is_active: 1
 
@@ -126,19 +130,15 @@ CommunityMember:
   community_member_a_1:
     Community: community_a
     Member: member_1
-    position: "admin"
   community_member_i_1:
     Community: community_i
     Member: member_1
-    position: "admin"
   community_member_u_1:
     Community: community_u
     Member: member_1
-    position: "admin"
   community_member_e_1:
     Community: community_e
     Member: member_1
-    position: "admin"
   community_member_a_2:
     Community: community_a
     Member: member_2
@@ -175,6 +175,28 @@ CommunityMember:
   community_member_e_5:
     Community: community_e
     Member: member_5
+
+CommunityMemberPosition:
+  community_member_position_a_1:
+    Community: community_a
+    Member: member_1
+    CommunityMember: community_member_a_1
+    name: "admin"
+  community_member_position_i_1:
+    Community: community_i
+    Member: member_1
+    CommunityMember: community_member_i_1
+    name: "admin"
+  community_member_position_u_1:
+    Community: community_u
+    Member: member_1
+    CommunityMember: community_member_u_1
+    name: "admin"
+  community_member_position_e_1:
+    Community: community_e
+    Member: member_1
+    CommunityMember: community_member_e_1
+    name: "admin"
 
 CommunityTopic:
   community_topic_a_2:
