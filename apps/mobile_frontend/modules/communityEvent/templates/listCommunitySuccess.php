@@ -44,7 +44,7 @@ op_include_list('communityEventList', $list, $options);
 
 <?php endif; ?>
 
-<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
+<?php if ($acl->isAllowed($role, null, 'add')): ?>
 <?php echo link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId()) ?><br>
 <?php endif; ?>
 <?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>

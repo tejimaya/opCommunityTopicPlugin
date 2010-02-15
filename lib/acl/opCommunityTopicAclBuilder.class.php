@@ -24,7 +24,8 @@ class opCommunityTopicAclBuilder extends opAclBuilder
   static public function getAcl()
   {
     $acl = new Zend_Acl();
-    $acl->addRole(new Zend_Acl_Role('guest'));
+    $acl->addRole(new Zend_Acl_Role('alien'));
+    $acl->addRole(new Zend_Acl_Role('guest'), 'alien');
     $acl->addRole(new Zend_Acl_Role('member'), 'guest');
     $acl->addRole(new Zend_Acl_Role('admin'),  'member');
     $acl->addRole(new Zend_Acl_Role('writer'), 'member');
@@ -50,29 +51,36 @@ class opCommunityTopicAclBuilder extends opAclBuilder
       $acl->allow('member', null, 'add');
     }
 
-    if ($community->getConfig('public_flag') === 'auth_commu_member')
+    if ('auth_commu_member' === $community->getConfig('public_flag'))
     {
       $acl->allow('member', null, 'view');
     }
-    else
+    else if ('public' === $community->getConfig('public_flag'))
     {
       $acl->allow('guest', null, 'view');
+    }
+    else
+    {
+      $acl->allow('alien', null, 'view');
     }
 
     foreach ($targetMembers as $member)
     {
-      $role = new Zend_Acl_Role($member->getId());
-      if ($community->isAdmin($member->getId()))
+      if ($member)
       {
-        $acl->addRole($role, 'admin');
-      }
-      elseif ($community->isPrivilegeBelong($member->getId()))
-      {
-        $acl->addRole($role, 'member');
-      }
-      else
-      {
-        $acl->addRole($role, 'guest');
+        $role = new Zend_Acl_Role($member->getId());
+        if ($community->isAdmin($member->getId()))
+        {
+          $acl->addRole($role, 'admin');
+        }
+        elseif ($community->isPrivilegeBelong($member->getId()))
+        {
+          $acl->addRole($role, 'member');
+        }
+        else
+        {
+          $acl->addRole($role, 'guest');
+        }
       }
     }
 
@@ -89,7 +97,6 @@ class opCommunityTopicAclBuilder extends opAclBuilder
     }
 
     $acl = self::buildCollection($topic->getCommunity(), $targetMembers);
-
     $role = new Zend_Acl_Role($topic->getMemberId());
     if ($acl->hasRole($role) && $topic->getCommunity()->isPrivilegeBelong($topic->getMemberId()))
     {

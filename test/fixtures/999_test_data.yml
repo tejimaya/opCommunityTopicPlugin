@@ -91,6 +91,10 @@ Community:
     name: "「う」コミュニティ"
   community_e:
     name: "「え」コミュニティ"
+  community_f:
+    name: "「お」コミュニティ"
+  community_g:
+    name: "「か」コミュニティ"
 
 CommunityConfig:
   community_a_public_flag:
@@ -125,6 +129,22 @@ CommunityConfig:
     Community: community_e
     name: "topic_authority"
     value: "public"
+  community_f_public_flag:
+    Community: community_f
+    name: "public_flag"
+    value: "open"
+  community_f_topic_authority:
+    Community: community_f
+    name: "topic_authority"
+    value: "admin_only"
+  community_g_public_flag:
+    Community: community_g
+    name: "public_flag"
+    value: "open"
+  community_g_topic_authority:
+    Community: community_g
+    name: "topic_authority"
+    value: "public"
 
 CommunityMember:
   community_member_a_1:
@@ -139,6 +159,12 @@ CommunityMember:
   community_member_e_1:
     Community: community_e
     Member: member_1
+  community_member_f_1:
+    Community: community_f
+    Member: member_1
+  community_member_g_1:
+    Community: community_g
+    Member: member_1
   community_member_a_2:
     Community: community_a
     Member: member_2
@@ -151,6 +177,12 @@ CommunityMember:
   community_member_e_2:
     Community: community_e
     Member: member_2
+  community_member_f_2:
+    Community: community_f
+    Member: member_2
+  community_member_g_2:
+    Community: community_g
+    Member: member_2
   community_member_a_3:
     Community: community_a
     Member: member_3
@@ -162,6 +194,12 @@ CommunityMember:
     Member: member_3
   community_member_e_3:
     Community: community_e
+    Member: member_3
+  community_member_f_3:
+    Community: community_f
+    Member: member_3
+  community_member_g_3:
+    Community: community_g
     Member: member_3
   community_member_a_5:
     Community: community_a
@@ -196,6 +234,16 @@ CommunityMemberPosition:
     Community: community_e
     Member: member_1
     CommunityMember: community_member_e_1
+    name: "admin"
+  community_member_position_f_1:
+    Community: community_f
+    Member: member_1
+    CommunityMember: community_member_f_1
+    name: "admin"
+  community_member_position_g_1:
+    Community: community_g
+    Member: member_1
+    CommunityMember: community_member_g_1
     name: "admin"
 
 CommunityTopic:

@@ -1,14 +1,13 @@
 general:
   public_flag:
     Name:       "public_flag"
-    Caption:    "Authority to Read Topic"
+    Caption:    "Authority to View Community"
     FormType:   "radio"
     ValueType:  "string"
     IsUnique:   false
     IsRequired: true
     Default: "public"
     Choices:
-      public:            "Everyone can read"
       auth_commu_member: "Only community's members can read"
   topic_authority:
     Name:       "topic_authority"

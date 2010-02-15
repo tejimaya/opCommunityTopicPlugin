@@ -3,7 +3,7 @@
 include(dirname(__FILE__).'/../../bootstrap/unit.php');
 include(dirname(__FILE__).'/../../bootstrap/database.php');
 
-$t = new lime_test(64, new lime_output_color());
+$t = new lime_test(72, new lime_output_color());
 
 $members = Doctrine::getTable('Member')->createQuery()->orderBy('id')->execute();
 $communities = Doctrine::getTable('Community')->createQuery()->orderBy('id')->execute();
@@ -33,6 +33,7 @@ $acl = getAcl($communities[0]);
 $t->cmp_ok($acl->isAllowed(1, null, 'add'), '===', true, 'returns true for the community admin');
 $t->cmp_ok($acl->isAllowed(3, null, 'add'), '===', false, 'returns false for a community member');
 $t->cmp_ok($acl->isAllowed(4, null, 'add'), '===', false, 'returns false for a non-community member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', false, 'returns false for a non-SNS member');
 
 // * public_flag:     public
 // * topic_authority: admin_only
@@ -41,6 +42,7 @@ $acl = getAcl($communities[1]);
 $t->cmp_ok($acl->isAllowed(1, null, 'add'), '===', true, 'returns true for the community admin');
 $t->cmp_ok($acl->isAllowed(3, null, 'add'), '===', false, 'returns false for a community member');
 $t->cmp_ok($acl->isAllowed(4, null, 'add'), '===', false, 'returns false for a non-community member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', false, 'returns false for a non-SNS member');
 
 // * public_flag:     auth_commu_member
 // * topic_authority: public
@@ -49,6 +51,7 @@ $acl = getAcl($communities[2]);
 $t->cmp_ok($acl->isAllowed(1, null, 'add'), '===', true, 'returns true for the community admin');
 $t->cmp_ok($acl->isAllowed(3, null, 'add'), '===', true, 'returns true for a community member');
 $t->cmp_ok($acl->isAllowed(4, null, 'add'), '===', false, 'returns false for a non-community member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', false, 'returns false for a non-SNS member');
 
 // * public_flag:     public
 // * topic_authority: public
@@ -57,6 +60,21 @@ $acl = getAcl($communities[3]);
 $t->cmp_ok($acl->isAllowed(1, null, 'add'), '===', true, 'returns true for the community admin');
 $t->cmp_ok($acl->isAllowed(3, null, 'add'), '===', true, 'returns true for a community member');
 $t->cmp_ok($acl->isAllowed(4, null, 'add'), '===', false, 'returns false for a non-community member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', false, 'returns false for a non-SNS member');
+
+// * public_flag:     open
+// * topic_authority: admin_only
+$t->diag('public_flag: open, topic_authority: admin_only');
+$acl = getAcl($communities[4]);
+$t->cmp_ok($acl->isAllowed('alien', null, 'add'), '===', false, 'returns false for a non-SNS member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', true, 'returns true for a non-SNS member');
+
+// * public_flag:     open
+// * topic_authority: public
+$t->diag('public_flag: open, topic_authority: public');
+$acl = getAcl($communities[5]);
+$t->cmp_ok($acl->isAllowed('alien', null, 'add'), '===', false, 'returns false for a non-SNS member');
+$t->cmp_ok($acl->isAllowed('alien', null, 'view'), '===', true, 'returns true for a non-SNS member');
 
 //------------------------------------------------------------
 // Is the community topic creatable comments

@@ -55,10 +55,6 @@
         <target>コミュニティ最新書き込み</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Everyone can read</source>
-        <target>全員に公開</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Only community's members can read</source>
         <target>コミュニティ参加者のみ公開</target>
       </trans-unit>

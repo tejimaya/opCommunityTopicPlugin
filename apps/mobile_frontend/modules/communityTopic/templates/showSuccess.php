@@ -17,7 +17,7 @@
 <?php include_component('communityTopicComment', 'list', array('communityTopic' => $communityTopic)) ?>
 
 <?php echo op_within_page_link('') ?>
-<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'addComment')): ?>
+<?php if ($acl->isAllowed($role, null, 'addComment')): ?>
 <hr color="<?php echo $op_color['core_color_11'] ?>">
 <?php
 $options['url'] = url_for('communityTopic_comment_create', $communityTopic);

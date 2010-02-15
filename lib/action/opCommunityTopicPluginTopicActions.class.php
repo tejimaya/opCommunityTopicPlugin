@@ -43,6 +43,9 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
         $this->acl = opCommunityTopicAclBuilder::buildResource($this->communityTopic, array($this->getUser()->getMember()));
       }
     }
+
+    $this->role = $this->getUser()->getMember() ? $this->getUser()->getMemberId() : 'alien';
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'view'));
   }
 
   /**
@@ -52,7 +55,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeListCommunity($request)
   {
-    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'view'));
 
     if (!$this->size)
     {
@@ -75,6 +78,8 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeShow($request)
   {
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'view'));
+
     $this->form = new CommunityTopicCommentForm();
 
     return sfView::SUCCESS;
@@ -87,7 +92,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeNew($request)
   {
-    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'add'));
 
     $this->form = new CommunityTopicForm();
 
@@ -101,7 +106,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeCreate($request)
   {
-    $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'add'));
 
     $this->form = new CommunityTopicForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
@@ -175,6 +180,8 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeRecentlyTopicList($request)
   {
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'view'));
+
     if (!$this->size)
     {
       $this->size = 50;
@@ -196,6 +203,8 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeSearch($request)
   {
+    $this->forward404Unless($this->acl->isAllowed($this->role, null, 'view'));
+
     $params = array(
       'keyword' => $request->getParameter('keyword'),
       'target' => $request->getParameter('target', 'in_community'),

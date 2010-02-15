@@ -1,6 +1,6 @@
 <?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
 
-<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'view')): ?>
+<?php if ($acl->isAllowed($role, null, 'view')): ?>
 <?php $sf_response->addStylesheet('/opCommunityTopicPlugin/css/communityTopic') ?>
 <?php use_helper('Date'); ?>
 <tr class="communityTopic">
@@ -21,7 +21,7 @@
 <?php if($count): ?>
 <li><?php echo link_to(__('More'), '@communityTopic_list_community?id='.$community->getId()); ?></li>
 <?php endif; ?>
-<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
+<?php if ($acl->isAllowed($role, null, 'add')): ?>
 <li><?php echo link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId()); ?></li>
 <?php endif; ?>
 </ul>

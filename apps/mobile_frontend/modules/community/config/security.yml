@@ -1,15 +1,15 @@
 all:
-  is_secure: on
+  is_secure: true
   credentials: SNSMember
 
-listCommunity:
-  is_secure: false
-
-show:
-  is_secure: false
-
-recentlyTopicList:
+home:
   is_secure: false
 
 search:
+  is_secure: false
+
+joinList:
+  is_secure: false
+
+memberList:
   is_secure: false

@@ -1,6 +1,6 @@
 <?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
 
-<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'view')): ?>
+<?php if ($acl->isAllowed($role, null, 'view')): ?>
 <?php use_helper('Date') ?>
 <?php
 $list = array();
@@ -19,7 +19,7 @@ if (count($communityEvents))
 {
   $moreInfo[] = link_to(__('More'), '@communityEvent_list_community?id='.$community->getId());
 }
-if ($acl->isAllowed($sf_user->getMemberId(), null, 'add'))
+if ($acl->isAllowed($role, null, 'add'))
 {
   $moreInfo[] = link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId());
 }

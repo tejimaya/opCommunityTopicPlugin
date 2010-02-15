@@ -24,9 +24,11 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
   {
     $publicFlag = Doctrine::getTable('CommunityConfig')->retrieveByNameAndCommunityId('public_flag', $this->community->getId());
     $isBelong = $this->community->isPrivilegeBelong($this->getUser()->getMemberId());
+    $this->role = $this->getUser()->getMember() ? $this->getUser()->getMemberId() : 'alien';
+
     $this->hasPermission = true;
 
-    if ($publicFlag && !$isBelong && $publicFlag->getValue() !== 'public')
+    if ($publicFlag && !$isBelong && $publicFlag->getValue() !== 'public' && $publicFlag->getValue() !== 'open')
     {
       $this->hasPermission = true;
       return sfView::SUCCESS;
