@@ -91,9 +91,9 @@ Community:
     name: "「う」コミュニティ"
   community_e:
     name: "「え」コミュニティ"
-  community_f:
+  community_o:
     name: "「お」コミュニティ"
-  community_g:
+  community_k:
     name: "「か」コミュニティ"
 
 CommunityConfig:
@@ -129,20 +129,20 @@ CommunityConfig:
     Community: community_e
     name: "topic_authority"
     value: "public"
-  community_f_public_flag:
-    Community: community_f
+  community_o_public_flag:
+    Community: community_o
     name: "public_flag"
     value: "open"
-  community_f_topic_authority:
-    Community: community_f
+  community_o_topic_authority:
+    Community: community_o
     name: "topic_authority"
     value: "admin_only"
-  community_g_public_flag:
-    Community: community_g
+  community_k_public_flag:
+    Community: community_k
     name: "public_flag"
     value: "open"
-  community_g_topic_authority:
-    Community: community_g
+  community_k_topic_authority:
+    Community: community_k
     name: "topic_authority"
     value: "public"
 
@@ -159,11 +159,11 @@ CommunityMember:
   community_member_e_1:
     Community: community_e
     Member: member_1
-  community_member_f_1:
-    Community: community_f
+  community_member_o_1:
+    Community: community_o
     Member: member_1
-  community_member_g_1:
-    Community: community_g
+  community_member_k_1:
+    Community: community_k
     Member: member_1
   community_member_a_2:
     Community: community_a
@@ -177,11 +177,11 @@ CommunityMember:
   community_member_e_2:
     Community: community_e
     Member: member_2
-  community_member_f_2:
-    Community: community_f
+  community_member_o_2:
+    Community: community_o
     Member: member_2
-  community_member_g_2:
-    Community: community_g
+  community_member_k_2:
+    Community: community_k
     Member: member_2
   community_member_a_3:
     Community: community_a
@@ -195,11 +195,11 @@ CommunityMember:
   community_member_e_3:
     Community: community_e
     Member: member_3
-  community_member_f_3:
-    Community: community_f
+  community_member_o_3:
+    Community: community_o
     Member: member_3
-  community_member_g_3:
-    Community: community_g
+  community_member_k_3:
+    Community: community_k
     Member: member_3
   community_member_a_5:
     Community: community_a
@@ -235,67 +235,62 @@ CommunityMemberPosition:
     Member: member_1
     CommunityMember: community_member_e_1
     name: "admin"
-  community_member_position_f_1:
-    Community: community_f
+  community_member_position_o_1:
+    Community: community_o
     Member: member_1
-    CommunityMember: community_member_f_1
+    CommunityMember: community_member_o_1
     name: "admin"
-  community_member_position_g_1:
-    Community: community_g
+  community_member_position_k_1:
+    Community: community_k
     Member: member_1
-    CommunityMember: community_member_g_1
+    CommunityMember: community_member_k_1
     name: "admin"
 
 CommunityTopic:
-  community_topic_a_2:
-    name: "_aトピ主"
+  community_topic_a_1:
+    name: "_a_admin"
     body: "こんにちは"
     Community: community_a
-    Member: member_2
-  community_topic_i_2:
-    name: "_iトピ主"
+    Member: member_1
+  community_topic_i_1:
+    name: "_i_admin"
     body: "こんにちは"
     Community: community_i
-    Member: member_2
+    Member: member_1
   community_topic_u_2:
-    name: "_uトピ主"
+    name: "_u_member_2"
     body: "こんにちは"
     Community: community_u
     Member: member_2
+  community_topic_u_3:
+    name: "_u_member_3"
+    body: "こんにちは"
+    Community: community_u
+    Member: member_3
   community_topic_e_2:
-    name: "_eトピ主"
+    name: "_e_member_2"
     body: "こんにちは"
     Community: community_e
     Member: member_2
-  community_topic_a_4:
-    name: "_a外"
-    body: "こんにちは"
-    Community: community_a
-    Member: member_4
-  community_topic_i_4:
-    name: "_i外"
-    body: "こんにちは"
-    Community: community_i
-    Member: member_4
-  community_topic_u_4:
-    name: "_u外"
-    body: "こんにちは"
-    Community: community_u
-    Member: member_4
-  community_topic_e_4:
-    name: "_e外"
+  community_topic_e_3:
+    name: "_e_member_3"
     body: "こんにちは"
     Community: community_e
-    Member: member_4
+    Member: member_3
+  community_topic_o_1:
+    name: "_o_admin"
+    body: "こんにちは"
+    Community: community_o
+    Member: member_1
 
 CommunityTopicComment:
-  community_topic_comment_a_2:
+  community_topic_comment_a_1:
     body: "こんにちは"
-    CommunityTopic: community_topic_a_2
+    CommunityTopic: community_topic_a_1
     Member: member_5
-  community_topic_comment_i_2:
+  community_topic_comment_i_1:
     body: "こんにちは"
-    CommunityTopic: community_topic_i_2
+    CommunityTopic: community_topic_i_1
     Member: member_5
   community_topic_comment_u_2:
     body: "こんにちは"
@@ -305,21 +300,17 @@ CommunityTopicComment:
     body: "こんにちは"
     CommunityTopic: community_topic_e_2
     Member: member_5
-  community_topic_comment_a_4:
+  community_topic_comment_u_3:
     body: "こんにちは"
-    CommunityTopic: community_topic_a_4
+    CommunityTopic: community_topic_u_3
     Member: member_5
-  community_topic_comment_i_4:
+  community_topic_comment_e_3:
     body: "こんにちは"
-    CommunityTopic: community_topic_i_4
+    CommunityTopic: community_topic_e_3
     Member: member_5
-  community_topic_comment_u_4:
+  community_topic_comment_o_1:
     body: "こんにちは"
-    CommunityTopic: community_topic_u_4
-    Member: member_5
-  community_topic_comment_e_4:
-    body: "こんにちは"
-    CommunityTopic: community_topic_e_4
+    CommunityTopic: community_topic_o_1
     Member: member_5
 
 CommunityEvent:
