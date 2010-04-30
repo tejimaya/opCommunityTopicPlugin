@@ -3,6 +3,7 @@
 <?php
 
 $list = array(
+  'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
   'Name'                 => $communityEvent->getName(),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D'),
   'Area'                 => $communityEvent->getArea(),

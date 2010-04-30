@@ -34,7 +34,10 @@
         <source>Count of Member</source>
         <target>参加人数</target>
       </trans-unit>
-
+      <trans-unit id="">
+        <source>Writer</source>
+        <target>企画者</target>
+      </trans-unit>
       <trans-unit id="">
         <source>Invalid.</source>
         <target>正しくありません。</target>
