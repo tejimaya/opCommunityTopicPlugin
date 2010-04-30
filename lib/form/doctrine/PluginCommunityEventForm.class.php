@@ -39,6 +39,10 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
     $this->setWidget('open_date_comment', new sfWidgetFormInput());
     $this->setWidget('area', new sfWidgetFormInput());
 
+    $this->setValidator('name', new opValidatorString(array('rtrim' => true)));
+    $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
+    $this->setValidator('area', new opValidatorString(array('rtrim' => true)));
+
     $this->setValidator('open_date_comment', new sfValidatorString(array('required' => false)));
     $this->setValidator('application_deadline', new sfValidatorDate(array(
       'required' => false,
