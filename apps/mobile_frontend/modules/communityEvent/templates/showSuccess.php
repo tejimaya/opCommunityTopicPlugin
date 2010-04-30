@@ -4,7 +4,7 @@
 <?php
 $list = array(
   'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
-  'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D'),
+  'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => $communityEvent->getArea(),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),

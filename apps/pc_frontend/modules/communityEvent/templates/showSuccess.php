@@ -5,7 +5,7 @@
 $list = array(
   'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
   'Name'                 => $communityEvent->getName(),
-  'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D'),
+  'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => $communityEvent->getArea(),
   'Body'                 => nl2br($communityEvent->getBody()),
   'Application deadline' => op_format_date($communityEvent->getApplicationDeadline(), 'D'),
