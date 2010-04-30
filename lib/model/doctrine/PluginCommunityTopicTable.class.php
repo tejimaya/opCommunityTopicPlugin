@@ -50,6 +50,11 @@ class PluginCommunityTopicTable extends Doctrine_Table
   public function retrivesByMemberId($memberId, $limit = 5)
   {
     $communityIds = Doctrine::getTable('Community')->getIdsByMemberId($memberId);
+    if (!$communityIds && version_compare(OPENPNE_VERSION, '3.5.2-dev', '<'))
+    {
+      $communityIds[] = '0';
+    }
+
     return $this->createQuery()
       ->whereIn('community_id', $communityIds)
       ->limit($limit)
@@ -60,6 +65,11 @@ class PluginCommunityTopicTable extends Doctrine_Table
   public function getRecentlyTopicListPager($memberId, $page = 1, $size = 50)
   {
     $communityIds = Doctrine::getTable('Community')->getIdsByMemberId($memberId);
+    if (!$communityIds && version_compare(OPENPNE_VERSION, '3.5.2-dev', '<'))
+    {
+      $communityIds[] = '0';
+    }
+
     $q = $this->createQuery()
       ->whereIn('community_id', $communityIds)
       ->orderBy('updated_at DESC');
