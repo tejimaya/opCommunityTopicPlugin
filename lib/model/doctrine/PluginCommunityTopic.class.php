@@ -46,4 +46,10 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
       $this->setTopicUpdatedAt(date('Y-m-d H:i:s', time()));
     }
   }
+
+  // for pager
+  public function getImageFilename()
+  {
+    $this->getCommunity()->getImageFilename();
+  }
 }

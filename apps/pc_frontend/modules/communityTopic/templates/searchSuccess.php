@@ -23,7 +23,7 @@ foreach ($pager->getResults() as $key => $topic)
 {
   $list[$key] = array();
   $list[$key][__('Name', array(), 'community_topic_form')] = $topic->getName();
-  $list[$key][__('Community Name')] = $topic->getCommunity()->getName();
+  $list[$key][__('%community% Name')] = $topic->getCommunity()->getName();
   $list[$key][__('Body', array(), 'community_topic_form')] = $topic->getBody();
   $list[$key][__('Date Updated', array(), 'form_community')] = format_datetime($topic->getUpdatedAt(), 'f');
 }
@@ -36,7 +36,7 @@ $options = array(
   'link_to_detail' => $link_to_detail,
 );
 
-include_partial('partsSearchResultList', $options);
+op_include_parts('searchResultList', 'searchResultCommunityTopic', $options);
 ?>
 <?php else: ?>
 <?php
