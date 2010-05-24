@@ -50,6 +50,7 @@ op_include_parts('listBox', 'communityEvent', $options);
 <div class="partsHeading">
 <h3><?php echo __('Post a new event comment') ?></h3>
 </div>
+<?php echo __('%0% is required field.', array('%0%' => '<strong>*</strong>')) ?>
 <table>
 <?php echo $form ?>
 </table>
