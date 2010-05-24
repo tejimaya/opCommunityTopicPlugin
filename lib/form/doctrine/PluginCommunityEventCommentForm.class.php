@@ -29,7 +29,7 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     unset($this['created_at']);
     unset($this['updated_at']);
 
-    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment'));
+    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment') . ' <strong>*</strong>');
     $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
   }
 
