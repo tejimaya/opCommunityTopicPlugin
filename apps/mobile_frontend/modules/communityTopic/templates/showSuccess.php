@@ -25,6 +25,11 @@ $options['button'] = __('Post');
 $options['isMultipart'] = true;
 op_include_form('formTopicComment', $form, $options);
 ?>
+
+<?php if ('example.com' !== sfConfig::get('op_mail_domain')): ?>
+[i:106]<?php echo op_mail_to('mail_community_topic_comment_create', array('id' => $communityTopic->id), __('Post from E-mail')) ?><br>
+<?php echo __('You can attach photo files to e-mail.') ?><br>
+<?php endif; ?>
 <?php endif; ?>
 <hr color="<?php echo $op_color['core_color_11'] ?>">
 

@@ -1,0 +1,5 @@
+mail_community_topic_comment_create:
+  url: ctc.:id
+  class: opMailRoute
+  param: { module: communityTopicComment, action: create }
+  required: { id: \d+ }
