@@ -47,6 +47,7 @@
 $options = array();
 $options['title'] = __('Post a new topic comment');
 $options['url'] = url_for('communityTopic_comment_create', $communityTopic);
+$options['isMultipart'] = true;
 op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>

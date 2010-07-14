@@ -30,11 +30,55 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['number']);
     unset($this['created_at']);
     unset($this['updated_at']);
+    
+    if (sfConfig::get('community_topic_comment_is_upload_images', true))
+    {
+      $images = array();
+      if (!$this->isNew())
+      {
+        $images = $this->getObject()->getImagesWithNumber();
+      }
+
+      $max = (int)sfConfig::get('community_topic_comment_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
+      {
+        $key = 'photo_'.$i;
+
+        if (isset($images[$i]))
+        {
+          $image = $images[$i];
+        }
+        else
+        {
+          $image = new CommunityTopicCommentImage();
+          $image->setCommunityTopicComment($this->getObject());
+          $image->setNumber($i);  
+        }
+        $imageForm = new CommunityTopicCommentImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
+      }
+    }
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment'));
     $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
   }
 
+  public function updateObject($values = null)
+  {
+    $object = parent::updateObject($values);
+
+    foreach ($this->embeddedForms as $key => $form)
+    {
+      if (!($form->getObject() && $form->getObject()->File != null))
+      {
+        unset($this->embeddedForms[$key]);
+      }
+    }
+
+    return $object;
+  }
+  
   public function save($con = null)
   {
     $communityTopicComment = parent::save($con);

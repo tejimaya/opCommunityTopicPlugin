@@ -49,7 +49,8 @@ abstract class opCommunityTopicPluginTopicCommentActions extends sfActions
     $this->form = new CommunityTopicCommentForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
     $this->form->getObject()->setCommunityTopic($this->communityTopic);
-    $this->form->bind($request->getParameter($this->form->getName()));
+    $this->form->bind($request->getParameter($this->form->getName()), $request->getFiles($this->form->getName()));
+    
     if ($this->form->isValid())
     {
       $this->form->save();
