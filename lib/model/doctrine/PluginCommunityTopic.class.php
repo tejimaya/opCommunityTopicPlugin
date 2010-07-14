@@ -52,4 +52,16 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
   {
     $this->getCommunity()->getImageFilename();
   }
+
+  public function getImagesWithNumber()
+  {
+    $images = $this->getImages();
+    $result = array();
+    foreach ($images as $image)
+    {
+      $result[$image->number] = $image;
+    }
+
+    return $result;
+  }
 }

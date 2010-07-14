@@ -1,8 +1,10 @@
 options:
   charset: utf8
-actAs: [Timestampable]
 
 CommunityTopic:
+  actAs:
+    opCommunityTopicPluginImagesBehavior:
+    Timestampable:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     community_id: { type: integer(4), notnull: true }
@@ -17,6 +19,9 @@ CommunityTopic:
       onDelete: cascade
 
 CommunityTopicComment:
+  actAs:
+    opCommunityTopicPluginImagesBehavior:
+    Timestampable:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     community_topic_id: { type: integer(4), notnull: true }
@@ -30,6 +35,9 @@ CommunityTopicComment:
       onDelete: cascade
 
 CommunityEvent:
+  actAs:
+    opCommunityTopicPluginImagesBehavior:
+    Timestampable:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     community_id: { type: integer(4), notnull: true }
@@ -49,6 +57,9 @@ CommunityEvent:
       onDelete: cascade
 
 CommunityEventComment:
+  actAs:
+    opCommunityTopicPluginImagesBehavior:
+    Timestampable:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     community_event_id: { type: integer(4), notnull: true }

@@ -235,13 +235,13 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   protected function processForm($request, sfForm $form)
   {
     $form->bind(
-      $request->getParameter($form->getName())
+      $request->getParameter($form->getName()),
+      $request->getFiles($form->getName())
     );
 
     if ($form->isValid())
     {
       $communityTopic = $form->save();
-
       $this->redirect('@communityTopic_show?id='.$communityTopic->getId());
     }
   }

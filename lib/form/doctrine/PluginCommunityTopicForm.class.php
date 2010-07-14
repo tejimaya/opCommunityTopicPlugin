@@ -30,7 +30,50 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
     unset($this['updated_at']);
     unset($this['topic_updated_at']);
 
+    if (sfConfig::get('app_community_topic_is_upload_images', true))
+    {
+      $images = array();
+      if (!$this->isNew())
+      {
+        $images = $this->getObject()->getImagesWithNumber();
+      }
+
+      $max = (int)sfConfig::get('app_community_topic_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
+      {
+        $key = 'photo_'.$i;
+
+        if (isset($images[$i]))
+        {
+          $image = $images[$i];
+        }
+        else
+        {
+          $image = new CommunityTopicImage();
+          $image->setCommunityTopic($this->getObject());
+          $image->setNumber($i);  
+        }
+        $imageForm = new CommunityTopicImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="community_topic_'.$key.'">%content%</ul>');
+      }
+    }
     $this->setWidget('name', new sfWidgetFormInput());
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_topic_form');
+  }
+
+  public function updateObject($values = null)
+  {
+    $object = parent::updateObject($values);
+
+    foreach ($this->embeddedForms as $key => $form)
+    {
+      if (!($form->getObject() && $form->getObject()->File != null))
+      {
+        unset($this->embeddedForms[$key]);
+      }
+    }
+
+    return $object;
   }
 }

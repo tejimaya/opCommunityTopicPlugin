@@ -2,6 +2,7 @@
 $options = array();
 $options['title'] = __('Edit the topic');
 $options['url'] = url_for('communityTopic_update', $communityTopic);
+$options['isMultipart'] = true;
 op_include_form('formCommunityTopic', $form, $options);
 ?>
 
