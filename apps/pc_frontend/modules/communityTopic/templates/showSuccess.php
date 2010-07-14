@@ -15,7 +15,7 @@
 <p><?php if ($_member = $communityTopic->getMember()) : ?><?php echo link_to($_member->getName(), 'member/profile?id='.$_member->getId()) ?><?php endif; ?></p>
 </div>
 <div class="body">
-<?php if (count($images = $communityTopic->getImages()) != 0): ?>
+<?php if (count($images = $communityTopic->getCommunityTopicImagesJoinFile()) != 0): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
 <li><a href="<?php echo sf_image_path($image->File) ?>" target="_blank"><?php echo image_tag_sf_image($image->File, array('size' => '120x120')) ?></a></li>

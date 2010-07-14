@@ -35,13 +35,13 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
       $images = array();
       if (!$this->isNew())
       {
-        $images = $this->getObject()->getImagesWithNumber();
+        $images = $this->getObject()->getCommunityTopicImagesJoinFile();
       }
 
       $max = (int)sfConfig::get('app_community_topic_max_image_file_num', 3);
-      for ($i = 1; $i <= $max; $i++)
+      for ($i = 0; $i < $max; $i++)
       {
-        $key = 'photo_'.$i;
+        $key = 'photo_'.($i+1);
 
         if (isset($images[$i]))
         {
