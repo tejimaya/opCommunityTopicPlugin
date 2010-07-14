@@ -31,7 +31,9 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['created_at']);
     unset($this['updated_at']);
     
-    if (sfConfig::get('community_topic_comment_is_upload_images', true))
+    $is_mobile = !opMobileUserAgent::getInstance()->getMobile()->isNonMobile();
+    
+    if (!$is_mobile && sfConfig::get('community_topic_comment_is_upload_images', true))
     {
       $images = array();
       if (!$this->isNew())

@@ -30,7 +30,9 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
     unset($this['updated_at']);
     unset($this['topic_updated_at']);
 
-    if (sfConfig::get('app_community_topic_is_upload_images', true))
+    $is_mobile = !opMobileUserAgent::getInstance()->getMobile()->isNonMobile();
+    
+    if (!$is_mobile && sfConfig::get('app_community_topic_is_upload_images', true))
     {
       $images = array();
       if (!$this->isNew())
