@@ -58,7 +58,7 @@ op_include_parts('listBox', 'communityEvent', $options);
 <?php include_component('communityEventComment', 'list', array('communityEvent' => $communityEvent)) ?>
 
 <?php if ($communityEvent->isCreatableCommunityEventComment($sf_user->getMemberId())): ?>
-<form action="<?php echo url_for('@communityEvent_comment_create?id='.$communityEvent->getId()) ?>" method="post">
+<form action="<?php echo url_for('@communityEvent_comment_create?id='.$communityEvent->getId()) ?>" method="post" enctype="multipart/form-data">
 <div class="parts form">
 <div class="partsHeading">
 <h3><?php echo __('Post a new event comment') ?></h3>

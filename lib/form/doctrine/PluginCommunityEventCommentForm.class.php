@@ -31,6 +31,35 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment') . ' <strong>*</strong>');
     $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
+
+    if (opMobileUserAgent::getInstance()->getMobile()->isNonMobile())
+    {
+      $images = array();
+      if (!$this->isNew())
+      {
+        $images = $this->getObject()->getImages();
+      }
+
+      $max = (int)sfConfig::get('app_community_topic_max_image_file_num', 3);
+      for ($i = 0; $i < $max; $i++)
+      {
+        $key = 'photo_'.($i+1);
+
+        if (isset($images[$i]))
+        {
+          $image = $images[$i];
+        }
+        else
+        {
+          $image = new CommunityEventCommentImage();
+          $image->setCommunityEventComment($this->getObject());
+          $image->setNumber($i);
+        }
+        $imageForm = new opCommunityTopicPluginImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="community_event_comment_'.$key.'">%content%</ul>');
+      }
+    }
   }
 
   public function save($con = null)
@@ -39,5 +68,27 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     $communityEvent = $communityEventComment->getCommunityEvent();
     $communityEvent->setUpdatedAt($communityEventComment->getCreatedAt());
     $communityEvent->save();
+  }
+
+  public function updateObject($values = null)
+  {
+    if (null === $values)
+    {
+      $values = $this->values;
+    }
+
+    $object = parent::updateObject($values);
+
+    foreach ($this->embeddedForms as $key => $form)
+    {
+      if (!($form->getObject() && $form->getObject()->File != null)
+        || (isset($values[$key]) && empty($values[$key]['photo']) && empty($values[$key]['photo_delete']))
+      )
+      {
+        unset($this->embeddedForms[$key]);
+      }
+    }
+
+    return $object;
   }
 }

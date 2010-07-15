@@ -49,7 +49,7 @@ abstract class opCommunityTopicPluginEventCommentActions extends sfActions
     $this->form = new CommunityEventCommentForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
     $this->form->getObject()->setCommunityEvent($this->communityEvent);
-    $this->form->bind($request->getParameter($this->form->getName()));
+    $this->form->bind($request->getParameter($this->form->getName()), $request->getFiles($this->form->getName()));
     if ($this->form->isValid())
     {
       try

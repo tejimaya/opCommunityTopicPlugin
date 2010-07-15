@@ -8,7 +8,6 @@
 <?php op_include_pager_navigation($commentPager, '@communityTopic_show?page=%d&id='.$communityTopic->getId()); ?>
 <?php $pagerNavi = ob_get_contents() ?>
 <?php ob_end_flush() ?>
-
 <?php foreach ($commentPager->getResults() as $comment): ?>
 <dl>
 <dt><?php echo nl2br(op_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
@@ -22,8 +21,12 @@
 </p>
 </div>
 <div class="body">
-<?php $images = $comment->getCommunityTopicCommentImagesJoinFile() ?>
-<?php if (0 < count($images)): ?>
+<?php
+// sfReversibleDoctrinePager taints record state. It should be clean for working browsing relations
+$comment->state(Doctrine_Record::STATE_CLEAN);
+$images = $comment->getImages();
+?>
+<?php if (count($images)): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
 <li><a href="<?php echo sf_image_path($image->File) ?>" target="_blank"><?php echo image_tag_sf_image($image->File, array('size' => '120x120')) ?></a></li>
