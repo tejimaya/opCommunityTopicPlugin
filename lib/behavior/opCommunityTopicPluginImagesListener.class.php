@@ -12,7 +12,10 @@ class opCommunityTopicPluginImagesListener extends Doctrine_Record_Listener
     $prefix = 'ct' . '_' . $invoker->getId() . '_' . $invoker->getNumber() . '_';
 
     $file = $invoker->File;
-    $file->setName($prefix.$file->name);
+    if ($file)
+    {
+      $file->setName($prefix.$file->name);
+    }
   }
 
   public function postDelete(Doctrine_Event $event)

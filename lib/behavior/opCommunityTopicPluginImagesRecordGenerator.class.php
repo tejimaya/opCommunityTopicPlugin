@@ -2,6 +2,20 @@
 
 class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Generator
 {
+  protected $_options = array(
+    'className' => '%CLASS%Image',
+    'tableName' => '%TABLE%_image',
+    'generateFiles' => false,
+    'table' => false,
+    'pluginTable' => false,
+    'children' => array(),
+    'options' => array(),
+    'cascadeDelete' => true,
+    'appLevelDelete'=> false,
+    'builderOptions' => array(
+      'baseClassName' => 'opDoctrineRecord',
+    ),
+  );
 
   public function __construct($options)
   {
@@ -11,6 +25,7 @@ class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Genera
   public function buildRelation()
   {
     $this->buildForeignRelation('Images');
+    $this->buildLocalRelation();
   }
 
   public function setTableDefinition()
@@ -29,7 +44,7 @@ class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Genera
 
     $this->hasColumn('file_id', 'integer', 4, array(
       'type' => 'integer',
-      'notnull' => true,
+      'notnull' => false,
       'length' => 4,
     ));
 
@@ -54,6 +69,11 @@ class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Genera
   {
     parent::setUp();
 
+    $this->_options['table']->hasMany($this->_options['table']->getComponentName().'Image as Images', array(
+      'local'   => 'id',
+      'foreign' => 'post_id',
+    ));
+
     $this->hasOne($this->_options['table']->getComponentName(), array(
       'local' => 'post_id',
       'foreign' => 'id',
@@ -66,37 +86,5 @@ class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Genera
       'onDelete' => 'cascade',
     ));
     $this->addListener(new opCommunityTopicPluginImagesListener($this->_options));
-  }
-
-  public function initOptions()
-  {
-    $builderOptions  = array(
-      'suffix' =>  '.class.php',
-      'baseClassesDirectory' => 'base',
-      'generateBaseClasses' => true,
-      'generateTableClasses' => true,
-      'baseClassName' => 'opDoctrineRecord',
-    );
-    $this->setOption('className', '%CLASS%Image');
-    $this->setOption('tableName', '%TABLE%_image');
-    $this->setOption('generateFiles', true);
-    $this->setOption('generatePath', sfConfig::get('sf_lib_dir') . '/model/doctrine/opCommunityTopicPlugin');
-    $this->setOption('children', array());
-    $this->setOption('options', array());
-    $this->setOption('cascadeDelete', true);
-    $this->setOption('appLevelDelete', false);
-    $this->setOption('builderOptions', $builderOptions);
-  }
-
-  public function generateClassFromTable(Doctrine_Table $table)
-  {
-    $definition = array();
-    $definition['columns'] = $table->getColumns();
-    $definition['tableName'] = $table->getTableName();
-    $definition['actAs'] = $table->getTemplates();
-    $definition['generate_once'] = true;
-    $generatedclass = $this->generateClass($definition);
-    Doctrine::loadModels(sfConfig::get('sf_lib_dir') . '/model/doctrine/opCommunityTopicPlugin/base/');
-    return $generatedclass;
   }
 }

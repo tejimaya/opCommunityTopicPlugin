@@ -30,14 +30,12 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
     unset($this['updated_at']);
     unset($this['topic_updated_at']);
 
-    $is_mobile = !opMobileUserAgent::getInstance()->getMobile()->isNonMobile();
-    
-    if (!$is_mobile && sfConfig::get('app_community_topic_is_upload_images', true))
+    if (opMobileUserAgent::getInstance()->getMobile()->isNonMobile())
     {
       $images = array();
       if (!$this->isNew())
       {
-        $images = $this->getObject()->getCommunityTopicImagesJoinFile();
+        $images = $this->getObject()->getImages();
       }
 
       $max = (int)sfConfig::get('app_community_topic_max_image_file_num', 3);
@@ -53,9 +51,9 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
         {
           $image = new CommunityTopicImage();
           $image->setCommunityTopic($this->getObject());
-          $image->setNumber($i);  
+          $image->setNumber($i);
         }
-        $imageForm = new CommunityTopicImageForm($image);
+        $imageForm = new opCommunityTopicPluginImageForm($image);
         $imageForm->getWidgetSchema()->setFormFormatterName('list');
         $this->embedForm($key, $imageForm, '<ul id="community_topic_'.$key.'">%content%</ul>');
       }
@@ -66,11 +64,18 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
 
   public function updateObject($values = null)
   {
+    if (null === $values)
+    {
+      $values = $this->values;
+    }
+
     $object = parent::updateObject($values);
 
     foreach ($this->embeddedForms as $key => $form)
     {
-      if (!($form->getObject() && $form->getObject()->File != null))
+      if (!($form->getObject() && $form->getObject()->File != null)
+        || (isset($values[$key]) && empty($values[$key]['photo']) && empty($values[$key]['photo_delete']))
+      )
       {
         unset($this->embeddedForms[$key]);
       }
