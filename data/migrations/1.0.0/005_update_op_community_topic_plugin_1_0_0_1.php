@@ -18,7 +18,7 @@ class update_op_community_topic_plugin_1_0_0_1 extends opMigration
       array(
         'id' => array('type' => 'integer', 'primary' => true, 'autoincrement' => true),
         'post_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
-        'file_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
+        'file_id' => array('type' => 'integer', 'notnull' => '0', 'length' => '4'),
         'number' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
     ));
     $conn->export->createIndex('community_topic_image', 'id_number', array(
@@ -30,7 +30,7 @@ class update_op_community_topic_plugin_1_0_0_1 extends opMigration
       array(
         'id' => array('type' => 'integer', 'primary' => true, 'autoincrement' => true),
         'post_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
-        'file_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
+        'file_id' => array('type' => 'integer', 'notnull' => '0', 'length' => '4'),
         'number' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
     ));
     $conn->export->createIndex('community_topic_comment_image', 'id_number', array(
@@ -42,7 +42,7 @@ class update_op_community_topic_plugin_1_0_0_1 extends opMigration
       array(
         'id' => array('type' => 'integer', 'primary' => true, 'autoincrement' => true),
         'post_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
-        'file_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
+        'file_id' => array('type' => 'integer', 'notnull' => '0', 'length' => '4'),
         'number' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
     ));
     $conn->export->createIndex('community_event_image', 'id_number', array(
@@ -54,7 +54,7 @@ class update_op_community_topic_plugin_1_0_0_1 extends opMigration
       array(
         'id' => array('type' => 'integer', 'primary' => true, 'autoincrement' => true),
         'post_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
-        'file_id' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
+        'file_id' => array('type' => 'integer', 'notnull' => '0', 'length' => '4'),
         'number' => array('type' => 'integer', 'notnull' => '1', 'length' => '4'),
     ));
     $conn->export->createIndex('community_event_comment_image', 'id_number', array(
