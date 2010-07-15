@@ -3,3 +3,9 @@ mail_community_topic_comment_create:
   class: opMailRoute
   param: { module: communityTopicComment, action: create }
   required: { id: \d+ }
+
+mail_community_event_comment_create:
+  url: cte.:id
+  class: opMailRoute
+  param: { module: communityEventComment, action: create }
+  required: { id: \d+ }

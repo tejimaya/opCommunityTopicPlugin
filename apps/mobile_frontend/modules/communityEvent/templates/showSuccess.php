@@ -59,6 +59,10 @@ foreach ($list as $key => $value)
 </form>
 </table>
 </div>
+<?php if ('example.com' !== sfConfig::get('op_mail_domain')): ?>
+[i:106]<?php echo op_mail_to('mail_community_event_comment_create', array('id' => $communityEvent->id), __('Post from E-mail')) ?><br>
+<?php echo __('You can attach photo files to e-mail.') ?><br>
+<?php endif; ?>
 <?php endif; ?>
 <hr color="<?php echo $op_color['core_color_11'] ?>">
 
