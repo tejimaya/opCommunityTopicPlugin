@@ -2,12 +2,25 @@
 
 <?php
 
+$body = '';
+$images = $communityEvent->getImages();
+if (count($images))
+{
+  $body .= '<ul class="photo">';
+  foreach ($images as $image)
+  {
+    $body .= '<li><a href="'.sf_image_path($image->File).'" target="_blank">'.image_tag_sf_image($image->File, array('size' => '120x120')).'</a></li>';
+  }
+  $body .= '</ul>';
+}
+$body .= nl2br($communityEvent->getBody());
+
 $list = array(
   'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
   'Name'                 => $communityEvent->getName(),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => $communityEvent->getArea(),
-  'Body'                 => nl2br($communityEvent->getBody()),
+  'Body'                 => $body,
   'Application deadline' => op_format_date($communityEvent->getApplicationDeadline(), 'D'),
   'Capacity'             => $communityEvent->getCapacity(),
   'Count of Member'      => $communityEvent->getCommunityEventMember()->count(),

@@ -2,6 +2,7 @@
 $options = array();
 $options['title'] = __('Edit the event');
 $options['url'] = url_for('communityEvent_update', $communityEvent);
+$options['isMultipart'] = true;
 op_include_form('formCommunityEvent', $form, $options);
 ?>
 

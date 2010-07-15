@@ -218,7 +218,8 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   protected function processForm($request, sfForm $form)
   {
     $form->bind(
-      $request->getParameter($form->getName())
+      $request->getParameter($form->getName()),
+      $request->getFiles($form->getName())
     );
 
     if ($form->isValid())

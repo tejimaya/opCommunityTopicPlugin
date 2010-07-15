@@ -27,11 +27,13 @@
   border-top: none;
 }
 
-.topicDetailBox dd ul.photo {
+.topicDetailBox dd ul.photo,
+#communityEvent table ul.photo{
   padding: 5px;
 }
 
-.topicDetailBox dd ul.photo li {
+.topicDetailBox dd ul.photo li,
+#communityEvent table ul.photo li{
   display: inline;
   margin-left: 6px;
 }

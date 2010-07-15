@@ -56,7 +56,58 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
     $validatorApplicationDeadline->addMessage('invalid_application_deadline', sfContext::getInstance()->getI18N()->__('The application deadline must be before the open date.'));
     $this->mergePostValidator($validatorApplicationDeadline);
 
+    if (opMobileUserAgent::getInstance()->getMobile()->isNonMobile())
+    {
+      $images = array();
+      if (!$this->isNew())
+      {
+        $images = $this->getObject()->getImages();
+      }
+
+      $max = (int)sfConfig::get('app_community_topic_max_image_file_num', 3);
+      for ($i = 0; $i < $max; $i++)
+      {
+        $key = 'photo_'.($i+1);
+
+        if (isset($images[$i]))
+        {
+          $image = $images[$i];
+        }
+        else
+        {
+          $image = new CommunityEventImage();
+          $image->setCommunityEvent($this->getObject());
+          $image->setNumber($i);
+        }
+        $imageForm = new opCommunityTopicPluginImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="community_event_'.$key.'">%content%</ul>');
+      }
+    }
+
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('community_event_form');
+  }
+
+  public function updateObject($values = null)
+  {
+    if (null === $values)
+    {
+      $values = $this->values;
+    }
+
+    $object = parent::updateObject($values);
+
+    foreach ($this->embeddedForms as $key => $form)
+    {
+      if (!($form->getObject() && $form->getObject()->File != null)
+        || (isset($values[$key]) && empty($values[$key]['photo']) && empty($values[$key]['photo_delete']))
+      )
+      {
+        unset($this->embeddedForms[$key]);
+      }
+    }
+
+    return $object;
   }
 
   public function validateOpenDate($validator, $value)
