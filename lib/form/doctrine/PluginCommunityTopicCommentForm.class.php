@@ -56,7 +56,7 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
           $image->setCommunityTopicComment($this->getObject());
           $image->setNumber($i);  
         }
-        $imageForm = new CommunityTopicCommentImageForm($image);
+        $imageForm = new opCommunityTopicPluginImageForm($image);
         $imageForm->getWidgetSchema()->setFormFormatterName('list');
         $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
       }
@@ -68,11 +68,18 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
 
   public function updateObject($values = null)
   {
+    if (null === $values)
+    {
+      $values = $this->values;
+    }
+
     $object = parent::updateObject($values);
 
     foreach ($this->embeddedForms as $key => $form)
     {
-      if (!($form->getObject() && $form->getObject()->File != null))
+      if (!($form->getObject() && $form->getObject()->File != null)
+        || (isset($values[$key]) && empty($values[$key]['photo']) && empty($values[$key]['photo_delete']))
+      )
       {
         unset($this->embeddedForms[$key]);
       }
