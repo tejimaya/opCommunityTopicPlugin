@@ -74,6 +74,8 @@ class communityEventCommentActions extends opCommunityTopicPluginMailActions
       $image->save();
     }
 
+    opCommunityTopicToolkit::sendNotificationMail($topic->getCommunity(), $topic->getId(), 'event', $topicComment->getMember()->getName(), $topic->getName(), $topicComment->getBody());
+
     return sfView::NONE;
   }
 }
