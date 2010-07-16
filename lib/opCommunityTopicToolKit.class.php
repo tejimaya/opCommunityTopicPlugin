@@ -21,14 +21,11 @@ class opCommunityTopicToolkit
   {
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('opUtil'));
 
-    $url  = app_url_for('mobile_frontend', '@community'.ucfirst($type).'_show?id='.$id, true);
-
     $params = array(
       'community_name' => $community->getName(),
       'topic_name'     => $subject,
       'nickname'       => $nickname,
       'body'           => $body,
-      'url'            => $url,
     );
 
     $rs = Doctrine::getTable('CommunityMember')->createQuery()
@@ -48,11 +45,13 @@ class opCommunityTopicToolkit
 
       if ($r->getIsReceiveMailPc() && $memberPcAddress)
       {
+        $params['url'] = app_url_for('pc_frontend', '@community'.ucfirst($type).'_show?id='.$id, true);
         opMailSend::sendTemplateMail('notifyCommunityPosting', $memberPcAddress, $from, $params);
       }
 
       if ($r->getIsReceiveMailMobile() && $memberMobileAddress)
       {
+        $params['url'] = app_url_for('mobile_frontend', '@community'.ucfirst($type).'_show?id='.$id, true);
         opMailSend::sendTemplateMail('notifyCommunityPosting', $memberMobileAddress, $from, $params);
       }
     }
