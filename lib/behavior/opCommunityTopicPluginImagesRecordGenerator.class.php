@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * This file is part of the OpenPNE package.
+ * (c) OpenPNE Project (http://www.openpne.jp/)
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file and the NOTICE file that were distributed with this source code.
+ */
+
+/**
+ * opCommunityTopicPluginImagesRecordGenerator
+ *
+ * @package    opCommunityTopicPlugin
+ * @subpackage behavior
+ * @author     Kousuke Ebihara <ebihara@php.net>
+ */
 class opCommunityTopicPluginImagesRecordGenerator extends Doctrine_Record_Generator
 {
   protected $_options = array(

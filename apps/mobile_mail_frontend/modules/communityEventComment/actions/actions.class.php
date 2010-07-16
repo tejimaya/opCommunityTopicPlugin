@@ -9,11 +9,11 @@
  */
 
 /**
- * diaryComment actions.
+ * communitEventCommentActions
  *
- * @package    OpenPNE
- * @subpackage diaryComment
- * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ * @package    opCommunityTopicPlugin
+ * @subpackage communityEventComment
+ * @author     Kousuke Ebihara <ebihara@php.net>
  */
 class communityEventCommentActions extends opCommunityTopicPluginMailActions
 {
