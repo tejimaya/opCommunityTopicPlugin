@@ -77,7 +77,7 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
         {
           $image = new CommunityEventImage();
           $image->setCommunityEvent($this->getObject());
-          $image->setNumber($i);
+          $image->setNumber($i + 1);
         }
         $imageForm = new opCommunityTopicPluginImageForm($image);
         $imageForm->getWidgetSchema()->setFormFormatterName('list');

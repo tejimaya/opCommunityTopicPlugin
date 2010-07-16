@@ -14,6 +14,12 @@
 <br>
 <?php echo nl2br($communityTopic->getBody()) ?><br>
 
+<?php if (count($communityTopic->getImages())): ?>
+<?php foreach ($communityTopic->getImages() as $image): ?>
+<?php echo link_to(__('Image %number%', array('%number%' => $image->getNumber())), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg'))) ?><br>
+<?php endforeach; ?>
+<?php endif; ?>
+
 <?php include_component('communityTopicComment', 'list', array('communityTopic' => $communityTopic)) ?>
 
 <?php echo op_within_page_link('') ?>

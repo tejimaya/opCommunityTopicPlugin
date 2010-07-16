@@ -51,7 +51,7 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
         {
           $image = new CommunityTopicImage();
           $image->setCommunityTopic($this->getObject());
-          $image->setNumber($i);
+          $image->setNumber($i + 1);
         }
         $imageForm = new opCommunityTopicPluginImageForm($image);
         $imageForm->getWidgetSchema()->setFormFormatterName('list');

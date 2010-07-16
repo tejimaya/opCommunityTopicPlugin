@@ -52,7 +52,7 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
         {
           $image = new CommunityTopicCommentImage();
           $image->setCommunityTopicComment($this->getObject());
-          $image->setNumber($i);  
+          $image->setNumber($i);
         }
         $imageForm = new opCommunityTopicPluginImageForm($image);
         $imageForm->getWidgetSchema()->setFormFormatterName('list');

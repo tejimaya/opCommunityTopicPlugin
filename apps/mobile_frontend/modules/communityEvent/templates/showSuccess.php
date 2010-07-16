@@ -25,7 +25,17 @@ if ($communityEvent->getApplicationDeadline())
   $list['Application deadline'] = op_format_date($communityEvent->getApplicationDeadline(), 'D');
 }
 
-$list['Body'] = nl2br($communityEvent->getBody()).'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm');
+$image_html = '';
+if (count($communityEvent->getImages()))
+{
+  $image_html .= '<br>';
+  foreach ($communityEvent->getImages() as $image)
+  {
+    $image_html .= '<br>'.link_to(__('Image %number%', array('%number%' => $image->getNumber())), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg')));
+  }
+}
+
+$list['Body'] = nl2br($communityEvent->getBody()).$image_html.'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm');
 
 if ($communityEvent->isEditable($sf_user->getMemberId()))
 {
