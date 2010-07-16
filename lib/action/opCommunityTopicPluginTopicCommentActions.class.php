@@ -13,6 +13,9 @@
  *
  * @package    OpenPNE
  * @subpackage communityTopic
+ * @author     Kousuke Ebihara <ebihara@tejimaya.com>
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ * @author     Shogo Kawahara <kawahara@tejimaya.net>
  * @author     tunn <tunn@tejimaya.com>
  */
 abstract class opCommunityTopicPluginTopicCommentActions extends sfActions
