@@ -19,6 +19,11 @@ class opCommunityTopicToolkit
 {
   static public function sendNotificationMail(Community $community, $id, $type, $nickname, $subject, $body)
   {
+    if (version_compare(OPENPNE_VERSION, '3.6beta1-dev', '<'))
+    {
+      return null;
+    }
+
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('opUtil'));
 
     $params = array(
