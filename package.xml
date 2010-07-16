@@ -25,31 +25,33 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-05-01</date>
- <time>17:26:00</time>
+ <date>2010-07-17</date>
+ <time>08:20:27</time>
  <version>
-  <release>0.9.7</release>
-  <api>0.9.7</api>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
  <notes>
-Fixed some bugs that block regularly using:
- - Handling topic authority is not worked in adding community topic comment
- - Elements of display in community event is too short
- - Results of searching community topic is not valid
+* Bug（バグ） #193: トピックで本文が空のコメントを投稿してもエラーメッセージが表示されない
+* Bug（バグ） #643: 参加登録にコメント記入が必須である旨が、記載されていない
+* Enhancement（機能追加・改善） #158: トピック・トピックコメントでの画像投稿に対応する
+* Enhancement（機能追加・改善） #166: コミュニティトピックのメール投稿に対応
+* Enhancement（機能追加・改善） #1368: コミュニティ書き込み通知メールに対応
+* Enhancement（機能追加・改善） #1369: アクティビティに対応
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="484e3c2241342df3077ca16a82b7c1cb" name="apps/mobile_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="591e451ee6ef57bcafd2d4ef3ddd52bf" name="apps/mobile_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="2449aec398f3b1bf94e70c4c51b61a42" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9184a10925b576f67dceebeb9d3cb94a" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="afff5cfd3c547e908f13531026ce0e12" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="5d205e535f3846c88abdeaf20a72e0c3" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="18d3e8358a2e5571d787d5188ae178b0" name="apps/mobile_frontend/modules/community/config/view.yml" role="data" />
+   <file baseinstalldir="/" md5sum="1c10117f91626b78cfe92d407433a386" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="1e258328c2fa297894550e74d55348c1" name="apps/mobile_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="7de8ab45c24b7a4eeaf478f5f6a4541f" name="apps/mobile_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/mobile_frontend/modules/communityEvent/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityEvent/config/security.yml" role="data" />
@@ -61,7 +63,7 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="c435e934376bf39f7e51df40e02096f5" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6939f0dbca900236aedaabe821a52138" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c9ae7ae79d5f17bd1a46ef700f8bbe3d" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="938311f797d10e67aedbb9877ccb19b4" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="5f1bd3d296c5c230aeab1fae1c6e59ab" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="31acb52d16fe10a1775987c4bf1b6831" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -69,7 +71,7 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityEventComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/mobile_frontend/modules/communityEventComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="e88ef9aee7abef2e07c68efceb3a8d0a" name="apps/mobile_frontend/modules/communityEventComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c174f41787e4601e1984ed70859e50e9" name="apps/mobile_frontend/modules/communityEventComment/templates/_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="93a2abed6c01a52bb26efd5ac266650d" name="apps/mobile_frontend/modules/communityEventComment/templates/_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="5ab438304f686d299f708bcc48c12c8f" name="apps/mobile_frontend/modules/communityEventComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="9a585703be412128c927cfae80671710" name="apps/mobile_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10ab53ea726b09c6f05434b4f9aa81c8" name="apps/mobile_frontend/modules/communityTopic/actions/components.class.php" role="data" />
@@ -80,8 +82,9 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="287b24a3dd18b732dc951f0fd4594203" name="apps/mobile_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="19c1cb9b055f6830bdd2eb1ad5ed4756" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="9e2ad87c2910280544326ad0d7708d60" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ed9a1d2bc7dedfea21e3f4e79a380978" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="2f07dcbc2fa0b7fe908f7edeae557031" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="18fb0ff660244362fa5a18bc3e21f67e" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="4ff5e2442600908d550980854f91cfc0" name="apps/mobile_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="f78320c392a42b6ca0274d615aa4cc6d" name="apps/mobile_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
    <file baseinstalldir="/" md5sum="b486305b790e7c987f3defab8affb3ac" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
    <file baseinstalldir="/" md5sum="54cd89cb47e6ab833c5dfedab5b327ff" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
@@ -90,10 +93,14 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="f955fafd39f2b1933434c6577683e02b" name="apps/mobile_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopicComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b1d883deca24852d78a2e34b458c0d4d" name="apps/mobile_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="6b1c151ec88c9dd3c76de5a7ed6ce948" name="apps/mobile_frontend/modules/communityTopicComment/templates/_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="91998a629bb8e0f0a878666eb3f2dfdf" name="apps/mobile_frontend/modules/communityTopicComment/templates/_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="e613b9cc373016a70ecfb61aa6f8847a" name="apps/mobile_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="6b80c8cfab5bbed71a52684acf2f7567" name="apps/mobile_mail_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="a2b95e10dc39f83f4697067e438cc7ad" name="apps/mobile_mail_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="b4511bd194198fda810a3f678b91b188" name="apps/mobile_mail_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="9b4b10c773687867ce22734babe3944f" name="apps/mobile_mail_frontend/modules/communityTopicComment/templates/createError.php" role="data" />
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="f19697bf966dde77f4d3655f5b7df916" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="df8bdda476be125be5c91d0468d2803f" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="16489235f68e65e4d3afea62e5bf1a4a" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1a152083fe4b9d0b009811de04de1529" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="78a3c7e8990176c05588f68340e16f7e" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
@@ -117,24 +124,26 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="f7f2a864791368e9ccd13ea5174c16f1" name="apps/pc_backend/modules/communityTopic/templates/_submenu.php" role="data" />
    <file baseinstalldir="/" md5sum="14dca4ad4d5b07a48e746bb6fbc7e571" name="apps/pc_backend/modules/communityTopic/templates/_topicCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="cad3800160f6245f2ba534d55f04ca84" name="apps/pc_backend/modules/communityTopic/templates/_topicInfo.php" role="data" />
-   <file baseinstalldir="/" md5sum="484e3c2241342df3077ca16a82b7c1cb" name="apps/pc_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="dd7c28f361e84170ea277efbff35f430" name="apps/pc_backend/modules/opCommunityTopicPlugin/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="7f4a22673656ea0940c5d56035842df8" name="apps/pc_backend/modules/opCommunityTopicPlugin/templates/indexSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="591e451ee6ef57bcafd2d4ef3ddd52bf" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="6d924ace41bc460311b5db1f44741b86" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9ac8d7060aca541e21da80c2d5a7981a" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="69dcf8e5662cce5bd6a31a9041b50e20" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="5cfc3ec3e689870d4c57f9f04e886e6b" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="f15de48cc3a011be6e13d89a16f5dbe9" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
+   <file baseinstalldir="/" md5sum="fc1f6e4cd24883b0e32b9c9ce1baa8b7" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="fb5af4adf804b232ad21b63a41740716" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEvent/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityEvent/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="3bd0ac57b451fc710b2fd31c8b1cb5bc" name="apps/pc_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ee4b9ada8b7c75b0c82b7ee9f0561742" name="apps/pc_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1b8975614dd80a7fdcb4db40caa99861" name="apps/pc_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ae79106f5839a431af2244ecca561f2b" name="apps/pc_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
    <file baseinstalldir="/" md5sum="7c3b3270b16e04359b50a074c7768957" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="b86d4c84422c7036f22d6bd4af1ad77e" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="949a380928af793967aed005bd0fed88" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="220b55cd40a52323bc16fad132023717" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="0ef285af1abbeb81b5745b8c39897492" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="4c098601c6fca72c225b071ad26fb704" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4369815899e589ef72ad322f0a3f2674" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="d946d1590ba22a2c2132bcabf9c4b694" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/pc_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -142,20 +151,22 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEventComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityEventComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="e0729201d5701f938f11020f0ba09bea" name="apps/pc_frontend/modules/communityEventComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="d24b09f96276a0e48ea184d01cd03360" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="c112605bff3f2459c420fe007763c8f1" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="28c91837b067ff5af9193b5ee66bd083" name="apps/pc_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10ab53ea726b09c6f05434b4f9aa81c8" name="apps/pc_frontend/modules/communityTopic/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a3dae748efce5fd63d71d7090e6ab562" name="apps/pc_frontend/modules/communityTopic/actions/searchFormAction.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopic/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopic/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="04cafee6a48f294881fab9f0b07c012b" name="apps/pc_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="7cf9f22737704b748ab368cc7cc33d48" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="66467c7b1539af6d3c90caa18ff2986f" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="32cf2992324d78979652c97d6e58ec52" name="apps/pc_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="51df84902e4858092851d0b139723c34" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="ba5a87bf3d74d58e9be4365a391e901e" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="077a99923523b438db09648d8e46ffaa" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4a9f1a8bcd7bd21d8373c2b50b0db7ba" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="eeeb749e97b94bb98fcefb378741fc33" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="ce852d98c2777188f892322dfe57c29d" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d3c161c2c8041a34ef941792c4cd8a01" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="78ae7d75d5fca58ec9ff2c801f9b1e88" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
+   <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
    <file baseinstalldir="/" md5sum="f745b5ccbe6162068c4bedf08ae1e826" name="apps/pc_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
    <file baseinstalldir="/" md5sum="fcf9629f0aa95fabbf30bd5f0362fec2" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
    <file baseinstalldir="/" md5sum="d1e2dead5554227c5838c2afc2465798" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
@@ -166,12 +177,14 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopicComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopicComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="1a3d901b6cf0581ce7b7208977425c52" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="03a179551720a98abd62171e234fc712" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="e3b0068c059c6db12fe95bd939916e6e" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="df7e6e983a6d9587d68f4ecacd4d359b" name="config/activity_template.yml" role="data" />
    <file baseinstalldir="/" md5sum="fd2fa6fbdf3d0264c73b17574bb4dc17" name="config/community_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="67d37bf12d41acc00120248e086280d5" name="config/gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="284a50a1562eaa39fb5898c964662dfc" name="config/mail_template.yml" role="data" />
    <file baseinstalldir="/" md5sum="1e75d65d21cef2b4c78b27d2dd5b3eda" name="config/mobile_gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="43339bbd19c750b6e1b0ffcd9b4c605a" name="config/doctrine/schema.yml" role="data" />
-   <file baseinstalldir="/" md5sum="4cdbdfce11f16184b75b4637ccdff4b4" name="data/fixtures/000_revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="ee3e8889b9cd4a357bd92443d00e6a57" name="config/doctrine/schema.yml" role="data" />
+   <file baseinstalldir="/" md5sum="a50d34520e0c6585199d49bb7cdbd56a" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="002f535128326d06be1e4da24d97b714" name="data/fixtures/010_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="19aa41f8c0275b30ce084f8e66e110c1" name="data/fixtures/020_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="059f5eeb8a1a60cd5b2a89d7f932cf78" name="data/fixtures/030_backend_navigation_menu.yml" role="data" />
@@ -179,37 +192,54 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="b3f1de35f23144edc5c4f0f6438a6711" name="data/migrations/0.8.1/002_update_op_community_topic_plugin_0_8_1_2.php" role="data" />
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
+   <file baseinstalldir="/" md5sum="9a25ed6fc6362127bb4ac58faf3895f4" name="data/migrations/1.0.0/005_update_op_community_topic_plugin_1_0_0_1.php" role="data" />
+   <file baseinstalldir="/" md5sum="1bc7fb4ea6af7475ded352e25a41e700" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3a62f783b954c5a788a0ba6fb4913441" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="95fa9fea707ac05a892687040c6c2eb1" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="8d840c7641952ee9b41c6d6ed73e6a4d" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="cd61fc6c291f7cdbd9a33c399618e07c" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="009044bc728f2b4ce3f391669efea5ab" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="46b82e7ff8a24842b4c3dba7b77ff673" name="lib/action/opCommunityTopicPluginEventCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55d10741b7029198a5cd183768151fda" name="lib/action/opCommunityTopicPluginEventComponents.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="9efb85c1878848030af7798649bb5970" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="3cffe9ec04a01a043f08f3e500854b3d" name="lib/action/opCommunityTopicPluginTopicCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="915af2c83a4f860799cef4a64a072151" name="lib/action/opCommunityTopicPluginMailActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2a4056b410777e2bc10ce994bccb7734" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="656321252529b8be38f85a99681b267c" name="lib/action/opCommunityTopicPluginTopicCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fa6c964048b4b6195600c67eb73d8913" name="lib/action/opCommunityTopicPluginTopicCommentComponents.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="04bc77866968330019afca7823d12d0a" name="lib/action/opCommunityTopicPluginTopicComponents.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="84b8aa1d654a063b9c2239d95c4678c5" name="lib/action/opCommunityTopicPluginTopicComponents.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="98ed832463f7ddec4f5826dfe510b3a6" name="lib/behavior/opCommunityTopicPluginImagesBehavior.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="6f4b00d2a18e34b372f7f6b36789d958" name="lib/behavior/opCommunityTopicPluginImagesListener.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="6ccfdd5f872a7295dc3e3cb42f154400" name="lib/behavior/opCommunityTopicPluginImagesRecordGenerator.class.php" role="data" />
    <file baseinstalldir="/" md5sum="391c6e86fc202592b00d00239c9a18ff" name="lib/exception/opCommunityEventMemberAppendableException.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8dd35d02d5f95a134260906e83e08fe9" name="lib/filter/doctrine/PluginCommunityEventCommentFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="075308f454788c1a1f612df575776e72" name="lib/filter/doctrine/PluginCommunityEventCommentImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="4ec20f1983ca8f39a454f11fa81ad67a" name="lib/filter/doctrine/PluginCommunityEventFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="24269103c58ebc7259e9356cc008537f" name="lib/filter/doctrine/PluginCommunityEventImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ca49e0a359f330411935f7aac02514fb" name="lib/filter/doctrine/PluginCommunityEventMemberFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c36c211b2304fd95d721752d65c4317b" name="lib/filter/doctrine/PluginCommunityTopicCommentFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="bf1c68a3d7e763648907b401c630b397" name="lib/filter/doctrine/PluginCommunityTopicCommentImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bf26a92f55430a497da21feaeced1f1" name="lib/filter/doctrine/PluginCommunityTopicFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="80051eeddd0c77463ae10dfffcf2299f" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="0191b0a3110b86aed21d6d260fdf7a24" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="3f44e6addeff1d88091d312b5fed59b5" name="lib/filter/doctrine/PluginCommunityTopicImageFormFilter.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="b35feeb7164a0afc5fed0e2edba2cacd" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="1c7830fbaa98dade0ae7a50aeb80b27b" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="cfc9c9fd412e4651267cca5c8868a6c1" name="lib/form/doctrine/PluginCommunityEventCommentImageForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="22675294554b53b79396419dfe405963" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="55633370a99dbd9f0f1ab23940b6238e" name="lib/form/doctrine/PluginCommunityEventImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="181dd4d0d02151c12689a5d36f456a3a" name="lib/form/doctrine/PluginCommunityEventMemberForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="2ec7f89e8cefc9a29937f6697c290bdd" name="lib/form/doctrine/PluginCommunityTopicCommentForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="c34e1aa95f692714ffd4b4ebd2a8bc04" name="lib/form/doctrine/PluginCommunityTopicForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5be15a906c771f1145113bb8915ff6f6" name="lib/form/doctrine/PluginCommunityTopicCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="64f680c93f44eee8f03e052ddaa0f103" name="lib/form/doctrine/PluginCommunityTopicCommentImageForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="0bc206fc6e3e33ae6c816b61185d4256" name="lib/form/doctrine/PluginCommunityTopicForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="dc812db69b53b13d9f3e6f3a105f3c37" name="lib/form/doctrine/PluginCommunityTopicImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="73e75fd418d116395e592f7a84e3f91e" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="a834e31fdcf672ad9cbfaf92010bad31" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="e516f287342dd3376b78f5519a81b91a" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b9f47fa8373ac836ad4b254b13a28801" name="lib/model/doctrine/PluginCommunityEventComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b6eab11b23aba0fb376d4d8b825f93e4" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="ee58edea0fe551176f8601e319e7f87a" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="5abb460857a03bf983a958143aeb29ce" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="ec2453f09ad4cf9bac02587d63c74067" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="762b428838cc07ae1df81e0922586709" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a9b489f65856f64f620eed0191dc5fa9" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
@@ -224,7 +254,7 @@ Fixed some bugs that block regularly using:
    <file baseinstalldir="/" md5sum="e18f0aea7196e1c77059c1548cebd827" name="test/functional/mobile_frontend/communityTopicActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="670ed0921b9c512daebc6495c15e2c9b" name="test/functional/pc_frontend/communityTopicActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="ec027052fa02c933aebdefc664cc6db4" name="test/unit/model/CommunityTopicTest.php" role="data" />
-   <file baseinstalldir="/" md5sum="a2c1700a752d7e3c41ed4037f824c698" name="web/css/communityTopic.css" role="data" />
+   <file baseinstalldir="/" md5sum="5898225c0dc6ae9931e9c53cb1fe4f74" name="web/css/communityTopic.css" role="data" />
    <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
   </dir>
  </contents>
@@ -412,6 +442,26 @@ Fixed some bugs that block regularly using:
  - Handling topic authority is not worked in adding community topic comment
  - Elements of display in community event is too short
  - Results of searching community topic is not valid
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-07-17</date>
+   <license>apache</license>
+   <notes>
+* Bug（バグ） #193: トピックで本文が空のコメントを投稿してもエラーメッセージが表示されない
+* Bug（バグ） #643: 参加登録にコメント記入が必須である旨が、記載されていない
+* Enhancement（機能追加・改善） #158: トピック・トピックコメントでの画像投稿に対応する
+* Enhancement（機能追加・改善） #166: コミュニティトピックのメール投稿に対応
+* Enhancement（機能追加・改善） #1368: コミュニティ書き込み通知メールに対応
+* Enhancement（機能追加・改善） #1369: アクティビティに対応
    </notes>
   </release>
  </changelog>
