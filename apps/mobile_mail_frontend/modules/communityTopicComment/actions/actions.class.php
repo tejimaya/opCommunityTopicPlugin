@@ -59,22 +59,19 @@ class communityTopicCommentActions extends opCommunityTopicPluginMailActions
 
     $topicComment->save();
 
-    if (sfConfig::get('community_topic_comment_is_upload_images', true))
+    $num = (int)sfConfig::get('app_community_topic_comment_max_image_file_num', 3);
+    $files = $this->getImageFiles($mailMessage, $num);
+
+    $number = 0;
+    foreach ($files as $file)
     {
-      $num = (int)sfConfig::get('community_topic_comment_max_image_file_num', 3);
-      $files = $this->getImageFiles($mailMessage, $num);
+      $number++;
+      $image = new CommunityTopicCommentImage();
+      $image->setCommunityTopicComment($topicComment);
+      $image->setFile($file);
+      $image->setNumber($number);
 
-      $number = 0;
-      foreach ($files as $file)
-      {
-        $number++;
-        $image = new CommunityTopicCommentImage();
-        $image->setCommunityTopicComment($topicComment);
-        $image->setFile($file);
-        $image->setNumber($number);
-
-        $image->save(); 
-      }
+      $image->save();
     }
 
     return sfView::NONE;

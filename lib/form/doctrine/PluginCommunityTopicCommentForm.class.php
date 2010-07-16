@@ -30,36 +30,33 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['number']);
     unset($this['created_at']);
     unset($this['updated_at']);
-    
+
     $is_mobile = !opMobileUserAgent::getInstance()->getMobile()->isNonMobile();
-    
-    if (!$is_mobile && sfConfig::get('community_topic_comment_is_upload_images', true))
+
+    $images = array();
+    if (!$this->isNew())
     {
-      $images = array();
-      if (!$this->isNew())
-      {
-        $images = $this->getObject()->getImagesWithNumber();
-      }
+      $images = $this->getObject()->getImagesWithNumber();
+    }
 
-      $max = (int)sfConfig::get('community_topic_comment_max_image_file_num', 3);
-      for ($i = 1; $i <= $max; $i++)
-      {
-        $key = 'photo_'.$i;
+    $max = (int)sfConfig::get('app_community_topic_comment_max_image_file_num', 3);
+    for ($i = 1; $i <= $max; $i++)
+    {
+      $key = 'photo_'.$i;
 
-        if (isset($images[$i]))
-        {
-          $image = $images[$i];
-        }
-        else
-        {
-          $image = new CommunityTopicCommentImage();
-          $image->setCommunityTopicComment($this->getObject());
-          $image->setNumber($i);  
-        }
-        $imageForm = new opCommunityTopicPluginImageForm($image);
-        $imageForm->getWidgetSchema()->setFormFormatterName('list');
-        $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
+      if (isset($images[$i]))
+      {
+        $image = $images[$i];
       }
+      else
+      {
+        $image = new CommunityTopicCommentImage();
+        $image->setCommunityTopicComment($this->getObject());
+        $image->setNumber($i);  
+      }
+      $imageForm = new opCommunityTopicPluginImageForm($image);
+      $imageForm->getWidgetSchema()->setFormFormatterName('list');
+      $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
     }
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment'));
