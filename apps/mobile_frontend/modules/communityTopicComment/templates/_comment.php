@@ -7,7 +7,7 @@
 <?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMemberId()) ?><br>
 <?php endif; ?>
 <?php echo nl2br($comment->getBody()) ?>
-<?php foreach ($comment->getCommunityTopicCommentImagesJoinFile() as $image): ?>
+<?php foreach ($comment->getImages() as $image): ?>
 <br>
 <?php echo link_to(__('Image %number%', array('%number%' => $image->number)), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>

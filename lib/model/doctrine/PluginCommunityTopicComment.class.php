@@ -31,13 +31,4 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
       $this->setNumber(Doctrine::getTable('CommunityTopicComment')->getMaxNumber($this->getCommunityTopicId()) + 1);
     }
   }
-  
-  public function getCommunityTopicCommentImagesJoinFile()
-  {
-    $q = Doctrine::getTable('CommunityTopicCommentImage')->createQuery()
-      ->leftJoin('CommunityTopicCommentImage.File')
-      ->where('post_id = ?', $this->id);
-
-    return $q->execute();
-  }
 }

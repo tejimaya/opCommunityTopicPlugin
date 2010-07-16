@@ -64,13 +64,4 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
 
     return $result;
   }
-  
-  public function getCommunityTopicImagesJoinFile()
-  {
-    $q = Doctrine::getTable('CommunityTopicImage')->createQuery()
-      ->leftJoin('CommunityTopicImage.File')
-      ->where('post_id = ?', $this->id);
-
-    return $q->execute();
-  }
 }
