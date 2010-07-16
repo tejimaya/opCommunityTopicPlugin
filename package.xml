@@ -26,10 +26,10 @@
   <active>yes</active>
  </lead>
  <date>2010-07-17</date>
- <time>08:20:27</time>
+ <time>08:36:19</time>
  <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
+  <release>1.0.0.1</release>
+  <api>1.0.0.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -37,12 +37,7 @@
  </stability>
  <license>apache</license>
  <notes>
-* Bug（バグ） #193: トピックで本文が空のコメントを投稿してもエラーメッセージが表示されない
-* Bug（バグ） #643: 参加登録にコメント記入が必須である旨が、記載されていない
-* Enhancement（機能追加・改善） #158: トピック・トピックコメントでの画像投稿に対応する
-* Enhancement（機能追加・改善） #166: コミュニティトピックのメール投稿に対応
-* Enhancement（機能追加・改善） #1368: コミュニティ書き込み通知メールに対応
-* Enhancement（機能追加・改善） #1369: アクティビティに対応
+* 3.4.x でコミュニティトピック作成が機能しなくなっていたのを修正
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -165,7 +160,7 @@
    <file baseinstalldir="/" md5sum="4a9f1a8bcd7bd21d8373c2b50b0db7ba" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ce852d98c2777188f892322dfe57c29d" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d3c161c2c8041a34ef941792c4cd8a01" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
-   <file baseinstalldir="/" md5sum="78ae7d75d5fca58ec9ff2c801f9b1e88" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
+   <file baseinstalldir="/" md5sum="55f55360acc0fd77a20339cad807db63" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
    <file baseinstalldir="/" md5sum="f745b5ccbe6162068c4bedf08ae1e826" name="apps/pc_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
    <file baseinstalldir="/" md5sum="fcf9629f0aa95fabbf30bd5f0362fec2" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
@@ -193,7 +188,7 @@
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
    <file baseinstalldir="/" md5sum="9a25ed6fc6362127bb4ac58faf3895f4" name="data/migrations/1.0.0/005_update_op_community_topic_plugin_1_0_0_1.php" role="data" />
-   <file baseinstalldir="/" md5sum="1bc7fb4ea6af7475ded352e25a41e700" name="lib/opCommunityTopicToolKit.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="122329a5343a805ac0f2db932a41307e" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3a62f783b954c5a788a0ba6fb4913441" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
@@ -462,6 +457,21 @@ Fixed some bugs that block regularly using:
 * Enhancement（機能追加・改善） #166: コミュニティトピックのメール投稿に対応
 * Enhancement（機能追加・改善） #1368: コミュニティ書き込み通知メールに対応
 * Enhancement（機能追加・改善） #1369: アクティビティに対応
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0.1</release>
+    <api>1.0.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-07-17</date>
+   <license>apache</license>
+   <notes>
+* 3.4.x でコミュニティトピック作成が機能しなくなっていたのを修正
    </notes>
   </release>
  </changelog>
