@@ -64,4 +64,21 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
 
     return $result;
   }
+
+  public function postInsert($event)
+  {
+    if (Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_update_activity', false)
+      && defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta1-dev', '>='))
+    {
+      $body = '[%Community% Topic] ('.$this->getCommunity()->getName().' %community%) '.$this->name;
+      $options = array(
+        'public_flag' => $this->getCommunity()->getConfig('public_flag') === 'public' ? 1 : 3,
+        'uri' => '@communityTopic_show?id='.$this->id,
+        'source' => 'CommunityTopic',
+        'template' => 'community_topic',
+        'template_param' => array('%1%' => $this->getCommunity()->getName(), '%2%' => $this->name),
+      );
+      Doctrine::getTable('ActivityData')->updateActivity($this->member_id, $body, $options);
+    }
+  }
 }

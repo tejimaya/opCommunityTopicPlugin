@@ -114,4 +114,24 @@ abstract class PluginCommunityEvent extends BaseCommunityEvent
   {
     $this->getCommunity()->getImageFilename();
   }
+
+  public function postInsert($event)
+  {
+    if (Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_update_activity', false)
+      && defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta1-dev', '>='))
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'opUtil'));
+
+      $open = op_format_date($this->getOpenDate(), 'D').($this->getOpenDate() ? ' '.$this->getOpenDateComment() : '');
+      $body = '[%Community% Event] ('.$this->getCommunity()->getName().' %community%) '.$this->name.' (open '.$open.')';
+      $options = array(
+        'public_flag' => $this->getCommunity()->getConfig('public_flag') === 'public' ? 1 : 3,
+        'uri' => '@communityEvent_show?id='.$this->id,
+        'source' => 'CommunityEvent',
+        'template' => 'community_event',
+        'template_param' => array('%1%' => $this->getCommunity()->getName(), '%2%' => $this->name, '%3%' => $open),
+      );
+      Doctrine::getTable('ActivityData')->updateActivity($this->member_id, $body, $options);
+    }
+  }
 }

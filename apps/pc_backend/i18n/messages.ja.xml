@@ -182,6 +182,26 @@
         <source>Event Member Deleted successfully.</source>
         <target>メンバーをイベント参加者から削除しました。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Community Topic Plugin Configuration</source>
+        <target>コミュニティトピックプラグイン設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Use</source>
+        <target>使用する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Not use</source>
+        <target>使用しない</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Update activity</source>
+        <target>アクティビティ更新設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, activity message is updated automatically by posting a topic. To show the activity list, see "Appearance" > "ガジェット設定".</source>
+        <target>使用するに設定した場合、コミュニティトピックが投稿された際にアクティビティが自動更新されます。アクティビティリストの表示設定は、「デザイン設定」>「ガジェット設定」から行ってください。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -238,6 +238,14 @@
         <source>Configuring was successfull.</source>
         <target>設定を保存しました</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>[%Community% Topic] (%1% %community%) %2%</source>
+        <target>[ﾄﾋﾟｯｸ] (%1% %community%) %2%</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>[%Community% Event] (%1% %community%) %2% (open %3%)</source>
+        <target>[ｲﾍﾞﾝﾄ] (%1% %community%) %2% (%3% 開催)</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
