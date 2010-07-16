@@ -68,6 +68,13 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     $communityEvent = $communityEventComment->getCommunityEvent();
     $communityEvent->setUpdatedAt($communityEventComment->getCreatedAt());
     $communityEvent->save();
+
+    if ($this->isNew())
+    {
+      opCommunityTopicToolkit::sendNotificationMail($communityEvent->getCommunity(), $communityEvent->getId(), 'event', $communityEventComment->getMember()->getName(), $communityEvent->getName(), $communityEventComment->getBody());
+    }
+
+    return $communityEventComment;
   }
 
   public function updateObject($values = null)

@@ -83,4 +83,16 @@ abstract class PluginCommunityTopicForm extends BaseCommunityTopicForm
 
     return $object;
   }
+
+  public function save($con = null)
+  {
+    $result = parent::save($con);
+
+    if ($this->isNew())
+    {
+      opCommunityTopicToolkit::sendNotificationMail($result->getCommunity(), $result->getId(), 'topic', $result->getMember()->getName(), $result->getName(), $result->getBody());
+    }
+
+    return $result;
+  }
 }

@@ -19,7 +19,6 @@
  * @author     Shogo Kawahara <kawahara@tejimaya.net>
  * @author     Eitarow Fukamachi <fukamachi@tejimaya.net>
  */
-
 abstract class opCommunityTopicPluginTopicActions extends sfActions
 {
   /**
@@ -230,6 +229,24 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     }
 
     return sfView::SUCCESS;
+  }
+
+  public function executeConfigNotificationMail($request)
+  {
+    $form = new opConfigCommunityTopicNotificationMailForm($request['id']);
+
+    $form->bind($request['topic_notify']);
+    if ($form->isValid())
+    {
+      $form->save();
+      $this->getUser()->setFlash('notice', 'Configuring was successfull.');
+    }
+    else
+    {
+      $this->getUser()->setFlash('error', 'Failed to configure.');
+    }
+
+    $this->redirect('@community_home?id='.$request['id']);
   }
 
   protected function processForm($request, sfForm $form)

@@ -45,4 +45,9 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
     $this->topicSearchCaption = sfContext::getInstance()->getI18N()->__('Topic');
     $this->eventSearchCaption = sfContext::getInstance()->getI18N()->__('Event');
   }
+
+  public function executeConfigNotificationMail($request)
+  {
+    $this->form = new opConfigCommunityTopicNotificationMailForm($request['id']);
+  }
 }

@@ -162,6 +162,26 @@
         <source>Comment</source>
         <target>コメント</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Want to receive</source>
+        <target>受け取る</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Don't want to receive</source>
+        <target>受け取らない</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Configuration of %community% topic notification mail to your PC mail address</source>
+        <target>%community%書き込みをPCメールで</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Configuration of %community% topic notification mail to your mobile mail address</source>
+        <target>%community%書き込みを携帯メールで</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Configuring was successfull.</source>
+        <target>設定を保存しました</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

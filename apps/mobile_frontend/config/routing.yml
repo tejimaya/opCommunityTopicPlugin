@@ -38,6 +38,12 @@ communityTopic_search_form:
   url: /communityTopic/searchForm
   param: { module: communityTopic, action: searchForm }
 
+config_community_topic_notification_mail:
+  class: sfRequestRoute
+  url: /config/communityTopicNotificationMail/:id
+  param: { module: communityTopic, action: configNotificationMail }
+  requirements: { id: \d+, sf_method: [post] }
+
 communityTopic_nodefaults:
   url: /communityTopic/*
   param: { module: default, action: error }

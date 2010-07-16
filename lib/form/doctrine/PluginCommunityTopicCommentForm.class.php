@@ -92,5 +92,12 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     $communityTopic = $communityTopicComment->getCommunityTopic();
     $communityTopic->setUpdatedAt($communityTopicComment->getCreatedAt());
     $communityTopic->save();
+
+    if ($this->isNew())
+    {
+      opCommunityTopicToolkit::sendNotificationMail($communityTopic->getCommunity(), $communityTopic->getId(), 'topic', $communityTopicComment->getMember()->getName(), $communityTopic->getName(), $communityTopicComment->getBody());
+    }
+
+    return $communityTopicComment;
   }
 }

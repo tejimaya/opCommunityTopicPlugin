@@ -18,6 +18,12 @@ homeSuccess:
       target:   [before]
       is_component: false
 
+    configNotificationMail:
+      template: [communityTopic, configNotificationMail]
+      parts: [communityMember]
+      target: [before]
+      is_component: true
+
 searchSuccess:
   customize:
     topicSearchLink:

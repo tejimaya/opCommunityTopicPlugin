@@ -12,6 +12,12 @@ homeSuccess:
       target: [lastRow]
       is_component: true
 
+    configNotificationMail:
+      template: [communityTopic, configNotificationMail]
+      parts: [communityHome]
+      target: [after]
+      is_component: true
+
     searchFormLine:
       template: [communityTopic, searchFormLine]
       parts: [communityHome]

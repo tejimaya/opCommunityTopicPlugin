@@ -1,0 +1,40 @@
+pc:
+  notifyCommunityPosting:
+    caption: "Notification of Community Posting"
+    configurable: true
+    sample:
+      ja_JP:
+        - "【{{ op_config.sns_name }}】{{ community_name }} {{ topic_name }}"
+        - |
+          {{ nickname }}>>
+          
+          {{ body }}
+          
+          {{ url }}
+    variables:
+      "op_config.sns_name": "SNS 名"
+      community_name:  "コミュニティ名"
+      topic_name:  "トピック名"
+      nickname:  "投稿者のニックネーム"
+      body:  "投稿内容"
+      url: "トピック・イベントのURL"
+mobile:
+  notifyCommunityPosting:
+    caption: "Notification of Community Posting"
+    configurable: true
+    sample:
+      ja_JP:
+        - "【{{ op_config.sns_name }}】{{ community_name }} {{ topic_name }}"
+        - |
+          {{ nickname }}>>
+          
+          {{ body }}
+          
+          {{ url }}
+    variables:
+      "op_config.sns_name": "SNS 名"
+      community_name:  "コミュニティ名"
+      topic_name:  "トピック名"
+      nickname:  "投稿者のニックネーム"
+      body:  "投稿内容"
+      url: "トピック・イベントURL"

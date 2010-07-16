@@ -133,4 +133,16 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
 
     return $value;
   }
+
+  public function save($con = null)
+  {
+    $result = parent::save($con);
+
+    if ($this->isNew())
+    {
+      opCommunityTopicToolkit::sendNotificationMail($result->getCommunity(), $result->getId(), 'event', $result->getMember()->getName(), $result->getName(), $result->getBody());
+    }
+
+    return $result;
+  }
 }
