@@ -31,32 +31,33 @@ abstract class PluginCommunityTopicCommentForm extends BaseCommunityTopicComment
     unset($this['created_at']);
     unset($this['updated_at']);
 
-    $is_mobile = !opMobileUserAgent::getInstance()->getMobile()->isNonMobile();
-
-    $images = array();
-    if (!$this->isNew())
+    if (opMobileUserAgent::getInstance()->getMobile()->isNonMobile())
     {
-      $images = $this->getObject()->getImagesWithNumber();
-    }
-
-    $max = (int)sfConfig::get('app_community_topic_comment_max_image_file_num', 3);
-    for ($i = 1; $i <= $max; $i++)
-    {
-      $key = 'photo_'.$i;
-
-      if (isset($images[$i]))
+      $images = array();
+      if (!$this->isNew())
       {
-        $image = $images[$i];
+        $images = $this->getObject()->getImagesWithNumber();
       }
-      else
+
+      $max = (int)sfConfig::get('app_community_topic_comment_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
       {
-        $image = new CommunityTopicCommentImage();
-        $image->setCommunityTopicComment($this->getObject());
-        $image->setNumber($i);  
+        $key = 'photo_'.$i;
+
+        if (isset($images[$i]))
+        {
+          $image = $images[$i];
+        }
+        else
+        {
+          $image = new CommunityTopicCommentImage();
+          $image->setCommunityTopicComment($this->getObject());
+          $image->setNumber($i);  
+        }
+        $imageForm = new opCommunityTopicPluginImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
       }
-      $imageForm = new opCommunityTopicPluginImageForm($image);
-      $imageForm->getWidgetSchema()->setFormFormatterName('list');
-      $this->embedForm($key, $imageForm, '<ul id="community_topic_comment_'.$key.'">%content%</ul>');
     }
 
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment'));
