@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -25,24 +25,23 @@
   <email />
   <active>yes</active>
  </lead>
- <lead>
-  <name>Shogo Kawahara</name>
-  <user>kawahara</user>
-  <email />
-  <active>yes</active>
- </lead>
- <date>2010-08-11</date>
- <time>13:08:23</time>
+ <date>2010-05-01</date>
+ <time>17:26:00</time>
  <version>
-  <release>0.9.7.1</release>
-  <api>0.9.7.1</api>
+  <release>0.9.7</release>
+  <api>0.9.7</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license>apache</license>
- <notes>Fixed security issues.</notes>
+ <notes>
+Fixed some bugs that block regularly using:
+ - Handling topic authority is not worked in adding community topic comment
+ - Elements of display in community event is too short
+ - Results of searching community topic is not valid
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="484e3c2241342df3077ca16a82b7c1cb" name="apps/mobile_frontend/config/routing.yml" role="data" />
@@ -95,22 +94,22 @@
    <file baseinstalldir="/" md5sum="e613b9cc373016a70ecfb61aa6f8847a" name="apps/mobile_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="f19697bf966dde77f4d3655f5b7df916" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="3f51f04370ec23c2de62aa16757a2d51" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="16489235f68e65e4d3afea62e5bf1a4a" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1a152083fe4b9d0b009811de04de1529" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="78a3c7e8990176c05588f68340e16f7e" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="006f88cc283e2483b34f069e101dd8fb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="75e6dbfb2d359b69f21336217432c526" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="bc67d29bf96894f1f9bbcb9a68b2063a" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="cac991d33a73535b25b530daf7f7549e" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="8b82b9e121bfa7f75a4415488f22cd90" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="99a043c0d98d3909ff91194e9f59811f" name="apps/pc_backend/modules/communityTopic/templates/eventCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="a14ff00308144078abcd94d8022788de" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="01a625f98dc45f2a9dd646911630f2bf" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b249527fcbc5826cf7d583ae3815fa5" name="apps/pc_backend/modules/communityTopic/templates/eventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="3ef4491e8186dae99eb5c508f30ba101" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="235c6d929a12ef11f8fb2c9fe058388e" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6e64cc86d18fe09fee47abb1a646ff94" name="apps/pc_backend/modules/communityTopic/templates/eventMemberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_backend/modules/communityTopic/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="d99c9dcae8c6d57c1bd49a472d02e786" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="3dc29c09aa313c24e1edaffb6457404b" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bec43b3fc52d5db84056c8405064113" name="apps/pc_backend/modules/communityTopic/templates/topicCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ac6abb052b719e051c8da1c9ecadc07f" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="b36e55a5c5d81139e0b0ae6e94021a12" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="df51dae14bf10dce5ad9ceb0c6d72cab" name="apps/pc_backend/modules/communityTopic/templates/topicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="abfab13d85fe6eb7437e59638e1ea409" name="apps/pc_backend/modules/communityTopic/templates/_eventCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="1f61755909889342120d3a1bf68c9e17" name="apps/pc_backend/modules/communityTopic/templates/_eventInfo.php" role="data" />
@@ -237,11 +236,6 @@
    <pearinstaller>
     <min>1.4.0</min>
    </pearinstaller>
-   <package>
-    <name>symfony</name>
-    <channel>pear.symfony-project.com</channel>
-    <min>1.2.0</min>
-   </package>
   </required>
  </dependencies>
  <phprelease />
@@ -257,7 +251,9 @@
    </stability>
    <date>2009-02-05</date>
    <license>Apache</license>
-   <notes>First release</notes>
+   <notes>
+First release
+   </notes>
   </release>
   <release>
    <version>
@@ -270,7 +266,9 @@
    </stability>
    <date>2009-04-02</date>
    <license>apache</license>
-   <notes>Fixed some issues. Added supportfor event system and mobile.</notes>
+   <notes>
+Fixed some issues. Added supportfor event system and mobile.
+   </notes>
   </release>
   <release>
    <version>
@@ -283,7 +281,9 @@
    </stability>
    <date>2009-05-17</date>
    <license>apache</license>
-   <notes>This plugin is now compatible with Doctrine</notes>
+   <notes>
+This plugin is now compatible with Doctrine
+   </notes>
   </release>
   <release>
    <version>
@@ -296,7 +296,9 @@
    </stability>
    <date>2009-07-06</date>
    <license>apache</license>
-   <notes>fixed some issues about Doctrine</notes>
+   <notes>
+fixed some issues about Doctrine
+   </notes>
   </release>
   <release>
    <version>
@@ -309,7 +311,9 @@
    </stability>
    <date>2009-07-17</date>
    <license>apache</license>
-   <notes>added ability to search topic and event</notes>
+   <notes>
+added ability to search topic and event
+   </notes>
   </release>
   <release>
    <version>
@@ -322,7 +326,9 @@
    </stability>
    <date>2009-07-23</date>
    <license>apache</license>
-   <notes>changed schemas for foreign keys problems</notes>
+   <notes>
+changed schemas for foreign keys problems
+   </notes>
   </release>
   <release>
    <version>
@@ -335,7 +341,9 @@
    </stability>
    <date>2009-07-24</date>
    <license>apache</license>
-   <notes>fixed some issues for displaying</notes>
+   <notes>
+fixed some issues for displaying
+   </notes>
   </release>
   <release>
    <version>
@@ -348,7 +356,9 @@
    </stability>
    <date>2009-07-26</date>
    <license>apache</license>
-   <notes>fixed some translation bug and added ability to search topics from the pc_backend application</notes>
+   <notes>
+fixed some translation bug and added ability to search topics from the pc_backend application
+   </notes>
   </release>
   <release>
    <version>
@@ -361,7 +371,9 @@
    </stability>
    <date>2009-08-20</date>
    <license>apache</license>
-   <notes>This is a development release.</notes>
+   <notes>
+This is a development release.
+   </notes>
   </release>
   <release>
    <version>
@@ -374,13 +386,15 @@
    </stability>
    <date>2009-09-03</date>
    <license>apache</license>
-   <notes>* Fixed some bugs in the mobile_frontend application (thanks to fukamachi)
+   <notes>
+* Fixed some bugs in the mobile_frontend application (thanks to fukamachi)
 * Added ability to search community topic and events (thanks to fukamachi)
 * Fixed unit tests for Doctrine, and improved them (thanks to fukamachi)
 * Fixed some bugs about priviledges (thanks to fukamachi)
 * Added ability to manage topics, events, topic comments, event comments and event members in the pc_backend application (thanks to saku)
 * Added ability to display topic search form on the community home page in the pc_frontend application (thanks to saku)
-* Changed the way to define routing rules</notes>
+* Changed the way to define routing rules
+   </notes>
   </release>
   <release>
    <version>
@@ -393,23 +407,12 @@
    </stability>
    <date>2010-05-01</date>
    <license>apache</license>
-   <notes>Fixed some bugs that block regularly using:
+   <notes>
+Fixed some bugs that block regularly using:
  - Handling topic authority is not worked in adding community topic comment
  - Elements of display in community event is too short
- - Results of searching community topic is not valid</notes>
-  </release>
-  <release>
-   <version>
-    <release>0.9.7.1</release>
-    <api>0.9.7.1</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2010-08-11</date>
-   <license>apache</license>
-   <notes>Fixed security issues.</notes>
+ - Results of searching community topic is not valid
+   </notes>
   </release>
  </changelog>
 </package>

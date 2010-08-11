@@ -59,7 +59,6 @@ class communityTopicActions extends sfActions
 
     if ($request->isMethod(sfRequest::POST))
     {
-      $request->checkCSRFProtection();
       $this->topic->delete();
       $this->getUser()->setFlash('notice', 'Topic Deleted successfully.');
       $this->redirect('communityTopic/topicList');
@@ -99,7 +98,6 @@ class communityTopicActions extends sfActions
 
     if ($request->isMethod(sfRequest::POST))
     {
-      $request->checkCSRFProtection();
       $this->topicComment->delete();
       $this->getUser()->setFlash('notice', 'Topic Comment Deleted successfully.');
       $this->redirect('communityTopic/topicCommentList');
@@ -139,7 +137,6 @@ class communityTopicActions extends sfActions
 
     if ($request->isMethod(sfRequest::POST))
     {
-      $request->checkCSRFProtection();
       $this->event->delete();
       $this->getUser()->setFlash('notice', 'Event Deleted successfully.');
       $this->redirect('communityTopic/eventList');
@@ -179,7 +176,6 @@ class communityTopicActions extends sfActions
 
     if ($request->isMethod(sfRequest::POST))
     {
-      $request->checkCSRFProtection();
       $this->eventMember->delete();
       $this->getUser()->setFlash('notice', 'Event Member Deleted successfully.');
       $this->redirect('communityTopic/eventMemberList');
@@ -219,7 +215,6 @@ class communityTopicActions extends sfActions
 
     if ($request->isMethod(sfRequest::POST))
     {
-      $request->checkCSRFProtection();
       $this->eventComment->delete();
       $this->getUser()->setFlash('notice', 'Event Comment Deleted successfully.');
       $this->redirect('communityTopic/eventCommentList');

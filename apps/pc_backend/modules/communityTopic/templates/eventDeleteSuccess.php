@@ -6,11 +6,10 @@
 
 <p><?php echo __('Do you really want to delete this event?') ?></p>
 
-<?php $form = new sfForm() ?>
-<form action="<?php echo url_for('communityTopic/eventDelete?id='.$event->getId()) ?>" method="post">
-<?php echo $form->renderHiddenFields() ?>
+<form action="<?php url_for('communityTopic/eventDelete?id='.$event->getId()) ?>" method="post">
 <?php include_partial('communityTopic/eventInfo', array(
   'event' => $event,
   'moreInfo' => array('<input type="submit" value="' . __('Delete') . '" />')
 )); ?>
 </form>
+
