@@ -6,7 +6,9 @@
 
 <p><?php echo __('Do you really want to delete this event comment?') ?></p>
 
-<form action="<?php url_for('communityTopic/eventCommentDelete?id='.$eventComment->getId()) ?>" method="post">
+<?php $form = new sfForm() ?>
+<form action="<?php echo url_for('communityTopic/eventCommentDelete?id='.$eventComment->getId()) ?>" method="post">
+<?php echo $form->renderHiddenFields() ?>
 <?php include_partial('communityTopic/eventCommentInfo', array(
   'eventComment' => $eventComment,
   'moreInfo' => array('<input type="submit" value="' . __('Delete') . '" />')
