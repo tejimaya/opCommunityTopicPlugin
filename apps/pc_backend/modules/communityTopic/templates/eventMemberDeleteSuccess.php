@@ -6,7 +6,9 @@
 
 <p><?php echo __('Do you really want to delete this event member?') ?></p>
 
-<form action="<?php url_for('communityTopic/eventMemberDelete?id='.$eventMember->getId()) ?>" method="post">
+<?php $form = new BaseForm() ?>
+<form action="<?php echo url_for('communityTopic/eventMemberDelete?id='.$eventMember->getId()) ?>" method="post">
+<?php echo $form->renderHiddenFields() ?>
 <?php include_partial('communityTopic/eventMemberInfo', array(
   'eventMember' => $eventMember,
   'moreInfo' => array('<input type="submit" value="' . __('Delete') . '" />')
