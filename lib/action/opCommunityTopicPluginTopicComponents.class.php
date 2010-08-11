@@ -48,6 +48,13 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
 
   public function executeConfigNotificationMail($request)
   {
-    $this->form = new opConfigCommunityTopicNotificationMailForm($request['id']);
+    try
+    {
+      $this->form = new opConfigCommunityTopicNotificationMailForm($request['id']);
+    }
+    catch (RuntimeException $e)
+    {
+      // do nothing.
+    }
   }
 }
