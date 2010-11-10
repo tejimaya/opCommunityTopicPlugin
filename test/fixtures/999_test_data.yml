@@ -126,19 +126,15 @@ CommunityMember:
   community_member_a_1:
     Community: community_a
     Member: member_1
-    position: "admin"
   community_member_i_1:
     Community: community_i
     Member: member_1
-    position: "admin"
   community_member_u_1:
     Community: community_u
     Member: member_1
-    position: "admin"
   community_member_e_1:
     Community: community_e
     Member: member_1
-    position: "admin"
   community_member_a_2:
     Community: community_a
     Member: member_2
@@ -175,6 +171,31 @@ CommunityMember:
   community_member_e_5:
     Community: community_e
     Member: member_5
+
+CommunityMemberPosition:
+  community_a_1_admin:
+    Community: community_a
+    Member: member_1
+    CommunityMember: community_member_a_1
+    name: "admin"
+
+  community_i_1_admin:
+    Community: community_i
+    Member: member_1
+    CommunityMember: community_member_i_1
+    name: "admin"
+
+  community_u_1_admin:
+    Community: community_u
+    Member: member_1
+    CommunityMember: community_member_u_1
+    name: "admin"
+
+  community_e_1_admin:
+    Community: community_e
+    Member: member_1
+    CommunityMember: community_member_e_1
+    name: "admin"
 
 CommunityTopic:
   community_topic_a_2:

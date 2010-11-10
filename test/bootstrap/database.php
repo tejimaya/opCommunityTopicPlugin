@@ -8,18 +8,25 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-// guess current application
-if (!isset($app))
-{
-  $traces = debug_backtrace();
-  $caller = $traces[0];
+$_app = 'pc_frontend';
+$_env = 'test';
 
-  $dirPieces = explode(DIRECTORY_SEPARATOR, dirname($caller['file']));
-  $app = array_pop($dirPieces);
-}
-
-$configuration = ProjectConfiguration::getApplicationConfiguration($app, 'test', true);
+$configuration = ProjectConfiguration::getApplicationConfiguration($_app, $_env, true);
 new sfDatabaseManager($configuration);
 
-$task = new sfDoctrineBuildAllReloadTask($configuration->getEventDispatcher(), new sfFormatter());
-$task->run(array('--no-confirmation', '--dir='.dirname(__FILE__).'/../fixtures', '--skip-forms'));
+$task = new sfDoctrineBuildTask($configuration->getEventDispatcher(), new sfFormatter());
+$task->setConfiguration($configuration);
+$task->run(array(), array(
+  'no-confirmation' => true,
+  'db'              => true,
+  'and-load'        => true,
+  'application'     => $_app,
+  'env'             => $_env,
+));
+
+$task = new sfDoctrineDataLoadTask($configuration->getEventDispatcher(), new sfFormatter());
+$task->setConfiguration($configuration);
+$task->run(dirname(__FILE__).'/../fixtures');
+
+$conn = Doctrine_Manager::getInstance()->getCurrentConnection();
+$conn->clear();

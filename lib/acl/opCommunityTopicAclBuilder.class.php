@@ -14,12 +14,19 @@
  * @package    OpenPNE
  * @subpackage acl
  * @author     Kousuke Ebihara <ebihara@tejimaya.com>
+ * @author     Eitarow Fukamachi <e.arrows@gmail.com>
  */
 class opCommunityTopicAclBuilder extends opAclBuilder
 {
   static protected
     $collection = array(),
     $resource = array();
+
+  static public function clearCache()
+  {
+    self::$collection = array();
+    self::$resource = array();
+  }
 
   static public function getAcl()
   {

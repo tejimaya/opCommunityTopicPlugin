@@ -1,12 +1,19 @@
 <?php
 
-ini_set('memory_limit', '256M');
-
 function init()
 {
   include(dirname(__FILE__).'/../../bootstrap/functional.php');
   include(dirname(__FILE__).'/../../bootstrap/database.php');
   include(dirname(__FILE__).'/../../bootstrap/functional.php');
+
+  $conn = Doctrine_Manager::getInstance()->getCurrentConnection();
+  $listener = $conn->getListener();
+  if ($listener['symfony_profiler'])
+  {
+    $listener['symfony_profiler']->setOption('logging', false);
+  }
+
+  opCommunityTopicAclBuilder::clearCache();
 }
 
 function createUser($mailAddress, $user)
@@ -22,7 +29,8 @@ function createUser($mailAddress, $user)
 }
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
-$user = new sfTestFunctional(new sfBrowser(), new lime_test(612, new lime_output_color()));
+
+$user = new opTestFunctional(new opBrowser(), new lime_test(612, new lime_output_color()));
 
 // create a test user: Mr_OpenPNE (community admin)
 init();
@@ -122,7 +130,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Mr. OpenPNE can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -136,7 +144,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Mr. OpenPNE can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -237,7 +245,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Mr. OpenPNE can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -251,7 +259,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Mr. OpenPNE can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -352,7 +360,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Mr. OpenPNE can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -366,7 +374,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Mr. OpenPNE can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -467,7 +475,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Mr. OpenPNE can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -481,7 +489,7 @@ $Mr_OpenPNE
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Mr. OpenPNE can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -576,7 +584,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Tanaka can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -590,7 +598,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Tanaka can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -681,7 +689,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Tanaka can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -695,7 +703,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Tanaka can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -796,7 +804,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Tanaka can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -810,7 +818,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Tanaka can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
@@ -911,7 +919,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('6a. Tanaka can delete the community topic comment')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopicComment')
@@ -925,7 +933,7 @@ $tanaka
     ->isParameter('action', 'deleteConfirm')
   ->end()
   ->info('7a. Tanaka can delete the community topic')
-  ->click('削除')
+  ->click('削除する')
   ->isStatusCode(302)
   ->with('request')->begin()
     ->isParameter('module', 'communityTopic')
