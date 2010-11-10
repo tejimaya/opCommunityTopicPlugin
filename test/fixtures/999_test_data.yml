@@ -1,18 +1,22 @@
 Member:
   member_1:
-    id: ~
+    id: 1
     name: "OpenPNE君"
     is_active: 1
   member_2:
+    id: 2
     name: "Tanaka"
     is_active: 1
   member_3:
+    id: 3
     name: "Sasaki"
     is_active: 1
   member_4:
+    id: 4
     name: "Yamada"
     is_active: 1
   member_5:
+    id: 5
     name: "Tom"
     is_active: 1
 
