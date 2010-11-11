@@ -8,7 +8,10 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-$_app = 'pc_frontend';
+if (empty($_app))
+{
+  $_app = 'pc_backend';
+}
 $_env = 'test';
 
 $configuration = ProjectConfiguration::getApplicationConfiguration($_app, $_env, true);
