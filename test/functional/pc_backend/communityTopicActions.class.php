@@ -35,6 +35,10 @@ $browser
   ->post('/communityTopic/eventMemberDelete/id/1')
   ->checkCSRF()
 
+  ->info('/opCommunityTopicPlugin/index - CSRF')
+  ->post('/opCommunityTopicPlugin/index')
+  ->checkCSRF()
+
 // XSS
   ->info('/communityTopic/index - XSS')
   ->get('/communityTopic/index')
