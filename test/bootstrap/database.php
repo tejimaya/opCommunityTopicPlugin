@@ -22,7 +22,7 @@ $task->setConfiguration($configuration);
 $task->run(array(), array(
   'no-confirmation' => true,
   'db'              => true,
-  'and-load'        => true,
+  'and-load'        => false,
   'application'     => $_app,
   'env'             => $_env,
 ));

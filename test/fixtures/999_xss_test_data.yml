@@ -1,0 +1,132 @@
+Member:
+  html_member_1:
+    id: 1055 # it means "XSS (X-55)"
+    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
+    is_active: 1
+  html_member_2:
+    id: 1056
+    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
+    is_active: 1
+  html_member_3:
+    id: 1057
+    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
+    is_active: 1
+
+MemberConfig:
+  html_member_1_pc_address:
+    name: "pc_address"
+    value: "html1@example.com"
+    Member: html_member_1
+  html_member_1_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: html_member_1
+  html_member_2_pc_address:
+    name: "pc_address"
+    value: "html2@example.com"
+    Member: html_member_2
+  html_member_2_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: html_member_2
+  html_member_3_pc_address:
+    name: "pc_address"
+    value: "html3@example.com"
+    Member: html_member_3
+  html_member_3_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: html_member_3
+
+Community:
+  html_community_1:
+    id: 1055
+    name: "<&\"'>Community.name ESCAPING HTML TEST DATA"
+
+CommunityMember:
+  html_community_1_html_member_1:
+    Community: html_community_1
+    Member: html_member_1
+  html_community_1_html_member_2:
+    Community: html_community_1
+    Member: html_member_2
+  html_community_1_html_member_3:
+    Community: html_community_1
+    Member: html_member_3
+    is_pre: 1
+
+CommunityMemberPosition:
+  html_community_1_admin:
+    Community: html_community_1
+    Member: html_member_1
+    CommunityMember: html_community_1_html_member_1
+    name: "admin"
+  html_community_1_sub_admin_confirm:
+    Community: html_community_1
+    Member: html_member_2
+    CommunityMember: html_community_1_html_member_2
+    name: "sub_admin_confirm"
+  html_community_1_admin_confirm:
+    Community: html_community_1
+    Member: html_member_2
+    CommunityMember: html_community_1_html_member_2
+    name: "admin_confirm"
+
+CommunityEvent:
+  html_event_1:
+    Community: html_community_1
+    Member: html_member_1
+    id: 1055
+    name: "<&\"'>CommunityEvent.name ESCAPING HTML TEST DATA"
+    body: "<&\"'>CommunityEvent.body ESCAPING HTML TEST DATA"
+    open_date: '2009-06-10'
+    open_date_comment: "<&\"'>CommunityEvent.open_date_comment ESCAPING HTML TEST DATA"
+    area: "<&\"'>CommunityEvent.area ESCAPING HTML TEST DATA"
+
+CommunityEventComment:
+  html_event_1_comment:
+    id: 1055
+    CommunityEvent: html_event_1
+    Member: html_member_1
+    body: "<&\"'>CommunityEventComment.body ESCAPING HTML TEST DATA"
+
+CommunityEventMember:
+  html_event_1_member_1:
+    CommunityEvent: html_event_1
+    Member: html_member_1
+
+CommunityTopic:
+  html_topic_1:
+    Community: html_community_1
+    Member: html_member_1
+    id: 1055
+    name: "<&\"'>CommunityTopic.name ESCAPING HTML TEST DATA"
+    body: "<&\"'>CommunityTopic.body ESCAPING HTML TEST DATA"
+
+CommunityTopicComment:
+  html_event_1_topic:
+    id: 1055
+    CommunityTopic: html_topic_1
+    Member: html_member_1
+    body: "<&\"'>CommunityTopicComment.body ESCAPING HTML TEST DATA"
+
+Gadget:
+  community_comment_list:
+    type: "contents"
+    name: "recentCommunityTopicComment"
+    sort_order: 131
+
+  mobile_community_comment_list:
+    type: "mobileContents"
+    name: "recentCommunityTopicComment"
+    sort_order: 110
+
+  community_event_comment_list:
+    type: "contents"
+    name: "recentCommunityEventComment"
+    sort_order: 132
+
+  mobile_community_event_comment_list:
+    type: "mobileContents"
+    name: "recentCommunityEventComment"
+    sort_order: 111
