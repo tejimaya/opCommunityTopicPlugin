@@ -100,7 +100,8 @@ class PluginCommunityTopicTable extends Doctrine_Table
       }
     }
 
-    $q->orderBy('updated_at DESC');
+    $q->andWhere('id IN ?', opCommunityTopicToolkit::getPublicCommunityIdList())
+      ->orderBy('updated_at DESC');
 
     return $q;
   }

@@ -75,4 +75,22 @@ class opCommunityTopicToolkit
 
     return $routing->generate($route, $params);
   }
+
+  static public function getPublicCommunityIdList()
+  {
+    $result = array();
+
+    $rs = Doctrine::getTable('CommunityConfig')->createQuery()
+      ->select('id, community_id')
+      ->where('name = ?', array('public_flag'))
+      ->andWhere('value = ?', array('public'))
+      ->execute(array(), Doctrine::HYDRATE_NONE);
+
+    foreach ($rs as $r)
+    {
+      $result[] = $r[1];
+    }
+
+    return $result;
+  }
 }
