@@ -25,7 +25,7 @@ communityEvent_recently_event_list:
 communityTopic_search:
   class: sfDoctrineRoute
   url: /communityTopic/search/:id
-  options: { model: CommunityTopic, type: object }
+  options: { model: Community, type: object }
   param: { module: communityTopic, action: search }
   requirements:
     id: \d+
