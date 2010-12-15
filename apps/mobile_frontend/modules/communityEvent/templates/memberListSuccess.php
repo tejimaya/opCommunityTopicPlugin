@@ -15,4 +15,4 @@ $option = array(
 op_include_list('memberList', $list, $option);
 ?>
 
-<?php op_include_pager_navigation($pager, '@communityEvent_memberList?page=%d&id='.$community->getId(), array('is_total' => false)); ?>
+<?php op_include_pager_navigation($pager, '@communityEvent_memberList?page=%d&id='.$communityEvent->getId(), array('is_total' => false)); ?>
