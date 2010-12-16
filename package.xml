@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -31,21 +31,26 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-08-11</date>
- <time>13:08:23</time>
+ <date>2010-12-16</date>
+ <time>21:32:07</time>
  <version>
-  <release>0.9.7.1</release>
-  <api>0.9.7.1</api>
+  <release>0.9.8</release>
+  <api>0.9.8</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
- <notes>Fixed security issues.</notes>
+ <notes>
+Backport（バックポート） #1850: イベント参加者リストの2ページ目以降が表示されない
+Backport（バックポート） #1851: 限定公開のトピック/イベントが検索結果に表示
+Backport（バックポート） #1852: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
+Backport（バックポート） #1853: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="484e3c2241342df3077ca16a82b7c1cb" name="apps/mobile_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="83db482efca0ae4d3328723c688ea4f5" name="apps/mobile_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="2449aec398f3b1bf94e70c4c51b61a42" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9184a10925b576f67dceebeb9d3cb94a" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="afff5cfd3c547e908f13531026ce0e12" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
@@ -59,7 +64,7 @@
    <file baseinstalldir="/" md5sum="8183b407b781e35658617f5d62dedea2" name="apps/mobile_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="44673924811b80a897a113bc15820d1c" name="apps/mobile_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2aa8b21f22c429c48c38eb2270096084" name="apps/mobile_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
-   <file baseinstalldir="/" md5sum="c435e934376bf39f7e51df40e02096f5" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="d036384abaafe93bfd92f9a30454b853" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6939f0dbca900236aedaabe821a52138" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c9ae7ae79d5f17bd1a46ef700f8bbe3d" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
@@ -118,7 +123,7 @@
    <file baseinstalldir="/" md5sum="f7f2a864791368e9ccd13ea5174c16f1" name="apps/pc_backend/modules/communityTopic/templates/_submenu.php" role="data" />
    <file baseinstalldir="/" md5sum="14dca4ad4d5b07a48e746bb6fbc7e571" name="apps/pc_backend/modules/communityTopic/templates/_topicCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="cad3800160f6245f2ba534d55f04ca84" name="apps/pc_backend/modules/communityTopic/templates/_topicInfo.php" role="data" />
-   <file baseinstalldir="/" md5sum="484e3c2241342df3077ca16a82b7c1cb" name="apps/pc_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="83db482efca0ae4d3328723c688ea4f5" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="6d924ace41bc460311b5db1f44741b86" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9ac8d7060aca541e21da80c2d5a7981a" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="69dcf8e5662cce5bd6a31a9041b50e20" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
@@ -130,9 +135,9 @@
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityEvent/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="3bd0ac57b451fc710b2fd31c8b1cb5bc" name="apps/pc_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ee4b9ada8b7c75b0c82b7ee9f0561742" name="apps/pc_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ae79106f5839a431af2244ecca561f2b" name="apps/pc_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="b27fd0c3afa578e3fe718865fa4bb458" name="apps/pc_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
-   <file baseinstalldir="/" md5sum="7c3b3270b16e04359b50a074c7768957" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1b459417584acd0fcc8889483f562276" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b86d4c84422c7036f22d6bd4af1ad77e" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="220b55cd40a52323bc16fad132023717" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0ef285af1abbeb81b5745b8c39897492" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
@@ -180,6 +185,7 @@
    <file baseinstalldir="/" md5sum="b3f1de35f23144edc5c4f0f6438a6711" name="data/migrations/0.8.1/002_update_op_community_topic_plugin_0_8_1_2.php" role="data" />
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
+   <file baseinstalldir="/" md5sum="e4f82f4928128854a153b6bd2e4c26ea" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3a62f783b954c5a788a0ba6fb4913441" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
@@ -208,11 +214,11 @@
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="b6eab11b23aba0fb376d4d8b825f93e4" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="1776c2b0d4c5fdea5b6b9379174b5cf4" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ee58edea0fe551176f8601e319e7f87a" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5abb460857a03bf983a958143aeb29ce" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="a9b489f65856f64f620eed0191dc5fa9" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5ec8156f2c9b7c3853542f79dfdeaaa6" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="52253be7b1ee15f761e3d8300637abc3" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="99e445b44e52afe6383978eb2f00ce06" name="test/bootstrap/functional.php" role="data" />
@@ -237,11 +243,6 @@
    <pearinstaller>
     <min>1.4.0</min>
    </pearinstaller>
-   <package>
-    <name>symfony</name>
-    <channel>pear.symfony-project.com</channel>
-    <min>1.2.0</min>
-   </package>
   </required>
  </dependencies>
  <phprelease />
@@ -257,7 +258,9 @@
    </stability>
    <date>2009-02-05</date>
    <license>Apache</license>
-   <notes>First release</notes>
+   <notes>
+First release
+   </notes>
   </release>
   <release>
    <version>
@@ -270,7 +273,9 @@
    </stability>
    <date>2009-04-02</date>
    <license>apache</license>
-   <notes>Fixed some issues. Added supportfor event system and mobile.</notes>
+   <notes>
+Fixed some issues. Added supportfor event system and mobile.
+   </notes>
   </release>
   <release>
    <version>
@@ -283,7 +288,9 @@
    </stability>
    <date>2009-05-17</date>
    <license>apache</license>
-   <notes>This plugin is now compatible with Doctrine</notes>
+   <notes>
+This plugin is now compatible with Doctrine
+   </notes>
   </release>
   <release>
    <version>
@@ -296,7 +303,9 @@
    </stability>
    <date>2009-07-06</date>
    <license>apache</license>
-   <notes>fixed some issues about Doctrine</notes>
+   <notes>
+fixed some issues about Doctrine
+   </notes>
   </release>
   <release>
    <version>
@@ -309,7 +318,9 @@
    </stability>
    <date>2009-07-17</date>
    <license>apache</license>
-   <notes>added ability to search topic and event</notes>
+   <notes>
+added ability to search topic and event
+   </notes>
   </release>
   <release>
    <version>
@@ -322,7 +333,9 @@
    </stability>
    <date>2009-07-23</date>
    <license>apache</license>
-   <notes>changed schemas for foreign keys problems</notes>
+   <notes>
+changed schemas for foreign keys problems
+   </notes>
   </release>
   <release>
    <version>
@@ -335,7 +348,9 @@
    </stability>
    <date>2009-07-24</date>
    <license>apache</license>
-   <notes>fixed some issues for displaying</notes>
+   <notes>
+fixed some issues for displaying
+   </notes>
   </release>
   <release>
    <version>
@@ -348,7 +363,9 @@
    </stability>
    <date>2009-07-26</date>
    <license>apache</license>
-   <notes>fixed some translation bug and added ability to search topics from the pc_backend application</notes>
+   <notes>
+fixed some translation bug and added ability to search topics from the pc_backend application
+   </notes>
   </release>
   <release>
    <version>
@@ -361,7 +378,9 @@
    </stability>
    <date>2009-08-20</date>
    <license>apache</license>
-   <notes>This is a development release.</notes>
+   <notes>
+This is a development release.
+   </notes>
   </release>
   <release>
    <version>
@@ -374,13 +393,15 @@
    </stability>
    <date>2009-09-03</date>
    <license>apache</license>
-   <notes>* Fixed some bugs in the mobile_frontend application (thanks to fukamachi)
+   <notes>
+* Fixed some bugs in the mobile_frontend application (thanks to fukamachi)
 * Added ability to search community topic and events (thanks to fukamachi)
 * Fixed unit tests for Doctrine, and improved them (thanks to fukamachi)
 * Fixed some bugs about priviledges (thanks to fukamachi)
 * Added ability to manage topics, events, topic comments, event comments and event members in the pc_backend application (thanks to saku)
 * Added ability to display topic search form on the community home page in the pc_frontend application (thanks to saku)
-* Changed the way to define routing rules</notes>
+* Changed the way to define routing rules
+   </notes>
   </release>
   <release>
    <version>
@@ -393,10 +414,12 @@
    </stability>
    <date>2010-05-01</date>
    <license>apache</license>
-   <notes>Fixed some bugs that block regularly using:
+   <notes>
+Fixed some bugs that block regularly using:
  - Handling topic authority is not worked in adding community topic comment
  - Elements of display in community event is too short
- - Results of searching community topic is not valid</notes>
+ - Results of searching community topic is not valid
+   </notes>
   </release>
   <release>
    <version>
@@ -409,7 +432,27 @@
    </stability>
    <date>2010-08-11</date>
    <license>apache</license>
-   <notes>Fixed security issues.</notes>
+   <notes>
+Fixed security issues.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.8</release>
+    <api>0.9.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-12-16</date>
+   <license>apache</license>
+   <notes>
+Backport（バックポート） #1850: イベント参加者リストの2ページ目以降が表示されない
+Backport（バックポート） #1851: 限定公開のトピック/イベントが検索結果に表示
+Backport（バックポート） #1852: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
+Backport（バックポート） #1853: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+   </notes>
   </release>
  </changelog>
 </package>
