@@ -47,6 +47,10 @@
         <target>必須項目です。</target>
       </trans-unit>
       <trans-unit id="">
+        <source>"%value%" is not an integer.</source>
+        <target>整数ではありません。</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>The open date must be after now.</source>
         <target>開催日時は今日以降にしてください。</target>
       </trans-unit>
