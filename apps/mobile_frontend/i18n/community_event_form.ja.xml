@@ -46,6 +46,10 @@
         <source>Required.</source>
         <target>必須項目です。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>"%value%" is not an integer.</source>
+        <target>整数ではありません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
