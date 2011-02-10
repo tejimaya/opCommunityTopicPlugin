@@ -31,12 +31,14 @@ abstract class opCommunityTopicPluginTopicCommentActions extends sfActions
     {
       $this->communityTopic = $object;
       $this->community = $this->communityTopic->getCommunity();
+      $this->acl = opCommunityTopicAclBuilder::buildResource($this->communityTopic, array($this->getUser()->getMember()));
     }
     elseif ($object instanceof CommunityTopicComment)
     {
       $this->communityTopicComment = $object;
       $this->communityTopic = $this->communityTopicComment->getCommunityTopic();
       $this->community = $this->communityTopic->getCommunity();
+      $this->acl = opCommunityTopicAclBuilder::buildResource($this->communityTopic, array($this->getUser()->getMember()));
     }
   }
 
