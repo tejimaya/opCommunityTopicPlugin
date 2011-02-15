@@ -2,15 +2,9 @@
 <?php
 $options = array(
   'title'    => __('Search Community Topics'),
-  'url'      => url_for('communityTopic/search'),
   'button'   => __('Search'),
   'method'   => 'get'
 );
-if (!$communityId)
-{
-  unset($form['target']);
-  unset($form['id']);
-}
 
 op_include_form('searchCommunityTopic', $form, $options);
 ?>
@@ -31,7 +25,7 @@ foreach ($pager->getResults() as $key => $topic)
 $options = array(
   'title'          => __('Search Results'),
   'pager'          => $pager,
-  'link_to_page'   => 'communityTopic/search?page=%d',
+  'link_to_page'   => url_for($pageUrl).'?page=%d',
   'list'           => $list,
   'link_to_detail' => $link_to_detail,
 );

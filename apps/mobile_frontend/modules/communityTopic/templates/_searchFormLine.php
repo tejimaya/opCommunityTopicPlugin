@@ -1,13 +1,12 @@
 <?php
-$form = new PluginCommunityTopicSearchForm();
-$form->bind(array('id' => sfContext::getInstance()->getRequest()->getParameter('id')));
-
+$id = sfContext::getInstance()->getRequest()->getParameter('id');
 $options = array(
   'title'    => __('Search Community Topics'),
-  'url'      => url_for('communityTopic/search'),
+  'url'      => url_for('communityTopic_search', $community),
   'button'   => __('Search'),
   'method'   => 'get'
 );
 
+$form = new PluginCommunityTopicSearchForm();
 op_include_form('searchCommunityTopic', $form, $options);
 ?>
