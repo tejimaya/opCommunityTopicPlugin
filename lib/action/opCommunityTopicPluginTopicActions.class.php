@@ -200,7 +200,6 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       'keyword' => $request->getParameter('keyword'),
       'target' => $request->getParameter('target', 'in_community'),
       'type' => $request->getParameter('type', 'topic'),
-      'id' => $request->getParameter('id'),
     );
 
     $this->form = new PluginCommunityTopicSearchForm();
@@ -218,7 +217,18 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $this->link_to_detail = 'communityTopic/show?id=%d';
       $this->type = 'topic';
     }
+
     $this->communityId = $request->getParameter('id');
+    $this->pageUrl = '@communityTopic_search';
+    if (!$request->hasParameter('id'))
+    {
+      unset($this->form['target']);
+      $this->pageUrl .= '_all';
+    }
+    else
+    {
+      $this->pageUrl .= '?id='.$this->communityId;
+    }
 
     $q = $table->getSearchQuery($request->getParameter('id'), $request->getParameter('target'), $request->getParameter('keyword'));
     $this->pager = $table->getResultListPager($q, $request->getParameter('page'));
