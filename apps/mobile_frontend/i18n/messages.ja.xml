@@ -246,6 +246,10 @@
         <source>[%Community% Event] (%1% %community%) %2% (open %3%)</source>
         <target>[ｲﾍﾞﾝﾄ] (%1% %community%) %2% (%3% 開催)</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Post from E-mail</source>
+        <target>ﾒｰﾙ投稿</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
