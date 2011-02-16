@@ -114,7 +114,13 @@ class PluginCommunityEventTable extends Doctrine_Table
       }
     }
 
-    $q->andWhereIn('id', opCommunityTopicToolkit::getPublicCommunityIdList())
+    $memberId = sfContext::getInstance()->getUser()->getMemberId();
+
+    $communityIds = opCommunityTopicToolkit::getPublicCommunityIdList();
+    $joinComunityIds = Doctrine::getTable('Community')->getIdsByMemberId($memberId);
+    $communityIds = array_merge($communityIds, $joinComunityIds);
+
+    $q->andWhereIn('community_id', $communityIds)
       ->orderBy('updated_at DESC');
 
     return $q;
