@@ -21,17 +21,15 @@ class opCommunityTopicToolkit
   {
     $result = array();
 
-    $rs = Doctrine::getTable('CommunityConfig')->createQuery()
-      ->select('id, community_id')
-      ->where('name = ?', array('public_flag'))
-      ->andWhere('value = ?', array('public'))
-      ->execute(array(), Doctrine::HYDRATE_NONE);
+    $table = Doctrine::getTable('CommunityConfig');
 
-    foreach ($rs as $r)
-    {
-      $result[] = $r[1];
-    }
+    $sql = 'SELECT community_id FROM '.$table->getTableName()
+         . ' WHERE name = "public_flag"'
+         . ' AND value IN ("public", "open")';
 
-    return $result;
+    $conn = $table->getConnection();
+    $communityIds = $conn->fetchColumn($sql);
+
+    return $communityIds;
   }
 }
