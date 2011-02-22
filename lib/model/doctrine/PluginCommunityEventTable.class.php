@@ -114,7 +114,7 @@ class PluginCommunityEventTable extends Doctrine_Table
       }
     }
 
-    $q->andWhereIn('id', opCommunityTopicToolkit::getPublicCommunityIdList())
+    $q->andWhereIn('community_id', opCommunityTopicToolkit::getPublicCommunityIdList())
       ->orderBy('updated_at DESC');
 
     return $q;
