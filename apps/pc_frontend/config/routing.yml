@@ -41,3 +41,7 @@ communityTopic_search_form:
 communityTopic_nodefaults:
   url: /communityTopic/*
   param: { module: default, action: error }
+
+communityEvent_nodefaults:
+  url: /communityEvent/*
+  param: { module: default, action: error }
