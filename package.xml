@@ -31,11 +31,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-12-16</date>
- <time>21:40:22</time>
+ <date>2011-04-09</date>
+ <time>04:14:32</time>
  <version>
-  <release>1.0.1</release>
-  <api>1.0.1</api>
+  <release>1.0.1.1</release>
+  <api>1.0.1.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -43,10 +43,7 @@
  </stability>
  <license>apache</license>
  <notes>
-Bug（バグ） #294: イベント参加者リストの2ページ目以降が表示されない
-Bug（バグ） #299: 限定公開のトピック/イベントが検索結果に表示
-Bug（バグ） #596: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
-Bug（バグ） #1156: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+fixed searching community topic that shows wrong result
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -241,11 +238,11 @@ Bug（バグ） #1156: イベント一覧で作成権限のないメンバーで
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1776c2b0d4c5fdea5b6b9379174b5cf4" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="c9886d655db82044576ca4bd043007b1" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ec2453f09ad4cf9bac02587d63c74067" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="762b428838cc07ae1df81e0922586709" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="5ec8156f2c9b7c3853542f79dfdeaaa6" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="d40daf3481e524a33e09ac7422be0db4" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9f49d690157c3cd52cd104216ff10a99" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="373b5461b752fa379743fa406a894d76" name="test/bootstrap/functional.php" role="data" />
@@ -518,6 +515,21 @@ Bug（バグ） #294: イベント参加者リストの2ページ目以降が表
 Bug（バグ） #299: 限定公開のトピック/イベントが検索結果に表示
 Bug（バグ） #596: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
 Bug（バグ） #1156: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1.1</release>
+    <api>1.0.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-09</date>
+   <license>apache</license>
+   <notes>
+fixed searching community topic that shows wrong result
    </notes>
   </release>
  </changelog>
