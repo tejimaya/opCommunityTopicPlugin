@@ -58,6 +58,18 @@
         <source>The application deadline must be before the open date.</source>
         <target>募集期限は開催日時より後に指定できません。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Photo 1</source>
+        <target>写真1</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 2</source>
+        <target>写真2</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 3</source>
+        <target>写真3</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

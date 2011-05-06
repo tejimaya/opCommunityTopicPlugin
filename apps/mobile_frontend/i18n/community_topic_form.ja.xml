@@ -14,6 +14,18 @@
         <source>Required.</source>
         <target>必須項目です。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Photo 1</source>
+        <target>写真1</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 2</source>
+        <target>写真2</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 3</source>
+        <target>写真3</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -2,7 +2,7 @@
 <?php include_partial('submenu') ?>
 <?php end_slot() ?>
 
-<?php slot('title', __('Delete Community Topic Comment')); ?>
+<?php slot('title', __('Delete %Community% Topic Comment')); ?>
 
 <p><?php echo __('Do you really want to delete this topic comment?') ?></p>
 

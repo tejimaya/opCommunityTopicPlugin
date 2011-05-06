@@ -1,4 +1,4 @@
-<?php op_mobile_page_title(__('Recently Posted Community Topics')) ?>
+<?php op_mobile_page_title(__('Recently Posted %Community% Topics')) ?>
 
 <?php if ($pager->getNbResults()): ?>
 <?php use_helper('Date') ?>

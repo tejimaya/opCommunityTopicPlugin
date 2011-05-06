@@ -52,4 +52,4 @@ op_include_form('formCommunityTopicComment', $form, $options);
 ?>
 <?php endif; ?>
 
-<?php op_include_line('linkLine', link_to('['.$community->getName().'] '.__('Community Top Page'), 'community/home?id='.$community->getId())) ?>
+<?php op_include_line('linkLine', link_to('['.$community->getName().'] '.__('%Community% Top Page'), 'community/home?id='.$community->getId())) ?>

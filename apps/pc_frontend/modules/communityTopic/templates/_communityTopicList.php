@@ -4,7 +4,7 @@
 <?php $sf_response->addStylesheet('/opCommunityTopicPlugin/css/communityTopic') ?>
 <?php use_helper('Date'); ?>
 <tr class="communityTopic">
-<th><?php echo __('Community Topics') ?></th>
+<th><?php echo __('%Community% Topics') ?></th>
 <td>
 <?php if ($count = count($communityTopics)): ?>
 <ul class="articleList">

@@ -13,7 +13,7 @@ pc:
           {{ url }}
     variables:
       "op_config.sns_name": "SNS 名"
-      community_name:  "コミュニティ名"
+      community_name:  "%community%名"
       topic_name:  "トピック名"
       nickname:  "投稿者のニックネーム"
       body:  "投稿内容"
@@ -33,7 +33,7 @@ mobile:
           {{ url }}
     variables:
       "op_config.sns_name": "SNS 名"
-      community_name:  "コミュニティ名"
+      community_name:  "%community%名"
       topic_name:  "トピック名"
       nickname:  "投稿者のニックネーム"
       body:  "投稿内容"

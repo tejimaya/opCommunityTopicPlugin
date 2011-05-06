@@ -23,16 +23,28 @@
         <target>種類</target>
       </trans-unit>
       <trans-unit id="6">
-        <source>In Community</source>
-        <target>ｺﾐｭﾆﾃｨ内</target>
+        <source>In %Community%</source>
+        <target>%Community%内</target>
       </trans-unit>
       <trans-unit id="7">
-        <source>All Community</source>
-        <target>すべてのｺﾐｭﾆﾃｨ</target>
+        <source>All %Community%</source>
+        <target>すべての%community%</target>
       </trans-unit>
       <trans-unit id="7">
         <source>Comments</source>
         <target>ｺﾒﾝﾄ</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 1</source>
+        <target>写真1</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 2</source>
+        <target>写真2</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 3</source>
+        <target>写真3</target>
       </trans-unit>
     </body>
   </file>

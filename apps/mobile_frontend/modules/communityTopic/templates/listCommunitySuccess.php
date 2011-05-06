@@ -47,4 +47,4 @@ op_include_list('communityTopicList', $list, $options);
 <?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
 <?php echo link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId()) ?><br>
 <?php endif; ?>
-<?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>
+<?php echo link_to(__('%Community% Top'), 'community/home?id='.$community->getId()) ?>

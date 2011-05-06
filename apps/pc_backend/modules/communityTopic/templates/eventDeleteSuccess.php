@@ -2,7 +2,7 @@
 <?php include_partial('submenu') ?>
 <?php end_slot() ?>
 
-<?php slot('title', __('Delete Community Event')); ?>
+<?php slot('title', __('Delete %Community% Event')); ?>
 
 <p><?php echo __('Do you really want to delete this event?') ?></p>
 

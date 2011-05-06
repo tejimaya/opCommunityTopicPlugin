@@ -189,7 +189,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
 
     $this->communityEvent->delete();
 
-    $this->getUser()->setFlash('notice', 'The community event was deleted successfully.');
+    $this->getUser()->setFlash('notice', 'The %Community% event was deleted successfully.');
 
     $this->redirect('community/home?id='.$this->community->getId());
   }

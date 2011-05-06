@@ -77,4 +77,4 @@ foreach ($list as $key => $value)
 <hr color="<?php echo $op_color['core_color_11'] ?>">
 
 <?php echo link_to(__('List of events'), '@communityEvent_list_community?id='.$community->getId()) ?><br>
-<?php echo link_to(__('Community Top'), 'community/home?id='.$community->getId()) ?>
+<?php echo link_to(__('%Community% Top'), 'community/home?id='.$community->getId()) ?>
