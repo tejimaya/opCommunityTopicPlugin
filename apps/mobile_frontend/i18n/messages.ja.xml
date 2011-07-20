@@ -56,7 +56,7 @@
       </trans-unit>
       <trans-unit id="">
         <source>Recently Posted This %Community% Topics</source>
-        <target>新着%community%ﾄﾋﾟｯｸ</target>
+        <target>新着%Community%ﾄﾋﾟｯｸ</target>
       </trans-unit>
       <trans-unit id="">
         <source>Everyone can read</source>
