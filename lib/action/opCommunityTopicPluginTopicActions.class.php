@@ -162,7 +162,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
 
     $this->communityTopic->delete();
 
-    $this->getUser()->setFlash('notice', 'The %Community% topic was deleted successfully.');
+    $this->getUser()->setFlash('notice', 'The %community% topic was deleted successfully.');
 
     $this->redirect('community/home?id='.$this->community->getId());
   }

@@ -3,7 +3,7 @@
   <file original="global" source-language="en" datatype="plaintext">
     <body>
       <trans-unit id="1">
-        <source>The %Community% topic was deleted successfully.</source>
+        <source>The %community% topic was deleted successfully.</source>
         <target>トピックの削除が完了しました。</target>
       </trans-unit>
       <trans-unit id="2">
@@ -115,7 +115,7 @@
         <target>イベント一覧</target>
       </trans-unit>
       <trans-unit id="">
-        <source>The %Community% event was deleted successfully.</source>
+        <source>The %community% event was deleted successfully.</source>
         <target>イベントの削除が完了しました。</target>
       </trans-unit>
       <trans-unit id="">
