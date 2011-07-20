@@ -1,6 +1,6 @@
 recentCommunityTopicComment:
   caption:
-    ja_JP: "%community%最新トピックリスト"
+    ja_JP: "%Community%最新トピックリスト"
   description:
     ja_JP: "メンバーが参加している%community%トピックの最新書き込みリストを表示します"
   component: [communityTopic, topicCommentListBox]
@@ -16,7 +16,7 @@ recentCommunityTopicComment:
 
 recentCommunityEventComment:
   caption:
-    ja_JP: "%community%最新イベントリスト"
+    ja_JP: "%Community%最新イベントリスト"
   description:
     ja_JP: "メンバーが参加している%community%イベント最新書き込みリストを表示します"
   component: [communityEvent, eventCommentListBox]
