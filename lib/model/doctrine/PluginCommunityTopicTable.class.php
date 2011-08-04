@@ -96,6 +96,11 @@ class PluginCommunityTopicTable extends Doctrine_Table
       $values = preg_split('/[\s　]+/u', $keyword);
       foreach ($values as $value)
       {
+        if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+        {
+          $value = Doctrine_Manager::connection()->formatter->escapePattern($value);
+        }
+
         $q->andWhere('(name LIKE ? OR body LIKE ?)', array('%'.$value.'%', '%'.$value.'%'));
       }
     }
