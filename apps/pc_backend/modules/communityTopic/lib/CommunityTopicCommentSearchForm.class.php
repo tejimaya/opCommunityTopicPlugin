@@ -60,21 +60,25 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
     if (!empty($number)) $query->andWhere('c.number = ?', $number);
     if (!empty($member_name))
     {
-      if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+      if (method_exists($query, 'andWhereLike'))
       {
-        $member_name = Doctrine_Manager::connection()->formatter->escapePattern($member_name);
+        $query->andWhereLike('m.name', $member_name);
       }
-
-      $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
+      else
+      {
+        $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
+      }
     }
     if (!empty($body))
     {
-      if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+      if (method_exists($query, 'andWhereLike'))
       {
-        $body = Doctrine_Manager::connection()->formatter->escapePattern($body);
+        $query->andWhereLike('c.body', $body);
       }
-
-      $query->andWhere('c.body LIKE ?', '%'.$body.'%');
+      else
+      {
+        $query->andWhere('c.body LIKE ?', '%'.$body.'%');
+      }
     }
 
     return $query;

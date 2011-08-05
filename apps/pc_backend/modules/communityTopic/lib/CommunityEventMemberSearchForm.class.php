@@ -51,12 +51,14 @@ class CommunityEventMemberSearchForm extends PluginCommunityEventMemberFormFilte
     if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
     if (!empty($member_name))
     {
-      if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+      if (method_exists($query, 'andWhereLike'))
       {
-        $member_name = Doctrine_Manager::connection()->formatter->escapePattern($member_name);
+        $query->andWhereLike('m.name', $member_name);
       }
-
-      $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
+      else
+      {
+        $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
+      }
     }
 
     return $query;
