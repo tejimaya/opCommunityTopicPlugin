@@ -64,7 +64,7 @@ abstract class opCommunityTopicPluginEventCommentActions extends sfActions
       }
       catch (opCommunityEventMemberAppendableException $e)
       {
-        $this->getUser()->setFlash('error', $e->getMessage());
+        $this->getUser()->setFlash('error', $e->getMessage(), false);
       }
     }
 
