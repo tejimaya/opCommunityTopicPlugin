@@ -58,8 +58,29 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
     $query = Doctrine_Query::create()->from('CommunityTopicComment c')->leftJoin('c.Member m');
     if (!empty($community_topic_id)) $query->andWhere('c.community_topic_id = ?', $community_topic_id);
     if (!empty($number)) $query->andWhere('c.number = ?', $number);
-    if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
-    if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
+    if (!empty($member_name))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike('m.name', $member_name);
+      }
+      else
+      {
+        $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
+      }
+    }
+    if (!empty($body))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike('c.body', $body);
+      }
+      else
+      {
+        $query->andWhere('c.body LIKE ?', '%'.$body.'%');
+      }
+    }
+
     return $query;
   }
 }
