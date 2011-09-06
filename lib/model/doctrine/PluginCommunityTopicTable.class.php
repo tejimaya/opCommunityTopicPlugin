@@ -100,13 +100,7 @@ class PluginCommunityTopicTable extends Doctrine_Table
       }
     }
 
-    $memberId = sfContext::getInstance()->getUser()->getMemberId();
-
-    $communityIds = opCommunityTopicToolkit::getPublicCommunityIdList();
-    $joinComunityIds = Doctrine::getTable('Community')->getIdsByMemberId($memberId);
-    $communityIds = array_merge($communityIds, $joinComunityIds);
-
-    $q->andWhereIn('community_id', $communityIds)
+    $q->andWhereIn('id', opCommunityTopicToolkit::getPublicCommunityIdList())
       ->orderBy('updated_at DESC');
 
     return $q;
