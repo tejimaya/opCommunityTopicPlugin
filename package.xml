@@ -31,11 +31,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-12-16</date>
- <time>21:32:07</time>
+ <date>2011-04-09</date>
+ <time>04:14:24</time>
  <version>
-  <release>0.9.8</release>
-  <api>0.9.8</api>
+  <release>0.9.8.1</release>
+  <api>0.9.8.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -43,10 +43,7 @@
  </stability>
  <license>apache</license>
  <notes>
-Backport（バックポート） #1850: イベント参加者リストの2ページ目以降が表示されない
-Backport（バックポート） #1851: 限定公開のトピック/イベントが検索結果に表示
-Backport（バックポート） #1852: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
-Backport（バックポート） #1853: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+fixed searching community topic that shows wrong result
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -214,11 +211,11 @@ Backport（バックポート） #1853: イベント一覧で作成権限のな�
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1776c2b0d4c5fdea5b6b9379174b5cf4" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="11a2648e5c8b6222b3f6fac179b908a1" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ee58edea0fe551176f8601e319e7f87a" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5abb460857a03bf983a958143aeb29ce" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="5ec8156f2c9b7c3853542f79dfdeaaa6" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="252d217055d3da0f95765ea436222dd8" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="52253be7b1ee15f761e3d8300637abc3" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="99e445b44e52afe6383978eb2f00ce06" name="test/bootstrap/functional.php" role="data" />
@@ -452,6 +449,21 @@ Backport（バックポート） #1850: イベント参加者リストの2ペー
 Backport（バックポート） #1851: 限定公開のトピック/イベントが検索結果に表示
 Backport（バックポート） #1852: コミュニティホーム画面下部の、トピック検索のリンク先が正しくない
 Backport（バックポート） #1853: イベント一覧で作成権限のないメンバーでも「イベントを作成する」が表示される
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.8.1</release>
+    <api>0.9.8.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-09</date>
+   <license>apache</license>
+   <notes>
+fixed searching community topic that shows wrong result
    </notes>
   </release>
  </changelog>
