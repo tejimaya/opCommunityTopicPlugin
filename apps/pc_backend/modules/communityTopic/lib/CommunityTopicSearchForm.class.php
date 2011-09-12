@@ -45,4 +45,37 @@ class CommunityTopicSearchForm extends PluginCommunityTopicFormFilter
     $this->widgetSchema->setNameFormat('communityTopic[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
+
+  public function getQuery() {
+    $parameter = $this->getTaintedValues();
+    $community_topic_id = $parameter['id']['text'];
+    $name = $parameter['name']['text'];
+    $body = $parameter['body']['text'];
+    $query = Doctrine_Query::create()->from('CommunityTopic');
+    if (!empty($community_topic_id)) $query->andWhere('id = ?', $community_topic_id);
+    if (!empty($name))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike('name', $name);
+      }
+      else
+      {
+        $query->andWhere('name LIKE ?', '%'.$name.'%');
+      }
+    }
+    if (!empty($body))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike('body', $body);
+      }
+      else
+      {
+        $query->andWhere('body LIKE ?', '%'.$body.'%');
+      }
+    }
+
+    return $query;
+  }
 }
