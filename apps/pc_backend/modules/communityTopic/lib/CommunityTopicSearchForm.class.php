@@ -45,4 +45,29 @@ class CommunityTopicSearchForm extends PluginCommunityTopicFormFilter
     $this->widgetSchema->setNameFormat('communityTopic[%s]');
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
+
+  protected function addNameColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
+
+  protected function addBodyColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
+
+  protected function _addColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    if (!empty($value['text']))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike($field, $value['text']);
+      }
+      else
+      {
+        $query->andWhere($field.' LIKE ?', '%'.$value['text'].'%');
+      }
+    }
+  }
 }

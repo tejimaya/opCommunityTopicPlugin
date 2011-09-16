@@ -25,6 +25,12 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
 
   public function configure()
   {
+    if (!isset($this->option['query']))
+    {
+      $query = $this->getTable()->createQuery('c')->leftJoin('c.Member m');
+      $this->setQuery($query);
+    }
+
     $this->setWidgets(array(
       'community_topic_id'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'number'                => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -49,38 +55,28 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
 
-  public function getQuery(){
-    $parameter = $this->getTaintedValues();
-    $community_topic_id = $parameter['community_topic_id']['text'];
-    $number = $parameter['number']['text'];
-    $member_name = $parameter['member_name']['text'];
-    $body = $parameter['body']['text'];
-    $query = Doctrine_Query::create()->from('CommunityTopicComment c')->leftJoin('c.Member m');
-    if (!empty($community_topic_id)) $query->andWhere('c.community_topic_id = ?', $community_topic_id);
-    if (!empty($number)) $query->andWhere('c.number = ?', $number);
-    if (!empty($member_name))
-    {
-      if (method_exists($query, 'andWhereLike'))
-      {
-        $query->andWhereLike('m.name', $member_name);
-      }
-      else
-      {
-        $query->andWhere('m.name LIKE ?', '%'.$member_name.'%');
-      }
-    }
-    if (!empty($body))
-    {
-      if (method_exists($query, 'andWhereLike'))
-      {
-        $query->andWhereLike('c.body', $body);
-      }
-      else
-      {
-        $query->andWhere('c.body LIKE ?', '%'.$body.'%');
-      }
-    }
+  protected function addMemberNameColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, 'm.name', $value);
+  }
 
-    return $query;
+  protected function addBodyColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
+
+  protected function _addColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    if (!empty($value['text']))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike($field, $value['text']);
+      }
+      else
+      {
+        $query->andWhere($field.' LIKE ?', '%'.$value['text'].'%');
+      }
+    }
   }
 }
