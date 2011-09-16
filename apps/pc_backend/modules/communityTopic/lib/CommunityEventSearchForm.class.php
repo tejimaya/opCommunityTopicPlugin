@@ -46,36 +46,28 @@ class CommunityEventSearchForm extends PluginCommunityEventFormFilter
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
 
-  public function getQuery() {
-    $parameter = $this->getTaintedValues();
-    $community_event_id = $parameter['id']['text'];
-    $name = $parameter['name']['text'];
-    $body = $parameter['body']['text'];
-    $query = Doctrine_Query::create()->from('CommunityEvent');
-    if (!empty($community_event_id)) $query->andWhere('id = ?', $community_event_id);
-    if (!empty($name))
-    {
-      if (method_exists($query, 'andWhereLike'))
-      {
-        $query->andWhereLike('name', $name);
-      }
-      else
-      {
-        $query->andWhere('name LIKE ?', '%'.$name.'%');
-      }
-    }
-    if (!empty($body))
-    {
-      if (method_exists($query, 'andWhereLike'))
-      {
-        $query->andWhereLike('body', $body);
-      }
-      else
-      {
-        $query->andWhere('body LIKE ?', '%'.$body.'%');
-      }
-    }
+  protected function addNameColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
 
-    return $query;
+  protected function addBodyColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
+
+  protected function _addColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    if (!empty($value['text']))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike($field, $value['text']);
+      }
+      else
+      {
+        $query->andWhere($field.' LIKE ?', '%'.$value['text'].'%');
+      }
+    }
   }
 }
