@@ -31,11 +31,23 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-04-09</date>
- <time>04:14:32</time>
+ <lead>
+  <name>Shingo Yamada</name>
+  <user>shingo</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Yuya Watanabe</name>
+  <user>watanabe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2011-09-21</date>
+ <time>20:06:52</time>
  <version>
-  <release>1.0.1.1</release>
-  <api>1.0.1.1</api>
+  <release>1.0.2</release>
+  <api>1.0.2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -43,15 +55,24 @@
  </stability>
  <license>apache</license>
  <notes>
-fixed searching community topic that shows wrong result
+Bug（バグ） #270: This plugin don't support sns term (SNS名称設定に対応していない）
+Bug（バグ） #296: トピック検索時にメニューが変化
+Bug（バグ） #1332: 携帯版でイベント作成時のエラーメッセージが英語になっている
+Bug（バグ） #1483: マイグレート後のDB構造が新規構築時と一致しない
+Bug（バグ） #1637: コミュニティトピックプラグインのアクティビティ更新設定が反映されない
+Bug（バグ） #1651: コミュニティトピックコメントのメール投稿のリンクが英語になっている
+Bug（バグ） #1915: /communityEvent/listCommunityにアクセスするとFatal errorが発生する
+Bug（バグ） #2336: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
+Bug（バグ） #2355: Photo 1, Photo 2, Photo 3 という文言に対する翻訳がない
+Bug（バグ） #2376: イベント参加画面にてエラーのアラートが表示され続ける
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="4892bca0ac60dffcd7b90a4169f26497" name="apps/mobile_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="2449aec398f3b1bf94e70c4c51b61a42" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="9184a10925b576f67dceebeb9d3cb94a" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="afff5cfd3c547e908f13531026ce0e12" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="1c10117f91626b78cfe92d407433a386" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/mobile_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="23c8d1e0ff014c46529d362bd5554354" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="16741bb78286ad7ddb0ad76d8b10f747" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="ede396e81481040b1acd88347e7eefe7" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="402b3e5b624276eaa0f3a8f20528b924" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="1e258328c2fa297894550e74d55348c1" name="apps/mobile_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="7de8ab45c24b7a4eeaf478f5f6a4541f" name="apps/mobile_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/mobile_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -59,14 +80,14 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/mobile_frontend/modules/communityEvent/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="c991e039569ac3efcc3ed3dda5ac0886" name="apps/mobile_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="8183b407b781e35658617f5d62dedea2" name="apps/mobile_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="44673924811b80a897a113bc15820d1c" name="apps/mobile_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="fd4be7b1bfa57278c9641818b5a28e56" name="apps/mobile_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2aa8b21f22c429c48c38eb2270096084" name="apps/mobile_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
    <file baseinstalldir="/" md5sum="d036384abaafe93bfd92f9a30454b853" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="6939f0dbca900236aedaabe821a52138" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="938311f797d10e67aedbb9877ccb19b4" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="5f1bd3d296c5c230aeab1fae1c6e59ab" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
-   <file baseinstalldir="/" md5sum="31acb52d16fe10a1775987c4bf1b6831" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="7a961ca4436c6bd91ff8b2f90b30c1ec" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="fcad4a5d091ccdc21b415195f46f1308" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="3861e46022c00e212b755dda00c928ae" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
+   <file baseinstalldir="/" md5sum="e92f31fb75dc5ac36f2338844aa07040" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cb71ec6dc13b994c2b6cc9a7c7580834" name="apps/mobile_frontend/modules/communityEventComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityEventComment/config/security.yml" role="data" />
@@ -79,16 +100,16 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopic/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="a07351be2407629612569aa782b2f49b" name="apps/mobile_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52665c4ce922a065ea8a9d03ee6666bc" name="apps/mobile_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="42d75c1ffd016b38d04446f76c67a880" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="21cc217f4fa51fc6e17ef9ef45d0781c" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="287b24a3dd18b732dc951f0fd4594203" name="apps/mobile_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="19c1cb9b055f6830bdd2eb1ad5ed4756" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="9e2ad87c2910280544326ad0d7708d60" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="2f07dcbc2fa0b7fe908f7edeae557031" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="18fb0ff660244362fa5a18bc3e21f67e" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="db90f7e83461fd9308dfa2269e075aa3" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="f8f0ad76a06545f5e4d23a2da713c0e4" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="c95aea6fa2c5484c6602eb93525c2a6d" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1ad95e2183495ff01ff92cf1f01af685" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="1833ca3d3259c305c4f7a2ab8f822f45" name="apps/mobile_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="f78320c392a42b6ca0274d615aa4cc6d" name="apps/mobile_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
-   <file baseinstalldir="/" md5sum="b486305b790e7c987f3defab8affb3ac" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
-   <file baseinstalldir="/" md5sum="54cd89cb47e6ab833c5dfedab5b327ff" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="22578c9055960e18ed25f71667dd39bb" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
+   <file baseinstalldir="/" md5sum="b8955cbe263bded1be12b5bfa4b9be62" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="e83a6e243e643b7a735119275eb4a23b" name="apps/mobile_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="4504f856530c1e33c42dbd6764f3ff6b" name="apps/mobile_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f955fafd39f2b1933434c6577683e02b" name="apps/mobile_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
@@ -101,23 +122,23 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="b4511bd194198fda810a3f678b91b188" name="apps/mobile_mail_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9b4b10c773687867ce22734babe3944f" name="apps/mobile_mail_frontend/modules/communityTopicComment/templates/createError.php" role="data" />
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="df8bdda476be125be5c91d0468d2803f" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="f5a2aa1ae7d84ae9fa57b6e1edd746c0" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="3f51f04370ec23c2de62aa16757a2d51" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1a152083fe4b9d0b009811de04de1529" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="78a3c7e8990176c05588f68340e16f7e" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="006f88cc283e2483b34f069e101dd8fb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="75e6dbfb2d359b69f21336217432c526" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="bc67d29bf96894f1f9bbcb9a68b2063a" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="990d4f7abb6c05271723c23c2510fa79" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="eb852224b72bbde75ee46cce47482539" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="dddb8e514e230cd129d9425f9a161ecb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="10581657b89ed7e245349a605cb2c192" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="1b4e6d2b7d9083f9c08041e20f27ff63" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2d5e383eb45bbea97afd180ecb9207bd" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="14dc47b56385a032df6bf856e751ac5e" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="99a043c0d98d3909ff91194e9f59811f" name="apps/pc_backend/modules/communityTopic/templates/eventCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="332606f60028f26fc41cc6dac9cb1750" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="3eda70cff226cd2208d35fececee80e1" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b249527fcbc5826cf7d583ae3815fa5" name="apps/pc_backend/modules/communityTopic/templates/eventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="7a06706efdb24319dcfdc51a0ea00628" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="b25aeba66a425288f4e89297ea5a8232" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6e64cc86d18fe09fee47abb1a646ff94" name="apps/pc_backend/modules/communityTopic/templates/eventMemberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_backend/modules/communityTopic/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="a53a99e6fd8ed620b353981b32cb673f" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="c2d2c38f9402ff7a69103f63c93b5381" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bec43b3fc52d5db84056c8405064113" name="apps/pc_backend/modules/communityTopic/templates/topicCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ef7d7878a5bc5d0545bc8c6e4b1c160f" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="dc187d3aa6c59920f24d82be90447633" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="df51dae14bf10dce5ad9ceb0c6d72cab" name="apps/pc_backend/modules/communityTopic/templates/topicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="abfab13d85fe6eb7437e59638e1ea409" name="apps/pc_backend/modules/communityTopic/templates/_eventCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="1f61755909889342120d3a1bf68c9e17" name="apps/pc_backend/modules/communityTopic/templates/_eventInfo.php" role="data" />
@@ -127,11 +148,11 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="cad3800160f6245f2ba534d55f04ca84" name="apps/pc_backend/modules/communityTopic/templates/_topicInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="dd7c28f361e84170ea277efbff35f430" name="apps/pc_backend/modules/opCommunityTopicPlugin/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7f4a22673656ea0940c5d56035842df8" name="apps/pc_backend/modules/opCommunityTopicPlugin/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4892bca0ac60dffcd7b90a4169f26497" name="apps/pc_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="6d924ace41bc460311b5db1f44741b86" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="9ac8d7060aca541e21da80c2d5a7981a" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="69dcf8e5662cce5bd6a31a9041b50e20" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="fc1f6e4cd24883b0e32b9c9ce1baa8b7" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/pc_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="23e36da5008ca0c0aa4187893675703b" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="8e99f6ec6e6021f2e1a2040014794f19" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="af7bbc2459f0d370a1b4224fcb14acad" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="8fc9dbea79b60cb618588d2d2e6d975f" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="fb5af4adf804b232ad21b63a41740716" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -143,10 +164,10 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
    <file baseinstalldir="/" md5sum="1b459417584acd0fcc8889483f562276" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="949a380928af793967aed005bd0fed88" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="220b55cd40a52323bc16fad132023717" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4c098601c6fca72c225b071ad26fb704" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4369815899e589ef72ad322f0a3f2674" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
-   <file baseinstalldir="/" md5sum="d946d1590ba22a2c2132bcabf9c4b694" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="2ecad1151ea3e279387ca596d3fa04d4" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="9879202a548eda32fcb07a5984d2948e" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
+   <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/pc_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="00a4c0d9ac54615177c2136d2c00bc17" name="apps/pc_frontend/modules/communityEventComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEventComment/config/security.yml" role="data" />
@@ -162,15 +183,15 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="66467c7b1539af6d3c90caa18ff2986f" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="32cf2992324d78979652c97d6e58ec52" name="apps/pc_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ba5a87bf3d74d58e9be4365a391e901e" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="077a99923523b438db09648d8e46ffaa" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4a9f1a8bcd7bd21d8373c2b50b0db7ba" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ce852d98c2777188f892322dfe57c29d" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="d3c161c2c8041a34ef941792c4cd8a01" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="9a799fe517b0ffd5d0c26bef519f7c06" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="86920b9bee8fac22ef226eb15167fa52" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="8914fb2453b20f955291389afe0b71dd" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="c5fb8c7f8cfddb488bbeddcd6dc77151" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="c698cb8133128d7bbfd7f43b3e706d29" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
    <file baseinstalldir="/" md5sum="f745b5ccbe6162068c4bedf08ae1e826" name="apps/pc_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
-   <file baseinstalldir="/" md5sum="fcf9629f0aa95fabbf30bd5f0362fec2" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
-   <file baseinstalldir="/" md5sum="d1e2dead5554227c5838c2afc2465798" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="a583752c5dda29aee9657d38e32da64b" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
+   <file baseinstalldir="/" md5sum="ea721bc2100715fee1512bf501e25639" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="5e5f4b36ba02351886b3ea32cdd9cb6f" name="apps/pc_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="e8a92c96d379c33b4e6bb94e0dbb99b8" name="apps/pc_frontend/modules/communityTopic/templates/_topSearchForm.php" role="data" />
    <file baseinstalldir="/" md5sum="9c0826f650c587d92d0cfbd6385490c8" name="apps/pc_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
@@ -180,12 +201,12 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="1a3d901b6cf0581ce7b7208977425c52" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="e3b0068c059c6db12fe95bd939916e6e" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="df7e6e983a6d9587d68f4ecacd4d359b" name="config/activity_template.yml" role="data" />
-   <file baseinstalldir="/" md5sum="fd2fa6fbdf3d0264c73b17574bb4dc17" name="config/community_config.yml" role="data" />
+   <file baseinstalldir="/" md5sum="75523dffafda71fda33ac6cda33e1d82" name="config/community_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="67d37bf12d41acc00120248e086280d5" name="config/gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="284a50a1562eaa39fb5898c964662dfc" name="config/mail_template.yml" role="data" />
-   <file baseinstalldir="/" md5sum="1e75d65d21cef2b4c78b27d2dd5b3eda" name="config/mobile_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="a3cb5fec1c8d5bcec0ae56e91f5bcd0d" name="config/mail_template.yml" role="data" />
+   <file baseinstalldir="/" md5sum="235508f4194c2c44e324a8452264ff75" name="config/mobile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="ee3e8889b9cd4a357bd92443d00e6a57" name="config/doctrine/schema.yml" role="data" />
-   <file baseinstalldir="/" md5sum="a50d34520e0c6585199d49bb7cdbd56a" name="data/fixtures/000_revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="7140a21730d44f520d0720b81686136f" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="002f535128326d06be1e4da24d97b714" name="data/fixtures/010_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="19aa41f8c0275b30ce084f8e66e110c1" name="data/fixtures/020_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="059f5eeb8a1a60cd5b2a89d7f932cf78" name="data/fixtures/030_backend_navigation_menu.yml" role="data" />
@@ -194,16 +215,17 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
    <file baseinstalldir="/" md5sum="9a25ed6fc6362127bb4ac58faf3895f4" name="data/migrations/1.0.0/005_update_op_community_topic_plugin_1_0_0_1.php" role="data" />
+   <file baseinstalldir="/" md5sum="fbd8e784f30b29d7a2b7952f45e50446" name="data/migrations/1.0.2/006_update_op_community_topic_plugin_1_0_2.php" role="data" />
    <file baseinstalldir="/" md5sum="850f42b019638769ca78fb1fe9c7d4e8" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a1d3f2ce10123617e6ae85895829ec5c" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="cd61fc6c291f7cdbd9a33c399618e07c" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="009044bc728f2b4ce3f391669efea5ab" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f2ed249d666604a3cb90c7617e224f6c" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="53a9598d864c9b60c265e7e2565ff723" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="46b82e7ff8a24842b4c3dba7b77ff673" name="lib/action/opCommunityTopicPluginEventCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55d10741b7029198a5cd183768151fda" name="lib/action/opCommunityTopicPluginEventComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="915af2c83a4f860799cef4a64a072151" name="lib/action/opCommunityTopicPluginMailActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="2a4056b410777e2bc10ce994bccb7734" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="40ec69eebb7e136d35b3062b2095340c" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="656321252529b8be38f85a99681b267c" name="lib/action/opCommunityTopicPluginTopicCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fa6c964048b4b6195600c67eb73d8913" name="lib/action/opCommunityTopicPluginTopicCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6566d25a16cd2d29ab683da7e9eb1ce1" name="lib/action/opCommunityTopicPluginTopicComponents.class.php" role="data" />
@@ -220,7 +242,7 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="bf1c68a3d7e763648907b401c630b397" name="lib/filter/doctrine/PluginCommunityTopicCommentImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bf26a92f55430a497da21feaeced1f1" name="lib/filter/doctrine/PluginCommunityTopicFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3f44e6addeff1d88091d312b5fed59b5" name="lib/filter/doctrine/PluginCommunityTopicImageFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="b35feeb7164a0afc5fed0e2edba2cacd" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="89aadd81e22a45feb399caf5e6d4c8c1" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1c7830fbaa98dade0ae7a50aeb80b27b" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
@@ -232,17 +254,17 @@ fixed searching community topic that shows wrong result
    <file baseinstalldir="/" md5sum="64f680c93f44eee8f03e052ddaa0f103" name="lib/form/doctrine/PluginCommunityTopicCommentImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bc206fc6e3e33ae6c816b61185d4256" name="lib/form/doctrine/PluginCommunityTopicForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc812db69b53b13d9f3e6f3a105f3c37" name="lib/form/doctrine/PluginCommunityTopicImageForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="73e75fd418d116395e592f7a84e3f91e" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="fa3ef2bef1bd530e6833dd2fef231ecd" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e516f287342dd3376b78f5519a81b91a" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b9f47fa8373ac836ad4b254b13a28801" name="lib/model/doctrine/PluginCommunityEventComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="c9886d655db82044576ca4bd043007b1" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="150ef9d18e524229239b936204524f00" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ec2453f09ad4cf9bac02587d63c74067" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="762b428838cc07ae1df81e0922586709" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="d40daf3481e524a33e09ac7422be0db4" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="424e99f66b087cddeb97e3e73595e492" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9f49d690157c3cd52cd104216ff10a99" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="373b5461b752fa379743fa406a894d76" name="test/bootstrap/functional.php" role="data" />
@@ -530,6 +552,30 @@ Bug（バグ） #1156: イベント一覧で作成権限のないメンバーで
    <license>apache</license>
    <notes>
 fixed searching community topic that shows wrong result
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-09-21</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #270: This plugin don't support sns term (SNS名称設定に対応していない）
+Bug（バグ） #296: トピック検索時にメニューが変化
+Bug（バグ） #1332: 携帯版でイベント作成時のエラーメッセージが英語になっている
+Bug（バグ） #1483: マイグレート後のDB構造が新規構築時と一致しない
+Bug（バグ） #1637: コミュニティトピックプラグインのアクティビティ更新設定が反映されない
+Bug（バグ） #1651: コミュニティトピックコメントのメール投稿のリンクが英語になっている
+Bug（バグ） #1915: /communityEvent/listCommunityにアクセスするとFatal errorが発生する
+Bug（バグ） #2336: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
+Bug（バグ） #2355: Photo 1, Photo 2, Photo 3 という文言に対する翻訳がない
+Bug（バグ） #2376: イベント参加画面にてエラーのアラートが表示され続ける
    </notes>
   </release>
  </changelog>
