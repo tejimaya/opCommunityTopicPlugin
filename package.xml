@@ -43,11 +43,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-09-21</date>
- <time>20:06:52</time>
+ <date>2011-09-29</date>
+ <time>21:14:19</time>
  <version>
-  <release>1.0.2</release>
-  <api>1.0.2</api>
+  <release>1.0.2.1</release>
+  <api>1.0.2.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -55,16 +55,7 @@
  </stability>
  <license>apache</license>
  <notes>
-Bug（バグ） #270: This plugin don't support sns term (SNS名称設定に対応していない）
-Bug（バグ） #296: トピック検索時にメニューが変化
-Bug（バグ） #1332: 携帯版でイベント作成時のエラーメッセージが英語になっている
-Bug（バグ） #1483: マイグレート後のDB構造が新規構築時と一致しない
-Bug（バグ） #1637: コミュニティトピックプラグインのアクティビティ更新設定が反映されない
-Bug（バグ） #1651: コミュニティトピックコメントのメール投稿のリンクが英語になっている
-Bug（バグ） #1915: /communityEvent/listCommunityにアクセスするとFatal errorが発生する
-Bug（バグ） #2336: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
-Bug（バグ） #2355: Photo 1, Photo 2, Photo 3 という文言に対する翻訳がない
-Bug（バグ） #2376: イベント参加画面にてエラーのアラートが表示され続ける
+Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト（リビジョン番号 6）の考慮不足により、マイグレートに失敗することがある
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -215,7 +206,7 @@ Bug（バグ） #2376: イベント参加画面にてエラーのアラートが
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
    <file baseinstalldir="/" md5sum="9a25ed6fc6362127bb4ac58faf3895f4" name="data/migrations/1.0.0/005_update_op_community_topic_plugin_1_0_0_1.php" role="data" />
-   <file baseinstalldir="/" md5sum="fbd8e784f30b29d7a2b7952f45e50446" name="data/migrations/1.0.2/006_update_op_community_topic_plugin_1_0_2.php" role="data" />
+   <file baseinstalldir="/" md5sum="2320b70d6649ef42bf0634fab733a13e" name="data/migrations/1.0.2/006_update_op_community_topic_plugin_1_0_2.php" role="data" />
    <file baseinstalldir="/" md5sum="850f42b019638769ca78fb1fe9c7d4e8" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
@@ -566,7 +557,7 @@ fixed searching community topic that shows wrong result
    <date>2011-09-21</date>
    <license>apache</license>
    <notes>
-Bug（バグ） #270: This plugin don't support sns term (SNS名称設定に対応していない）
+Bug（バグ） #270: This plugin don&apos;t support sns term (SNS名称設定に対応していない）
 Bug（バグ） #296: トピック検索時にメニューが変化
 Bug（バグ） #1332: 携帯版でイベント作成時のエラーメッセージが英語になっている
 Bug（バグ） #1483: マイグレート後のDB構造が新規構築時と一致しない
@@ -576,6 +567,21 @@ Bug（バグ） #1915: /communityEvent/listCommunityにアクセスするとFata
 Bug（バグ） #2336: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
 Bug（バグ） #2355: Photo 1, Photo 2, Photo 3 という文言に対する翻訳がない
 Bug（バグ） #2376: イベント参加画面にてエラーのアラートが表示され続ける
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2.1</release>
+    <api>1.0.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-09-29</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト（リビジョン番号 6）の考慮不足により、マイグレートに失敗することがある
    </notes>
   </release>
  </changelog>
