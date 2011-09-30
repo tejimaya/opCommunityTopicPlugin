@@ -43,11 +43,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-09-29</date>
- <time>21:14:19</time>
+ <date>2011-09-30</date>
+ <time>22:51:55</time>
  <version>
-  <release>1.0.2.1</release>
-  <api>1.0.2.1</api>
+  <release>1.0.2.2</release>
+  <api>1.0.2.2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -55,7 +55,7 @@
  </stability>
  <license>apache</license>
  <notes>
-Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト（リビジョン番号 6）の考慮不足により、マイグレートに失敗することがある
+Fixed foreign key constraint errors in migration of revision 6
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -206,7 +206,7 @@ Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト
    <file baseinstalldir="/" md5sum="240c1c8ef9f5de54dc0c550a8d759a45" name="data/migrations/0.8.1/003_update_op_community_topic_plugin_0_8_1_3.php" role="data" />
    <file baseinstalldir="/" md5sum="187b7135d18cb7eb5c61664199936ee6" name="data/migrations/0.8.1/004_update_op_community_topic_plugin_0_8_1_4.php" role="data" />
    <file baseinstalldir="/" md5sum="9a25ed6fc6362127bb4ac58faf3895f4" name="data/migrations/1.0.0/005_update_op_community_topic_plugin_1_0_0_1.php" role="data" />
-   <file baseinstalldir="/" md5sum="2320b70d6649ef42bf0634fab733a13e" name="data/migrations/1.0.2/006_update_op_community_topic_plugin_1_0_2.php" role="data" />
+   <file baseinstalldir="/" md5sum="5b2329fb3677f8cfc001aa0b03b06c7a" name="data/migrations/1.0.2/006_update_op_community_topic_plugin_1_0_2.php" role="data" />
    <file baseinstalldir="/" md5sum="850f42b019638769ca78fb1fe9c7d4e8" name="lib/opCommunityTopicToolKit.class.php" role="data" />
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
@@ -582,6 +582,21 @@ Bug（バグ） #2376: イベント参加画面にてエラーのアラートが
    <license>apache</license>
    <notes>
 Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト（リビジョン番号 6）の考慮不足により、マイグレートに失敗することがある
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2.2</release>
+    <api>1.0.2.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-09-30</date>
+   <license>apache</license>
+   <notes>
+Fixed foreign key constraint errors in migration of revision 6
    </notes>
   </release>
  </changelog>
