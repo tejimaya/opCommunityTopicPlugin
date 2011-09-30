@@ -10,6 +10,46 @@
 
 class update_op_community_topic_plugin_1_0_2 extends opMigration
 {
+  public function preUp()
+  {
+    $tableList = array(
+      'CommunityTopic' => 'community_topic',
+      'CommunityTopicComment' => 'community_topic_comment',
+      'CommunityEvent' => 'community_event',
+      'CommunityEventComment' => 'community_event_comment',
+    );
+    foreach ($tableList as $key => $table)
+    {
+      $imageTable = $key.'Image';
+      Doctrine::getTable($imageTable)->createQuery()->delete()
+        ->where($imageTable.'.post_id NOT IN (select id from '.$table.')')
+        ->execute();
+      Doctrine::getTable($imageTable)->createQuery()->delete()
+        ->where($imageTable.'.file_id NOT IN (select id from file)')
+        ->execute();
+    }
+  }
+
+  public function preDown()
+  {
+    $tableList = array(
+      'CommunityTopic' => 'community_topic',
+      'CommunityTopicComment' => 'community_topic_comment',
+      'CommunityEvent' => 'community_event',
+      'CommunityEventComment' => 'community_event_comment',
+    );
+    foreach ($tableList as $key => $table)
+    {
+      $imageTable = $key.'Image';
+      Doctrine::getTable($imageTable)->createQuery()->delete()
+        ->where($imageTable.'.post_id NOT IN (select id from '.$table.')')
+        ->execute();
+      Doctrine::getTable($imageTable)->createQuery()->delete()
+        ->where($imageTable.'.file_id NOT IN (select id from file)')
+        ->execute();
+    }
+  }
+
   public function up()
   {
     $import = Doctrine_Manager::connection()->import;
