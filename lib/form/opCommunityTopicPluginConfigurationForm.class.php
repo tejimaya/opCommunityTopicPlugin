@@ -24,6 +24,7 @@ class opCommunityTopicPluginConfigurationForm extends BaseForm
     $this->setWidget('update_activity', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('update_activity', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('update_activity', Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_update_activity', '0'));
+    $this->widgetSchema->setLabel('update_activity', 'Update %activity%');
     $this->widgetSchema->setHelp('update_activity', 'If this is used, %activity% message is updated automatically by posting a topic. To show the %Activity% list, see "Appearance" > "ガジェット設定".');
 
     if (version_compare(OPENPNE_VERSION, '3.6beta1-dev', '<'))
