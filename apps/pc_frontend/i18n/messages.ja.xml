@@ -190,6 +190,50 @@
         <source>[%Community% Event] (%1% %community%) %2% (open %3%)</source>
         <target>[%Community%イベント] (%1% %community%) %2% (%3% 開催)</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Manage the event member</source>
+        <target>イベント参加者を管理する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Management event member</source>
+        <target>イベント参加者管理</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Delete the member from this event?</source>
+        <target>このメンバーをイベントから削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The member was deleted successfully from this event.</source>
+        <target>このメンバーをイベントから削除しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>There are no event members.</source>
+        <target>イベント参加者はいません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Add Event Member</source>
+        <target>イベント参加者を追加する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Member ID</source>
+        <target>メンバーID</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The inputted value is not valid.</source>
+        <target>入力が正しくありません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The member was already event member.</source>
+        <target>すでにイベント参加者です。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The member was not community member.</source>
+        <target>コミュニティのメンバーではありません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The member was added successfully to this event.</source>
+        <target>このイベント参加者にメンバーを追加しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

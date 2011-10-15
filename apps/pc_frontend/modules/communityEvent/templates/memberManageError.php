@@ -1,4 +1,4 @@
-<?php op_include_box('noMembers', __('Nobody joins this event.'), array('title' => __('Event Members'))) ?>
+<?php op_include_box('noMembers', __('There are no event members.'), array('title' => __('Event Members'))) ?>
 
 <?php
 if ($acl->isAllowed($sf_user->getMemberId(), null, 'edit'))

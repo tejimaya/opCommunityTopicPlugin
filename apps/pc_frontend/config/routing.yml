@@ -14,6 +14,34 @@ communityEvent_memberList:
   requirements:
     id: \d+
 
+communityEvent_memberManage:
+  url: /communityEvent/:id/memberManage
+  class: sfDoctrineRoute
+  options: { model: CommunityEvent, type: object }
+  param:   { module: communityEvent, action: memberManage }
+  requirements:
+    id: \d+
+
+communityEvent_memberDelete:
+  url: /communityEvent/:community_event_id/memberDelete/:member_id
+  param:   { module: communityEvent, action: memberDelete }
+  requirements:
+    community_event_id: \d+
+    member_id: \d+
+
+communityEvent_memberDeleteConfirm:
+  url: /communityEvent/:community_event_id/memberDeleteConfirm/:member_id
+  param:   { module: communityEvent, action: memberDeleteConfirm }
+  requirements:
+    community_event_id: \d+
+    member_id: \d+
+
+communityEvent_memberAdd:
+  url: /communityEvent/:id/memberAdd
+  param:   { module: communityEvent, action: memberAdd }
+  requirements:
+    id: \d+
+
 communityTopic_recently_topic_list:
   url: /communityTopic/recentlyTopicList
   param: { module: communityTopic, action: recentlyTopicList }
