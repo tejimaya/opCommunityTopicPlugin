@@ -47,8 +47,20 @@
         <target>必須項目です。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>"%value%" is not an integer.</source>
-        <target>整数ではありません。</target>
+        <source>CSRF attack detected.</source>
+        <target>前の画面を読み直して、操作をやり直してください。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Unexpected extra form field named "%field%".</source>
+        <target>正しくありません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The form submission cannot be processed. It probably means that you have uploaded a file that is too big.</source>
+        <target>送信に失敗しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The date must be after now.</source>
+        <target>募集期日は今日以降にしてください。</target>
       </trans-unit>
       <trans-unit id="">
         <source>The open date must be after now.</source>
@@ -56,7 +68,7 @@
       </trans-unit>
       <trans-unit id="">
         <source>The application deadline must be before the open date.</source>
-        <target>募集期限は開催日時より後に指定できません。</target>
+        <target>募集期日は開催日時より後に指定できません。</target>
       </trans-unit>
       <trans-unit id="">
         <source>Photo 1</source>
