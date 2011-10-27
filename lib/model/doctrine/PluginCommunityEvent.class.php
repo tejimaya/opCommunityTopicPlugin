@@ -112,7 +112,7 @@ abstract class PluginCommunityEvent extends BaseCommunityEvent
   // for pager
   public function getImageFilename()
   {
-    $this->getCommunity()->getImageFilename();
+    return $this->getCommunity()->getImageFilename();
   }
 
   public function postInsert($event)
