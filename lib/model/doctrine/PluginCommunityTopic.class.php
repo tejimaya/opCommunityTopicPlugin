@@ -50,6 +50,6 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
   // for pager
   public function getImageFilename()
   {
-    $this->getCommunity()->getImageFilename();
+    return $this->getCommunity()->getImageFilename();
   }
 }
