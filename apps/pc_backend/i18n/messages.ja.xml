@@ -182,6 +182,14 @@
         <source>Event Member Deleted successfully.</source>
         <target>メンバーをイベント参加者から削除しました。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Authority to Read Topic</source>
+        <target>トピック閲覧権限</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Authority to Create Topic</source>
+        <target>トピック作成権限</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
