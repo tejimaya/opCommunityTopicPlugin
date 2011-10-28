@@ -202,6 +202,14 @@
         <source>If this is used, %activity% message is updated automatically by posting a topic. To show the %Activity% list, see "Appearance" > "ガジェット設定".</source>
         <target>使用するに設定した場合、トピックが投稿された際に%activity%が自動更新されます。%Activity%リストの表示設定は、「デザイン設定」>「ガジェット設定」から行ってください。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Authority to Read Topic</source>
+        <target>トピック閲覧権限</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Authority to Create Topic</source>
+        <target>トピック作成権限</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
