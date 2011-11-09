@@ -46,12 +46,14 @@ class PluginCommunityTopicSearchForm extends sfForm
         'choices' => $types,
         'label' => $i18n->__('Type', array(), 'form_community'),
       )),
+      'id' => new sfWidgetFormInputHidden(),
     );
 
     $validators = array(
       'keyword' => new opValidatorSearchQueryString(array('required' => false)),
       'target' => new sfValidatorChoice(array('choices' => array_keys($targets), 'required' => false)),
       'type' => new sfValidatorChoice(array('choices' => array_keys($types), 'required' => false)),
+      'id' => new sfValidatorNumber(array('required' => false)),
     );
 
     $this->setWidgets($widgets);
