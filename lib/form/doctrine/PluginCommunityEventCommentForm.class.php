@@ -29,7 +29,15 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     unset($this['created_at']);
     unset($this['updated_at']);
 
-    $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Comment') . ' <strong>*</strong>');
+    if ('mobile_frontend' == sfConfig::get('sf_app'))
+    {
+      $label = sprintf('<font color="%s">*</font>', opColorConfig::get('core_color_22')).sfContext::getInstance()->getI18N()->__('Comment');
+    }
+    else 
+    {
+      $label = sfContext::getInstance()->getI18N()->__('Comment').' <strong>*</strong>';
+    }
+    $this->widgetSchema->setLabel('body', $label);
     $this->setValidator('body', new opValidatorString(array('rtrim' => true)));
 
     if (opMobileUserAgent::getInstance()->getMobile()->isNonMobile())

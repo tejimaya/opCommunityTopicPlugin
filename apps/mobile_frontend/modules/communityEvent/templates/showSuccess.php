@@ -56,6 +56,8 @@ foreach ($list as $key => $value)
 <div id="formEventComment">
 <table>
 <form action="<?php echo url_for('communityEvent_comment_create', $communityEvent) ?>" method="post">
+<?php echo __('%0% is required field.', array('%0%' => sprintf('<font color="%s">*</font>', opColorConfig::get('core_color_22')))) ?>
+<hr color="<?php echo opColorConfig::get('core_color_11') ?>">
 <?php echo $form ?>
 <?php if (!$communityEvent->isClosed() && !$communityEvent->isExpired()): ?>
 <?php if ($communityEvent->isEventMember($sf_user->getMemberId())): ?>
