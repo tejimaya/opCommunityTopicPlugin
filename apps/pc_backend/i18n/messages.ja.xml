@@ -210,6 +210,10 @@
         <source>Authority to Create Topic</source>
         <target>トピック作成権限</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Notification of Community Posting</source>
+        <target>コミュニティ書き込みお知らせメール</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
