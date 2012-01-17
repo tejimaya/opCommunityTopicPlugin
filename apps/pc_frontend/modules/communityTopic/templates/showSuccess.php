@@ -12,7 +12,7 @@
 <p><?php echo $communityTopic->getName() ?></p>
 </div>
 <div class="name">
-<p><?php if ($_member = $communityTopic->getMember()) : ?><?php echo link_to($_member->getName(), 'member/profile?id='.$_member->getId()) ?><?php endif; ?></p>
+<p><?php if ($_member = $communityTopic->getMember()) : ?><?php echo op_link_to_member($_member) ?><?php endif; ?></p>
 </div>
 <div class="body">
 <?php if (count($images = $communityTopic->getImages()) != 0): ?>

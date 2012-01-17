@@ -16,7 +16,7 @@ if (count($images))
 $body .= nl2br($communityEvent->getBody());
 
 $list = array(
-  'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
+  'Writer'               => op_link_to_member($communityEvent->getMember()),
   'Name'                 => $communityEvent->getName(),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => op_url_cmd($communityEvent->getArea()),
