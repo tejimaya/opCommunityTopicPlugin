@@ -3,17 +3,12 @@
 <?php echo op_within_page_link() ?>
 <?php
 $list = array(
-  'Writer'               => link_to($communityEvent->getMember()->getName(), 'member/profile?id='.$communityEvent->getMember()->getId()),
+  'Writer'               => op_link_to_member($communityEvent->getMember()),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => $communityEvent->getArea(),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
 );
-
-if (!$communityEvent->getMember() || !$communityEvent->getMember()->getName())
-{
-  $list['Writer'] = '';
-}
 
 if ($communityEvent->countCommunityEventMembers())
 {

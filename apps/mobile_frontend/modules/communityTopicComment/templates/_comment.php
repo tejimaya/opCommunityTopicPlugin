@@ -4,9 +4,7 @@
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
-<?php if ($comment->getMember() && $comment->getMember()->getName()): ?>
-<?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMemberId()) ?><br>
-<?php endif; ?>
+<?php echo op_link_to_member($comment->getMember()) ?><br>
 <?php echo nl2br($comment->getBody()) ?>
 
 <?php if (count($comment->getImages())): ?>
