@@ -1,3 +1,4 @@
+<?php use_helper('opCommunityTopic'); ?>
 <?php if ($commentPager->getNbResults()) : ?>
 <div class="dparts commentList"><div class="parts">
 <div class="partsHeading">
@@ -14,7 +15,7 @@
 <dd>
 <div class="title">
 <p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:
-<?php if ($_member = $comment->getMember()) : ?> <?php echo op_link_to_member($_member) ?><?php endif; ?>
+<?php if ($_member = $comment->getMember()) : ?> <?php echo op_community_topic_link_to_member($_member) ?><?php endif; ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
  <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>
 <?php endif; ?>

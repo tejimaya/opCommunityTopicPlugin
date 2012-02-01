@@ -1,3 +1,4 @@
+<?php use_helper('opCommunityTopic'); ?>
 <?php slot('pager') ?>
 <?php op_include_pager_navigation($pager, '@communityEvent_memberManage?page=%d&id='.$sf_params->get('id')); ?>
 <?php end_slot(); ?>
@@ -10,7 +11,7 @@
 <tbody>
 <?php foreach ($pager->getResults() as $member) : ?>
 <tr>
-<td class="member"><?php echo op_link_to_member($member); ?></td>
+<td class="member"><?php echo op_community_topic_link_to_member($member); ?></td>
 <td>
 <?php echo link_to(__('Delete'), url_for('@communityEvent_memberDeleteConfirm?community_event_id='.$communityEvent->getId().'&member_id='.$member->getId())) ?>
 </td>

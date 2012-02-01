@@ -1,3 +1,4 @@
+<?php use_helper('opCommunityTopic'); ?>
 <?php $acl = opCommunityTopicAclBuilder::buildResource($communityTopic, array($sf_user->getMember())) ?>
 <?php op_mobile_page_title($community->getName(), $communityTopic->getName()) ?>
 
@@ -5,7 +6,7 @@
 <?php echo op_format_date($communityTopic->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($communityTopic->getMemberId() === $sf_user->getMemberId()): ?>
 <?php endif; ?><br>
-<?php echo op_link_to_member($communityTopic->getMember()) ?>
+<?php echo op_community_topic_link_to_member($communityTopic->getMember()) ?>
 <?php if ($communityTopic->isEditable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Edit'), '@communityTopic_edit?id='.$communityTopic->getId()) ?>]
 <?php endif ?>

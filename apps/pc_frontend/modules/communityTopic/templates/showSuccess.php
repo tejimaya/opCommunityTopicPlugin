@@ -1,4 +1,4 @@
-<?php use_helper('Date'); ?>
+<?php use_helper('Date', 'opCommunityTopic'); ?>
 <?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
 
 <div class="dparts topicDetailBox"><div class="parts">
@@ -12,7 +12,7 @@
 <p><?php echo $communityTopic->getName() ?></p>
 </div>
 <div class="name">
-<p><?php if ($_member = $communityTopic->getMember()) : ?><?php echo op_link_to_member($_member) ?><?php endif; ?></p>
+<p><?php if ($_member = $communityTopic->getMember()) : ?><?php echo op_community_topic_link_to_member($_member) ?><?php endif; ?></p>
 </div>
 <div class="body">
 <?php if (count($images = $communityTopic->getImages()) != 0): ?>

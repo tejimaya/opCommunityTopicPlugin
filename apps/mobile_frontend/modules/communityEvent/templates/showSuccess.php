@@ -1,9 +1,10 @@
+<?php use_helper('opCommunityTopic'); ?>
 <?php op_mobile_page_title($community->getName(), $communityEvent->getName()) ?>
 
 <?php echo op_within_page_link() ?>
 <?php
 $list = array(
-  'Writer'               => op_link_to_member($communityEvent->getMember()),
+  'Writer'               => op_community_topic_link_to_member($communityEvent->getMember()),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => $communityEvent->getArea(),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),

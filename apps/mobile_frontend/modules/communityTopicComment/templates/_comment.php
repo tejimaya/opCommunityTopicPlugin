@@ -1,10 +1,11 @@
+<?php use_helper('opCommunityTopic'); ?>
 <?php $comment->state(Doctrine_RECORD::STATE_CLEAN); ?>
 <?php echo op_within_page_link() ?>
 [<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_format_date($comment->getCreatedAt(), 'MM/dd HH:mm') ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
-<?php echo op_link_to_member($comment->getMember()) ?><br>
+<?php echo op_community_topic_link_to_member($comment->getMember()) ?><br>
 <?php echo nl2br($comment->getBody()) ?>
 
 <?php if (count($comment->getImages())): ?>

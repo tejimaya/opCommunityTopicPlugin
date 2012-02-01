@@ -1,4 +1,4 @@
-<?php use_helper('Date'); ?>
+<?php use_helper('Date', 'opCommunityTopic'); ?>
 
 <?php
 
@@ -16,7 +16,7 @@ if (count($images))
 $body .= nl2br($communityEvent->getBody());
 
 $list = array(
-  'Writer'               => op_link_to_member($communityEvent->getMember()),
+  'Writer'               => op_community_topic_link_to_member($communityEvent->getMember()),
   'Name'                 => $communityEvent->getName(),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
   'Area'                 => op_url_cmd($communityEvent->getArea()),
