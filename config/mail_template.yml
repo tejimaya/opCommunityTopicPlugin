@@ -1,6 +1,6 @@
 pc:
   notifyCommunityPosting:
-    caption: "Notification of Community Posting"
+    caption: "Notification of %Community% Posting"
     configurable: true
     sample:
       ja_JP:
@@ -20,7 +20,7 @@ pc:
       url: "トピック・イベントのURL"
 mobile:
   notifyCommunityPosting:
-    caption: "Notification of Community Posting"
+    caption: "Notification of %Community% Posting"
     configurable: true
     sample:
       ja_JP:
