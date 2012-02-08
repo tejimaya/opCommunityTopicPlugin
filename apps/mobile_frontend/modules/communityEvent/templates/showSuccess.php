@@ -6,7 +6,7 @@
 $list = array(
   'Writer'               => op_community_topic_link_to_member($communityEvent->getMember()),
   'Open date'            => op_format_date($communityEvent->getOpenDate(), 'D').($communityEvent->getOpenDate() ? ' '.$communityEvent->getOpenDateComment() : ''),
-  'Area'                 => $communityEvent->getArea(),
+  'Area'                 => op_auto_link_text_for_mobile($communityEvent->getArea()),
   'Capacity'             => $communityEvent->getCapacity() ? $communityEvent->getCapacity() : __('Limitless'),
   'Count of Member'      => __('%1% persons', array('%1%' => $communityEvent->countCommunityEventMembers())),
 );
@@ -31,7 +31,7 @@ if (count($communityEvent->getImages()))
   }
 }
 
-$list['Body'] = nl2br($communityEvent->getBody()).$image_html.'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm');
+$list['Body'] = op_auto_link_text_for_mobile(nl2br($communityEvent->getBody())).$image_html.'<br>'.op_format_date($communityEvent->getCreatedAt(), 'MM/dd HH:mm');
 
 if ($communityEvent->isEditable($sf_user->getMemberId()))
 {

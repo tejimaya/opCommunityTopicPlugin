@@ -11,7 +11,7 @@
 &nbsp;[<?php echo link_to(__('Edit'), '@communityTopic_edit?id='.$communityTopic->getId()) ?>]
 <?php endif ?>
 <br>
-<?php echo nl2br($communityTopic->getBody()) ?><br>
+<?php echo op_auto_link_text_for_mobile(nl2br($communityTopic->getBody())) ?><br>
 
 <?php if (count($communityTopic->getImages())): ?>
 <?php foreach ($communityTopic->getImages() as $image): ?>

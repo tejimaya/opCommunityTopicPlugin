@@ -6,7 +6,7 @@
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
 &nbsp;[<?php echo link_to(__('Delete'), '@communityEvent_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
-<?php echo nl2br($comment->getBody()) ?>
+<?php echo op_auto_link_text_for_mobile(nl2br($comment->getBody())) ?>
 
 <?php if (count($comment->getImages())): ?>
 <br>

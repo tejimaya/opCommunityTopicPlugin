@@ -6,7 +6,7 @@
 &nbsp;[<?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>]
 <?php endif; ?><br>
 <?php echo op_community_topic_link_to_member($comment->getMember()) ?><br>
-<?php echo nl2br($comment->getBody()) ?>
+<?php echo op_auto_link_text_for_mobile(nl2br($comment->getBody())) ?>
 
 <?php if (count($comment->getImages())): ?>
 <br>
