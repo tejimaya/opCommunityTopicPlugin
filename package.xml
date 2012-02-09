@@ -43,11 +43,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-09-30</date>
- <time>22:51:55</time>
+ <date>2012-02-09</date>
+ <time>20:33:31</time>
  <version>
-  <release>1.0.2.2</release>
-  <api>1.0.2.2</api>
+  <release>1.0.3</release>
+  <api>1.0.3</api>
  </version>
  <stability>
   <release>stable</release>
@@ -55,7 +55,15 @@
  </stability>
  <license>apache</license>
  <notes>
-Fixed foreign key constraint errors in migration of revision 6
+Fixed the following bugs:
+Bug（バグ） #2329: 自動リンク機能の実装が不完全 http://redmine.openpne.jp/issues/2329
+Bug（バグ） #2424: トピック検索結果の一覧に表示される画像が No Image になる http://redmine.openpne.jp/issues/2424
+Bug（バグ） #2485: 管理画面のプラグイン設定で「アクティビティ更新設定」が翻訳されない場合がある http://redmine.openpne.jp/issues/2485
+Bug（バグ） #2514: opCommunityTopicPluginで言語切り替えできていないところがある http://redmine.openpne.jp/issues/2514
+Bug（バグ） #2560: トピックの権限について翻訳されない http://redmine.openpne.jp/issues/2560
+Bug（バグ） #2568: #2355 の「Photo」に関する翻訳の修正が不完全 http://redmine.openpne.jp/issues/2568
+Bug（バグ） #2641: 管理画面メール通知送信設定で英語で表示される箇所がある http://redmine.openpne.jp/issues/2641
+Bug（バグ） #2659: コミュニティトピック詳細で退会メンバーのニックネームに「非SNSユーザー表示名設定」が反映されない http://redmine.openpne.jp/issues/2659
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -76,7 +84,7 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="d036384abaafe93bfd92f9a30454b853" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="7a961ca4436c6bd91ff8b2f90b30c1ec" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="fcad4a5d091ccdc21b415195f46f1308" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="96ca76640ca24c544fa5ea582218f2fc" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3861e46022c00e212b755dda00c928ae" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="e92f31fb75dc5ac36f2338844aa07040" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -84,7 +92,7 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityEventComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/mobile_frontend/modules/communityEventComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="e88ef9aee7abef2e07c68efceb3a8d0a" name="apps/mobile_frontend/modules/communityEventComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="93a2abed6c01a52bb26efd5ac266650d" name="apps/mobile_frontend/modules/communityEventComment/templates/_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="ddd7f7cdbf2496982caebc8e7e01e5aa" name="apps/mobile_frontend/modules/communityEventComment/templates/_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="5ab438304f686d299f708bcc48c12c8f" name="apps/mobile_frontend/modules/communityEventComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="9a585703be412128c927cfae80671710" name="apps/mobile_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10ab53ea726b09c6f05434b4f9aa81c8" name="apps/mobile_frontend/modules/communityTopic/actions/components.class.php" role="data" />
@@ -95,25 +103,25 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="287b24a3dd18b732dc951f0fd4594203" name="apps/mobile_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="db90f7e83461fd9308dfa2269e075aa3" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="f8f0ad76a06545f5e4d23a2da713c0e4" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c95aea6fa2c5484c6602eb93525c2a6d" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="cd2283ea5cfd6b84cb16510cc8be5733" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1ad95e2183495ff01ff92cf1f01af685" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="1833ca3d3259c305c4f7a2ab8f822f45" name="apps/mobile_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="f78320c392a42b6ca0274d615aa4cc6d" name="apps/mobile_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
    <file baseinstalldir="/" md5sum="22578c9055960e18ed25f71667dd39bb" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
    <file baseinstalldir="/" md5sum="b8955cbe263bded1be12b5bfa4b9be62" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
-   <file baseinstalldir="/" md5sum="e83a6e243e643b7a735119275eb4a23b" name="apps/mobile_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
+   <file baseinstalldir="/" md5sum="f191637d79c89c6391216aee1a1bb044" name="apps/mobile_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="4504f856530c1e33c42dbd6764f3ff6b" name="apps/mobile_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f955fafd39f2b1933434c6577683e02b" name="apps/mobile_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopicComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b1d883deca24852d78a2e34b458c0d4d" name="apps/mobile_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="91998a629bb8e0f0a878666eb3f2dfdf" name="apps/mobile_frontend/modules/communityTopicComment/templates/_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="84ea2db8752231f4b60ecba105668a4b" name="apps/mobile_frontend/modules/communityTopicComment/templates/_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="e613b9cc373016a70ecfb61aa6f8847a" name="apps/mobile_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="6b80c8cfab5bbed71a52684acf2f7567" name="apps/mobile_mail_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="a2b95e10dc39f83f4697067e438cc7ad" name="apps/mobile_mail_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b4511bd194198fda810a3f678b91b188" name="apps/mobile_mail_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9b4b10c773687867ce22734babe3944f" name="apps/mobile_mail_frontend/modules/communityTopicComment/templates/createError.php" role="data" />
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="f5a2aa1ae7d84ae9fa57b6e1edd746c0" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="a915b353be6cc3c9bb597012b69073cb" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="3f51f04370ec23c2de62aa16757a2d51" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="eb852224b72bbde75ee46cce47482539" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dddb8e514e230cd129d9425f9a161ecb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
@@ -139,11 +147,11 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="cad3800160f6245f2ba534d55f04ca84" name="apps/pc_backend/modules/communityTopic/templates/_topicInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="dd7c28f361e84170ea277efbff35f430" name="apps/pc_backend/modules/opCommunityTopicPlugin/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7f4a22673656ea0940c5d56035842df8" name="apps/pc_backend/modules/opCommunityTopicPlugin/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/pc_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="1ee26d1899fcff021c45e0e6c8d59eb2" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="23e36da5008ca0c0aa4187893675703b" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="8e99f6ec6e6021f2e1a2040014794f19" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="af7bbc2459f0d370a1b4224fcb14acad" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="8fc9dbea79b60cb618588d2d2e6d975f" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="0b8bc69ebfdd4989e0e7d15c77f914c4" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="fb5af4adf804b232ad21b63a41740716" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -152,11 +160,14 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="3bd0ac57b451fc710b2fd31c8b1cb5bc" name="apps/pc_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1b8975614dd80a7fdcb4db40caa99861" name="apps/pc_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b27fd0c3afa578e3fe718865fa4bb458" name="apps/pc_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
-   <file baseinstalldir="/" md5sum="1b459417584acd0fcc8889483f562276" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="f36b98796e8dbd5ad12229d1d3c402f4" name="apps/pc_frontend/modules/communityEvent/templates/memberDeleteConfirmSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="7e9992f48a76804b4e90147f300eb83a" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
+   <file baseinstalldir="/" md5sum="fcd1391b7d805ab188f874c852f7f292" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="8e3663a33a31090cc6ebb492633191e4" name="apps/pc_frontend/modules/communityEvent/templates/memberManageError.php" role="data" />
+   <file baseinstalldir="/" md5sum="c3292a95909f7089842401c46df40a27" name="apps/pc_frontend/modules/communityEvent/templates/memberManageSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="949a380928af793967aed005bd0fed88" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2ecad1151ea3e279387ca596d3fa04d4" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="9879202a548eda32fcb07a5984d2948e" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="e477c6c20c39f23a5f7c0837ff35bd64" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/pc_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -164,7 +175,7 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEventComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityEventComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="e0729201d5701f938f11020f0ba09bea" name="apps/pc_frontend/modules/communityEventComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c112605bff3f2459c420fe007763c8f1" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="66f076de27b861874fa61c5b3aecdf40" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="28c91837b067ff5af9193b5ee66bd083" name="apps/pc_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10ab53ea726b09c6f05434b4f9aa81c8" name="apps/pc_frontend/modules/communityTopic/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a3dae748efce5fd63d71d7090e6ab562" name="apps/pc_frontend/modules/communityTopic/actions/searchFormAction.class.php" role="data" />
@@ -176,25 +187,25 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="ba5a87bf3d74d58e9be4365a391e901e" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="9a799fe517b0ffd5d0c26bef519f7c06" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="86920b9bee8fac22ef226eb15167fa52" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="8914fb2453b20f955291389afe0b71dd" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="7ea12c8dda8b5b1a5a4b71fb90907250" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c5fb8c7f8cfddb488bbeddcd6dc77151" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="c698cb8133128d7bbfd7f43b3e706d29" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
    <file baseinstalldir="/" md5sum="f745b5ccbe6162068c4bedf08ae1e826" name="apps/pc_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
    <file baseinstalldir="/" md5sum="a583752c5dda29aee9657d38e32da64b" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
    <file baseinstalldir="/" md5sum="ea721bc2100715fee1512bf501e25639" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
-   <file baseinstalldir="/" md5sum="5e5f4b36ba02351886b3ea32cdd9cb6f" name="apps/pc_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
+   <file baseinstalldir="/" md5sum="b5ab1ee1fa9abc4f42eed426f4ad9156" name="apps/pc_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="e8a92c96d379c33b4e6bb94e0dbb99b8" name="apps/pc_frontend/modules/communityTopic/templates/_topSearchForm.php" role="data" />
    <file baseinstalldir="/" md5sum="9c0826f650c587d92d0cfbd6385490c8" name="apps/pc_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0c21f782257e82070da19d764783cfe2" name="apps/pc_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopicComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopicComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="1a3d901b6cf0581ce7b7208977425c52" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="e3b0068c059c6db12fe95bd939916e6e" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="4783858e6cd6ac9ae95489d26fc0b5bd" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="df7e6e983a6d9587d68f4ecacd4d359b" name="config/activity_template.yml" role="data" />
    <file baseinstalldir="/" md5sum="75523dffafda71fda33ac6cda33e1d82" name="config/community_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="67d37bf12d41acc00120248e086280d5" name="config/gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="a3cb5fec1c8d5bcec0ae56e91f5bcd0d" name="config/mail_template.yml" role="data" />
+   <file baseinstalldir="/" md5sum="83003a3f920989429b48d380788e6968" name="config/mail_template.yml" role="data" />
    <file baseinstalldir="/" md5sum="235508f4194c2c44e324a8452264ff75" name="config/mobile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="ee3e8889b9cd4a357bd92443d00e6a57" name="config/doctrine/schema.yml" role="data" />
    <file baseinstalldir="/" md5sum="7140a21730d44f520d0720b81686136f" name="data/fixtures/000_revision.yml" role="data" />
@@ -211,7 +222,7 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a1d3f2ce10123617e6ae85895829ec5c" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="f2ed249d666604a3cb90c7617e224f6c" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="0c290fb606c81dd513bc0045f8cbdbfc" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="53a9598d864c9b60c265e7e2565ff723" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="46b82e7ff8a24842b4c3dba7b77ff673" name="lib/action/opCommunityTopicPluginEventCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55d10741b7029198a5cd183768151fda" name="lib/action/opCommunityTopicPluginEventComponents.class.php" role="data" />
@@ -233,7 +244,8 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="bf1c68a3d7e763648907b401c630b397" name="lib/filter/doctrine/PluginCommunityTopicCommentImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bf26a92f55430a497da21feaeced1f1" name="lib/filter/doctrine/PluginCommunityTopicFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3f44e6addeff1d88091d312b5fed59b5" name="lib/filter/doctrine/PluginCommunityTopicImageFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="89aadd81e22a45feb399caf5e6d4c8c1" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="a820115478ad30aa469b4c07e7f903fd" name="lib/form/opCommunityEventMemberAddForm.php" role="data" />
+   <file baseinstalldir="/" md5sum="85e98f9688368da30385295c07ab1903" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1c7830fbaa98dade0ae7a50aeb80b27b" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
@@ -246,13 +258,14 @@ Fixed foreign key constraint errors in migration of revision 6
    <file baseinstalldir="/" md5sum="0bc206fc6e3e33ae6c816b61185d4256" name="lib/form/doctrine/PluginCommunityTopicForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc812db69b53b13d9f3e6f3a105f3c37" name="lib/form/doctrine/PluginCommunityTopicImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fa3ef2bef1bd530e6833dd2fef231ecd" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="e516f287342dd3376b78f5519a81b91a" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="090bd662c280468d03c814e52361695f" name="lib/helper/opCommunityTopicHelper.php" role="data" />
+   <file baseinstalldir="/" md5sum="75309606334ae8ed586f5d903075792b" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b9f47fa8373ac836ad4b254b13a28801" name="lib/model/doctrine/PluginCommunityEventComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="150ef9d18e524229239b936204524f00" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="ec2453f09ad4cf9bac02587d63c74067" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="0927aede727ec76d8353a25a05dc133b" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="762b428838cc07ae1df81e0922586709" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="424e99f66b087cddeb97e3e73595e492" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
@@ -597,6 +610,29 @@ Bug（バグ） #2433: 1.0.2 で追加されたマイグレートスクリプト
    <license>apache</license>
    <notes>
 Fixed foreign key constraint errors in migration of revision 6
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-02-09</date>
+   <license>apache</license>
+   <notes>
+Fixed the following bugs:
+Bug（バグ） #2329: 自動リンク機能の実装が不完全 http://redmine.openpne.jp/issues/2329
+Bug（バグ） #2424: トピック検索結果の一覧に表示される画像が No Image になる http://redmine.openpne.jp/issues/2424
+Bug（バグ） #2485: 管理画面のプラグイン設定で「アクティビティ更新設定」が翻訳されない場合がある http://redmine.openpne.jp/issues/2485
+Bug（バグ） #2514: opCommunityTopicPluginで言語切り替えできていないところがある http://redmine.openpne.jp/issues/2514
+Bug（バグ） #2560: トピックの権限について翻訳されない http://redmine.openpne.jp/issues/2560
+Bug（バグ） #2568: #2355 の「Photo」に関する翻訳の修正が不完全 http://redmine.openpne.jp/issues/2568
+Bug（バグ） #2641: 管理画面メール通知送信設定で英語で表示される箇所がある http://redmine.openpne.jp/issues/2641
+Bug（バグ） #2659: コミュニティトピック詳細で退会メンバーのニックネームに「非SNSユーザー表示名設定」が反映されない http://redmine.openpne.jp/issues/2659
    </notes>
   </release>
  </changelog>
