@@ -26,7 +26,10 @@ $list = array(
   'Count of Member'      => $communityEvent->getCommunityEventMember()->count(),
 );
 
-$list['Count of Member'] .= '('.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId()).')';
+if ($list['Count of Member'])
+{
+  $list['Count of Member'] .= '('.link_to(__('See Member List'), '@communityEvent_memberList?id='.$communityEvent->getId()).')';
+}
 
 $i18nlist = array();
 foreach ($list as $key => $value)
