@@ -162,6 +162,10 @@
         <source>Comment</source>
         <target>コメント</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>More</source>
+        <target>もっと見る</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
