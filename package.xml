@@ -37,17 +37,11 @@
   <email />
   <active>yes</active>
  </lead>
- <lead>
-  <name>Yuya Watanabe</name>
-  <user>watanabe</user>
-  <email />
-  <active>yes</active>
- </lead>
- <date>2012-02-09</date>
- <time>20:33:31</time>
+ <date>2012-02-27</date>
+ <time>20:28:35</time>
  <version>
-  <release>1.0.3</release>
-  <api>1.0.3</api>
+  <release>1.0.3.1</release>
+  <api>1.0.3.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -55,15 +49,7 @@
  </stability>
  <license>apache</license>
  <notes>
-Fixed the following bugs:
-Bug（バグ） #2329: 自動リンク機能の実装が不完全 http://redmine.openpne.jp/issues/2329
-Bug（バグ） #2424: トピック検索結果の一覧に表示される画像が No Image になる http://redmine.openpne.jp/issues/2424
-Bug（バグ） #2485: 管理画面のプラグイン設定で「アクティビティ更新設定」が翻訳されない場合がある http://redmine.openpne.jp/issues/2485
-Bug（バグ） #2514: opCommunityTopicPluginで言語切り替えできていないところがある http://redmine.openpne.jp/issues/2514
-Bug（バグ） #2560: トピックの権限について翻訳されない http://redmine.openpne.jp/issues/2560
-Bug（バグ） #2568: #2355 の「Photo」に関する翻訳の修正が不完全 http://redmine.openpne.jp/issues/2568
-Bug（バグ） #2641: 管理画面メール通知送信設定で英語で表示される箇所がある http://redmine.openpne.jp/issues/2641
-Bug（バグ） #2659: コミュニティトピック詳細で退会メンバーのニックネームに「非SNSユーザー表示名設定」が反映されない http://redmine.openpne.jp/issues/2659
+Removed editing community event member to fix CSRF vulnerability in that feature (OPSA-2012-001)
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -147,11 +133,11 @@ Bug（バグ） #2659: コミュニティトピック詳細で退会メンバー
    <file baseinstalldir="/" md5sum="cad3800160f6245f2ba534d55f04ca84" name="apps/pc_backend/modules/communityTopic/templates/_topicInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="dd7c28f361e84170ea277efbff35f430" name="apps/pc_backend/modules/opCommunityTopicPlugin/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7f4a22673656ea0940c5d56035842df8" name="apps/pc_backend/modules/opCommunityTopicPlugin/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="1ee26d1899fcff021c45e0e6c8d59eb2" name="apps/pc_frontend/config/routing.yml" role="data" />
+   <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="23e36da5008ca0c0aa4187893675703b" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="8e99f6ec6e6021f2e1a2040014794f19" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="af7bbc2459f0d370a1b4224fcb14acad" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="0b8bc69ebfdd4989e0e7d15c77f914c4" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="5474a05ee020c22fb2bb1dcda3c22ebd" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="fb5af4adf804b232ad21b63a41740716" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -160,14 +146,11 @@ Bug（バグ） #2659: コミュニティトピック詳細で退会メンバー
    <file baseinstalldir="/" md5sum="3bd0ac57b451fc710b2fd31c8b1cb5bc" name="apps/pc_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1b8975614dd80a7fdcb4db40caa99861" name="apps/pc_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b27fd0c3afa578e3fe718865fa4bb458" name="apps/pc_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="f36b98796e8dbd5ad12229d1d3c402f4" name="apps/pc_frontend/modules/communityEvent/templates/memberDeleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="7e9992f48a76804b4e90147f300eb83a" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
-   <file baseinstalldir="/" md5sum="fcd1391b7d805ab188f874c852f7f292" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="8e3663a33a31090cc6ebb492633191e4" name="apps/pc_frontend/modules/communityEvent/templates/memberManageError.php" role="data" />
-   <file baseinstalldir="/" md5sum="c3292a95909f7089842401c46df40a27" name="apps/pc_frontend/modules/communityEvent/templates/memberManageSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
+   <file baseinstalldir="/" md5sum="1b459417584acd0fcc8889483f562276" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="949a380928af793967aed005bd0fed88" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2ecad1151ea3e279387ca596d3fa04d4" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="e477c6c20c39f23a5f7c0837ff35bd64" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="853cf6dc3032211c3037aaf81ccd2fe3" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/pc_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -222,7 +205,7 @@ Bug（バグ） #2659: コミュニティトピック詳細で退会メンバー
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a1d3f2ce10123617e6ae85895829ec5c" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="0c290fb606c81dd513bc0045f8cbdbfc" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f2ed249d666604a3cb90c7617e224f6c" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="53a9598d864c9b60c265e7e2565ff723" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="46b82e7ff8a24842b4c3dba7b77ff673" name="lib/action/opCommunityTopicPluginEventCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55d10741b7029198a5cd183768151fda" name="lib/action/opCommunityTopicPluginEventComponents.class.php" role="data" />
@@ -244,7 +227,6 @@ Bug（バグ） #2659: コミュニティトピック詳細で退会メンバー
    <file baseinstalldir="/" md5sum="bf1c68a3d7e763648907b401c630b397" name="lib/filter/doctrine/PluginCommunityTopicCommentImageFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bf26a92f55430a497da21feaeced1f1" name="lib/filter/doctrine/PluginCommunityTopicFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3f44e6addeff1d88091d312b5fed59b5" name="lib/filter/doctrine/PluginCommunityTopicImageFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="a820115478ad30aa469b4c07e7f903fd" name="lib/form/opCommunityEventMemberAddForm.php" role="data" />
    <file baseinstalldir="/" md5sum="85e98f9688368da30385295c07ab1903" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
@@ -633,6 +615,21 @@ Bug（バグ） #2560: トピックの権限について翻訳されない http:
 Bug（バグ） #2568: #2355 の「Photo」に関する翻訳の修正が不完全 http://redmine.openpne.jp/issues/2568
 Bug（バグ） #2641: 管理画面メール通知送信設定で英語で表示される箇所がある http://redmine.openpne.jp/issues/2641
 Bug（バグ） #2659: コミュニティトピック詳細で退会メンバーのニックネームに「非SNSユーザー表示名設定」が反映されない http://redmine.openpne.jp/issues/2659
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3.1</release>
+    <api>1.0.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-02-27</date>
+   <license>apache</license>
+   <notes>
+Removed editing community event member to fix CSRF vulnerability in that feature (OPSA-2012-001)
    </notes>
   </release>
  </changelog>
