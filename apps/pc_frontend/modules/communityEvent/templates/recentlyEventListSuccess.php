@@ -2,7 +2,7 @@
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts recentList"><div class="parts">
 <div class="partsHeading">
-<h3><?php echo __('Recently Posted Community Events') ?></h3>
+<h3><?php echo __('Recently Posted %Community% Events') ?></h3>
 </div>
 
 <?php ob_start() ?>

@@ -69,4 +69,4 @@ op_include_parts('listBox', 'communityEvent', $options);
 </form>
 <?php endif; ?>
 
-<?php op_include_line('linkLine', link_to('['.$community->getName().'] '.__('Community Top Page'), 'community/home?id='.$community->getId())) ?>
+<?php op_include_line('linkLine', link_to('['.$community->getName().'] '.__('%Community% Top Page'), 'community/home?id='.$community->getId())) ?>

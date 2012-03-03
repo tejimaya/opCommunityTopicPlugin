@@ -30,8 +30,8 @@ class PluginCommunityTopicSearchForm extends sfForm
       'event' => $i18n->__('Event'),
     );
     $targets = array(
-      'in_community' => $i18n->__('In Community', array(), 'form_community'),
-      'all' => $i18n->__('All Community', array(), 'form_community'),
+      'in_community' => $i18n->__('In %Community%', array(), 'form_community'),
+      'all' => $i18n->__('All %Community%', array(), 'form_community'),
     );
 
     $widgets = array(

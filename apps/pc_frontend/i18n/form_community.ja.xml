@@ -27,12 +27,12 @@
         <target>種類</target>
       </trans-unit>
       <trans-unit id="7">
-        <source>In Community</source>
-        <target>コミュニティ内</target>
+        <source>In %Community%</source>
+        <target>%Community%内</target>
       </trans-unit>
       <trans-unit id="8">
-        <source>All Community</source>
-        <target>すべてのコミュニティ</target>
+        <source>All %Community%</source>
+        <target>すべての%Community%</target>
       </trans-unit>
       <trans-unit id="9">
         <source>Comments</source>

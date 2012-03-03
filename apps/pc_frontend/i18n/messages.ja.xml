@@ -3,7 +3,7 @@
   <file original="global" source-language="en" datatype="plaintext">
     <body>
       <trans-unit id="1">
-        <source>The community topic was deleted successfully.</source>
+        <source>The %community% topic was deleted successfully.</source>
         <target>トピックの削除が完了しました。</target>
       </trans-unit>
       <trans-unit id="2">
@@ -31,12 +31,12 @@
         <target>トピック</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Community Topics</source>
-        <target>コミュニティトピック</target>
+        <source>%Community% Topics</source>
+        <target>%Community%トピック</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Community Top Page</source>
-        <target>コミュニティトップページ</target>
+        <source>%Community% Top Page</source>
+        <target>%Community%トップページ</target>
       </trans-unit>
       <trans-unit id="">
         <source>Edit the topic</source>
@@ -51,24 +51,24 @@
         <target>本当にこのトピックを削除しますか？</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Recently Posted Community Topics</source>
-        <target>コミュニティ最新書き込み</target>
+        <source>Recently Posted %Community% Topics</source>
+        <target>%Community%最新書き込み</target>
       </trans-unit>
       <trans-unit id="">
         <source>Everyone can read</source>
         <target>全員に公開</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Only community's members can read</source>
-        <target>コミュニティ参加者のみ公開</target>
+        <source>Only %community%'s members can read</source>
+        <target>%community%参加者のみ公開</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Community's members can create</source>
-        <target>コミュニティ参加者が作成可能</target>
+        <source>%Community%'s members can create</source>
+        <target>%Community%参加者が作成可能</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Only community's admin can create</source>
-        <target>コミュニティ管理者のみ作成可能</target>
+        <source>Only %community%'s admin can create</source>
+        <target>%community%管理者のみ作成可能</target>
       </trans-unit>
       <trans-unit id="">
         <source>See Member List</source>
@@ -83,8 +83,8 @@
         <target>イベント</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Community Events</source>
-        <target>コミュニティイベント</target>
+        <source>%Community% Events</source>
+        <target>%Community%イベント</target>
       </trans-unit>
       <trans-unit id="">
         <source>Post a new event comment</source>
@@ -115,7 +115,7 @@
         <target>イベント一覧</target>
       </trans-unit>
       <trans-unit id="">
-        <source>The community event was deleted successfully.</source>
+        <source>The %community% event was deleted successfully.</source>
         <target>イベントの削除が完了しました。</target>
       </trans-unit>
       <trans-unit id="">
@@ -139,19 +139,19 @@
         <target>このイベントは定員に達しています。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Recently Posted Community Events</source>
-        <target>コミュニティ最新イベント</target>
+        <source>Recently Posted %Community% Events</source>
+        <target>%Community%最新イベント</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Search Community Topics</source>
+        <source>Search %Community% Topics</source>
         <target>トピック検索</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Your search queries did not match any community topics.</source>
+        <source>Your search queries did not match any %community% topics.</source>
         <target>該当するトピックはありませんでした。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Your search queries did not match any community events.</source>
+        <source>Your search queries did not match any %community% events.</source>
         <target>該当するイベントはありませんでした。</target>
       </trans-unit>
       <trans-unit id="">

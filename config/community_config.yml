@@ -9,7 +9,7 @@ general:
     Default: "public"
     Choices:
       public:            "Everyone can read"
-      auth_commu_member: "Only community's members can read"
+      auth_commu_member: "Only %community%'s members can read"
   topic_authority:
     Name:       "topic_authority"
     Caption:    "Authority to Create Topic"
@@ -19,5 +19,5 @@ general:
     IsRequired: true
     Default:    "public"
     Choices:
-      public:     "Community's members can create"
-      admin_only: "Only community's admin can create"
+      public:     "%Community%'s members can create"
+      admin_only: "Only %community%'s admin can create"

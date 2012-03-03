@@ -1,4 +1,4 @@
-<?php op_mobile_page_title(__('Search Community Topics')) ?>
+<?php op_mobile_page_title(__('Search %Community% Topics')) ?>
 
 <?php if ($isResult): ?>
 <?php if ($pager->getNbResults()): ?>
@@ -28,11 +28,11 @@ if ($pager->haveToPaginate())
 <?php
 if ('topic' === $type)
 {
-  $message = __('Your search queries did not match any community topics.');
+  $message = __('Your search queries did not match any %community% topics.');
 }
 else if ('event' === $type)
 {
-  $message = __('Your search queries did not match any community events.');
+  $message = __('Your search queries did not match any %community% events.');
 }
 op_include_box('searchCommunityTopicResult', $message);
 ?>
@@ -41,7 +41,7 @@ op_include_box('searchCommunityTopicResult', $message);
 
 <?php
 $options = array(
-  'title'    => __('Search Community Topics'),
+  'title'    => __('Search %Community% Topics'),
   'button'   => __('Search'),
   'method'   => 'get'
 );

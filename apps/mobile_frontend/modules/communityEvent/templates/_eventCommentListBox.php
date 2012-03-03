@@ -14,7 +14,7 @@ foreach ($communityEvent as $event)
   );
 }
 $options = array(
-  'title' => __('Recently Posted Community Events'),
+  'title' => __('Recently Posted %Community% Events'),
   'border' => true,
   'moreInfo' => array(
     link_to(__('More'), 'communityEvent_recently_event_list')

@@ -1,7 +1,7 @@
 <?php use_helper('Date') ?>
 <?php
 $options = array(
-  'title'    => __('Search Community Topics'),
+  'title'    => __('Search %Community% Topics'),
   'button'   => __('Search'),
   'method'   => 'get'
 );
@@ -36,11 +36,11 @@ op_include_parts('searchResultList', 'searchResultCommunityTopic', $options);
 <?php
 if ('topic' === $type)
 {
-  $message = __('Your search queries did not match any community topics.');
+  $message = __('Your search queries did not match any %community% topics.');
 }
 else if ('event' === $type)
 {
-  $message = __('Your search queries did not match any community events.');
+  $message = __('Your search queries did not match any %community% events.');
 }
 op_include_box('searchCommunityTopicResult', $message, array('title' => __('Search Results')));
 ?>

@@ -1,7 +1,7 @@
 <?php
 $id = sfContext::getInstance()->getRequest()->getParameter('id');
 $options = array(
-  'title'    => __('Search Community Topics'),
+  'title'    => __('Search %Community% Topics'),
   'url'      => url_for('communityTopic_search', $community),
   'button'   => __('Search'),
   'method'   => 'get'
