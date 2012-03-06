@@ -25,6 +25,12 @@ class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFil
 
   public function configure()
   {
+    if (!isset($this->option['query']))
+    {
+      $query = $this->getTable()->createQuery('c')->leftJoin('c.Member m');
+      $this->setQuery($query);
+    }
+
     $this->setWidgets(array(
       'community_event_id'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'number'                => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -49,17 +55,28 @@ class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFil
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
 
-  public function getQuery(){
-    $parameter = $this->getTaintedValues();
-    $community_event_id = $parameter['community_event_id']['text'];
-    $number = $parameter['number']['text'];
-    $member_name = $parameter['member_name']['text'];
-    $body = $parameter['body']['text'];
-    $query = Doctrine_Query::create()->from('CommunityEventComment c')->leftJoin('c.Member m');
-    if (!empty($community_event_id)) $query->andWhere('c.community_event_id = ?', $community_event_id);
-    if (!empty($number)) $query->andWhere('c.number = ?', $number);
-    if (!empty($member_name)) $query->andWhere('m.name LIKE ?', '%' . $member_name . '%');
-    if (!empty($body)) $query->andWhere('c.body LIKE ?', '%' . $body . '%');
-    return $query;
+  protected function addMemberNameColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, 'm.name', $value);
+  }
+
+  protected function addBodyColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, $field, $value);
+  }
+
+  protected function _addColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    if (!empty($value['text']))
+    {
+      if (method_exists($query, 'andWhereLike'))
+      {
+        $query->andWhereLike($field, $value['text']);
+      }
+      else
+      {
+        $query->andWhere($field.' LIKE ?', '%'.$value['text'].'%');
+      }
+    }
   }
 }

@@ -110,6 +110,11 @@ class PluginCommunityEventTable extends Doctrine_Table
       $values = preg_split('/[\s　]+/u', $keyword);
       foreach ($values as $value)
       {
+        if (method_exists($q, 'escapePattern'))
+        {
+          $value = $q->escapePattern($value);
+        }
+
         $q->andWhere('(name LIKE ? OR body LIKE ?)', array('%'.$value.'%', '%'.$value.'%'));
       }
     }
