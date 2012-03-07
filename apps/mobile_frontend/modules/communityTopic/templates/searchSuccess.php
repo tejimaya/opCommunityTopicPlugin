@@ -52,9 +52,9 @@ op_include_form('searchCommunityTopic', $form, $options);
 <?php
 if ($communityId)
 {
-  echo link_to(__('Community Top'), 'community/home?id='.$communityId);
+  echo link_to(__('%Community% Top'), 'community/home?id='.$communityId);
 }
 else
 {
-  echo link_to(__('Search Communities'), 'community/search');
+  echo link_to(__('Search %Community%', array('%Community%' => $op_term['community']->pluralize())), 'community/search');
 }
