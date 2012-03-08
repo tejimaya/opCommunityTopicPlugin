@@ -43,11 +43,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-11-10</date>
- <time>19:24:08</time>
+ <date>2012-03-08</date>
+ <time>13:37:45</time>
  <version>
-  <release>0.9.9</release>
-  <api>0.9.9</api>
+  <release>0.9.10</release>
+  <api>0.9.10</api>
  </version>
  <stability>
   <release>stable</release>
@@ -55,17 +55,24 @@
  </stability>
  <license>apache</license>
  <notes>
-Backport（バックポート） #1916: 携帯版でイベント作成時のエラーメッセージが英語になっている
-Backport（バックポート） #1929: /communityEvent/listCommunityにアクセスするとFatal errorが発生する
-Backport（バックポート） #2570: トピックの権限について翻訳されない
+Bug（バグ） #1504: コメント投稿時にフォーム内容がエラーであった場合に、フォームが再表示されない
+Backport（バックポート） #1920: トピック検索時にメニューが変化
+Backport（バックポート） #2377: イベント参加画面にてエラーのアラートが表示され続ける
+Backport（バックポート） #2393: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
+Backport（バックポート） #2567: トピック検索結果の一覧に表示される画像が No Image になる
+Backport（バックポート） #2812: opCommunityTopicPluginで言語切り替えできていないところがある
+Backport（バックポート） #2813: トピックで本文が空のコメントを投稿してもエラーメッセージが表示されない
+Backport（バックポート） #2814: 参加登録にコメント記入が必須である旨が、記載されていない
+Backport（バックポート） #2816: コミュニティホーム画面でコミュニティトピックおよびコミュニティイベントの「もっと見る」のリンクが翻訳されない
+Backport（バックポート） #2855: This plugin don't support sns term (SNS名称設定に対応していない）
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="3851fb0bc9f744389f773ff0321ece92" name="apps/mobile_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="9bf63659d28eb42682352346599e387a" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9184a10925b576f67dceebeb9d3cb94a" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="afff5cfd3c547e908f13531026ce0e12" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="5d205e535f3846c88abdeaf20a72e0c3" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="28c8bb527e955f57f5c71230b3341db5" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="17a37151c4683e3197ca5a57628f8aac" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="18d3e8358a2e5571d787d5188ae178b0" name="apps/mobile_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="7de8ab45c24b7a4eeaf478f5f6a4541f" name="apps/mobile_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/mobile_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -73,14 +80,14 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/mobile_frontend/modules/communityEvent/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="c991e039569ac3efcc3ed3dda5ac0886" name="apps/mobile_frontend/modules/communityEvent/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="8183b407b781e35658617f5d62dedea2" name="apps/mobile_frontend/modules/communityEvent/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="44673924811b80a897a113bc15820d1c" name="apps/mobile_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="fd4be7b1bfa57278c9641818b5a28e56" name="apps/mobile_frontend/modules/communityEvent/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2aa8b21f22c429c48c38eb2270096084" name="apps/mobile_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
    <file baseinstalldir="/" md5sum="d036384abaafe93bfd92f9a30454b853" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="6939f0dbca900236aedaabe821a52138" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c9ae7ae79d5f17bd1a46ef700f8bbe3d" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="5f1bd3d296c5c230aeab1fae1c6e59ab" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
-   <file baseinstalldir="/" md5sum="31acb52d16fe10a1775987c4bf1b6831" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="7a961ca4436c6bd91ff8b2f90b30c1ec" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="7c57d96d2e95d10dad9dd05d95767940" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="3861e46022c00e212b755dda00c928ae" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
+   <file baseinstalldir="/" md5sum="e92f31fb75dc5ac36f2338844aa07040" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cb71ec6dc13b994c2b6cc9a7c7580834" name="apps/mobile_frontend/modules/communityEventComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityEventComment/config/security.yml" role="data" />
@@ -93,16 +100,16 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopic/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="a07351be2407629612569aa782b2f49b" name="apps/mobile_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52665c4ce922a065ea8a9d03ee6666bc" name="apps/mobile_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="42d75c1ffd016b38d04446f76c67a880" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="21cc217f4fa51fc6e17ef9ef45d0781c" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="287b24a3dd18b732dc951f0fd4594203" name="apps/mobile_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="19c1cb9b055f6830bdd2eb1ad5ed4756" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="9e2ad87c2910280544326ad0d7708d60" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ed9a1d2bc7dedfea21e3f4e79a380978" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="18fb0ff660244362fa5a18bc3e21f67e" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="db90f7e83461fd9308dfa2269e075aa3" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="44dc90d0ba875d448d459b11e6124815" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="4d776ff00d2b33eb6f362a9bdb16565e" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1ad95e2183495ff01ff92cf1f01af685" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="f78320c392a42b6ca0274d615aa4cc6d" name="apps/mobile_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
-   <file baseinstalldir="/" md5sum="b486305b790e7c987f3defab8affb3ac" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
-   <file baseinstalldir="/" md5sum="54cd89cb47e6ab833c5dfedab5b327ff" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
-   <file baseinstalldir="/" md5sum="e83a6e243e643b7a735119275eb4a23b" name="apps/mobile_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
+   <file baseinstalldir="/" md5sum="22578c9055960e18ed25f71667dd39bb" name="apps/mobile_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
+   <file baseinstalldir="/" md5sum="b8955cbe263bded1be12b5bfa4b9be62" name="apps/mobile_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="f191637d79c89c6391216aee1a1bb044" name="apps/mobile_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="4504f856530c1e33c42dbd6764f3ff6b" name="apps/mobile_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f955fafd39f2b1933434c6577683e02b" name="apps/mobile_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopicComment/config/security.yml" role="data" />
@@ -110,23 +117,23 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="6b1c151ec88c9dd3c76de5a7ed6ce948" name="apps/mobile_frontend/modules/communityTopicComment/templates/_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="e613b9cc373016a70ecfb61aa6f8847a" name="apps/mobile_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="550413082d71e03eaa48bc4aa045956b" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="c3591c99a8f1aeaacabafe5392b8f973" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="3f51f04370ec23c2de62aa16757a2d51" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1a152083fe4b9d0b009811de04de1529" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="78a3c7e8990176c05588f68340e16f7e" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="006f88cc283e2483b34f069e101dd8fb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="75e6dbfb2d359b69f21336217432c526" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="bc67d29bf96894f1f9bbcb9a68b2063a" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="cac991d33a73535b25b530daf7f7549e" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="eb852224b72bbde75ee46cce47482539" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="dddb8e514e230cd129d9425f9a161ecb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="10581657b89ed7e245349a605cb2c192" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="1b4e6d2b7d9083f9c08041e20f27ff63" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2d5e383eb45bbea97afd180ecb9207bd" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="d422f13540c0e27f6b121c295006f91b" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="99a043c0d98d3909ff91194e9f59811f" name="apps/pc_backend/modules/communityTopic/templates/eventCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="a14ff00308144078abcd94d8022788de" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="367d60209b17f8c841c801cb447f9f70" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b249527fcbc5826cf7d583ae3815fa5" name="apps/pc_backend/modules/communityTopic/templates/eventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="3ef4491e8186dae99eb5c508f30ba101" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="0167786d543eaeaf26318cea22f36197" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6e64cc86d18fe09fee47abb1a646ff94" name="apps/pc_backend/modules/communityTopic/templates/eventMemberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_backend/modules/communityTopic/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="d99c9dcae8c6d57c1bd49a472d02e786" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="6c392a27e82a635f2efef75bcb2321e7" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bec43b3fc52d5db84056c8405064113" name="apps/pc_backend/modules/communityTopic/templates/topicCommentListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ac6abb052b719e051c8da1c9ecadc07f" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="ced43272b5efff9462bd9b54ab499bdb" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="df51dae14bf10dce5ad9ceb0c6d72cab" name="apps/pc_backend/modules/communityTopic/templates/topicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="abfab13d85fe6eb7437e59638e1ea409" name="apps/pc_backend/modules/communityTopic/templates/_eventCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="1f61755909889342120d3a1bf68c9e17" name="apps/pc_backend/modules/communityTopic/templates/_eventInfo.php" role="data" />
@@ -137,8 +144,8 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="3851fb0bc9f744389f773ff0321ece92" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed3c6398d11fcc67b61225ba2b90978f" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="9ac8d7060aca541e21da80c2d5a7981a" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="69dcf8e5662cce5bd6a31a9041b50e20" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="5cfc3ec3e689870d4c57f9f04e886e6b" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="9ef3742acd62800bac19fc974288546a" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="77e17fa233829643238eba9f859e9834" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="f15de48cc3a011be6e13d89a16f5dbe9" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -150,10 +157,10 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="8e51b3bd5f2a67ca90fa3191710d6549" name="apps/pc_frontend/modules/communityEvent/templates/memberListError.php" role="data" />
    <file baseinstalldir="/" md5sum="1b459417584acd0fcc8889483f562276" name="apps/pc_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b86d4c84422c7036f22d6bd4af1ad77e" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="220b55cd40a52323bc16fad132023717" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="0ef285af1abbeb81b5745b8c39897492" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4369815899e589ef72ad322f0a3f2674" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
-   <file baseinstalldir="/" md5sum="d946d1590ba22a2c2132bcabf9c4b694" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="2ecad1151ea3e279387ca596d3fa04d4" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="f4a31bb425f0633fbf749403476a7287" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
+   <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/pc_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="00a4c0d9ac54615177c2136d2c00bc17" name="apps/pc_frontend/modules/communityEventComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEventComment/config/security.yml" role="data" />
@@ -169,14 +176,14 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="7cf9f22737704b748ab368cc7cc33d48" name="apps/pc_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="32cf2992324d78979652c97d6e58ec52" name="apps/pc_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="51df84902e4858092851d0b139723c34" name="apps/pc_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="077a99923523b438db09648d8e46ffaa" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4a9f1a8bcd7bd21d8373c2b50b0db7ba" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="eeeb749e97b94bb98fcefb378741fc33" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="d3c161c2c8041a34ef941792c4cd8a01" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
+   <file baseinstalldir="/" md5sum="9a799fe517b0ffd5d0c26bef519f7c06" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="86920b9bee8fac22ef226eb15167fa52" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="d5b7ab109225b9f48d08f411cdce97bb" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="c5fb8c7f8cfddb488bbeddcd6dc77151" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="f745b5ccbe6162068c4bedf08ae1e826" name="apps/pc_frontend/modules/communityTopic/templates/_partsSearchResultList.php" role="data" />
-   <file baseinstalldir="/" md5sum="fcf9629f0aa95fabbf30bd5f0362fec2" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
-   <file baseinstalldir="/" md5sum="d1e2dead5554227c5838c2afc2465798" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
-   <file baseinstalldir="/" md5sum="5e5f4b36ba02351886b3ea32cdd9cb6f" name="apps/pc_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
+   <file baseinstalldir="/" md5sum="a583752c5dda29aee9657d38e32da64b" name="apps/pc_frontend/modules/communityTopic/templates/_searchFormLine.php" role="data" />
+   <file baseinstalldir="/" md5sum="ea721bc2100715fee1512bf501e25639" name="apps/pc_frontend/modules/communityTopic/templates/_topicCommentListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="b5ab1ee1fa9abc4f42eed426f4ad9156" name="apps/pc_frontend/modules/communityTopic/templates/_topicSearchLink.php" role="data" />
    <file baseinstalldir="/" md5sum="e8a92c96d379c33b4e6bb94e0dbb99b8" name="apps/pc_frontend/modules/communityTopic/templates/_topSearchForm.php" role="data" />
    <file baseinstalldir="/" md5sum="9c0826f650c587d92d0cfbd6385490c8" name="apps/pc_frontend/modules/communityTopicComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0c21f782257e82070da19d764783cfe2" name="apps/pc_frontend/modules/communityTopicComment/actions/components.class.php" role="data" />
@@ -184,9 +191,9 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopicComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="1a3d901b6cf0581ce7b7208977425c52" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="03a179551720a98abd62171e234fc712" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
-   <file baseinstalldir="/" md5sum="fd2fa6fbdf3d0264c73b17574bb4dc17" name="config/community_config.yml" role="data" />
+   <file baseinstalldir="/" md5sum="75523dffafda71fda33ac6cda33e1d82" name="config/community_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="67d37bf12d41acc00120248e086280d5" name="config/gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="1e75d65d21cef2b4c78b27d2dd5b3eda" name="config/mobile_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="235508f4194c2c44e324a8452264ff75" name="config/mobile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="43339bbd19c750b6e1b0ffcd9b4c605a" name="config/doctrine/schema.yml" role="data" />
    <file baseinstalldir="/" md5sum="4cdbdfce11f16184b75b4637ccdff4b4" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="002f535128326d06be1e4da24d97b714" name="data/fixtures/010_gadget.yml" role="data" />
@@ -200,12 +207,12 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="213dcc6a2e5ff49b4991ef4e61bdeb46" name="lib/opIsCreatableCommunityTopicBehavior.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ebc06144ada7dd6e8241982c53922e" name="lib/acl/opCommunityEventAclBuilder.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3a62f783b954c5a788a0ba6fb4913441" name="lib/acl/opCommunityTopicAclBuilder.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="95fa9fea707ac05a892687040c6c2eb1" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="8d840c7641952ee9b41c6d6ed73e6a4d" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="73a952597a7b2ec0998adb71e5835143" name="lib/action/opCommunityTopicPluginEventActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="72c1fad970520886c5455fa0a25216a2" name="lib/action/opCommunityTopicPluginEventCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="46b82e7ff8a24842b4c3dba7b77ff673" name="lib/action/opCommunityTopicPluginEventCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55d10741b7029198a5cd183768151fda" name="lib/action/opCommunityTopicPluginEventComponents.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="9efb85c1878848030af7798649bb5970" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="3cffe9ec04a01a043f08f3e500854b3d" name="lib/action/opCommunityTopicPluginTopicCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="bc37b476aedc29ebfe69419c874f4d31" name="lib/action/opCommunityTopicPluginTopicActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="61d2a82e87caee3c4136a9f15beea7a6" name="lib/action/opCommunityTopicPluginTopicCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fa6c964048b4b6195600c67eb73d8913" name="lib/action/opCommunityTopicPluginTopicCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="04bc77866968330019afca7823d12d0a" name="lib/action/opCommunityTopicPluginTopicComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="391c6e86fc202592b00d00239c9a18ff" name="lib/exception/opCommunityEventMemberAppendableException.class.php" role="data" />
@@ -214,22 +221,22 @@ Backport（バックポート） #2570: トピックの権限について翻訳�
    <file baseinstalldir="/" md5sum="ca49e0a359f330411935f7aac02514fb" name="lib/filter/doctrine/PluginCommunityEventMemberFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c36c211b2304fd95d721752d65c4317b" name="lib/filter/doctrine/PluginCommunityTopicCommentFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bf26a92f55430a497da21feaeced1f1" name="lib/filter/doctrine/PluginCommunityTopicFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="80051eeddd0c77463ae10dfffcf2299f" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="c5a2f54f7b093203a510aeb760663735" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0191b0a3110b86aed21d6d260fdf7a24" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="181dd4d0d02151c12689a5d36f456a3a" name="lib/form/doctrine/PluginCommunityEventMemberForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="2ec7f89e8cefc9a29937f6697c290bdd" name="lib/form/doctrine/PluginCommunityTopicCommentForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c34e1aa95f692714ffd4b4ebd2a8bc04" name="lib/form/doctrine/PluginCommunityTopicForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="73e75fd418d116395e592f7a84e3f91e" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="a834e31fdcf672ad9cbfaf92010bad31" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="fa3ef2bef1bd530e6833dd2fef231ecd" name="lib/form/doctrine/PluginCommunityTopicSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="b98e0c2e98658861d00f13cf8cb6b95e" name="lib/model/doctrine/PluginCommunityEvent.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b9f47fa8373ac836ad4b254b13a28801" name="lib/model/doctrine/PluginCommunityEventComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1764ff14fef17e08fe920c582d2b19a8" name="lib/model/doctrine/PluginCommunityEventCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6f66893f17b43effab3c467a5599cf98" name="lib/model/doctrine/PluginCommunityEventMember.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="11a2648e5c8b6222b3f6fac179b908a1" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="ee58edea0fe551176f8601e319e7f87a" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="fab39290a9bfa38a84053c3fe2c021ca" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="14c1836ac5105ca771dbc9d75e2576f7" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5abb460857a03bf983a958143aeb29ce" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="252d217055d3da0f95765ea436222dd8" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="8028fb680a57183423c2c0de33c0b69f" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="52253be7b1ee15f761e3d8300637abc3" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="99e445b44e52afe6383978eb2f00ce06" name="test/bootstrap/functional.php" role="data" />
@@ -495,6 +502,30 @@ fixed searching community topic that shows wrong result
 Backport（バックポート） #1916: 携帯版でイベント作成時のエラーメッセージが英語になっている
 Backport（バックポート） #1929: /communityEvent/listCommunityにアクセスするとFatal errorが発生する
 Backport（バックポート） #2570: トピックの権限について翻訳されない
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.10</release>
+    <api>0.9.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-03-08</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #1504: コメント投稿時にフォーム内容がエラーであった場合に、フォームが再表示されない
+Backport（バックポート） #1920: トピック検索時にメニューが変化
+Backport（バックポート） #2377: イベント参加画面にてエラーのアラートが表示され続ける
+Backport（バックポート） #2393: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
+Backport（バックポート） #2567: トピック検索結果の一覧に表示される画像が No Image になる
+Backport（バックポート） #2812: opCommunityTopicPluginで言語切り替えできていないところがある
+Backport（バックポート） #2813: トピックで本文が空のコメントを投稿してもエラーメッセージが表示されない
+Backport（バックポート） #2814: 参加登録にコメント記入が必須である旨が、記載されていない
+Backport（バックポート） #2816: コミュニティホーム画面でコミュニティトピックおよびコミュニティイベントの「もっと見る」のリンクが翻訳されない
+Backport（バックポート） #2855: This plugin don't support sns term (SNS名称設定に対応していない）
    </notes>
   </release>
  </changelog>
