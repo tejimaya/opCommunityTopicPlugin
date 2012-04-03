@@ -33,7 +33,7 @@ abstract class PluginCommunityEventCommentForm extends BaseCommunityEventComment
     {
       $label = sprintf('<font color="%s">*</font>', opColorConfig::get('core_color_22')).sfContext::getInstance()->getI18N()->__('Comment');
     }
-    else 
+    else
     {
       $label = sfContext::getInstance()->getI18N()->__('Comment').' <strong>*</strong>';
     }
