@@ -31,11 +31,12 @@ abstract class PluginCommunityEventForm extends BaseCommunityEventForm
     $dateParam = array(
       'culture'      => sfContext::getInstance()->getUser()->getCulture(),
       'month_format' => 'number',
+      'can_be_empty' => true,
     );
 
     $this->setWidget('name', new sfWidgetFormInput());
     $this->setWidget('open_date', new opWidgetFormDate($dateParam));
-    $this->setWidget('application_deadline', new opWidgetFormDate(array_merge($dateParam, array('can_be_empty' => true))));
+    $this->setWidget('application_deadline', new opWidgetFormDate($dateParam));
     $this->setWidget('open_date_comment', new sfWidgetFormInput());
     $this->setWidget('area', new sfWidgetFormInput());
 
