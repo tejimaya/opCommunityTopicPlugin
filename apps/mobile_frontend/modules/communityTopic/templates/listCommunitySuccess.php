@@ -40,7 +40,7 @@ op_include_list('communityTopicList', $list, $options);
 
 <?php else: ?>
 
-<?php echo __('There are no topics') ?>
+<?php echo __('There are no topics.') ?>
 
 <?php endif; ?>
 
