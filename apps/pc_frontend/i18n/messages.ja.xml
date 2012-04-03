@@ -206,6 +206,14 @@
         <source>More</source>
         <target>もっと見る</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Do you really delete this comment?</source>
+        <target>本当にこのコメントを削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The comment was deleted successfully.</source>
+        <target>コメントを削除しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
