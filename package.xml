@@ -84,8 +84,6 @@ Bug（バグ） #2896: 携帯版トピックリストページでトピックが
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="7a961ca4436c6bd91ff8b2f90b30c1ec" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="462164f8ad987cf1ecacf3a1a4da1b74" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="462164f8ad987cf1ecacf3a1a4da1b74" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php.orig" role="data" />
-   <file baseinstalldir="/" md5sum="dee038b4486b6b993970735361efdb4a" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php.rej" role="data" />
    <file baseinstalldir="/" md5sum="3861e46022c00e212b755dda00c928ae" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="e92f31fb75dc5ac36f2338844aa07040" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -246,7 +244,6 @@ Bug（バグ） #2896: 携帯版トピックリストページでトピックが
    <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="333b3706c97b6a05710c4399966a1d57" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="d8ee934b02ad4f2a32cdd6b11265f5cf" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php.orig" role="data" />
    <file baseinstalldir="/" md5sum="cfc9c9fd412e4651267cca5c8868a6c1" name="lib/form/doctrine/PluginCommunityEventCommentImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c78e6d8897e9bcda2fac58d2d50a5686" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55633370a99dbd9f0f1ab23940b6238e" name="lib/form/doctrine/PluginCommunityEventImageForm.class.php" role="data" />
