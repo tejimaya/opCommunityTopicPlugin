@@ -37,11 +37,17 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2012-02-27</date>
- <time>20:28:35</time>
+ <lead>
+  <name>Yuya Watanabe</name>
+  <user>watanabe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2012-04-10</date>
+ <time>14:36:50</time>
  <version>
-  <release>1.0.3.1</release>
-  <api>1.0.3.1</api>
+  <release>1.0.4</release>
+  <api>1.0.4</api>
  </version>
  <stability>
   <release>stable</release>
@@ -49,15 +55,22 @@
  </stability>
  <license>apache</license>
  <notes>
-Removed editing community event member to fix CSRF vulnerability in that feature (OPSA-2012-001)
+Bug（バグ） #2136: 一部の文言の翻訳が他プラグインに依存している
+Bug（バグ） #2452: イベントの開催日時の初期値が本日になっている
+Bug（バグ） #2504: コミュニティイベント作成時のエラーメッセージが翻訳されていない
+Bug（バグ） #2508: コミュニティトピック作成時のエラーメッセージが翻訳されていない
+Bug（バグ） #2515: 携帯のコミュニティイベントコメントで必須である説明を追記する
+Bug（バグ） #2815: コミュニティホーム画面でコミュニティトピックおよびコミュニティイベントの「もっと見る」のリンクが翻訳されない
+Bug（バグ） #2862: 携帯版のトピック検索ページの文言がSNS名称設定に対応していない
+Bug（バグ） #2896: 携帯版トピックリストページでトピックが存在しない場合、英語で表示される
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/mobile_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="23c8d1e0ff014c46529d362bd5554354" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="16741bb78286ad7ddb0ad76d8b10f747" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="b552a5416f348fb447470074e08a8b3f" name="apps/mobile_frontend/i18n/community_event_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="cc09c12e4cc01c03ba4ec850c46c115a" name="apps/mobile_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ede396e81481040b1acd88347e7eefe7" name="apps/mobile_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="402b3e5b624276eaa0f3a8f20528b924" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="0f50071f671001de90f4e3f39f996397" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="1e258328c2fa297894550e74d55348c1" name="apps/mobile_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="7de8ab45c24b7a4eeaf478f5f6a4541f" name="apps/mobile_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/mobile_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -70,7 +83,9 @@ Removed editing community event member to fix CSRF vulnerability in that feature
    <file baseinstalldir="/" md5sum="d036384abaafe93bfd92f9a30454b853" name="apps/mobile_frontend/modules/communityEvent/templates/memberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2cdea6717f885f2c85c80232dc665db0" name="apps/mobile_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="7a961ca4436c6bd91ff8b2f90b30c1ec" name="apps/mobile_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="96ca76640ca24c544fa5ea582218f2fc" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="462164f8ad987cf1ecacf3a1a4da1b74" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="462164f8ad987cf1ecacf3a1a4da1b74" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php.orig" role="data" />
+   <file baseinstalldir="/" md5sum="dee038b4486b6b993970735361efdb4a" name="apps/mobile_frontend/modules/communityEvent/templates/showSuccess.php.rej" role="data" />
    <file baseinstalldir="/" md5sum="3861e46022c00e212b755dda00c928ae" name="apps/mobile_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="e92f31fb75dc5ac36f2338844aa07040" name="apps/mobile_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="0c05672d03fc8e9f68ae5bb9150408a8" name="apps/mobile_frontend/modules/communityEventComment/actions/actions.class.php" role="data" />
@@ -85,10 +100,10 @@ Removed editing community event member to fix CSRF vulnerability in that feature
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/communityTopic/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="a07351be2407629612569aa782b2f49b" name="apps/mobile_frontend/modules/communityTopic/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52665c4ce922a065ea8a9d03ee6666bc" name="apps/mobile_frontend/modules/communityTopic/templates/editSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="21cc217f4fa51fc6e17ef9ef45d0781c" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="27321ac24a5668abcbec1680c49872d4" name="apps/mobile_frontend/modules/communityTopic/templates/listCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="287b24a3dd18b732dc951f0fd4594203" name="apps/mobile_frontend/modules/communityTopic/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="db90f7e83461fd9308dfa2269e075aa3" name="apps/mobile_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="f8f0ad76a06545f5e4d23a2da713c0e4" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="44dc90d0ba875d448d459b11e6124815" name="apps/mobile_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="cd2283ea5cfd6b84cb16510cc8be5733" name="apps/mobile_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1ad95e2183495ff01ff92cf1f01af685" name="apps/mobile_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="1833ca3d3259c305c4f7a2ab8f822f45" name="apps/mobile_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
@@ -134,10 +149,10 @@ Removed editing community event member to fix CSRF vulnerability in that feature
    <file baseinstalldir="/" md5sum="dd7c28f361e84170ea277efbff35f430" name="apps/pc_backend/modules/opCommunityTopicPlugin/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7f4a22673656ea0940c5d56035842df8" name="apps/pc_backend/modules/opCommunityTopicPlugin/templates/indexSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3800b181c01a3a01da003512c76a281f" name="apps/pc_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="23e36da5008ca0c0aa4187893675703b" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="8e99f6ec6e6021f2e1a2040014794f19" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="43f1c961bf968011b32adc157f2caeea" name="apps/pc_frontend/i18n/community_event_form.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="e05530dab3f0aaaef9b5de00e1bdfd91" name="apps/pc_frontend/i18n/community_topic_form.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="af7bbc2459f0d370a1b4224fcb14acad" name="apps/pc_frontend/i18n/form_community.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="5474a05ee020c22fb2bb1dcda3c22ebd" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="f375cf4535cd91aa512aa92e3beff5a0" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="fb5af4adf804b232ad21b63a41740716" name="apps/pc_frontend/modules/community/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="790b4526e3f5aa2b50bcc08e2476400b" name="apps/pc_frontend/modules/communityEvent/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dc9b4df3970b9acbf06c10ff26975985" name="apps/pc_frontend/modules/communityEvent/actions/components.class.php" role="data" />
@@ -230,9 +245,10 @@ Removed editing community event member to fix CSRF vulnerability in that feature
    <file baseinstalldir="/" md5sum="85e98f9688368da30385295c07ab1903" name="lib/form/opCommunityTopicPluginConfigurationForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="242fb95867904d70b99a947b17a0abaf" name="lib/form/opCommunityTopicPluginImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="82b04102fc15837533368f27c10a0d94" name="lib/form/opConfigCommunityTopicNotificationMailForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1c7830fbaa98dade0ae7a50aeb80b27b" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="333b3706c97b6a05710c4399966a1d57" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="d8ee934b02ad4f2a32cdd6b11265f5cf" name="lib/form/doctrine/PluginCommunityEventCommentForm.class.php.orig" role="data" />
    <file baseinstalldir="/" md5sum="cfc9c9fd412e4651267cca5c8868a6c1" name="lib/form/doctrine/PluginCommunityEventCommentImageForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="22675294554b53b79396419dfe405963" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="c78e6d8897e9bcda2fac58d2d50a5686" name="lib/form/doctrine/PluginCommunityEventForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="55633370a99dbd9f0f1ab23940b6238e" name="lib/form/doctrine/PluginCommunityEventImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="181dd4d0d02151c12689a5d36f456a3a" name="lib/form/doctrine/PluginCommunityEventMemberForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5be15a906c771f1145113bb8915ff6f6" name="lib/form/doctrine/PluginCommunityTopicCommentForm.class.php" role="data" />
@@ -630,6 +646,28 @@ Bug（バグ） #2659: コミュニティトピック詳細で退会メンバー
    <license>apache</license>
    <notes>
 Removed editing community event member to fix CSRF vulnerability in that feature (OPSA-2012-001)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.4</release>
+    <api>1.0.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-04-10</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #2136: 一部の文言の翻訳が他プラグインに依存している
+Bug（バグ） #2452: イベントの開催日時の初期値が本日になっている
+Bug（バグ） #2504: コミュニティイベント作成時のエラーメッセージが翻訳されていない
+Bug（バグ） #2508: コミュニティトピック作成時のエラーメッセージが翻訳されていない
+Bug（バグ） #2515: 携帯のコミュニティイベントコメントで必須である説明を追記する
+Bug（バグ） #2815: コミュニティホーム画面でコミュニティトピックおよびコミュニティイベントの「もっと見る」のリンクが翻訳されない
+Bug（バグ） #2862: 携帯版のトピック検索ページの文言がSNS名称設定に対応していない
+Bug（バグ） #2896: 携帯版トピックリストページでトピックが存在しない場合、英語で表示される
    </notes>
   </release>
  </changelog>
