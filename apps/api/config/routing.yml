@@ -1,0 +1,5 @@
+#community topic api routing
+community_topic_index:
+  url: /community_topic/search.json
+  param: { module: communityTopic, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
