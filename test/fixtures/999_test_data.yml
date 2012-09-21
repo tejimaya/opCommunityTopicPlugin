@@ -85,6 +85,10 @@ MemberConfig:
     name: "password"
     value: "<?php echo md5('password') ?>"
     Member: member_5
+  member_1_api_key:
+    name: "api_key"
+    value: "dummyApiKey"
+    Member: member1
 
 Community:
   community_a:
