@@ -38,3 +38,32 @@ function op_community_topic_link_to_member(sfOutputEscaper $member)
 
   return '';
 }
+
+function op_api_community_topic($topic)
+{
+  $comments = $topic->getCommunityTopicComment();
+  if(count($comments))
+  {
+    $latest_comment = op_api_community_topic_comment($comments->getLast());
+  }
+  
+  return array(
+    'id'   => $topic->getId(),
+    'name' => $topic->getName(),
+    'body' => $topic->getBody(),
+    'latest_comment' => $latest_comment['body'],
+    'created_at' => $topic->getCreatedAt(),
+    'ago'        => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
+  );
+}
+
+function op_api_community_topic_comment($comment)
+{
+  return array(
+    'id'   => $comment->getId(),
+    'body' => $comment->getBody(),
+    'member'=> op_api_member($comment->getMember()),
+    'created_at' => $comment->getCreatedAt(),
+    'ago'        => op_format_activity_time(strtotime($comment->getCreatedAt())),
+  );
+}
