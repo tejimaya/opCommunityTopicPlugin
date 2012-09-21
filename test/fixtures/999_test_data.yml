@@ -88,7 +88,7 @@ MemberConfig:
   member_1_api_key:
     name: "api_key"
     value: "dummyApiKey"
-    Member: member1
+    Member: member_1
 
 Community:
   community_a:
