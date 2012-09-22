@@ -3,3 +3,13 @@ topic_index:
   url: /topic/search.json
   param: { module: communityTopic, action: search, sf_format: json }
   requirements: { sf_method: [get] }
+
+topic_post:
+  url: /topic/post.json
+  param: { module: communityTopic, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
+topic_delete:
+  url: /topic/delete.json
+  param: { module: communityTopic, action: delete, sf_format: json }
+  requirements: { sf_method: [post] }
