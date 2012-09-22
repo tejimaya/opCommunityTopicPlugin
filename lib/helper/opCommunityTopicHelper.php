@@ -42,22 +42,34 @@ function op_community_topic_link_to_member(sfOutputEscaper $member)
 function op_api_community_topic($topic)
 {
   return array(
-    'id'   => $topic->getId(),
-    'name' => $topic->getName(),
-    'body' => $topic->getBody(),
-    'latest_comment' => $latest_comment['body'],
-    'created_at' => $topic->getCreatedAt(),
-    'ago'        => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
+    'id'           => $topic->getId(),
+    'community_id' => $topic->getCommunityId(),
+    'name'         => $topic->getName(),
+    'member'       => op_api_member($topic->getMember()),
+    'body'         => $topic->getBody(),
+    'created_at'   => $topic->getCreatedAt(),
+    'ago'          => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
   );
 }
 
 function op_api_community_topic_comment($comment)
 {
   return array(
-    'id'   => $comment->getId(),
-    'body' => $comment->getBody(),
-    'member'=> op_api_member($comment->getMember()),
+    'id'         => $comment->getId(),
+    'body'       => $comment->getBody(),
+    'member'     => op_api_member($comment->getMember()),
     'created_at' => $comment->getCreatedAt(),
     'ago'        => op_format_activity_time(strtotime($comment->getCreatedAt())),
   );
+}
+
+function op_api_topic_image($image)
+{
+  if($image)
+  {
+    return array(
+      'filename' => sf_image_path($image->getFile()->getName()),
+      'imagetag' => image_tag_sf_image($image->getFile()->getName(), array('size' => '120x120'))
+    );
+  }
 }

@@ -10,7 +10,7 @@ if (count($topics))
   {
     $_topic = op_api_community_topic($topic);
     $comments = $topic->getCommunityTopicComment();
-    $latest_comment = false;
+    $latest_comment = '';
     if(count($comments))
     {
       $latest_comment = op_api_community_topic_comment($comments->getLast());

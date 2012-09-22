@@ -48,12 +48,12 @@ class communityTopicActions extends opJsonApiActions
     }
     else
     {
-      //$this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'id is not specified');
+      $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'id is not specified');
 
-      //$this->memberId = $this->getUser()->getMemberId();
-      //$this->diary = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+      $this->memberId = $this->getUser()->getMemberId();
+      $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
     
-      //$this->setTemplate('show');
+      $this->setTemplate('show');
     }
   }
 
