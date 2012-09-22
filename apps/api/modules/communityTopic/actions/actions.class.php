@@ -23,6 +23,31 @@ class communityTopicActions extends opJsonApiActions
     $this->member = $this->getUser()->getMember();
   }
 
+  public function executePost(sfWebRequest $request)
+  {
+    $this->forward400If('' === (string)$request['community_id'], 'community_id parameter is not specified.');
+    $this->forward400If('' === (string)$request['name'], 'name parameter is not specified.');
+    $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
+
+    if(isset($request['id']) && '' !== $request['id'])
+    {
+      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+      $this->forward400If(false === $topic, 'the specified topic does not exit.');
+      $this->forward400If(false === $topic->isEditable($this->member->getId()), 'this topic is not yours.');
+    }
+    else
+    {
+      $topic = new CommunityTopic();
+      $topic->setMemberId($this->member->getId());
+      $topic->setCommunityId($request['community_id']);
+    }
+    $topic->setName($request['name']);
+    $topic->setBody($request['body']);
+    $topic->save();
+
+    $this->topic = $topic;
+  }
+
   public function executeSearch(sfWebRequest $request)
   {
     if ($request['format'] == 'mini')
