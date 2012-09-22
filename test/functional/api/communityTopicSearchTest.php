@@ -12,7 +12,7 @@ $t->login($mailAddress, 'password');
 $t->setCulture('en');
 
 $t->info('should return topics');
-$json = $t->get('community_topic/search.json',
+$json = $t->get('topic/search.json',
     array(
       'apiKey'       => 'dummyApiKey',
       'format'       => 'mini',
