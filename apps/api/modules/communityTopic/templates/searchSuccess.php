@@ -9,7 +9,15 @@ if (count($topics))
   foreach ($topics as $topic)
   {
     $_topic = op_api_community_topic($topic);
-    $data[] = $_topic;
+    $comments = $topic->getCommunityTopicComment();
+    $latest_comment = false;
+    if(count($comments))
+    {
+      $latest_comment = op_api_community_topic_comment($comments->getLast());
+    }
+    $_topic['latest_comment'] = $latest_comment;
+  
+    $data[$topic->getId()] = $_topic;
   }
 }
 

@@ -41,12 +41,6 @@ function op_community_topic_link_to_member(sfOutputEscaper $member)
 
 function op_api_community_topic($topic)
 {
-  $comments = $topic->getCommunityTopicComment();
-  if(count($comments))
-  {
-    $latest_comment = op_api_community_topic_comment($comments->getLast());
-  }
-  
   return array(
     'id'   => $topic->getId(),
     'name' => $topic->getName(),
