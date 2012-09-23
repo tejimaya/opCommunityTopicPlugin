@@ -4,7 +4,7 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-//include dirname(__FILE__).'/../../bootstrap/database.php';
+include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should be able to delete his or her own comment');
 $body = 'コメント本文';

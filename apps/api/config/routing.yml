@@ -14,6 +14,11 @@ topic_delete:
   param: { module: communityTopic, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
 
+topic_comment_index:
+  url: /topic_comment/search.json
+  param: { module: communityTopicComment, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
 topic_comment_post:
   url: /topic_comment/post.json
   param: { module: communityTopicComment, action: post, sf_format: json }

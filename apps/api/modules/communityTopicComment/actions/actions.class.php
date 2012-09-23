@@ -23,6 +23,22 @@ class communityTopicCommentActions extends opJsonApiActions
     $this->member = $this->getUser()->getMember();
   }
 
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->forward400If('' === (string)$request['community_topic_id'], 'community_topic_id parameter is not specified.');
+
+    $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['community_topic_id']);
+
+    $topic->actAs('opIsCreatableCommunityTopicBehavior');
+    $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
+
+    $this->memberId = $this->getUser()->getMemberId();
+    $this->comments = Doctrine::getTable('CommunityTopicComment')->createQuery('q')
+                        ->where('community_topic_id = ?', $request['community_topic_id'])
+                        ->orderBy('created_at')
+                        ->execute();
+  }
+
   public function executePost(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['community_topic_id'], 'community_topic_id parameter is not specified.');
