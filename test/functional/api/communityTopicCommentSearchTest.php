@@ -22,7 +22,7 @@ $json = $t->post('/topic_comment/search.json',
 ;
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
-$t->test()->is(count($data['data']['comments']), count($comments), 'should have the same number of comments');
+$t->test()->is(count($data['data']['comments']), count($comments), 'should have '.count($comments).' comments');
 $t->test()->ok(count($data['data']['comments'][0]['deletable']), 'should have deletable property');
 
 $t->info('non-members should not be able to fetch a list of comments ');

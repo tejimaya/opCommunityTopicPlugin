@@ -33,10 +33,7 @@ class communityTopicCommentActions extends opJsonApiActions
     $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
 
     $this->memberId = $this->getUser()->getMemberId();
-    $this->comments = Doctrine::getTable('CommunityTopicComment')->createQuery('q')
-                        ->where('community_topic_id = ?', $request['community_topic_id'])
-                        ->orderBy('created_at')
-                        ->execute();
+    $this->comments = $topic->getCommunityTopicComment();
   }
 
   public function executePost(sfWebRequest $request)
