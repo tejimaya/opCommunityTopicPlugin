@@ -89,6 +89,22 @@ MemberConfig:
     name: "api_key"
     value: "dummyApiKey"
     Member: member_1
+  member_2_api_key:
+    name: "api_key"
+    value: "dummyApiKey2"
+    Member: member_2
+  member_3_api_key:
+    name: "api_key"
+    value: "dummyApiKey3"
+    Member: member_3
+  member_4_api_key:
+    name: "api_key"
+    value: "dummyApiKey4"
+    Member: member_4
+  member_5_api_key:
+    name: "api_key"
+    value: "dummyApiKey5"
+    Member: member_5
 
 Community:
   community_a:
