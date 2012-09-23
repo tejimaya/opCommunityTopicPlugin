@@ -26,6 +26,7 @@ $t->test()->ok($data['data']['member'], 'should have a member info');
 $t->test()->is($data['data']['name'], $name, 'should have the same name posted');
 $t->test()->is($data['data']['body'], $body, 'should have the same body posted');
 $t->test()->ok($data['data']['created_at'], 'should have the date posted');
+$postedTopicId = $data['data']['id'];
 
 $t->info('the author should be able to edit his or her own topic');
 $name = '編集後のタイトル';
