@@ -13,3 +13,9 @@ topic_delete:
   url: /topic/delete.json
   param: { module: communityTopic, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
+
+topic_comment_post:
+  url: /topic_comment/post.json
+  param: { module: communityTopicComment, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
