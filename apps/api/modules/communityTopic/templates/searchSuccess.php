@@ -17,7 +17,7 @@ if (count($topics))
     }
     $_topic['latest_comment'] = $latest_comment;
   
-    $data[$topic->getId()] = $_topic;
+    $data[] = $_topic;
   }
 }
 
