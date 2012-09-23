@@ -99,9 +99,13 @@ class communityTopicActions extends opJsonApiActions
     {
       $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'id is not specified');
 
-      $this->memberId = $this->getUser()->getMemberId();
-      $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+
+      $topic->actAs('opIsCreatableCommunityTopicBehavior');
+      $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
     
+      $this->memberId = $this->getUser()->getMemberId();
+      $this->topic = $topic;
       $this->setTemplate('show');
     }
   }
