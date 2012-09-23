@@ -52,6 +52,26 @@ class communityTopicActions extends opJsonApiActions
     $this->topic = $topic;
   }
 
+  public function executeDelete(sfWebRequest $request)
+  {
+    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'a topic id is not specified');
+
+    $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+    $this->forward400If(false === $topic->isEditable($this->member->getId()), 'this topic is not yours.');
+
+    $isDeleted = $topic->delete();
+
+    if ($isDeleted)
+    {
+      $this->topic = $topic;
+    }
+    else
+    {
+      $this->forward400('failed to delete the entry. errorStack:'.$topic->getErrorStackAsString());
+    }
+
+  }
+
   public function executeSearch(sfWebRequest $request)
   {
     if ($request['format'] == 'mini')
