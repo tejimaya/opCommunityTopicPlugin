@@ -42,7 +42,8 @@ class communityTopicActions extends opJsonApiActions
       $topic->setCommunityId($request['community_id']);
     }
 
-    $this->forward400If(false === $topic->isCreatableCommunityTopicComment($this->member->getId()), 'you are not allowed to create or update topics on this community');
+    $topic->actAs('opIsCreatableCommunityTopicBehavior');
+    $this->forward400If(false === $topic->isCreatableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to create or update topics on this community');
 
     $topic->setName($request['name']);
     $topic->setBody($request['body']);
