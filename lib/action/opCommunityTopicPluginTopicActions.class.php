@@ -81,11 +81,18 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeShow($request)
   {
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtShow');
     $this->form = new CommunityTopicCommentForm();
 
     return sfView::SUCCESS;
   }
 
+  public function executeSmtShow($request)
+  {
+    $this->id = $request['id'];
+
+    return sfView::SUCCESS;
+  }
   /**
    * Executes new action
    *

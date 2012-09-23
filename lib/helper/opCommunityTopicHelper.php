@@ -46,7 +46,7 @@ function op_api_community_topic($topic)
     'community_id' => $topic->getCommunityId(),
     'name'         => $topic->getName(),
     'member'       => op_api_member($topic->getMember()),
-    'body'         => $topic->getBody(),
+    'body'         => nl2br($topic->getBody()),
     'created_at'   => $topic->getCreatedAt(),
     'ago'          => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
   );
@@ -56,7 +56,7 @@ function op_api_community_topic_comment($comment)
 {
   return array(
     'id'         => $comment->getId(),
-    'body'       => $comment->getBody(),
+    'body'       => nl2br($comment->getBody()),
     'member'     => op_api_member($comment->getMember()),
     'created_at' => $comment->getCreatedAt(),
     'ago'        => op_format_activity_time(strtotime($comment->getCreatedAt())),
