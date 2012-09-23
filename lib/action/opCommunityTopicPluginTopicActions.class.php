@@ -52,6 +52,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeListCommunity($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtListCommunity');
 
     if (!$this->size)
     {
@@ -64,6 +65,12 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $this->size
     );
 
+    return sfView::SUCCESS;
+  }
+
+  public function executeSmtListCommunity($request)
+  {
+    $this->id = $this->community->getId();
     return sfView::SUCCESS;
   }
 
@@ -87,10 +94,17 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeNew($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtNew');
 
     $this->form = new CommunityTopicForm();
 
     return sfView::SUCCESS;
+  }
+
+  public function executeSmtNew($request)
+  {
+    $this->topic = null;
+    $this->smtPost($request);
   }
 
   /**
@@ -119,10 +133,21 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeEdit($request)
   {
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtEdit');
     $this->form = new CommunityTopicForm($this->communityTopic);
     
     return sfView::SUCCESS;
   }
+
+
+  public function executeSmtEdit($request)
+  {
+    $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+    $this->forward404Unless($this->topic->isEditable($this->getUser()->getMemberId()));
+
+    $this->smtPost($request);
+  }
+
  
   /**
    * Executes update action
@@ -271,5 +296,12 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $communityTopic = $form->save();
       $this->redirect('@communityTopic_show?id='.$communityTopic->getId());
     }
+  }
+
+  protected function smtPost(sfWebRequest $request)
+  {
+    $this->communityId = $this->community->getId();
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtPost');
   }
 }
