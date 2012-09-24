@@ -50,6 +50,7 @@ class communityTopicCommentActions extends opJsonApiActions
     $comment->setBody($request['body']);
     $comment->save();
 
+    $this->memberId = $this->getUser()->getMemberId();
     $this->comment = $comment;
   }
 

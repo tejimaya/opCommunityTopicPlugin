@@ -1,7 +1,7 @@
 <?php
 use_helper('opAsset');
-//op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
-//op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 ?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
@@ -22,36 +22,40 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
   <div class="row body">
     <div class="span12">{{html body}}</div>
   </div>
-  <div class="row images">
+  <div class="row images center">
     {{each images}}
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
   </div>
-  <div class="row" id="comments">
+  <div class="row comments" id="comments">
   </div>
   <div class="row" id="commentForm">
-    <div class="span1">
-    &nbsp;
-    </div>
-    <textarea id="commentBody"></textarea>
-    <input type="submit" class="btn" id="postComment" value="投稿">
+          <div class="comment-wrapper">
+            <divclass="comment-form">
+            <input class="comment-form-input" type="text" id="commentBody" /><input type="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="投稿">
+            </div>
+            <div class="comment-form-loader">
+              <?php echo op_image_tag('ajax-loader.gif', array()) ?>
+            </div>
+          </div>
   </div>
 </script>
 
 <script id="topicComment" type="text/x-jquery-tmpl">
   <div class="row" id="comment${id}">
-    <div class="span1">
-      &nbsp;
-    </div>
-    <div class="span3">
-      <a href="${member.profile_url}"><img src="${member.profile_image}" class="rad10" width="57" height="57"></a>
-    </div>
-    <div class="span8">
-      <div>
-        <a href="${member.profile_url}">{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}</a>
-        {{html body}}
+    <div class="span11 comment-wrapper">
+      <div class="comment-member-image">
+        <a href="${member.profile_url}"><img src="${member.profile_image}" alt="{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}" width="23" /></a>
       </div>
-      <div class="row">
+      <div class="comment-content">
+        <div class="comment-name-and-body">
+        <a href="${member.profile_url}">{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}</a>
+        <span class="comment-body">
+        {{html body}}
+        </span>
+        </div>
+      </div>
+      <div class="comment-control row">
         <span>${ago}</span>
         {{if deletable}}
         <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
@@ -162,7 +166,7 @@ $(function(){
     var params = {
       apiKey: openpne.apiKey,
       community_topic_id: topic_id,
-      body: $('textarea#commentBody').val()
+      body: $('input#commentBody').val()
     };
 
     $.post(openpne.apiBase + "topic_comment/post.json",
@@ -173,7 +177,7 @@ $(function(){
       function(res)
       {
         $('#comments').append($('#topicComment').tmpl(res.data));
-        $('textarea#commentBody').val('');
+        $('input#commentBody').val('');
       }
     )
     .error(
