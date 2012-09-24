@@ -4,7 +4,7 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-include dirname(__FILE__).'/../../bootstrap/database.php';
+//include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $topicId = 1;
 $comments = Doctrine::getTable('CommunityTopicComment')
@@ -24,6 +24,7 @@ $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
 $t->test()->is(count($data['data']['comments']), count($comments), 'should have '.count($comments).' comments');
 $t->test()->ok(count($data['data']['comments'][0]['deletable']), 'should have deletable property');
+$t->test()->is($data['data']['next'], false, 'should have next property with value of false');
 
 $t->info('non-members should not be able to fetch a list of comments ');
 $json = $t->post('/topic_comment/search.json',

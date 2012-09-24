@@ -32,8 +32,23 @@ class communityTopicCommentActions extends opJsonApiActions
     $topic->actAs('opIsCreatableCommunityTopicBehavior');
     $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
 
+    $page = isset($request['page']) ? $request['page'] : 1;
+    $limit = isset($request['limit']) ? $request['limit'] : sfConfig::get('op_json_api_limit', 15);
+    $query = Doctrine::getTable('CommunityTopicComment')->createQuery('c')
+      ->where('community_topic_id = ?', $topic->getId())
+      ->orderBy('created_at desc')
+      ->offset(($page - 1) * $limit)
+      ->limit($limit);
+
     $this->memberId = $this->getUser()->getMemberId();
-    $this->comments = $topic->getCommunityTopicComment();
+    $this->comments = $query->execute();
+    $total = $query->count();
+    $this->next = false;
+    if ($total > $page * $limit)
+    {
+      $this->next = $page + 1;
+    }
+
   }
 
   public function executePost(sfWebRequest $request)

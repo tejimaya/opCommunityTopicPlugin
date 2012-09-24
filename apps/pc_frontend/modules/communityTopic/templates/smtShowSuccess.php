@@ -27,6 +27,9 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
   </div>
+  <div class="row">
+    <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
+  </div>
   <div class="row comments" id="comments">
   </div>
   <div class="row" id="commentForm">
@@ -51,20 +54,24 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
         <div class="comment-name-and-body">
         <a href="${member.profile_url}">{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}</a>
         <span class="comment-body">
-        {{html body}}
+          {{html body}}
         </span>
         </div>
+        {{if images}}
+        <div class="row">
+          <div class="span11 images center">
+            {{each images}}
+              <div class="span2"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
+            {{/each}}
+          </div>
+        </div>
+        {{/if}}
       </div>
       <div class="comment-control row">
         <span>${ago}</span>
         {{if deletable}}
         <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
         {{/if}}
-      </div>
-      <div class="images center">
-        {{each images}}
-          <div class="span2"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
-        {{/each}}
       </div>
     </div>
   </div>
@@ -75,7 +82,10 @@ var topic_id = <?php echo $id ?>;
 
 function getEntry(params)
 {
+  params = {} || params;
   params.id = topic_id;
+  params.apiKey = openpne.apiKey;
+
   $('#loading').show();
   $.getJSON( openpne.apiBase + 'topic/search.json',
     params,
@@ -83,23 +93,37 @@ function getEntry(params)
     {
       var entry = $('#topicEntry').tmpl(json.data);
       $('#show').html(entry);
+      getComments();
 
-      var params = {
-        apiKey: openpne.apiKey,
-        community_topic_id: topic_id
-      }
+    }
+  );
+
+}
+
+function getComments(params){
+  params = params || {};
+  params.community_topic_id = topic_id;
+  params.apiKey = openpne.apiKey;
+  console.log('getComments', params);
+
       $.getJSON( openpne.apiBase + 'topic_comment/search.json',
         params,
         function(res)
         {
+          console.log(res);
           var comments = $('#topicComment').tmpl(res.data.comments);
-          $('#comments').html(comments);
+          $('#comments').prepend(comments);
+          if (res.next != false)
+          {
+            $('#loadmore').attr('x-page', res.next).show();
+          }
+          else
+          {
+            $('#loadmore').hide();
+          }
           $('#loading').hide();
         }
       );
-
-    }
-  );
 
 }
 
@@ -115,7 +139,16 @@ function showModal(modal){
 }
 
 $(function(){
-  getEntry({apiKey: openpne.apiKey});
+  getEntry();
+
+  $(document).on('click', '#loadmore', function()
+  {
+    var params = {
+      page: $(this).attr('x-page')
+    };
+    console.log('loadmore clicked', params);
+    getComments(params);
+  })
 
   $(document).on('click', '#deleteEntry', function(e){
     $('#deleteEntryModal')
