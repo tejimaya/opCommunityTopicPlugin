@@ -295,20 +295,20 @@ $(function(){
     <p class="center"><?php echo __('Do you really delete this comment?');?></p>
   </div>
   <div class="modal-footer">
-    <button class="btn modal-button" id="cancel"><?php echo __('Cancel');?></button>
+    <button class="btn modal-button" id="cancel"><?php echo __('Cancel ');?></button>
     <button class="btn btn-primary modal-button" id="execute"><?php echo __('Delete');?></button>
   </div>
 </div>
 
 <div class="modal hide" id="deleteEntryModal">
   <div class="modal-header">
-    <h5><?php echo __('Delete the diary');?></h5>
+    <h5><?php echo __('Delete the topic and comments');?></h5>
   </div>
   <div class="modal-body">
-    <p class="center"><?php echo __('Do you really delete this diary?');?></p>
+    <p class="center"><?php echo __('Do you really delete this topic?');?></p>
   </div>
   <div class="modal-footer">
-    <button class="btn modal-button" id="cancel"><?php echo __('Cancel');?></button>
+    <button class="btn modal-button" id="cancel"><?php echo __('Cancel ');?></button>
     <button class="btn btn-primary modal-button" id="execute"><?php echo __('Delete');?></button>
   </div>
 </div>
