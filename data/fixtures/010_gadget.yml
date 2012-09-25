@@ -22,4 +22,4 @@ Gadget:
   smartphone_community_latest_topic_list:
     type: "smartphoneCommunityContents"
     name: "smtCommunityLatestTopicList"
-    sort_order: 300
+    sort_order: 310
