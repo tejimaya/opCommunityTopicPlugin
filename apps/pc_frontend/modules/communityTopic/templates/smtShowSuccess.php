@@ -104,13 +104,11 @@ function getComments(params){
   params = params || {};
   params.community_topic_id = topic_id;
   params.apiKey = openpne.apiKey;
-  console.log('getComments', params);
 
       $.getJSON( openpne.apiBase + 'topic_comment/search.json',
         params,
         function(res)
         {
-          console.log(res);
           var comments = $('#topicComment').tmpl(res.data.comments);
           $('#comments').prepend(comments);
           if (res.next != false)
@@ -146,7 +144,6 @@ $(function(){
     var params = {
       page: $(this).attr('x-page')
     };
-    console.log('loadmore clicked', params);
     getComments(params);
   })
 
