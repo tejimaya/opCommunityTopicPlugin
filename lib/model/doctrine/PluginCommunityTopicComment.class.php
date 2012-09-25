@@ -31,4 +31,38 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
       $this->setNumber(Doctrine::getTable('CommunityTopicComment')->getMaxNumber($this->getCommunityTopicId()) + 1);
     }
   }
+
+  public function postSave($event)
+  {
+    sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
+    $message = format_number_choice('[1]1 topic has new comments|(1,Inf]%1% topics have new comments', array('%1%'=>'1'), 1);
+    $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
+
+    //トピック主に通知を飛ばす
+    if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
+    {
+
+      opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+
+    }
+  
+    //同じトピックにコメントをしている人に通知を飛ばす
+    $comments = $this->getCommunityTopic()->getCommunityTopicComment();
+    $toMembers = array();
+    foreach($comments as $comment)
+    {
+      if(false == array_key_exists($comment->getMemberId(), $toMembers)
+        && $comment->getMemberId() !== $this->getCommunityTopic()->getMemberId()
+        && $comment->getMemberId() !== $this->getMemberId()
+      )
+      {
+        $toMembers[$comment->getMemberId()] = $comment->getMember();
+      }
+    }
+    foreach($toMembers as $toMember)
+    {
+      opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+    }
+    
+  }
 }

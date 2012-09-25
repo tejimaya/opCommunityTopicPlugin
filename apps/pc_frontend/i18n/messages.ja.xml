@@ -214,6 +214,10 @@
         <source>The comment was deleted successfully.</source>
         <target>コメントを削除しました。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>[1]1 topic has new comments|(1,Inf]%1% topics have new comments</source>
+        <target>[1,Inf]%1% 件のトピックに新着コメントがあります</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
