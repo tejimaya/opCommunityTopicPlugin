@@ -12,7 +12,7 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
     {{if editable}}
     <h3 class="span9">${name}</h3>
     <div class="btn-group span3">
-      <a href="/communityTopic/edit/${id}" class="btn"><i class="icon-pencil"></i></a>
+      <a href="<?php echo public_path('communityTopic/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
       <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
     </div>
     {{else}}

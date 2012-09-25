@@ -19,7 +19,7 @@ op_smt_use_stylesheet('/opDiaryPlugin/css/smt-topic.css', 'last');
 
 <script id="successMessageTemplate" type="text/x-jquery-tmpl">
     投稿しました<br/>
-    <a href="/communityTopic/${id}">トピックを見る</a>
+    <a href="<?php echo public_path('communityTopic'); ?>/${id}">トピックを見る</a>
 </script>
 
 <script type="text/javascript">

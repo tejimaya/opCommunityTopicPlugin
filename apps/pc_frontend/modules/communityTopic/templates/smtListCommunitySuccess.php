@@ -7,12 +7,12 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
   <span class="span3">
     ${ago}
   </span>
-  <span class="span9"><a href="/communityTopic/${id}">${name}</a></span>
+  <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a></span>
   <div class="span12">
     <div>
       {{if latest_comment}}
         {{html $item.truncateComment()}}
-        <a href="/communityTopic/${id}" class="readmore">続き</a>
+        <a href="<?php echo public_path('communityTopic'); ?>/${id}" class="readmore">続き</a>
       {{else}}
         <span class="muted">（まだコメントはありません）</span>
       {{/if}}
@@ -76,7 +76,7 @@ $(function(){
 })
 </script>
 <div class="row">
-  <a href="/communityTopic/new/<?php echo $id ?>" class="btn span11"><?php echo __('Create a new topic');?></a>
+  <a href="<?php echo public_path('communityTopic/new').'/'.$id ?>" class="btn span11"><?php echo __('Create a new topic');?></a>
 </div>
 <hr class="toumei"/>
 <div class="row">
