@@ -35,6 +35,13 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
     $this->communityTopics = Doctrine::getTable('CommunityTopic')->getTopics($this->community->getId());
   }
 
+  public function executeSmtCommunityLatestTopicList($request)
+  {
+    $this->communityId = $request['id'];
+
+    return sfView::SUCCESS;
+  }
+
   public function executeTopicCommentListBox()
   {
     $this->communityTopic = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($this->getUser()->getMember()->getId(), $this->gadget->getConfig('col'));

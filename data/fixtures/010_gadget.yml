@@ -18,3 +18,8 @@ Gadget:
     type: "mobileContents"
     name: "recentCommunityEventComment"
     sort_order: 111
+
+  smartphone_community_latest_topic_list:
+    type: "smartphoneCommunityContents"
+    name: "smtCommunityLatestTopicList"
+    sort_order: 300
