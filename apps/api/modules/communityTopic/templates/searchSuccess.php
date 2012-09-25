@@ -10,12 +10,12 @@ if (count($topics))
   {
     $_topic = op_api_community_topic($topic);
     $comments = $topic->getCommunityTopicComment();
-    $latest_comment = '';
+    $_topic['latest_comment'] = '';
     if(count($comments))
     {
       $latest_comment = op_api_community_topic_comment($comments->getLast());
+      $_topic['latest_comment'] = $latest_comment['body'];
     }
-    $_topic['latest_comment'] = $latest_comment['body'];
   
     $data[] = $_topic;
   }
