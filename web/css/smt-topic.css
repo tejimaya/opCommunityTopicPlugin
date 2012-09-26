@@ -8,6 +8,10 @@
   margin: 10px;
 }
 
+.readmore {
+  float:right;
+}
+
 #show .images a {
   display: block;
   margin: 5px;

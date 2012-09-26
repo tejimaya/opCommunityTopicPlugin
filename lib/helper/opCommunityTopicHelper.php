@@ -42,13 +42,14 @@ function op_community_topic_link_to_member(sfOutputEscaper $member)
 function op_api_community_topic($topic)
 {
   return array(
-    'id'           => $topic->getId(),
-    'community_id' => $topic->getCommunityId(),
-    'name'         => $topic->getName(),
-    'member'       => op_api_member($topic->getMember()),
-    'body'         => nl2br($topic->getBody()),
-    'created_at'   => $topic->getCreatedAt(),
-    'ago'          => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
+    'id'             => $topic->getId(),
+    'community_id'   => $topic->getCommunityId(),
+    'community_name' => $topic->getCommunity()->getName(),
+    'name'           => $topic->getName(),
+    'member'         => op_api_member($topic->getMember()),
+    'body'           => nl2br($topic->getBody()),
+    'created_at'     => $topic->getCreatedAt(),
+    'ago'            => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
   );
 }
 

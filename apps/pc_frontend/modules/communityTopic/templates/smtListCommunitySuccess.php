@@ -7,7 +7,7 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
   <span class="span3">
     ${ago}
   </span>
-  <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a></span>
+  <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a>（${community_name}）</span>
   <div class="span12">
     <div>
       {{if latest_comment}}
@@ -17,6 +17,7 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
         <span class="muted">（まだコメントはありません）</span>
       {{/if}}
     </div>
+    <div class="clearfix"></div>
   </div>
 </div>
 </script>
