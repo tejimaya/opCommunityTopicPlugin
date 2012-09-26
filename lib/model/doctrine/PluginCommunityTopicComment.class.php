@@ -41,7 +41,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     //トピック主に通知を飛ばす
     if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
     {
-      opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+      opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId(), 'icon_url'=>null));
 
     }
 
@@ -66,7 +66,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     {
       foreach($toMembers as $key => $toMember)
       {
-        opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+        opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId(), 'icon_url'=>null));
       }
     }
 
