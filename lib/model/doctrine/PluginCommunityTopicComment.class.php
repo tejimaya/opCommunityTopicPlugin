@@ -24,7 +24,6 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
 
   public function preSave($event)
   {
-    var_dump($this->id.' presave<br/>');
     $modified = $this->getModified();
     if ($this->isNew() && empty($modified['number']))
     {
@@ -35,7 +34,6 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
 
   public function postSave($event)
   {
-    var_dump($this->id.' postsave<br/>');
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
     $message = format_number_choice('[1]1 topic has new comments|(1,Inf]%1% topics have new comments', array('%1%'=>'1'), 1);
     $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
@@ -43,7 +41,6 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     //トピック主に通知を飛ばす
     if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
     {
-      $message = 'こめんとしたひとのID'.$this->getMemberId().' とぴぬしのID'.$this->getCommunityTopic()->getMemberId().'トピ主に通知 comment id is '.$this->getId();
       opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
 
     }
@@ -69,7 +66,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     {
       foreach($toMembers as $key => $toMember)
       {
-        opNotificationCenter::notify($fromMembers[0], $toMember, $fromMembers[0]->getId().'からコメントした人'.$toMember->getId().'に通知 comment id is '.$this->getId(), array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+        opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
       }
     }
 
