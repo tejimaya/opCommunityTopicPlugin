@@ -24,6 +24,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
 
   public function preSave($event)
   {
+    var_dump($this->id.' presave<br/>');
     $modified = $this->getModified();
     if ($this->isNew() && empty($modified['number']))
     {
@@ -34,6 +35,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
 
   public function postSave($event)
   {
+    var_dump($this->id.' postsave<br/>');
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
     $message = format_number_choice('[1]1 topic has new comments|(1,Inf]%1% topics have new comments', array('%1%'=>'1'), 1);
     $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
@@ -41,28 +43,35 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     //トピック主に通知を飛ばす
     if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
     {
-
+      $message = 'こめんとしたひとのID'.$this->getMemberId().' とぴぬしのID'.$this->getCommunityTopic()->getMemberId().'トピ主に通知 comment id is '.$this->getId();
       opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
 
     }
-  
+
     //同じトピックにコメントをしている人に通知を飛ばす
-    $comments = $this->getCommunityTopic()->getCommunityTopicComment();
+    $comments = Doctrine::getTable('CommunityTopicComment')
+                ->createQuery('q')
+                ->where('community_topic_id = ?', $this->getCommunityTopic()->getId())
+                ->execute();
     $toMembers = array();
     foreach($comments as $comment)
     {
-      if(false == array_key_exists($comment->getMemberId(), $toMembers)
-        && $comment->getMemberId() !== $this->getCommunityTopic()->getMemberId()
-        && $comment->getMemberId() !== $this->getMemberId()
+      $_commentOwnerId = $comment->getMember()->getId();
+      if(false == array_key_exists($_commentOwnerId, $toMembers)
+        && $_commentOwnerId !== $this->getCommunityTopic()->getMemberId()
+        && $_commentOwnerId !== $this->getMemberId()
       )
       {
-        $toMembers[$comment->getMemberId()] = $comment->getMember();
+        $toMembers[$_commentOwnerId] = $comment->getMember();
       }
     }
-    foreach($toMembers as $toMember)
+    if( count($toMembers) > 0)
     {
-      opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+      foreach($toMembers as $key => $toMember)
+      {
+        opNotificationCenter::notify($fromMembers[0], $toMember, $fromMembers[0]->getId().'からコメントした人'.$toMember->getId().'に通知 comment id is '.$this->getId(), array('category'=>'other', 'url'=>'/communityTopic/'.$this->getCommunityTopic()->getId()));
+      }
     }
-    
+
   }
 }
