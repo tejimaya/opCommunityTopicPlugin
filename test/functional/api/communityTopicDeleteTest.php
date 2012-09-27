@@ -43,4 +43,3 @@ $json = $t->post('/topic/delete.json',
 ;
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
-$t->test()->is($data['data']['id'], $postedTopicId, 'should have the same id');
