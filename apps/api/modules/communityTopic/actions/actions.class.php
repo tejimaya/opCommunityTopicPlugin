@@ -62,11 +62,7 @@ class communityTopicActions extends opJsonApiActions
 
     $isDeleted = $topic->delete();
 
-    if ($isDeleted)
-    {
-      $this->topic = $topic;
-    }
-    else
+    if (!$isDeleted)
     {
       $this->forward400('failed to delete the entry. errorStack:'.$topic->getErrorStackAsString());
     }
