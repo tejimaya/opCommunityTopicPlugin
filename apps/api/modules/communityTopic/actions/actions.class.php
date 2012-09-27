@@ -105,8 +105,7 @@ class communityTopicActions extends opJsonApiActions
       $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
     
       $this->memberId = $this->getUser()->getMemberId();
-      $this->topic = $topic;
-      $this->setTemplate('show');
+      $this->topics = array($topic);
     }
   }
 
