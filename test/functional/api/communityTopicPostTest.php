@@ -35,7 +35,6 @@ $json = $t->post('/topic/post.json',
     array(
       'apiKey'       => 'dummyApiKey',
       'id'           => $postedTopicId,
-      'community_id' => 1,
       'name'         => $name,
       'body'         => $body,
     )
@@ -53,7 +52,6 @@ $json = $t->post('/topic/post.json',
     array(
       'apiKey'       => 'dummyApiKey2',
       'id'           => $postedTopicId,
-      'community_id' => 1,
       'name'         => $name,
       'body'         => $body,
     )

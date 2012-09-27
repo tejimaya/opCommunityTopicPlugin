@@ -25,7 +25,7 @@ class communityTopicActions extends opJsonApiActions
 
   public function executePost(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['community_id'], 'community_id parameter is not specified.');
+    $this->forward400If('' === (string)$request['id'] && '' === (string)$request['community_id'], 'community_id parameter is not specified.');
     $this->forward400If('' === (string)$request['name'], 'name parameter is not specified.');
     $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
 
