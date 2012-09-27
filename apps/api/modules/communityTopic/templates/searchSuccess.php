@@ -8,7 +8,7 @@ if (count($topics))
 {
   foreach ($topics as $topic)
   {
-    $_topic = op_api_community_topic($topic);
+    $_topic = op_api_community_topic_mini($topic);
     $comments = $topic->getCommunityTopicComment();
     $_topic['latest_comment'] = '';
     if(count($comments))

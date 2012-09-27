@@ -53,6 +53,19 @@ function op_api_community_topic($topic)
   );
 }
 
+function op_api_community_topic_mini($topic)
+{
+  return array(
+    'id'             => $topic->getId(),
+    'community_id'   => $topic->getCommunityId(),
+    'community_name' => $topic->getCommunity()->getName(),
+    'name'           => $topic->getName(),
+    'body'           => nl2br($topic->getBody()),
+    'created_at'     => $topic->getCreatedAt(),
+    'ago'            => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
+  );
+}
+
 function op_api_community_topic_comment($comment)
 {
   return array(
