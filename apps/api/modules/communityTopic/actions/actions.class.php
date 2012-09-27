@@ -78,26 +78,29 @@ class communityTopicActions extends opJsonApiActions
     {
       $this->forward400If(!isset($request['community_id']) || '' === (string)$request['community_id'], 'community id is not specified');
 
-      $page = isset($request['page']) ? $request['page'] : 1;
-      $limit = isset($request['limit']) ? $request['limit'] : sfConfig::get('op_json_api_limit', 15);
+      $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
       $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
         ->where('community_id = ?', $request['community_id'])
         ->orderBy('topic_updated_at desc')
-        ->offset(($page - 1) * $limit)
         ->limit($limit);
+
+      if(isset($request['max_id']))
+      {
+        $query->addWhere('id <= ?', $request['max_id']);
+      }
+
+      if(isset($request['since_id']))
+      {
+        $query->addWhere('id > ?', $request['since_id']);
+      }
 
       $this->topics = $query->execute();
       $total = $query->count();
-      $this->next = false;
-      if ($total > $page * $limit)
-      {
-        $this->next = $page + 1;
-      }
     }
     else
     {
-      $this->forward400If(!isset($request['topic_id']) || '' === (string)$request['topic_id'], 'id is not specified');
+      $this->forward400If(!isset($request['topic_id']) || '' === (string)$request['topic_id'], 'topic id is not specified');
 
       $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['topic_id']);
 

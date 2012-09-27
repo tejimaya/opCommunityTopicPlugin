@@ -28,7 +28,7 @@ function getList(params)
   var id = <?php echo $id ?>;
   if (id != null)
   {
-    params.id = id;
+    params.community_id = id;
   }
   params.format = 'mini';
   $('#loading').show();
@@ -39,6 +39,7 @@ function getList(params)
       if (json.data.length === 0)
       {
         $('#noEntry').show();
+        $('#loadmore').hide();
       }
       else
       {
@@ -49,14 +50,7 @@ function getList(params)
           }
         });
         $('#list').append(entry);
-      }
-      if (json.next != false)
-      {
-        $('#loadmore').attr('x-page', json.next).show();
-      }
-      else
-      {
-        $('#loadmore').hide();
+        $('#loadmore').attr('x-since-id', json.data[json.data.length-1].id).show();
       }
       $('#loading').hide();
     }
@@ -70,7 +64,7 @@ $(function(){
   {
     var params = {
       apiKey: openpne.apiKey,
-      page: $(this).attr('x-page')
+      since_id: $(this).attr('x-since-id')
     };
     getList(params);
   })
@@ -85,7 +79,7 @@ $(function(){
 </div>
 <div id="list"></div>
 <div class="row hide" id="noEntry">
-  <div class="center span12">まだトピックはありません</div>
+  <div class="center span12">トピックはありません</div>
 </div>
 <div class="row">
   <div id="loading" class="center">

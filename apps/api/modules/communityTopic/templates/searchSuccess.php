@@ -24,5 +24,4 @@ if (count($topics))
 return array(
   'status' => 'success',
   'data' => $data,
-  'next' => $next,
 );
