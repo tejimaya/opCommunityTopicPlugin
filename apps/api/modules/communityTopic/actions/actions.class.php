@@ -76,13 +76,13 @@ class communityTopicActions extends opJsonApiActions
   {
     if ($request['format'] == 'mini')
     {
-      $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'community id is not specified');
+      $this->forward400If(!isset($request['community_id']) || '' === (string)$request['community_id'], 'community id is not specified');
 
       $page = isset($request['page']) ? $request['page'] : 1;
       $limit = isset($request['limit']) ? $request['limit'] : sfConfig::get('op_json_api_limit', 15);
 
       $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
-        ->where('community_id = ?', $request['id'])
+        ->where('community_id = ?', $request['community_id'])
         ->orderBy('topic_updated_at desc')
         ->offset(($page - 1) * $limit)
         ->limit($limit);
@@ -97,9 +97,9 @@ class communityTopicActions extends opJsonApiActions
     }
     else
     {
-      $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'id is not specified');
+      $this->forward400If(!isset($request['topic_id']) || '' === (string)$request['topic_id'], 'id is not specified');
 
-      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
+      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['topic_id']);
 
       $topic->actAs('opIsCreatableCommunityTopicBehavior');
       $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');

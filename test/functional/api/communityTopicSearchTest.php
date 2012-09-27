@@ -4,16 +4,19 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-include dirname(__FILE__).'/../../bootstrap/database.php';
+//include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should return topics');
 $json = $t->get('topic/search.json',
     array(
       'apiKey' => 'dummyApiKey',
       'format' => 'mini',
-      'id'     => 1
+      'community_id'     => 1
     )
   )
+  ->with('response')->begin()
+    ->isStatusCode('200')
+  ->end()
   ->getResponse()->getContent()
 ;
 $data = json_decode($json, true);
@@ -21,15 +24,18 @@ $t->test()->is($data['status'], 'success', 'should return status code "success"'
 $t->test()->is(count($data['data']), 15, 'should return 15 topics');
 $t->test()->is($data['next'], 2, 'should return next page number 2 ');
 $t->test()->ok($data['data'][1], 'topic 1 should have latest comment ');
-$t->test()->is($data['data'][1]['latest_comment']['body'], 'トピック a 10','latest comment of topic 1 should have body "トピック a 10"');
+$t->test()->is($data['data'][1]['latest_comment'], 'トピック a 10','latest comment of topic 1 should have body "トピック a 10"');
 
 $t->info('should return a topic');
 $json = $t->get('topic/search.json',
     array(
       'apiKey'       => 'dummyApiKey',
-      'id' => 1
+      'topic_id' => 1
     )
   )
+  ->with('response')->begin()
+    ->isStatusCode('200')
+  ->end()
   ->getResponse()->getContent()
 ;
 $data = json_decode($json, true);
@@ -44,7 +50,7 @@ $t->info('non-members should NOT be able to read a topic on communities with pub
 $json = $t->get('topic/search.json',
     array(
       'apiKey' => 'dummyApiKey4',
-      'id'     => 1
+      'topic_id'     => 1
     )
   )
   ->with('response')->begin()
@@ -56,9 +62,12 @@ $t->info('non-members should be able to read a topic on communities with public_
 $json = $t->get('topic/search.json',
     array(
       'apiKey' => 'dummyApiKey4',
-      'id'     => 32
+      'topic_id'     => 32
     )
   )
+  ->with('response')->begin()
+    ->isStatusCode('200')
+  ->end()
   ->getResponse()->getContent()
 ;
 $data = json_decode($json, true);
