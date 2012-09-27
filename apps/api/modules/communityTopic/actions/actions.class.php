@@ -49,6 +49,7 @@ class communityTopicActions extends opJsonApiActions
     $topic->setBody($request['body']);
     $topic->save();
 
+    $this->memberId = $this->getUser()->getMemberId();
     $this->topic = $topic;
   }
 

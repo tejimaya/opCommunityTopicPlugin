@@ -59,7 +59,7 @@ $(function(){
         if (params['id'] == '')
         {
           $('#id').val('');
-          $('#name').val('');
+          $('#topic_name').val('');
           $('#topic_body').val('');
         }
         var _mes = $('#successMessageTemplate').tmpl(res['data']);
