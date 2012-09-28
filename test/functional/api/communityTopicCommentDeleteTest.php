@@ -29,6 +29,9 @@ $json = $t->post('/topic_comment/delete.json',
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
 $t->test()->ok($data['data']['id'], 'should have the same id deleted');
+$t->test()->ok($data['data']['member'], 'should have a member info');
+$t->test()->is($data['data']['body'], $body, 'should have the same body deleted');
+$t->test()->ok($data['data']['created_at'], 'should have the date deleted');
 
 
 $t->info('topic owners should be able to delete comments on his or her own topics');
@@ -68,6 +71,9 @@ $json = $t->post('/topic_comment/delete.json',
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
 $t->test()->ok($data['data']['id'], 'should have the same id deleted');
+$t->test()->ok($data['data']['member'], 'should have a member info');
+$t->test()->is($data['data']['body'], $body, 'should have the same body deleted');
+$t->test()->ok($data['data']['created_at'], 'should have the date deleted');
 
 $t->info('should NOT be able to delete other\'s comments');
 $body = '他メンバーのコメント本文';

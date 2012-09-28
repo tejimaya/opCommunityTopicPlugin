@@ -85,7 +85,7 @@ class communityTopicCommentActions extends opJsonApiActions
     $isDeleted = $comment->delete();
     if ($isDeleted)
     {
-      $this->id = $id;
+      $this->comment = $comment;
     }
     else
     {

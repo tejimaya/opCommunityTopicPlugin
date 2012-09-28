@@ -21,7 +21,6 @@ $t->test()->is($data['status'], 'success', 'should return status code "success"'
 $t->test()->ok($data['data']['id'], 'should have an id');
 $t->test()->ok($data['data']['member'], 'should have a member info');
 $t->test()->is($data['data']['body'], $body, 'should have the same body posted');
-$t->test()->ok($data['data']['ago'], 'should have the ago posted');
 $t->test()->ok($data['data']['created_at'], 'should have the date posted');
 
 $t->info('non-members should NOT be able to post a new comment on communities with public_flag "auth_commu_member"');
