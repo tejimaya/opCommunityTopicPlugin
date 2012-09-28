@@ -4,7 +4,7 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-//include dirname(__FILE__).'/../../bootstrap/database.php';
+include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should be able to post a new topic');
 $name = 'テストタイトル';
@@ -43,3 +43,9 @@ $json = $t->post('/topic/delete.json',
 ;
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
+$t->test()->is($data['data']['id'], $postedTopicId, 'should have the samme id');
+$t->test()->ok($data['data']['community_id'], 'should have a community id');
+$t->test()->ok($data['data']['member'], 'should have a member info');
+$t->test()->is($data['data']['name'], $name, 'should have the same name deleted');
+$t->test()->is($data['data']['body'], $body, 'should have the same body deleted');
+$t->test()->ok($data['data']['created_at'], 'should have the date deleted');

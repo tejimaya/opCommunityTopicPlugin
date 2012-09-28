@@ -67,6 +67,8 @@ class communityTopicActions extends opJsonApiActions
       $this->forward400('failed to delete the entry. errorStack:'.$topic->getErrorStackAsString());
     }
 
+    $this->topic = $topic;
+
   }
 
   public function executeSearch(sfWebRequest $request)
