@@ -3,7 +3,7 @@
 class opCommunityTopicPluginUtil
 {
   public static function sendNotification($fromMember, $toMember, $topicId){
-    $rootPath = sfContext::getInstance()->getRequest()->getUriPrefix();
+    $rootPath = sfContext::getInstance()->getRequest()->getRelativeUrlRoot();
     $url = $rootPath.'/communityTopic/'.$topicId;
 
     sfApplicationConfiguration::getActive()->loadHelpers(array('I18N'));
