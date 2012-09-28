@@ -34,16 +34,12 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
 
   public function postSave($event)
   {
-    $rootPath = sfContext::getInstance()->getRequest()->getUriPrefix();
-    sfApplicationConfiguration::getActive()->loadHelpers(array('I18N'));
-    $message = format_number_choice('[1]1 topic has new comments|(1,Inf]%1% topics have new comments', array('%1%'=>'1'), 1);
     $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
 
     //トピック主に通知を飛ばす
     if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
     {
-      opNotificationCenter::notify($fromMember, $this->getCommunityTopic()->getMember(), $message, array('category'=>'other', 'url'=>$rootPath.'/communityTopic/'.$this->getCommunityTopic()->getId(), 'icon_url'=>null));
-
+      opCommunityTopicPluginUtil::sendNotification($fromMember, $this->getCommunityTopic()->getMember(), $this->getCommunityTopic()->getId());
     }
 
     //同じトピックにコメントをしている人に通知を飛ばす
@@ -67,7 +63,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     {
       foreach($toMembers as $key => $toMember)
       {
-        opNotificationCenter::notify($fromMember, $toMember, $message, array('category'=>'other', 'url'=>$rootPath.'/communityTopic/'.$this->getCommunityTopic()->getId(), 'icon_url'=>null));
+        opCommunityTopicPluginUtil::sendNotification($fromMember, $toMember, $this->getCommunityTopic()->getId());
       }
     }
 
