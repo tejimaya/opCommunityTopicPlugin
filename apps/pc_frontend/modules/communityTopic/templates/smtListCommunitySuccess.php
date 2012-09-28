@@ -26,11 +26,9 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 function getList(params)
 {
   var id = <?php echo $id ?>;
-  if (id != null)
-  {
-    params.community_id = id;
-  }
+  params.target = 'community';
   params.format = 'mini';
+  params.target_id = id;
   $('#loading').show();
   $.getJSON( openpne.apiBase + 'topic/search.json',
     params,

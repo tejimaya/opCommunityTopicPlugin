@@ -83,7 +83,8 @@ var topic_id = <?php echo $id ?>;
 function getEntry(params)
 {
   params = {} || params;
-  params.topic_id = topic_id;
+  params.target = 'topic';
+  params.target_id = topic_id;
   params.apiKey = openpne.apiKey;
 
   $('#loading').show();
@@ -94,7 +95,6 @@ function getEntry(params)
       var entry = $('#topicEntry').tmpl(json.data);
       $('#show').html(entry);
       getComments();
-
     }
   );
 

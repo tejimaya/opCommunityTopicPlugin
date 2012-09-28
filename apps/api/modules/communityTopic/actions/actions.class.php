@@ -71,14 +71,16 @@ class communityTopicActions extends opJsonApiActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    if ($request['format'] == 'mini')
+    $this->forward400If(!isset($request['target']) || '' === (string)$request['target'], 'target is not specified');
+
+    if ($request['target'] == 'community')
     {
-      $this->forward400If(!isset($request['community_id']) || '' === (string)$request['community_id'], 'community id is not specified');
+      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'community id is not specified');
 
       $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
       $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
-        ->where('community_id = ?', $request['community_id'])
+        ->where('community_id = ?', $request['target_id'])
         ->orderBy('topic_updated_at desc')
         ->limit($limit);
 
@@ -95,17 +97,26 @@ class communityTopicActions extends opJsonApiActions
       $this->topics = $query->execute();
       $total = $query->count();
     }
-    else
+    elseif($request['target'] == 'topic')
     {
-      $this->forward400If(!isset($request['topic_id']) || '' === (string)$request['topic_id'], 'topic id is not specified');
+      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'topic id is not specified');
 
-      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['topic_id']);
+      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['target_id']);
 
       $topic->actAs('opIsCreatableCommunityTopicBehavior');
       $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
     
       $this->memberId = $this->getUser()->getMemberId();
       $this->topics = array($topic);
+    }
+    elseif ($request['target'] == 'member')
+    {
+    
+    }
+
+    if (isset($request['format']) && $request['format'] == 'mini')
+    {
+      $this->setTemplate('searchMini');
     }
   }
 
