@@ -49,7 +49,6 @@ function op_api_community_topic($topic)
     'member'         => op_api_member($topic->getMember()),
     'body'           => nl2br($topic->getBody()),
     'created_at'     => $topic->getCreatedAt(),
-    'ago'            => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
   );
 }
 
@@ -62,7 +61,6 @@ function op_api_community_topic_mini($topic)
     'name'           => $topic->getName(),
     'body'           => nl2br($topic->getBody()),
     'created_at'     => $topic->getCreatedAt(),
-    'ago'            => op_format_activity_time(strtotime($topic->getTopicUpdatedAt())),
   );
 }
 
@@ -73,7 +71,6 @@ function op_api_community_topic_comment($comment)
     'body'       => nl2br($comment->getBody()),
     'member'     => op_api_member($comment->getMember()),
     'created_at' => $comment->getCreatedAt(),
-    'ago'        => op_format_activity_time(strtotime($comment->getCreatedAt())),
   );
 }
 

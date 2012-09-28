@@ -1,7 +1,11 @@
-<?php use_helper('Javascript', 'opUtil', 'opAsset') ?>
+<?php
+use_helper('Javascript', 'opUtil', 'opAsset');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
+?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
 <div class="row">
-  <div class="span3">${ago}</div>
+  <div class="span3">${$item.calcTimeAgo()}</div>
   <div class="span9"><a href="<?php echo public_path('communityTopic')?>/${id}">${name}</a></div>
 </div>
 </script>
@@ -22,8 +26,13 @@ $(function(){
     {
       if (res.data.length > 0)
       {
-        var entry = $('#topicEntry').tmpl(res.data);
-        $('#topic').append(entry);
+        var entry = $('#topicEntry').tmpl(res.data,
+        {
+          calcTimeAgo: function(){
+            return moment(this.data.created_at).fromNow();
+          }
+        });
+        $('#topicList').append(entry);
         $('#readmore').show();
       }
     }
@@ -36,7 +45,7 @@ $(function(){
   <div class="gadget_header span12">トピック一覧</div>
 </div>
 <hr class="toumei" />
-<div id="topic" style="margin-left: 0px;">
+<div id="topicList" style="margin-left: 0px;">
 </div>
 
 <div class="row hide" id="readmore">

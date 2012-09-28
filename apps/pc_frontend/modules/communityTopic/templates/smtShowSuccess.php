@@ -3,6 +3,8 @@ use_helper('opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 ?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
   <div class="row">
@@ -68,7 +70,7 @@ op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
         {{/if}}
       </div>
       <div class="comment-control row">
-        <span>${ago}</span>
+        <span>${$item.calcTimeAgo()}</span>
         {{if deletable}}
         <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
         {{/if}}
@@ -109,7 +111,12 @@ function getComments(params){
         params,
         function(res)
         {
-          var comments = $('#topicComment').tmpl(res.data.comments);
+          var comments = $('#topicComment').tmpl(res.data.comments,
+                          {
+                            calcTimeAgo: function(){
+                              return moment(this.data.created_at).fromNow();
+                            }
+                          });
           $('#comments').prepend(comments);
           if (res.next != false)
           {

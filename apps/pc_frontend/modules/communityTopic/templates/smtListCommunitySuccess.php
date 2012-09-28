@@ -1,11 +1,13 @@
 <?php
 use_helper('opAsset');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 ?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
 <div class="row entry">
   <span class="span3">
-    ${ago}
+    ${$item.calcTimeAgo()}
   </span>
   <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a>（${community_name}）</span>
   <div class="span12">
@@ -45,6 +47,9 @@ function getList(params)
         {
           truncateComment: function(){
             return this.data.latest_comment.substr(0, 50);
+          },
+          calcTimeAgo: function(){
+            return moment(this.data.created_at).fromNow();
           }
         });
         $('#list').append(entry);
