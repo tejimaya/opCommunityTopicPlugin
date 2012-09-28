@@ -1,7 +1,7 @@
 <?php
 use_helper('opCommunityTopic');
 
-$data = array('comments'=>array());
+$data = array();
 
 if (count($comments))
 {
@@ -16,13 +16,12 @@ if (count($comments))
         $_comment['images'][] = op_api_topic_image($image);
       }
     }
-    $data['comments'][] = $_comment;
+    $data[] = $_comment;
   }
-  $data['comments'] = array_reverse($data['comments']);
+  $data = array_reverse($data);
 }
 
 return array(
   'status' => 'success',
   'data' => $data,
-  'next' => $next,
 );

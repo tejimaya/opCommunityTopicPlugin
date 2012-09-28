@@ -32,22 +32,25 @@ class communityTopicCommentActions extends opJsonApiActions
     $topic->actAs('opIsCreatableCommunityTopicBehavior');
     $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
 
-    $page = isset($request['page']) ? $request['page'] : 1;
-    $limit = isset($request['limit']) ? $request['limit'] : sfConfig::get('op_json_api_limit', 15);
+    $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
+
     $query = Doctrine::getTable('CommunityTopicComment')->createQuery('c')
       ->where('community_topic_id = ?', $topic->getId())
       ->orderBy('created_at desc')
-      ->offset(($page - 1) * $limit)
       ->limit($limit);
+
+    if(isset($request['max_id']))
+    {
+      $query->addWhere('id <= ?', $request['max_id']);
+    }
+
+    if(isset($request['since_id']))
+    {
+      $query->addWhere('id > ?', $request['since_id']);
+    }
 
     $this->memberId = $this->getUser()->getMemberId();
     $this->comments = $query->execute();
-    $total = $query->count();
-    $this->next = false;
-    if ($total > $page * $limit)
-    {
-      $this->next = $page + 1;
-    }
 
   }
 

@@ -4,7 +4,7 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-//include dirname(__FILE__).'/../../bootstrap/database.php';
+include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should return topics');
 $json = $t->get('topic/search.json',
@@ -63,9 +63,9 @@ $json = $t->get('topic/search.json',
 ;
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
-$t->test()->is(count($data['data']), 2, 'should return 3 topics');
-$t->test()->is($data['data'][0]['id'], '3', 'data 0 should have topic 1 ');
-$t->test()->is($data['data'][1]['id'], '2', 'data 2 should have topic 3 ');
+$t->test()->is(count($data['data']), 2, 'should return 2 topics');
+$t->test()->is($data['data'][0]['id'], '3', 'data 0 should have topic 3 ');
+$t->test()->is($data['data'][1]['id'], '2', 'data 2 should have topic 2 ');
 
 
 $t->info('should return a topic');
