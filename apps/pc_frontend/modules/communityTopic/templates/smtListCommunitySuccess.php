@@ -14,7 +14,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div>
       {{if latest_comment}}
         {{html $item.truncateComment()}}
-        <a href="<?php echo public_path('communityTopic'); ?>/${id}" class="readmore">続き</a>
+        <a href="<?php echo public_path('communityTopic'); ?>/${id}#${latest_comment_id}" class="readmore">続き</a>
       {{else}}
         <span class="muted">（まだコメントはありません）</span>
       {{/if}}
@@ -49,7 +49,7 @@ function getList(params)
             return this.data.latest_comment.substr(0, 50);
           },
           calcTimeAgo: function(){
-            return moment(this.data.created_at).fromNow();
+            return moment(this.data.created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
           }
         });
         $('#list').append(entry);

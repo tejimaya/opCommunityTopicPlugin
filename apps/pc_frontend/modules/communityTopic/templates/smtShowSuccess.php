@@ -82,6 +82,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script type="text/javascript">
 var topic_id = <?php echo $id ?>;
 
+function _timeAgo(created_at){
+  return moment(created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
+}
+
 function getEntry(params)
 {
   params = {} || params;
@@ -111,20 +115,20 @@ function getComments(params){
         params,
         function(res)
         {
-          var comments = $('#topicComment').tmpl(res.data.comments,
-                          {
-                            calcTimeAgo: function(){
-                              return moment(this.data.created_at).fromNow();
-                            }
-                          });
-          $('#comments').prepend(comments);
-          if (res.next != false)
+          if (res.data.length === 0)
           {
-            $('#loadmore').attr('x-page', res.next).show();
+            $('#loadmore').hide();
           }
           else
           {
-            $('#loadmore').hide();
+            var comments = $('#topicComment').tmpl(res.data,
+                            {
+                              calcTimeAgo: function(){
+                                return _timeAgo(this.data.created_at);
+                              }
+                            });
+            $('#comments').prepend(comments);
+            $('#loadmore').attr('x-since-id', res.data[res.data.length-1].id).show();
           }
           $('#loading').hide();
         }
@@ -149,7 +153,7 @@ $(function(){
   $(document).on('click', '#loadmore', function()
   {
     var params = {
-      page: $(this).attr('x-page')
+      since_id: $(this).attr('x-since-id')
     };
     getComments(params);
   })
@@ -213,7 +217,14 @@ $(function(){
     .success(
       function(res)
       {
-        $('#comments').append($('#topicComment').tmpl(res.data));
+        var postedComment = $('#topicComment').tmpl(res.data,
+                            {
+                              calcTimeAgo: function(){
+                                return _timeAgo(this.data.created_at);
+                              }
+                            });
+
+        $('#comments').append(postedComment);
         $('input#commentBody').val('');
       }
     )
