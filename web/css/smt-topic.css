@@ -14,7 +14,11 @@
 
 #show .images a {
   display: block;
-  margin: 5px;
+  margin-left: 2px;
+}
+
+#show .body{
+  margin: 5px 0px;
 }
 
 #successMessage {
@@ -87,8 +91,8 @@
   display: block;
 }
 
-.comment-form-input {
-  width: 238px;
+.event-comment-form-input {
+  width: 278px;
   height: 15px;
   padding: 2px;
   margin-bottom: 0px;
@@ -100,5 +104,9 @@
   font-size: 11px;
   line-height: 14px;
   margin: 0px;
+}
+
+.comment-button{
+  width: 140px;
 }
 

@@ -16,7 +16,7 @@ if (count($events))
     {
       foreach($images as $image)
       {
-        $_event['images'][] = op_api_community_topic_image($image);
+        $_event['images'][] = op_api_topic_image($image);
       }
     }
     $data[] = $_event;

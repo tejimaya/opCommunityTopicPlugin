@@ -87,42 +87,13 @@ $t->test()->is($data['data'][0]['id'], '1', 'should return id 1');
 $t->test()->is($data['data'][0]['community_id'], '1', 'should return community id 1');
 $t->test()->is($data['data'][0]['name'], '_aイベ主', 'should return name _aトピ主');
 $t->test()->is($data['data'][0]['body'], 'こんにちは', 'should return body こんにちは');
+$t->test()->is($data['data'][0]['open_date'], '2009-06-10 00:00:00'  , 'should return open_date 2009-06-10 00:00:00');
+$t->test()->is($data['data'][0]['open_date_comment'], 'あかさたな', 'should return open_date_comment あかさたな');
+$t->test()->is($data['data'][0]['area'], '福岡県', 'should return area 福岡県');
+$t->test()->is($data['data'][0]['application_deadline'], '2009-08-10 00:00:00', 'should return application_deadline 2009-08-10 00:00:00');
+$t->test()->is($data['data'][0]['capacity'], '99', 'should return capacity 99');
+$t->test()->is($data['data'][0]['participants'], '2', 'should return participants 2');
 $t->test()->ok(is_array($data['data'][0]['images']), 'should have images property');
-
-
-//$t->info('non-members should not be able to read a event on communities with public_flag "auth_cummu_member"');
-//$json = $t->get('event/search.json',
-    //array(
-      //'apiKey'    => 'dummyApiKey4',
-      //'target'    => 'event',
-      //'target_id' => 1,
-    //)
-  //)
-  //->with('response')->begin()
-    //->isstatuscode('400')
-  //->end()
-//;
-
-//$t->info('non-members should be able to read a event on communities with public_flag "public"');
-//$json = $t->get('event/search.json',
-    //array(
-      //'apiKey'    => 'dummyApiKey4',
-      //'target'    => 'event',
-      //'target_id' => 32,
-    //)
-  //)
-  //->with('response')->begin()
-    //->isstatuscode('200')
-  //->end()
-  //->getresponse()->getcontent()
-//;
-//$data = json_decode($json, true);
-//$t->test()->is($data['status'], 'success', 'should return status code "success"');
-//$t->test()->is($data['data'][0]['id'], '32', 'should return id 1');
-//$t->test()->is($data['data'][0]['community_id'], '2', 'should return community id 1');
-//$t->test()->is($data['data'][0]['name'], '_iトピ主', 'should return name _aトピ主');
-//$t->test()->is($data['data'][0]['body'], 'こんにちは', 'should return body こんにちは');
-
 
 $t->info('should return member communities latest events');
 $json = $t->get('event/search.json',

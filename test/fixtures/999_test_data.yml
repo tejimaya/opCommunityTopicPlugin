@@ -340,6 +340,8 @@ CommunityEvent:
     open_date: '2009-06-10'
     open_date_comment: 'あかさたな'
     area: '福岡県'
+    application_deadline: '2009-08-10'
+    capacity: 99
 
   community_event_i_2:
     Community: community_i

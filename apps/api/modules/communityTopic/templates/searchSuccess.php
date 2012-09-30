@@ -15,7 +15,7 @@ if (count($topics))
     {
       foreach($images as $image)
       {
-        $_topic['images'][] = op_api_community_topic_image($image);
+        $_topic['images'][] = op_api_topic_image($image);
       }
     }
     $data[] = $_topic;
