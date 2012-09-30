@@ -64,4 +64,11 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
       // do nothing.
     }
   }
+
+  public function executeSmtMemberLatestTopicList($request)
+  {
+    $this->memberId = $this->getUser()->getMember()->getId();
+
+    return sfView::SUCCESS;
+  }
 }

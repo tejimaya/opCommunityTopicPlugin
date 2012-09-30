@@ -74,12 +74,12 @@ class communityTopicActions extends opJsonApiActions
   public function executeSearch(sfWebRequest $request)
   {
     $this->forward400If(!isset($request['target']) || '' === (string)$request['target'], 'target is not specified');
+    $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
     if ($request['target'] == 'community')
     {
       $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'community id is not specified');
 
-      $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
       $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
         ->where('community_id = ?', $request['target_id'])
@@ -113,7 +113,29 @@ class communityTopicActions extends opJsonApiActions
     }
     elseif ($request['target'] == 'member')
     {
+      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'member id is not specified');
+      $memberId = $request['target_id'];
+
+      $communities = Doctrine::getTable('CommunityMember')->createQuery('q')
+        ->select('community_id')
+        ->where('member_id = ?', $memberId)
+        ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+        ->execute();
+      
+      $communityIds = array();
+      foreach($communities as $_community)
+      {
+        array_push($communityIds, $_community['community_id']);
+      }
     
+      $topics = Doctrine::getTable('CommunityTopic')->createQuery('q')
+        ->whereIn('community_id', $communityIds)
+        ->orderBy('topic_updated_at desc')
+        ->limit($limit)
+        ->execute();
+
+      $this->topics = $topics;
+      $this->memberId = $memberId;
     }
 
     if (isset($request['format']) && $request['format'] == 'mini')

@@ -15,8 +15,8 @@ $(function(){
   var params = {
     apiKey: openpne.apiKey,
     format: 'mini',
-    target: 'community',
-    target_id: <?php echo $communityId ?>,
+    target: 'member',
+    target_id: <?php echo $memberId ?>,
     limit: 4
   }
 
