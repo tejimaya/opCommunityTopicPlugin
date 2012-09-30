@@ -4,7 +4,7 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
-//include dirname(__FILE__).'/../../bootstrap/database.php';
+include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should return topics');
 $json = $t->get('topic/search.json',

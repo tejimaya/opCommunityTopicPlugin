@@ -8,7 +8,17 @@ if (count($topics))
 {
   foreach ($topics as $topic)
   {
-    $data[] = op_api_community_topic($topic);
+    $_topic = op_api_community_topic($topic);
+    $_topic['editable'] = $topic->isEditable($memberId);
+    $images = $topic->getImages();
+    if(count($images))
+    {
+      foreach($images as $image)
+      {
+        $_topic['images'][] = op_api_community_topic_image($image);
+      }
+    }
+    $data[] = $_topic;
   }
 }
 
