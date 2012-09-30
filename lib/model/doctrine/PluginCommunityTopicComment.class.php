@@ -39,7 +39,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     //トピック主に通知を飛ばす
     if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
     {
-      opCommunityTopicPluginUtil::sendNotification($fromMember, $this->getCommunityTopic()->getMember(), $this->getCommunityTopic()->getId());
+      opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $this->getCommunityTopic()->getMember(), $this->getCommunityTopic()->getId());
     }
 
     //同じトピックにコメントをしている人に通知を飛ばす
@@ -63,7 +63,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     {
       foreach($toMembers as $key => $toMember)
       {
-        opCommunityTopicPluginUtil::sendNotification($fromMember, $toMember, $this->getCommunityTopic()->getId());
+        opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $toMember, $this->getCommunityTopic()->getId());
       }
     }
 

@@ -2,7 +2,7 @@
 
 class opCommunityTopicPluginUtil
 {
-  public static function sendNotification($fromMember, $toMember, $topicId){
+  public static function sendNewCommentNotification($fromMember, $toMember, $topicId){
     $rootPath = sfContext::getInstance()->getRequest()->getRelativeUrlRoot();
     $url = $rootPath.'/communityTopic/'.$topicId;
 
