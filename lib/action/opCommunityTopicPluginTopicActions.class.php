@@ -90,6 +90,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeSmtShow($request)
   {
     $this->id = $request['id'];
+    opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
 
     return sfView::SUCCESS;
   }
