@@ -349,7 +349,26 @@ CommunityEvent:
     open_date: '2009-06-11'
     open_date_comment: 'いきしちに'
     area: '佐賀県'
-
+<?php for($i=3; $i < 21; $i++): ?>
+  community_event_a_<?php echo $i ?>:
+    Community: community_a
+    Member: member_1
+    name: 'イベントナンバー <?php echo $i ?>'
+    body: 'こんにちは <?php echo $i ?>'
+    open_date: <?php echo date('Y-m-d', time())?>
+    open_date_comment: 'あかさたな'
+    area: '福岡県'
+<?php endfor; ?>
+<?php for($i=21; $i < 31; $i++): ?>
+  community_event_i_<?php echo $i ?>:
+    Community: community_i
+    Member: member_2
+    name: 'イベントナンバー <?php echo $i ?>'
+    body: 'こんにちは <?php echo $i ?>'
+    open_date: <?php echo date('Y-m-d', time())?>
+    open_date_comment: 'あかさたな'
+    area: '福岡県'
+<?php endfor; ?>
   community_event_html_1:
     id: 1055
     Community: community_i
@@ -382,6 +401,15 @@ CommunityEventMember:
   community_event_member_a_2:
     CommunityEvent: community_event_a_2
     Member: member_2
+  community_event_member_a_3:
+    CommunityEvent: community_event_a_3
+    Member: member_1
+  community_event_member_a_4:
+    CommunityEvent: community_event_a_4
+    Member: member_1
+  community_event_member_a_5:
+    CommunityEvent: community_event_a_5
+    Member: member_1
   community_event_member_html_1:
     id: 1055
     CommunityEvent: community_event_html_1

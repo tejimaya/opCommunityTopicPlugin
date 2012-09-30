@@ -28,3 +28,9 @@ topic_comment_delete:
   url: /topic_comment/delete.json
   param: { module: communityTopicComment, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
+
+event_index:
+  url: /event/search.json
+  param: { module: communityEvent, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+

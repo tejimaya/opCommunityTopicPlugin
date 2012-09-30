@@ -140,6 +140,6 @@ $json = $t->get('topic/search.json',
 ;
 $data = json_decode($json, true);
 $t->test()->is($data['status'], 'success', 'should return status code "success"');
-$t->test()->is(count($data['data']), 4, 'should return 15 topics');
+$t->test()->is(count($data['data']), 4, 'should return 4 topics');
 $t->test()->ok($data['data'][1], 'topic 1 should have latest comment ');
 $t->test()->is($data['data'][1]['latest_comment'], 'トピック i 10','latest comment of topic 1 should have body "トピック i 10"');
