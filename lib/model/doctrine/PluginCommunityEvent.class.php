@@ -123,7 +123,8 @@ abstract class PluginCommunityEvent extends BaseCommunityEvent
       sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'opUtil'));
 
       $open = op_format_date($this->getOpenDate(), 'D').($this->getOpenDate() ? ' '.$this->getOpenDateComment() : '');
-      $body = '[%Community% Event] ('.$this->getCommunity()->getName().' %community%) '.$this->name.' (open '.$open.')';
+      $community = sfContext::getInstance()->getI18N()->__('%community%');
+      $body = '['.$community.' Event] ('.$this->getCommunity()->getName().' '.$community.') '.$this->name.' (open '.$open.')';
       $options = array(
         'public_flag' => $this->getCommunity()->getConfig('public_flag') === 'public' ? 1 : 3,
         'uri' => '@communityEvent_show?id='.$this->id,

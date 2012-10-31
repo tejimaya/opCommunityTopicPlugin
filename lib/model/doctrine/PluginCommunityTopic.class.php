@@ -70,7 +70,8 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
     if (Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_update_activity', false)
       && defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta1-dev', '>='))
     {
-      $body = '[%Community% Topic] ('.$this->getCommunity()->getName().' %community%) '.$this->name;
+      $community = sfContext::getInstance()->getI18N()->__('%community%');
+      $body = '['.$community.' Topic] ('.$this->getCommunity()->getName().' '. $community .') '.$this->name;
       $options = array(
         'public_flag' => $this->getCommunity()->getConfig('public_flag') === 'public' ? 1 : 3,
         'uri' => '@communityTopic_show?id='.$this->id,
