@@ -4,7 +4,7 @@ use_helper('opCommunityEvent');
 
 $data = array();
 
-if (count($events))
+if (isset($events[0]['id']))
 {
   foreach ($events as $event)
   {
@@ -19,6 +19,7 @@ if (count($events))
       $_event['latest_comment_id'] = $latest_comment['id'];
     }
 
+    $_event['is_event_member'] = $event->isEventMember($memberId);
     $data[] = $_event;
   }
 }

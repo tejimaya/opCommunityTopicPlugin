@@ -6,3 +6,6 @@ smtListCommunitySuccess:
 
 smtShowSuccess:
   layout: smtLayoutGroup
+
+smtMemberListSuccess:
+  layout: smtLayoutSns

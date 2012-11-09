@@ -53,7 +53,7 @@ function getList(params)
           }
         });
         $('#list').append(entry);
-        $('#loadmore').attr('x-since-id', json.data[json.data.length-1].id).show();
+        $('#loadmore').attr('x-since-id', json.data[0].id).show();
       }
       $('#loading').hide();
     }

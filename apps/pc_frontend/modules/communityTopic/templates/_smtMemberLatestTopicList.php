@@ -6,7 +6,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script id="topicEntry" type="text/x-jquery-tmpl">
 <div class="row">
   <div class="span3">${$item.calcTimeAgo()}</div>
-  <div class="span9"><a href="<?php echo public_path('communityTopic')?>/${id}">${name}</a></div>
+  <div class="span9"><a href="<?php echo public_path('communityTopic')?>/${id}">${name}</a> (${community_name})</div>
 </div>
 </script>
 
@@ -17,7 +17,7 @@ $(function(){
     format: 'mini',
     target: 'member',
     target_id: <?php echo $memberId ?>,
-    limit: 4
+    count: 4
   }
 
   $.getJSON(openpne.apiBase + 'topic/search.json',
@@ -49,5 +49,7 @@ $(function(){
 </div>
 
 <div class="row hide" id="readmore">
+<?php if ($communityId)  { ?>
 <a href="<?php echo public_path('communityTopic/listCommunity').'/'.$communityId ?>" class="btn btn-block span11"><?php echo __('More')?></a>
+<?php } ?>
 </div>

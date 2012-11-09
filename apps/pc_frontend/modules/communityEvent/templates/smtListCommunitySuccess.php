@@ -12,6 +12,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
   <span class="span9"><a href="<?php echo public_path('communityEvent'); ?>/${id}">${name}</a>（${community_name}）</span>
   <div class="span12">
     <div>
+      <div class="event-comment-list" eventId="${id}"></div>
       {{if latest_comment}}
         {{html $item.truncateComment()}}
         <a href="<?php echo public_path('communityEvent'); ?>/${id}#${latest_comment_id}" class="readmore">続き</a>
@@ -22,6 +23,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="clearfix"></div>
   </div>
 </div>
+</script>
+
+<script id="eventComments" type="text/x-jquery-tmpl">
+<div class="event-comment"></div>
 </script>
 
 <script type="text/javascript">
@@ -43,7 +48,7 @@ function getList(params)
       }
       else
       {
-        var entry = $('#eventEntry').tmpl(json.data, 
+        var entry = $('#eventEntry').tmpl(json.data,
         {
           truncateComment: function(){
             return this.data.latest_comment.substr(0, 50);
@@ -53,11 +58,33 @@ function getList(params)
           }
         });
         $('#list').append(entry);
-        $('#loadmore').attr('x-since-id', json.data[json.data.length-1].id).show();
+        $('#loadmore').attr('x-since-id', json.data[0].id).show();
       }
       $('#loading').hide();
     }
   );
+}
+
+function getComments()
+{
+  $('.event-comment-list').each(function()
+  {
+    var id = $(this).attr(eventId);
+    var params = {
+      community_event_id: id,
+      count: 2
+    }
+    $.getJSON(openpne.apiBase + 'event_comment/search.json',
+      params,
+      function(comments)
+      {
+        alert();
+        var commentList = $('#eventComments').tmpl(comments);
+        $('div[class="event-comment-list"][eventId="' + id + '"]').append(commentList);
+      }
+    );
+  });
+
 }
 
 $(function(){
@@ -88,4 +115,3 @@ $(function(){
 <div class="row">
   <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
 </div>
-

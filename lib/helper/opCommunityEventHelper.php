@@ -39,4 +39,3 @@ function op_api_community_event_comment($comment)
     'created_at' => $comment->getCreatedAt(),
   );
 }
-

@@ -37,10 +37,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
   </div>
   <div class="row">
-    <div class="span3">募集人数</div><div class="span9">${capacity}</div>
+    <div class="span3">募集人数</div><div class="span9">{{if capacity}}${capacity}{{else}}0{{/if}}人</div>
   </div>
   <div class="row">
-    <div class="span3">参加人数</div><div class="span9">${participants}</div>
+  <div class="span3">参加人数</div><div class="span9">${participants}人 {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
   </div>
   <div class="row images center">
     {{each images}}
@@ -54,12 +54,15 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
   </div>
   <div class="row" id="commentForm">
     <div class="comment-wrapper">
-      <divclass="comment-form">
+    <div id="required" class="hide"><?php echo __('Required.') ?></div>
       <input class="event-comment-form-input" type="text" id="commentBody" />
       <div class="btn-toolbar">
-      <button class=" btn btn-primary btn-mini comment-button " id="postComment">このイベントに参加する</button>
-      <button class=" btn btn-primary btn-mini comment-button " id="postComment">コメントのみ書き込む</button>
-      </div>
+        {{if is_event_member}}
+          <button class=" btn btn-primary btn-mini comment-button " id="postCancel">参加をキャンセルする</button>
+        {{else}}
+          <button class=" btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+        {{/if}}
+        <button class=" btn btn-primary btn-mini comment-button " id="postComment">コメントのみ書き込む</button>
       </div>
       <div class="comment-form-loader">
         <?php echo op_image_tag('ajax-loader.gif', array()) ?>
@@ -122,7 +125,7 @@ function getEntry(params)
     {
       var entry = $('#eventEntry').tmpl(json.data);
       $('#show').html(entry);
-      //getComments();
+      getComments();
     }
   );
 
@@ -133,29 +136,28 @@ function getComments(params){
   params.community_event_id = event_id;
   params.apiKey = openpne.apiKey;
 
-      $.getJSON( openpne.apiBase + 'event_comment/search.json',
-        params,
-        function(res)
-        {
-          if (res.data.length === 0)
-          {
-            $('#loadmore').hide();
-          }
-          else
-          {
-            var comments = $('#eventComment').tmpl(res.data,
-                            {
-                              calcTimeAgo: function(){
-                                return _timeAgo(this.data.created_at);
-                              }
-                            });
-            $('#comments').prepend(comments);
-            $('#loadmore').attr('x-since-id', res.data[res.data.length-1].id).show();
-          }
-          $('#loading').hide();
+  $.getJSON( openpne.apiBase + 'event_comment/search.json',
+    params,
+    function(res)
+    {
+      if (res.data.length === 0)
+      {
+        $('#loadmore').hide();
+      }
+      else
+      {
+        var comments = $('#eventComment').tmpl(res.data,
+      {
+        calcTimeAgo: function(){
+          return _timeAgo(this.data.created_at);
         }
-      );
-
+      });
+        $('#comments').prepend(comments);
+        $('#loadmore').attr('x-since-id', res.data[res.data.length-1].id).show();
+      }
+      $('#loading').hide();
+    }
+  );
 }
 
 function showModal(modal){
@@ -248,6 +250,139 @@ $(function(){
 
         $('#comments').append(postedComment);
         $('input#commentBody').val('');
+      }
+    )
+    .error(
+      function(res)
+      {
+        console.log(res);
+      }
+    )
+    .complete(
+      function(res)
+      {
+        $('input[name=submit]').toggle();
+      }
+    );
+  })
+
+  $(document).on('click', '#postJoin',function(){
+    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    {
+      $('#required').show();
+      return -1;
+    }
+    $('input[name=submit]').toggle();
+    var params = {
+      apiKey: openpne.apiKey,
+      community_event_id: event_id,
+      body: $('input#commentBody').val()
+    };
+
+    $.post(openpne.apiBase + "event_comment/post.json",
+      params,
+      'json'
+    )
+    .success(
+      function(res)
+      {
+        var postedComment = $('#eventComment').tmpl(res.data,
+                            {
+                              calcTimeAgo: function(){
+                                return _timeAgo(this.data.created_at);
+                              }
+                            });
+
+        $('#comments').append(postedComment);
+        $('input#commentBody').val('');
+
+        var params = {
+          apiKey: openpne.apiKey,
+          id: event_id
+        }
+        $.post(openpne.apiBase + "event/join.json",
+          params,
+          'json'
+        )
+        .success(
+          function(res_join)
+          {
+            getEntry();
+          }
+        )
+        .error(
+          function(res_join)
+          {
+            console.log(res_join);
+          }
+        )
+      }
+    )
+    .error(
+      function(res)
+      {
+        console.log(res);
+      }
+    )
+    .complete(
+      function(res)
+      {
+        $('input[name=submit]').toggle();
+      }
+    );
+  })
+
+  $(document).on('click', '#postCancel',function(){
+    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    {
+      $('#required').show();
+      return -1;
+    }
+    $('input[name=submit]').toggle();
+    var params = {
+      apiKey: openpne.apiKey,
+      community_event_id: event_id,
+      body: $('input#commentBody').val()
+    };
+
+    $.post(openpne.apiBase + "event_comment/post.json",
+      params,
+      'json'
+    )
+    .success(
+      function(res)
+      {
+        var postedComment = $('#eventComment').tmpl(res.data,
+                            {
+                              calcTimeAgo: function(){
+                                return _timeAgo(this.data.created_at);
+                              }
+                            });
+
+        $('#comments').append(postedComment);
+        $('input#commentBody').val('');
+
+        var params = {
+          apiKey: openpne.apiKey,
+          id: event_id,
+          leave: true
+        }
+        $.post(openpne.apiBase + "event/join.json",
+          params,
+          'json'
+        )
+        .success(
+          function(res_join)
+          {
+            getEntry();
+          }
+        )
+        .error(
+          function(res_join)
+          {
+            console.log(res_join);
+          }
+        )
       }
     )
     .error(

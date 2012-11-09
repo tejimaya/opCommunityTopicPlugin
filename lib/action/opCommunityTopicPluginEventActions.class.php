@@ -101,6 +101,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeMemberList($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtMemberList');
 
     if (!$this->size)
     {
@@ -111,6 +112,13 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     if (!$this->pager->getNbResults()) {
       return sfView::ERROR;
     }
+  }
+
+  public function executeSmtMemberList($request)
+  {
+    opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
+
+    return sfView::SUCCESS;
   }
 
   /**

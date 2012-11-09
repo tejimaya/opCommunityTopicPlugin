@@ -17,11 +17,11 @@
  */
 class communityEventActions extends opJsonApiActions
 {
-  //public function preExecute()
-  //{
-    //parent::preExecute();
-    //$this->member = $this->getUser()->getMember();
-  //}
+  public function preExecute()
+  {
+    parent::preExecute();
+    $this->member = $this->getUser()->getMember();
+  }
 
   public function executeSearch(sfWebRequest $request)
   {
@@ -48,7 +48,6 @@ class communityEventActions extends opJsonApiActions
       }
 
       $this->events = $query->execute();
-      $total = $query->count();
     }
     elseif($request['target'] == 'event')
     {
@@ -56,9 +55,6 @@ class communityEventActions extends opJsonApiActions
 
       $event = Doctrine::getTable('CommunityEvent')->findOneById($request['target_id']);
 
-      //$topic->actAs('opIsCreatableCommunityTopicBehavior');
-      //$this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
-    
       $this->memberId = $this->getUser()->getMemberId();
       $this->events = array($event);
     }
@@ -93,6 +89,53 @@ class communityEventActions extends opJsonApiActions
     {
       $this->setTemplate('searchMini');
     }
+}
 
+  public function executeJoin(sfWebRequest $request)
+  {
+    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
+    $eventId = $request['id'];
+
+    $eventMember = Doctrine::getTable('CommunityEventMember')
+      ->retrieveByEventIdAndMemberId($eventId, $this->getUser()->getMemberId());
+
+    if (isset($request['leave']))
+    {
+      if (!$eventMember)
+      {
+        $this->forward400('You can\'t leave this event.');
+      }
+      $eventMember->delete();
+      $this->events = null;
+    }
+    else
+    {
+      if ($eventMember)
+      {
+        $this->forward400('You are already this event member.');
+      }
+
+      $event = new CommunityEventMember();
+      $event->setCommunityEventId($eventId);
+      $event->setMemberId($this->getUser()->getMemberId());
+
+      $event->save();
+
+      $events = Doctrine::getTable('CommunityEvent')->createQuery('q')
+        ->where('id = ?', $eventId)
+        ->execute();
+      $this->events = $events;
+    }
+  }
+
+  public function executeMemberList(sfWebRequest $request)
+  {
+    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
+    $eventId = $request['id'];
+
+    $this->eventMembers = Doctrine::getTable('Member')->createQuery('m')
+      ->addWhere('EXISTS (FROM CommunityEventMember cem WHERE m.id = cem.member_id AND cem.community_event_id = ?)', $eventId)
+      ->limit(200)
+      ->execute();
   }
 }

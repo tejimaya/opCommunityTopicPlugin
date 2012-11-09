@@ -110,3 +110,6 @@
   width: 140px;
 }
 
+#required {
+  color: red;
+}
