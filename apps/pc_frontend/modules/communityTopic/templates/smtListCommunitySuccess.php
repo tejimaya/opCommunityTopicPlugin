@@ -27,6 +27,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script type="text/javascript">
 function getList(params)
 {
+  var dataLength = $('#list').children().length;
   var id = <?php echo $id ?>;
   params.target = 'community';
   params.format = 'mini';
@@ -36,7 +37,7 @@ function getList(params)
     params,
     function(json)
     {
-      if (json.data.length === 0)
+      if (json.data.length === 0 || dataLength === json.data.length)
       {
         $('#noEntry').show();
         $('#loadmore').hide();
@@ -52,8 +53,9 @@ function getList(params)
             return moment(this.data.created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
           }
         });
+        $('#list').children().remove();
         $('#list').append(entry);
-        $('#loadmore').attr('x-since-id', json.data[0].id).show();
+        $('#loadmore').attr('data-length', json.data.length).show();
       }
       $('#loading').hide();
     }
@@ -67,7 +69,7 @@ $(function(){
   {
     var params = {
       apiKey: openpne.apiKey,
-      since_id: $(this).attr('x-since-id')
+      count: parseInt($(this).attr('data-length')) + 15
     };
     getList(params);
   })

@@ -36,6 +36,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
   </div>
   <div class="row" id="commentForm">
           <div class="comment-wrapper">
+            <div id="required" class="hide"><?php echo __('Required.') ?></div>
             <divclass="comment-form">
             <input class="comment-form-input" type="text" id="commentBody" /><input type="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="投稿">
             </div>
@@ -203,6 +204,11 @@ $(function(){
   })
 
   $(document).on('click', '#postComment',function(){
+    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    {
+      $('#required').show();
+      return -1;
+    }
     $('input[name=submit]').toggle();
     var params = {
       apiKey: openpne.apiKey,
@@ -217,6 +223,7 @@ $(function(){
     .success(
       function(res)
       {
+        $('#required').hide();
         var postedComment = $('#topicComment').tmpl(res.data,
                             {
                               calcTimeAgo: function(){

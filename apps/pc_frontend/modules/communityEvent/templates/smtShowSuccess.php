@@ -25,6 +25,9 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="span12 body">{{html body}}</div>
   </div>
   <div class="row">
+    <div class="span3">企画者</div><div class="span9"><a href="${member.profile_url}">${member.name}</a></div>
+  </div>
+  <div class="row">
     <div class="span3">開催日時</div><div class="span9">${open_date}</div>
   </div>
   <div class="row">
@@ -37,10 +40,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
   </div>
   <div class="row">
-    <div class="span3">募集人数</div><div class="span9">{{if capacity}}${capacity}{{else}}0{{/if}}人</div>
+    <div class="span3">募集人数</div><div class="span9">{{if capacity}}${capacity}{{else}}0{{/if}}</div>
   </div>
   <div class="row">
-  <div class="span3">参加人数</div><div class="span9">${participants}人 {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
+  <div class="span3">参加人数</div><div class="span9" id="participants">${participants} {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
   </div>
   <div class="row images center">
     {{each images}}
@@ -227,6 +230,11 @@ $(function(){
   })
 
   $(document).on('click', '#postComment',function(){
+    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    {
+      $('#required').show();
+      return -1;
+    }
     $('input[name=submit]').toggle();
     var params = {
       apiKey: openpne.apiKey,
@@ -241,6 +249,7 @@ $(function(){
     .success(
       function(res)
       {
+        $('#required').hide();
         var postedComment = $('#eventComment').tmpl(res.data,
                             {
                               calcTimeAgo: function(){
@@ -286,6 +295,7 @@ $(function(){
     .success(
       function(res)
       {
+        $('#required').hide();
         var postedComment = $('#eventComment').tmpl(res.data,
                             {
                               calcTimeAgo: function(){
@@ -352,6 +362,7 @@ $(function(){
     .success(
       function(res)
       {
+        $('#required').hide();
         var postedComment = $('#eventComment').tmpl(res.data,
                             {
                               calcTimeAgo: function(){
