@@ -3,8 +3,10 @@ use_helper('opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
+op_smt_use_stylesheet('/opLikePlugin/css/like-smartphone.css', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
+op_smt_use_javascript('/opLikePlugin/js/like-smartphone.js', 'last');
 ?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
   <div class="row">
@@ -75,6 +77,12 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
         {{if deletable}}
         <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
         {{/if}}
+      </div>
+      <!-- Like Plugin -->
+      <div class="row like-wrapper" style="display: none;">
+        {{if member.self==false}}<a><span class="like-post" data-like-id="${id}" data-like-target="t" member-id="${member.id}"><i class="icon-thumbs-up"></i>&nbsp;&nbsp;&nbsp;</span></a>{{/if}}
+        <a><span class="like-cancel" data-like-id="${id}" data-like-target="t" style="display: none;">いいね！を取り消す&nbsp;</span></a>
+        <a><span class="like-list" data-like-id="${id}" data-like-target="t">いいね！</span></a>
       </div>
     </div>
   </div>

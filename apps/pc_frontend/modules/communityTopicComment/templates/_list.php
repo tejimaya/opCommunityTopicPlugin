@@ -38,6 +38,17 @@ $images = $comment->getImages();
 <?php echo op_url_cmd(nl2br($comment->getBody())) ?>
 </p>
 </div>
+<!--Like Plugin -->
+<div class="like" style="display: none;">
+<span class="like-wrapper" style="display: none;">
+<?php if ($comment->member_id !== $sf_user->getMemberId()): ?>
+<a><span class="like-post" data-like-id="<?php echo $comment->getId() ?>" data-like-target="t" member-id="<?php echo $comment->member_id ?>"><i class="icon-thumbs-up"></i>&nbsp;&nbsp;</span></a>
+<?php endif; ?>
+<a><span class="like-cancel" data-like-id="<?php echo $comment->getId() ?>" data-like-target="t" style="display: none;">いいね！を取り消す&nbsp;</span></a>
+<a><span class="like-list" data-like-id="<?php echo $comment->getId() ?>" data-like-target="t">いいね！</span></a>
+  <div class="like-list-member" data-like-id="<?php echo $comment->getId() ?>" data-like-target="t"></div>
+</span>
+</div>
 </dd>
 </dl>
 <?php endforeach; ?>
