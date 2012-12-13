@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="">
+        <source>More</source>
+        <target>もっと見る</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Save</source>
+        <target>確定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Cancel </source>
+        <target>キャンセル</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of topics of this community</source>
+        <target>トピック一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Create a new topic</source>
+        <target>トピックを作成する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Edit the topic</source>
+        <target>トピックを編集する</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

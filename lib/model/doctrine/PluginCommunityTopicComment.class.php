@@ -31,4 +31,41 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
       $this->setNumber(Doctrine::getTable('CommunityTopicComment')->getMaxNumber($this->getCommunityTopicId()) + 1);
     }
   }
+
+  public function postSave($event)
+  {
+    $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
+
+    //トピック主に通知を飛ばす
+    if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
+    {
+      opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $this->getCommunityTopic()->getMember(), $this->getCommunityTopic()->getId());
+    }
+
+    //同じトピックにコメントをしている人に通知を飛ばす
+    $comments = Doctrine::getTable('CommunityTopicComment')
+                ->createQuery('q')
+                ->where('community_topic_id = ?', $this->getCommunityTopic()->getId())
+                ->execute();
+    $toMembers = array();
+    foreach($comments as $comment)
+    {
+      $_commentOwnerId = $comment->getMember()->getId();
+      if(false == array_key_exists($_commentOwnerId, $toMembers)
+        && $_commentOwnerId !== $this->getCommunityTopic()->getMemberId()
+        && $_commentOwnerId !== $this->getMemberId()
+      )
+      {
+        $toMembers[$_commentOwnerId] = $comment->getMember();
+      }
+    }
+    if( count($toMembers) > 0)
+    {
+      foreach($toMembers as $key => $toMember)
+      {
+        opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $toMember, $this->getCommunityTopic()->getId());
+      }
+    }
+
+  }
 }

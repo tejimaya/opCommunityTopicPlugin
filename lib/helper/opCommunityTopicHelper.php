@@ -38,3 +38,49 @@ function op_community_topic_link_to_member(sfOutputEscaper $member)
 
   return '';
 }
+
+function op_api_community_topic($topic)
+{
+  return array(
+    'id'             => $topic->getId(),
+    'community_id'   => $topic->getCommunityId(),
+    'community_name' => $topic->getCommunity()->getName(),
+    'name'           => $topic->getName(),
+    'member'         => op_api_member($topic->getMember()),
+    'body'           => nl2br($topic->getBody()),
+    'created_at'     => $topic->getCreatedAt(),
+  );
+}
+
+function op_api_community_topic_mini($topic)
+{
+  return array(
+    'id'             => $topic->getId(),
+    'community_id'   => $topic->getCommunityId(),
+    'community_name' => $topic->getCommunity()->getName(),
+    'name'           => $topic->getName(),
+    'body'           => nl2br($topic->getBody()),
+    'created_at'     => $topic->getCreatedAt(),
+  );
+}
+
+function op_api_community_topic_comment($comment)
+{
+  return array(
+    'id'         => $comment->getId(),
+    'body'       => nl2br($comment->getBody()),
+    'member'     => op_api_member($comment->getMember()),
+    'created_at' => $comment->getCreatedAt(),
+  );
+}
+
+function op_api_topic_image($image)
+{
+  if($image)
+  {
+    return array(
+      'filename' => sf_image_path($image->getFile()->getName()),
+      'imagetag' => image_tag_sf_image($image->getFile()->getName(), array('size' => '120x120'))
+    );
+  }
+}

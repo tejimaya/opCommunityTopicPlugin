@@ -48,6 +48,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeListCommunity($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtListCommunity');
 
     if (!$this->size)
     {
@@ -63,6 +64,13 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     return sfView::SUCCESS;
   }
 
+  public function executeSmtListCommunity($request)
+  {
+    $this->id = $this->community->getId();
+    
+    return sfView::SUCCESS;
+  }
+
   /**
    * Executes show action
    *
@@ -71,12 +79,20 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeShow($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtShow');
 
     $this->form = new CommunityEventCommentForm();
 
     return sfView::SUCCESS;
   }
 
+  public function executeSmtShow($request)
+  {
+    $this->id = $this->communityEvent->getId();
+    opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
+
+    return sfView::SUCCESS;
+  }
   /**
    * Executes memberList action
    *
@@ -85,6 +101,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeMemberList($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'view'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtMemberList');
 
     if (!$this->size)
     {
@@ -95,6 +112,13 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     if (!$this->pager->getNbResults()) {
       return sfView::ERROR;
     }
+  }
+
+  public function executeSmtMemberList($request)
+  {
+    opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
+
+    return sfView::SUCCESS;
   }
 
   /**

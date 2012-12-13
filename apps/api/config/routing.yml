@@ -1,0 +1,60 @@
+#community topic api routing
+topic_index:
+  url: /topic/search.json
+  param: { module: communityTopic, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
+topic_post:
+  url: /topic/post.json
+  param: { module: communityTopic, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
+topic_delete:
+  url: /topic/delete.json
+  param: { module: communityTopic, action: delete, sf_format: json }
+  requirements: { sf_method: [post] }
+
+topic_comment_index:
+  url: /topic_comment/search.json
+  param: { module: communityTopicComment, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
+topic_comment_post:
+  url: /topic_comment/post.json
+  param: { module: communityTopicComment, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
+topic_comment_delete:
+  url: /topic_comment/delete.json
+  param: { module: communityTopicComment, action: delete, sf_format: json }
+  requirements: { sf_method: [post] }
+
+event_index:
+  url: /event/search.json
+  param: { module: communityEvent, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
+event_join:
+  url: /event/join.json
+  param: { module: communityEvent, action: join, sf_format: json }
+  requirements: { sf_method: [post] }
+
+event_member_list:
+  url: /event/member_list.json
+  param: { module: communityEvent, action: memberList, sf_format: json }
+  requirements: { sf_method: [get] }
+
+event_comment_index:
+  url: /event_comment/search.json
+  param: { module: communityEventComment, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
+event_comment_post:
+  url: /event_comment/post.json
+  param: { module: communityEventComment, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
+event_comment_delete:
+  url: /event_comment/delete.json
+  param: { module: communityEventComment, action: delete, sf_format: json }
+  requirements: { sf_method: [post] }

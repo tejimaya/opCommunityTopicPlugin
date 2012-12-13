@@ -85,6 +85,26 @@ MemberConfig:
     name: "password"
     value: "<?php echo md5('password') ?>"
     Member: member_5
+  member_1_api_key:
+    name: "api_key"
+    value: "dummyApiKey"
+    Member: member_1
+  member_2_api_key:
+    name: "api_key"
+    value: "dummyApiKey2"
+    Member: member_2
+  member_3_api_key:
+    name: "api_key"
+    value: "dummyApiKey3"
+    Member: member_3
+  member_4_api_key:
+    name: "api_key"
+    value: "dummyApiKey4"
+    Member: member_4
+  member_5_api_key:
+    name: "api_key"
+    value: "dummyApiKey5"
+    Member: member_5
 
 Community:
   community_a:
@@ -211,6 +231,13 @@ CommunityTopic:
     body: "こんにちは"
     Community: community_a
     Member: member_2
+<?php for($i=3; $i < 33; $i++): ?>
+  community_topic_a_<?php echo $i ?>:
+    name: "トピック<?php echo $i ?>"
+    body: "これはコミュニティAの<?php echo $i ?>番目のトピックです"
+    Community: community_a
+    Member: member_2
+<?php endfor; ?>
   community_topic_i_2:
     name: "_iトピ主"
     body: "こんにちは"
@@ -258,10 +285,22 @@ CommunityTopicComment:
     body: "こんにちは"
     CommunityTopic: community_topic_a_2
     Member: member_5
+<?php for($i=3; $i < 11; $i++): ?>
+  community_topic_comment_a_<?php echo $i ?>:
+    body: "トピック a <?php echo $i ?>"
+    CommunityTopic: community_topic_a_2
+    Member: member_5
+<?php endfor; ?>
   community_topic_comment_i_2:
     body: "こんにちは"
     CommunityTopic: community_topic_i_2
     Member: member_5
+<?php for($i=3; $i < 11; $i++): ?>
+  community_topic_comment_i_<?php echo $i ?>:
+    body: "トピック i <?php echo $i ?>"
+    CommunityTopic: community_topic_i_2
+    Member: member_5
+<?php endfor; ?>
   community_topic_comment_u_2:
     body: "こんにちは"
     CommunityTopic: community_topic_u_2
@@ -301,6 +340,8 @@ CommunityEvent:
     open_date: '2009-06-10'
     open_date_comment: 'あかさたな'
     area: '福岡県'
+    application_deadline: '2009-08-10'
+    capacity: 99
 
   community_event_i_2:
     Community: community_i
@@ -310,7 +351,26 @@ CommunityEvent:
     open_date: '2009-06-11'
     open_date_comment: 'いきしちに'
     area: '佐賀県'
-
+<?php for($i=3; $i < 21; $i++): ?>
+  community_event_a_<?php echo $i ?>:
+    Community: community_a
+    Member: member_1
+    name: 'イベントナンバー <?php echo $i ?>'
+    body: 'こんにちは <?php echo $i ?>'
+    open_date: <?php echo date('Y-m-d', time())?>
+    open_date_comment: 'あかさたな'
+    area: '福岡県'
+<?php endfor; ?>
+<?php for($i=21; $i < 31; $i++): ?>
+  community_event_i_<?php echo $i ?>:
+    Community: community_i
+    Member: member_2
+    name: 'イベントナンバー <?php echo $i ?>'
+    body: 'こんにちは <?php echo $i ?>'
+    open_date: <?php echo date('Y-m-d', time())?>
+    open_date_comment: 'あかさたな'
+    area: '福岡県'
+<?php endfor; ?>
   community_event_html_1:
     id: 1055
     Community: community_i
@@ -343,6 +403,15 @@ CommunityEventMember:
   community_event_member_a_2:
     CommunityEvent: community_event_a_2
     Member: member_2
+  community_event_member_a_3:
+    CommunityEvent: community_event_a_3
+    Member: member_1
+  community_event_member_a_4:
+    CommunityEvent: community_event_a_4
+    Member: member_1
+  community_event_member_a_5:
+    CommunityEvent: community_event_a_5
+    Member: member_1
   community_event_member_html_1:
     id: 1055
     CommunityEvent: community_event_html_1

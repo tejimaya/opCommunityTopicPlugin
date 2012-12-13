@@ -1,0 +1,115 @@
+#list .entry{
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid silver;
+}
+
+#loading {
+  margin: 10px;
+}
+
+.readmore {
+  float:right;
+}
+
+#show .images a {
+  display: block;
+  margin-left: 2px;
+}
+
+#show .body{
+  margin: 5px 0px;
+}
+
+#successMessage {
+  margin-bottom: 20px;
+}
+
+#commentForm{
+  width: 295px;
+  margin-left: 25px;
+  background-color: whiteSmoke;
+}
+
+.comments {
+  width: 295px;
+  margin-left: 25px;
+  margin-top: 10px;
+  background-color: whiteSmoke;
+}
+
+.comment-wrapper {
+  width: 285px;
+  display: block;
+  padding: 5px;
+  border-top: 1px solid #DDD;
+}
+
+.comment-member-image {
+  float: left;
+  width: 23px;
+}
+
+.comment-content {
+  float: right;
+  width: 257px;
+}
+
+.comment-name-and-body {
+  display: inline;
+  float: left;
+  font-size: 12px;
+}
+
+.comment-control {
+  display: block;
+  width: 262px;
+  margin-left: 28px;
+  font-size: 11px;
+}
+
+.comment-form {
+  width: 285px;
+  padding: 5px;
+  border-top: 1px solid #DDD;
+}
+
+.comment-form-loader {
+  display: none;
+  width: 285px;
+  padding: 5px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+}
+
+.comment-form-loader img {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.comment-form-show {
+  display: block;
+}
+
+.event-comment-form-input {
+  width: 278px;
+  height: 15px;
+  padding: 2px;
+  margin-bottom: 0px;
+  margin-right: 4px;
+}
+
+.btn-mini {
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 14px;
+  margin: 0px;
+}
+
+.comment-button{
+  width: 140px;
+}
+
+#required {
+  color: red;
+}

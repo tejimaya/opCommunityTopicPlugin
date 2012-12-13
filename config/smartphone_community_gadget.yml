@@ -1,0 +1,17 @@
+smtCommunityLatestTopicList:
+  caption:
+    ja_JP: "コミュニティのトピック(最新4件表示)"
+    en_US: "Show latest 4 topics of a specified community"
+  description:
+    ja_JP: "コミュニティのトピックのうち､最新の4件を表示します｡"
+    en_US: "Show latest 4 topics of a specified community"
+  component: [communityTopic, smtCommunityLatestTopicList]
+
+smtCommunityLatestEventList:
+  caption:
+    ja_JP: "コミュニティのイベント(最新4件表示)"
+    en_US: "Show latest 4 topics of member community"
+  description:
+    ja_JP: "コミュニティのイベントのうち､最新の4件を表示します｡"
+    en_US: "Show latest 4 topics of member community"
+  component: [communityEvent, smtCommunityLatestEventList]
