@@ -106,7 +106,7 @@ op_smt_use_javascript('/opLikePlugin/js/like-smartphone.js', 'last');
         {{/if}}
       </div>
       <!-- Like Plugin -->
-      <div class="row like-wrapper" data-like-id="${id}" data-like-target="e" member-id="${member.id}">
+      <div class="row like-wrapper" data-like-id="${id}" data-like-target="e" member-id="${member.id}" style="display: none;">
       <span class="span6"> 
       <a class="like-post">いいね！</a>
       <a class="like-cancel">いいね！を取り消す</a>
