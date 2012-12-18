@@ -55,19 +55,19 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2012-12-13</date>
- <time>14:16:37</time>
+ <date>2012-12-18</date>
+ <time>11:45:09</time>
  <version>
-  <release>1.0.5</release>
-  <api>1.0.5</api>
+  <release>1.0.6</release>
+  <api>1.0.6</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>alpha</release>
+  <api>alpha</api>
  </stability>
  <license>apache</license>
  <notes>
-beta release.
+alpha release.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -190,7 +190,7 @@ beta release.
    <file baseinstalldir="/" md5sum="853cf6dc3032211c3037aaf81ccd2fe3" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="f297eefc124b50ae4b029a12030e8924" name="apps/pc_frontend/modules/communityEvent/templates/smtListCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="630d1cfd57d5285858d004afdcd4f995" name="apps/pc_frontend/modules/communityEvent/templates/smtMemberListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="1ac697ff33270124cc7b0d061f2dad7c" name="apps/pc_frontend/modules/communityEvent/templates/smtShowSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="a0cbb8873666841f0df24c869ed01ad6" name="apps/pc_frontend/modules/communityEvent/templates/smtShowSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="9263ec37586657bc9afcd3fa0f124b49" name="apps/pc_frontend/modules/communityEvent/templates/_smtCommunityLatestEventList.php" role="data" />
@@ -215,7 +215,7 @@ beta release.
    <file baseinstalldir="/" md5sum="7ea12c8dda8b5b1a5a4b71fb90907250" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="9c222861f3242aaf48ac2789cfa51821" name="apps/pc_frontend/modules/communityTopic/templates/smtListCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="357883712c0981bf95d8853e9bb8e730" name="apps/pc_frontend/modules/communityTopic/templates/smtPostSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c78f39fd0d0ffd824c051c0f6da059f7" name="apps/pc_frontend/modules/communityTopic/templates/smtShowSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1d51e50dfb4633b3c02c3aad32756242" name="apps/pc_frontend/modules/communityTopic/templates/smtShowSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c5fb8c7f8cfddb488bbeddcd6dc77151" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="c698cb8133128d7bbfd7f43b3e706d29" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
@@ -730,6 +730,21 @@ Bug（バグ） #2896: 携帯版トピックリストページでトピックが
    <license>apache</license>
    <notes>
 beta release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.6</release>
+    <api>1.0.6</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-12-18</date>
+   <license>apache</license>
+   <notes>
+alpha release.
    </notes>
   </release>
  </changelog>
