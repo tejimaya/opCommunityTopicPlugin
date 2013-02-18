@@ -3,10 +3,8 @@ use_helper('opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
-op_smt_use_stylesheet('/opLikePlugin/css/like-smartphone.css', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
-op_smt_use_javascript('/opLikePlugin/js/like-smartphone.js', 'last');
 ?>
 <script id="eventEntry" type="text/x-jquery-tmpl">
   <div class="row">
@@ -104,16 +102,6 @@ op_smt_use_javascript('/opLikePlugin/js/like-smartphone.js', 'last');
         {{if deletable}}
         <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
         {{/if}}
-      </div>
-      <!-- Like Plugin -->
-      <div class="row like-wrapper" data-like-id="${id}" data-like-target="e" member-id="${member.id}" style="display: none;">
-      <span class="span6"> 
-      <a class="like-post">いいね！</a>
-      <a class="like-cancel">いいね！を取り消す</a>
-      </span>
-      <span class="span4">
-      <a class="like-list"></a>
-      </span>
       </div>
     </div>
   </div>
