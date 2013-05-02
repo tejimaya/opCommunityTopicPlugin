@@ -95,3 +95,8 @@ $(function(){
   <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
 </div>
 
+<ul class="footer">
+  <li>
+    <a href="<?php echo public_path('community').'/'.$community->getId() ?>"><?php echo __('%Community% Top Page') ?></a>
+  </li>
+</ul>

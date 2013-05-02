@@ -337,3 +337,12 @@ $(function(){
     <button class="btn btn-primary modal-button" id="execute"><?php echo __('Delete');?></button>
   </div>
 </div>
+
+<ul class="footer">
+  <li>
+    <a href="<?php echo public_path('communityTopic/listCommunity').'/'.$community->getId() ?>"><?php echo __('List of topics') ?></a>
+  </li>
+  <li>
+    <a href="<?php echo public_path('community').'/'.$community->getId() ?>"><?php echo __('%Community% Top Page') ?></a>
+  </li>
+</ul>
