@@ -23,3 +23,8 @@ Gadget:
     type: "smartphoneCommunityContents"
     name: "smtCommunityLatestTopicList"
     sort_order: 310
+
+  smartphone_community_latest_event_list:
+    type: "smartphoneCommunityContents"
+    name: "smtCommunityLatestEventList"
+    sort_order: 320
