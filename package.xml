@@ -55,11 +55,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2012-12-28</date>
- <time>12:00:53</time>
+ <date>2013-05-17</date>
+ <time>16:33:17</time>
  <version>
-  <release>1.1.0</release>
-  <api>1.1.0</api>
+  <release>1.1.1</release>
+  <api>1.1.1</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -67,7 +67,7 @@
  </stability>
  <license>apache</license>
  <notes>
-alpha release.
+this version is alpha status.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -188,9 +188,9 @@ alpha release.
    <file baseinstalldir="/" md5sum="949a380928af793967aed005bd0fed88" name="apps/pc_frontend/modules/communityEvent/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="2ecad1151ea3e279387ca596d3fa04d4" name="apps/pc_frontend/modules/communityEvent/templates/recentlyEventListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="853cf6dc3032211c3037aaf81ccd2fe3" name="apps/pc_frontend/modules/communityEvent/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="f297eefc124b50ae4b029a12030e8924" name="apps/pc_frontend/modules/communityEvent/templates/smtListCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1543535cceff89fb908e61fdbcc831d0" name="apps/pc_frontend/modules/communityEvent/templates/smtListCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="630d1cfd57d5285858d004afdcd4f995" name="apps/pc_frontend/modules/communityEvent/templates/smtMemberListSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="a0cbb8873666841f0df24c869ed01ad6" name="apps/pc_frontend/modules/communityEvent/templates/smtShowSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="d354ab4defb7c7049bdeec211f6738e2" name="apps/pc_frontend/modules/communityEvent/templates/smtShowSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0d4678ca6271d2641888d49742f6fda9" name="apps/pc_frontend/modules/communityEvent/templates/_communityEventList.php" role="data" />
    <file baseinstalldir="/" md5sum="4f66ae9dd7d060242ddfb1d27f40be82" name="apps/pc_frontend/modules/communityEvent/templates/_eventCommentListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="9263ec37586657bc9afcd3fa0f124b49" name="apps/pc_frontend/modules/communityEvent/templates/_smtCommunityLatestEventList.php" role="data" />
@@ -200,7 +200,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityEventComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityEventComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="e0729201d5701f938f11020f0ba09bea" name="apps/pc_frontend/modules/communityEventComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="bdd89c535a4bd76910602054a0e49d20" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="66f076de27b861874fa61c5b3aecdf40" name="apps/pc_frontend/modules/communityEventComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="28c91837b067ff5af9193b5ee66bd083" name="apps/pc_frontend/modules/communityTopic/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10ab53ea726b09c6f05434b4f9aa81c8" name="apps/pc_frontend/modules/communityTopic/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a3dae748efce5fd63d71d7090e6ab562" name="apps/pc_frontend/modules/communityTopic/actions/searchFormAction.class.php" role="data" />
@@ -213,9 +213,9 @@ alpha release.
    <file baseinstalldir="/" md5sum="9a799fe517b0ffd5d0c26bef519f7c06" name="apps/pc_frontend/modules/communityTopic/templates/recentlyTopicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="86920b9bee8fac22ef226eb15167fa52" name="apps/pc_frontend/modules/communityTopic/templates/searchSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="7ea12c8dda8b5b1a5a4b71fb90907250" name="apps/pc_frontend/modules/communityTopic/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="9c222861f3242aaf48ac2789cfa51821" name="apps/pc_frontend/modules/communityTopic/templates/smtListCommunitySuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="adb56531bef6563c4914e128d344d7e0" name="apps/pc_frontend/modules/communityTopic/templates/smtListCommunitySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="357883712c0981bf95d8853e9bb8e730" name="apps/pc_frontend/modules/communityTopic/templates/smtPostSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="1d51e50dfb4633b3c02c3aad32756242" name="apps/pc_frontend/modules/communityTopic/templates/smtShowSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="6694469d9630f38f4c76225f6354b6c8" name="apps/pc_frontend/modules/communityTopic/templates/smtShowSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c5fb8c7f8cfddb488bbeddcd6dc77151" name="apps/pc_frontend/modules/communityTopic/templates/_communityTopicList.php" role="data" />
    <file baseinstalldir="/" md5sum="c698cb8133128d7bbfd7f43b3e706d29" name="apps/pc_frontend/modules/communityTopic/templates/_configNotificationMail.php" role="data" />
    <file baseinstalldir="/" md5sum="cad8124fc21e57b87a874ff3554d9544" name="apps/pc_frontend/modules/communityTopic/templates/_formEditImage.php" role="data" />
@@ -231,7 +231,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/communityTopicComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab70810571329924ac1675bb6891f890" name="apps/pc_frontend/modules/communityTopicComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="1a3d901b6cf0581ce7b7208977425c52" name="apps/pc_frontend/modules/communityTopicComment/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4946a1b49f8a4f31d931879e6347c007" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="4783858e6cd6ac9ae95489d26fc0b5bd" name="apps/pc_frontend/modules/communityTopicComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="df7e6e983a6d9587d68f4ecacd4d359b" name="config/activity_template.yml" role="data" />
    <file baseinstalldir="/" md5sum="75523dffafda71fda33ac6cda33e1d82" name="config/community_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="67d37bf12d41acc00120248e086280d5" name="config/gadget.yml" role="data" />
@@ -241,7 +241,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="6f838e5dd488f568e1c194ec980c48f5" name="config/smartphone_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="ee3e8889b9cd4a357bd92443d00e6a57" name="config/doctrine/schema.yml" role="data" />
    <file baseinstalldir="/" md5sum="7140a21730d44f520d0720b81686136f" name="data/fixtures/000_revision.yml" role="data" />
-   <file baseinstalldir="/" md5sum="9f531d0123cd65184a1f6ea44612acd8" name="data/fixtures/010_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="d68be56a5282077ac5d62f01ac25e19e" name="data/fixtures/010_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="19aa41f8c0275b30ce084f8e66e110c1" name="data/fixtures/020_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="059f5eeb8a1a60cd5b2a89d7f932cf78" name="data/fixtures/030_backend_navigation_menu.yml" role="data" />
    <file baseinstalldir="/" md5sum="6879542a4bb03c8a7210365f45d6d4ff" name="data/migrations/0.8.1/001_update_op_community_topic_plugin_0_8_1_1.php" role="data" />
@@ -299,7 +299,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="cd5924649adf2b2fdc1ac1c7c9a80709" name="lib/model/doctrine/PluginCommunityEventMemberTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="150ef9d18e524229239b936204524f00" name="lib/model/doctrine/PluginCommunityEventTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5b612a63d266e5e46ccb15b1110a86b9" name="lib/model/doctrine/PluginCommunityTopic.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="6b0901e27242bb9b4c0ef85db87e939a" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5b960eced5cb936c7c8dffb3525950c2" name="lib/model/doctrine/PluginCommunityTopicComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="382c88913274cef0ee4570a049d32d81" name="lib/model/doctrine/PluginCommunityTopicCommentTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="424e99f66b087cddeb97e3e73595e492" name="lib/model/doctrine/PluginCommunityTopicTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="21bd9dd23b243b8b089e6b14bb40fdf5" name="lib/routing/opCommunityTopicPluginRouteCollection.class.php" role="data" />
@@ -326,7 +326,7 @@ alpha release.
    <file baseinstalldir="/" md5sum="f41e37275e4c5672e3385cfd22800e0c" name="test/functional/pc_frontend/communityTopicPluginSecurityTest.php" role="data" />
    <file baseinstalldir="/" md5sum="ec027052fa02c933aebdefc664cc6db4" name="test/unit/model/CommunityTopicTest.php" role="data" />
    <file baseinstalldir="/" md5sum="5898225c0dc6ae9931e9c53cb1fe4f74" name="web/css/communityTopic.css" role="data" />
-   <file baseinstalldir="/" md5sum="cba69c5a245c1209ca6607d05bb56474" name="web/css/smt-topic.css" role="data" />
+   <file baseinstalldir="/" md5sum="09e40669c03b23223e1528c2e6191153" name="web/css/smt-topic.css" role="data" />
    <file baseinstalldir="/" md5sum="b9a632551266c6efda6d5eaf6eb0709c" name="web/js/bootstrap-modal.js" role="data" />
    <file baseinstalldir="/" md5sum="776674eb9756bbfc68b34ff9243e8e1e" name="web/js/bootstrap-transition.js" role="data" />
    <file baseinstalldir="/" md5sum="159776c0285f5ca8f4b8ee66074b7ffd" name="web/js/moment.min.js" role="data" />
@@ -760,6 +760,21 @@ alpha release.
    <license>apache</license>
    <notes>
 alpha release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2013-05-17</date>
+   <license>apache</license>
+   <notes>
+this version is alpha status.
    </notes>
   </release>
  </changelog>
