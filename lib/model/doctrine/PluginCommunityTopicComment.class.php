@@ -51,7 +51,8 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     foreach($comments as $comment)
     {
       $_commentOwnerId = $comment->getMember()->getId();
-      if(false == array_key_exists($_commentOwnerId, $toMembers)
+      if(null !== $_commentOwnerId
+        && false == array_key_exists($_commentOwnerId, $toMembers)
         && $_commentOwnerId !== $this->getCommunityTopic()->getMemberId()
         && $_commentOwnerId !== $this->getMemberId()
       )
