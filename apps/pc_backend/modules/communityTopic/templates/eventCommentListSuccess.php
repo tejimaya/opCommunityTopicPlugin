@@ -4,7 +4,7 @@
 
 <?php slot('title', __('Event Comment List')); ?>
 
-<?php echo $form->renderFormTag(url_for('communityTopic/eventCommentList')) ?>
+<?php echo $form->renderFormTag(url_for('communityTopic/eventCommentList'), array('method' => 'get')) ?>
 <table>
 <?php echo $form ?>
 <tr>
@@ -16,7 +16,7 @@
 <?php echo __('There are no event comments matches search condition.') ?>
 <?php else: ?>
 <?php ob_start() ?>
-<p><?php op_include_pager_navigation($pager, 'communityTopic/eventCommentList?page=%d') ?></p>
+<p><?php op_include_pager_navigation($pager, 'communityTopic/eventCommentList?page=%d', array('use_current_query_string' => true)) ?></p>
 <?php $pagerNavi = ob_get_flush() ?>
 <?php foreach ($pager->getResults() as $eventComment): ?>
 <?php include_partial('communityTopic/eventCommentInfo', array(
