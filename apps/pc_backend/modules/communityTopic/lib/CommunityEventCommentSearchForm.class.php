@@ -55,6 +55,11 @@ class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFil
     $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('form_community');
   }
 
+  protected function addCommunityEventIdColumnQuery(Doctrine_Query $query, $field, $value)
+  {
+    $this->_addColumnQuery($query, 'c.community_event_id', $value);
+  }
+
   protected function addMemberNameColumnQuery(Doctrine_Query $query, $field, $value)
   {
     $this->_addColumnQuery($query, 'm.name', $value);
