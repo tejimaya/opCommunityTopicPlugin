@@ -4,7 +4,7 @@
 
 <?php slot('title', __('Event Member List')); ?>
 
-<?php echo $form->renderFormTag(url_for('communityTopic/eventMemberList')) ?>
+<?php echo $form->renderFormTag(url_for('communityTopic/eventMemberList'), array('method' => 'get')) ?>
 <table>
 <?php echo $form ?>
 <tr>
@@ -16,7 +16,7 @@
 <?php echo __('There are no event members matches search condition.') ?>
 <?php else: ?>
 <?php ob_start() ?>
-<p><?php op_include_pager_navigation($pager, 'communityTopic/eventMemberList?page=%d') ?></p>
+<p><?php op_include_pager_navigation($pager, 'communityTopic/eventMemberList?page=%d', array('use_current_query_string' => true)) ?></p>
 <?php $pagerNavi = ob_get_flush() ?>
 <?php foreach ($pager->getResults() as $eventMember): ?>
 <?php include_partial('communityTopic/eventMemberInfo', array(
