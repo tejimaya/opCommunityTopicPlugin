@@ -1,19 +1,19 @@
 # opCommunityTopicPlugin仕様表
 
 ## 概要
->[README.md](https://github.com/tejimaya/opCommunityTopicPlugin/blob/develop-1.1.2/README.md)を参照してください。
+>[README.md](https://github.com/tejimaya/opCommunityTopicPlugin/blob/release-1.1.2/README.md)を参照してください。
 
 ## バージョン
 >1.1.2(開発版)
 
 ## 開発リポジトリ
->[https://github.com/tejimaya/opCommunityTopicPlugin/tree/develop-1.1.2](https://github.com/tejimaya/opCommunityTopicPlugin/tree/develop-1.1.2)
+>[https://github.com/tejimaya/opCommunityTopicPlugin/tree/release-1.1.2](https://github.com/tejimaya/opCommunityTopicPlugin/tree/release-1.1.2)
 
 ## 対応OpenPNEバージョン
 >[3.8.8](https://github.com/openpne/OpenPNE3/tree/OpenPNE-3.8.8)
 
 ## 今バージョンでの追加機能
->[README.md](https://github.com/tejimaya/opCommunityTopicPlugin/blob/develop-1.1.2/README.md)を参照してください。
+>[README.md](https://github.com/tejimaya/opCommunityTopicPlugin/blob/release-1.1.2/README.md)を参照してください。
 
 ## 対象ユーザ
 >コミュニティをスマートフォンでも活用したい人
