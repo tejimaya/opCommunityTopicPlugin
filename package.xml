@@ -55,19 +55,19 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2013-05-17</date>
- <time>16:33:17</time>
+ <date>2013-10-10</date>
+ <time>16:00:17</time>
  <version>
-  <release>1.1.1</release>
-  <api>1.1.1</api>
+  <release>1.1.2</release>
+  <api>1.1.2</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license>apache</license>
  <notes>
-this version is alpha status.
+for SmartPhone
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -146,22 +146,22 @@ this version is alpha status.
    <file baseinstalldir="/" md5sum="8103a30953abb0f0ebb6c516058c990c" name="apps/pc_backend/i18n/form_community.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="a915b353be6cc3c9bb597012b69073cb" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="3f51f04370ec23c2de62aa16757a2d51" name="apps/pc_backend/modules/communityTopic/actions/actions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="eb852224b72bbde75ee46cce47482539" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="fdd0f4b5f212e8eac9b200d12011a2b4" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="dddb8e514e230cd129d9425f9a161ecb" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventMemberSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="10581657b89ed7e245349a605cb2c192" name="apps/pc_backend/modules/communityTopic/lib/CommunityEventSearchForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="1b4e6d2b7d9083f9c08041e20f27ff63" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="10187a767e15e1486935553f9a0f4be0" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicCommentSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="2d5e383eb45bbea97afd180ecb9207bd" name="apps/pc_backend/modules/communityTopic/lib/CommunityTopicSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="14dc47b56385a032df6bf856e751ac5e" name="apps/pc_backend/modules/communityTopic/templates/eventCommentDeleteSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="99a043c0d98d3909ff91194e9f59811f" name="apps/pc_backend/modules/communityTopic/templates/eventCommentListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="8d930bc09dab63de12bea63bcea1e11a" name="apps/pc_backend/modules/communityTopic/templates/eventCommentListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3eda70cff226cd2208d35fececee80e1" name="apps/pc_backend/modules/communityTopic/templates/eventDeleteSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4b249527fcbc5826cf7d583ae3815fa5" name="apps/pc_backend/modules/communityTopic/templates/eventListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="4e808fb93d10f338c6af54903c08ffd6" name="apps/pc_backend/modules/communityTopic/templates/eventListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b25aeba66a425288f4e89297ea5a8232" name="apps/pc_backend/modules/communityTopic/templates/eventMemberDeleteSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="6e64cc86d18fe09fee47abb1a646ff94" name="apps/pc_backend/modules/communityTopic/templates/eventMemberListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="e8383f7b0140203b3f61ba03215d2b02" name="apps/pc_backend/modules/communityTopic/templates/eventMemberListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="apps/pc_backend/modules/communityTopic/templates/indexSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c2d2c38f9402ff7a69103f63c93b5381" name="apps/pc_backend/modules/communityTopic/templates/topicCommentDeleteSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="3bec43b3fc52d5db84056c8405064113" name="apps/pc_backend/modules/communityTopic/templates/topicCommentListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="1646d6e18288fa500f660d9ce4a890f6" name="apps/pc_backend/modules/communityTopic/templates/topicCommentListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="dc187d3aa6c59920f24d82be90447633" name="apps/pc_backend/modules/communityTopic/templates/topicDeleteSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="df51dae14bf10dce5ad9ceb0c6d72cab" name="apps/pc_backend/modules/communityTopic/templates/topicListSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="5b3a1c4b3d85d8823e9afe2fa0d3b014" name="apps/pc_backend/modules/communityTopic/templates/topicListSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="abfab13d85fe6eb7437e59638e1ea409" name="apps/pc_backend/modules/communityTopic/templates/_eventCommentInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="1f61755909889342120d3a1bf68c9e17" name="apps/pc_backend/modules/communityTopic/templates/_eventInfo.php" role="data" />
    <file baseinstalldir="/" md5sum="40ec3609cdde9903bdb6736f25ec822d" name="apps/pc_backend/modules/communityTopic/templates/_eventMemberInfo.php" role="data" />
@@ -332,6 +332,8 @@ this version is alpha status.
    <file baseinstalldir="/" md5sum="159776c0285f5ca8f4b8ee66074b7ffd" name="web/js/moment.min.js" role="data" />
    <file baseinstalldir="/" md5sum="2eb838f64928ff32dc060df8e852f3a8" name="web/js/lang/ja.js" role="data" />
    <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
+   <file baseinstalldir="/" md5sum="f123837c68d78511040d1a05b5b1885e" name="README.md" role="data" />
+   <file baseinstalldir="/" md5sum="5cec2209aa868d805aa7a829ed957424" name="SPEC.md" role="data" />
   </dir>
  </contents>
  <dependencies>
@@ -775,6 +777,21 @@ alpha release.
    <license>apache</license>
    <notes>
 this version is alpha status.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.2</release>
+    <api>1.1.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-10-10</date>
+   <license>apache</license>
+   <notes>
+for SmartPhone
    </notes>
   </release>
  </changelog>
