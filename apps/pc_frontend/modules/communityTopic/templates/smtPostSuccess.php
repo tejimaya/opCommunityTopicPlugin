@@ -69,7 +69,19 @@ $(function(){
     .error(
       function(res)
       {
-        console.log(res);
+        if (res.responseText.match('name parameter is not specified.'))
+        {
+          alert('タイトルが空欄です。');
+        }
+        else if (res.responseText.match('body parameter is not specified.'))
+        {
+          alert('本文が空欄です。');
+        }
+        else
+        {
+          alert('日記投稿に失敗しました。');
+          console.log(res)
+        }
       }
     )
     .complete(
