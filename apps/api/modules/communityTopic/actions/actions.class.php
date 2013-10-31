@@ -26,8 +26,18 @@ class communityTopicActions extends opJsonApiActions
   public function executePost(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['id'] && '' === (string)$request['community_id'], 'community_id parameter is not specified.');
-    $this->forward400If('' === (string)$request['name'], 'name parameter is not specified.');
-    $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
+
+    $validator = new opValidatorString(array('trim' => true));
+    try
+    {
+      $cleanName = $validator->clean($request['name']);
+      $cleanBody = $validator->clean($request['body']);
+    }
+    catch (sfValidatorError $e)
+    {
+      $this->forward400Unless(isset($cleanName), 'name parameter is not specified.');
+      $this->forward400Unless(isset($cleanBody), 'body parameter is not specified.');
+    }
 
     if(isset($request['id']) && '' !== $request['id'])
     {
