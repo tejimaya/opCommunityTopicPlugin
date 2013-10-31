@@ -42,20 +42,18 @@ function toggleSubmitState()
   $('input[name=submit]').toggle();
 }
 
-$(function(){
-  $("#post_topic").click(function()
-  {
-    $('#successMessage').html('');
-    toggleSubmitState();
-    var params = getParams();
+function execute()
+{
+  $('#successMessage').html('');
+  toggleSubmitState();
+  var params = getParams();
 
-    $.post(openpne.apiBase + "topic/post.json",
-      params,
-      'json'
-    )
-    .success(
-      function(res)
-      {
+  $.ajax({
+    url: openpne.apiBase + 'topic/post.json',
+    type: 'POST',
+    data: params,
+    dataType: 'json',
+    success: function(res) {
         if (params['id'] == '')
         {
           $('#id').val('');
@@ -64,11 +62,8 @@ $(function(){
         }
         var _mes = $('#successMessageTemplate').tmpl(res['data']);
         $('#successMessage').html(_mes);
-      }
-    )
-    .error(
-      function(res)
-      {
+      },
+    error: function(res) {
         if (res.responseText.match('name parameter is not specified.'))
         {
           alert('タイトルが空欄です。');
@@ -79,18 +74,18 @@ $(function(){
         }
         else
         {
-          alert('日記投稿に失敗しました。');
+          alert('トピック作成に失敗しました。');
           console.log(res)
         }
-      }
-    )
-    .complete(
-      function(res)
-      {
+      },
+    complete: function(res) {
         toggleSubmitState();
-      }
-    );
+      },
   });
+}
+
+$(function(){
+  $("#post_topic").click(execute);
 })
 </script>
 
