@@ -14,7 +14,7 @@ else
   $topicBody  = '';
 }
 use_helper('opAsset');
-op_smt_use_stylesheet('/opDiaryPlugin/css/smt-topic.css', 'last');
+op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 ?>
 
 <script id="successMessageTemplate" type="text/x-jquery-tmpl">
