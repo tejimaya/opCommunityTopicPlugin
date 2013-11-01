@@ -35,6 +35,7 @@ abstract class opCommunityTopicPluginEventComponents extends sfComponents
   public function executeSmtCommunityLatestEventList($request)
   {
     $this->communityId = $request['id'];
+    $this->community = Doctrine::getTable('Community')->findOneById($request['id']);
 
     return sfView::SUCCESS;
   }

@@ -1,3 +1,6 @@
+<?php $acl = opCommunityTopicAclBuilder::buildCollection($community, array($sf_user->getMember())) ?>
+
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'view')): ?>
 <?php
 use_helper('Javascript', 'opUtil', 'opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
@@ -36,3 +39,4 @@ $(function(){
 <div class="row hide" id="eventreadmore">
 <a href="<?php echo public_path('communityEvent/listCommunity').'/'.$communityId ?>" class="btn btn-block span11"><?php echo __('More')?></a>
 </div>
+<?php endif; ?>

@@ -38,6 +38,7 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
   public function executeSmtCommunityLatestTopicList($request)
   {
     $this->communityId = $request['id'];
+    $this->community = Doctrine::getTable('Community')->findOneById($request['id']);
 
     return sfView::SUCCESS;
   }
