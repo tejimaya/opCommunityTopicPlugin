@@ -2,6 +2,7 @@
 use_helper('Javascript', 'opUtil', 'opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/gadget.js', 'last');
 ?>
 <script id="topicEntry" type="text/x-jquery-tmpl">
 <div class="row">
@@ -20,23 +21,7 @@ $(function(){
     count: 4
   }
 
-  $.getJSON(openpne.apiBase + 'topic/search.json',
-    params,
-    function(res)
-    {
-      if (res.data.length > 0)
-      {
-        var entry = $('#topicEntry').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return moment(this.data.created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
-          }
-        });
-        $('#topicList').append(entry);
-        $('#readmore').show();
-      }
-    }
-  )
+  gadget.search(params, 'topic');
 })
 </script>
 
@@ -48,8 +33,9 @@ $(function(){
 <div id="topicList" style="margin-left: 0px;">
 </div>
 
-<div class="row hide" id="readmore">
-<?php if ($communityId)  { ?>
+<div class="row hide" id="topicreadmore">
+<?php //以下はcommunityIdが無いので，そもそも不要。というか「もっと見る」を実装するならちょっと考えないとできない ?>
+<?php if ($communityId) : ?>
 <a href="<?php echo public_path('communityTopic/listCommunity').'/'.$communityId ?>" class="btn btn-block span11"><?php echo __('More')?></a>
-<?php } ?>
+<?php endif; ?>
 </div>

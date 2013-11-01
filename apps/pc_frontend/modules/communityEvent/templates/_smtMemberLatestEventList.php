@@ -2,6 +2,7 @@
 use_helper('Javascript', 'opUtil', 'opAsset');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/gadget.js', 'last');
 ?>
 <script id="eventEntry" type="text/x-jquery-tmpl">
 <div class="row">
@@ -20,23 +21,7 @@ $(function(){
     count: 4
   }
 
-  $.getJSON(openpne.apiBase + 'event/search.json',
-    params,
-    function(res)
-    {
-      if (res.data.length > 0)
-      {
-        var entry = $('#eventEntry').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return moment(this.data.created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
-          }
-        });
-        $('#eventList').append(entry);
-        $('#eventreadmore').show();
-      }
-    }
-  )
+  gadget.search(params, 'event');
 })
 </script>
 
