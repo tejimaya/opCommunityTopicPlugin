@@ -67,7 +67,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeSmtListCommunity($request)
   {
     $this->id = $this->community->getId();
-    
+
     return sfView::SUCCESS;
   }
 
@@ -150,10 +150,10 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
-    
+
     return sfView::SUCCESS;
   }
- 
+
   /**
    * Executes edit action
    *
@@ -164,10 +164,10 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     $this->forward404Unless($this->communityEvent->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new CommunityEventForm($this->communityEvent);
-    
+
     return sfView::SUCCESS;
   }
- 
+
   /**
    * Executes update action
    *
@@ -181,7 +181,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     $this->processForm($request, $this->form);
 
     $this->setTemplate('edit');
-    
+
     return sfView::SUCCESS;
   }
 
@@ -196,10 +196,10 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     $this->forward404Unless($this->communityEvent->isEditable($this->getUser()->getMemberId()));
 
     $this->form = new sfForm();
-    
+
     return sfView::SUCCESS;
   }
- 
+
   /**
    * Executes delete action
    *
