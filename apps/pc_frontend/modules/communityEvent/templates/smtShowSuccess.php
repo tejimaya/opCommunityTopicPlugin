@@ -150,13 +150,13 @@ function getComments(params){
       else
       {
         var comments = $('#eventComment').tmpl(res.data,
-      {
-        calcTimeAgo: function(){
-          return _timeAgo(this.data.created_at);
-        }
-      });
+        {
+          calcTimeAgo: function(){
+            return _timeAgo(this.data.created_at);
+          }
+        });
         $('#comments').prepend(comments);
-        $('#loadmore').attr('x-since-id', res.data[res.data.length-1].id).show();
+        $('#loadmore').attr('x-since-id', res.data[0].id).show();
       }
       $('#loading').hide();
     }

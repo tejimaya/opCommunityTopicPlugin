@@ -129,7 +129,7 @@ function getComments(params){
                               }
                             });
             $('#comments').prepend(comments);
-            $('#loadmore').attr('x-since-id', res.data[res.data.length-1].id).show();
+            $('#loadmore').attr('x-since-id', res.data[0].id).show();
           }
           $('#loading').hide();
         }

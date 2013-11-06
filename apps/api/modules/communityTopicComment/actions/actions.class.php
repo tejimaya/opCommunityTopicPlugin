@@ -46,7 +46,7 @@ class communityTopicCommentActions extends opJsonApiActions
 
     if(isset($request['since_id']))
     {
-      $query->addWhere('id > ?', $request['since_id']);
+      $query->addWhere('id < ?', $request['since_id']);
     }
 
     $this->memberId = $this->getUser()->getMemberId();
