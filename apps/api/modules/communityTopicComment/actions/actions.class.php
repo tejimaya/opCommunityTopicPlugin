@@ -21,16 +21,20 @@ class communityTopicCommentActions extends opJsonApiActions
   {
     parent::preExecute();
     $this->member = $this->getUser()->getMember();
+    $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['community_topic_id'], 'community_topic_id parameter is not specified.');
 
-    $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['community_topic_id']);
+    if (!$topic = Doctrine::getTable('CommunityTopic')->findOneById($request['community_topic_id']))
+    {
+      $this->forward400('community_topic is not exist');
+    }
 
     $topic->actAs('opIsCreatableCommunityTopicBehavior');
-    $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
+    $this->forward400If(!$topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
 
     $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
@@ -49,9 +53,7 @@ class communityTopicCommentActions extends opJsonApiActions
       $query->addWhere('id < ?', $request['since_id']);
     }
 
-    $this->memberId = $this->getUser()->getMemberId();
     $this->comments = $query->execute();
-
   }
 
   public function executePost(sfWebRequest $request)
@@ -68,7 +70,6 @@ class communityTopicCommentActions extends opJsonApiActions
     $comment->setBody($request['body']);
     $comment->save();
 
-    $this->memberId = $this->getUser()->getMemberId();
     $this->comment = $comment;
   }
 

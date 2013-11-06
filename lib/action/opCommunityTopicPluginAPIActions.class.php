@@ -10,7 +10,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
     if (!isset($request['target_id']) || '' == $request['target_id'])
     {
-      throw new Exception($request['target'].' is not specified');
+      throw new Exception($request['target'].'_id is not specified');
     }
 
     switch ($request['target'])
@@ -28,10 +28,8 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
   protected function getOptions($request)
   {
-    $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
-
     return array(
-      'limit' => $limit,
+      'limit' => isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15),
       'max_id' => $request['max_id'] ? $request['max_id'] : null,
       'since_id' => $request['since_id'] ? $request['since_id'] : null,
     );
@@ -124,7 +122,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     {
       if (!$member = Doctrine::getTable('Member')->findOneById($targetId))
       {
-        $this->forward400('target_id is invalid');
+        throw new Exception('target_id is invalid');
       }
 
       $events = Doctrine::getTable('CommunityEvent')->retrivesByMemberId($member->getId(), $options['limit']);
@@ -135,7 +133,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       $event->actAs('opIsCreatableCommunityTopicBehavior');
       if(!$event->isViewableCommunityTopic($event->getCommunity(), $this->member->getId()))
       {
-        $this->forward400('you are not allowed to view event on this community');
+        throw new Exception('you are not allowed to view event on this community');
       }
       $events = array($event);
     }

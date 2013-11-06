@@ -21,6 +21,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   {
     parent::preExecute();
     $this->member = $this->getUser()->getMember();
+    $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
@@ -28,14 +29,13 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     try
     {
       $target = $this->getValidTarget($request);
+      $options = $this->getOptions($request);
+      $this->events = $this->getEvents($target, $request['target_id'], $options);
     }
     catch (Exception $e)
     {
       $this->forward400($e->getMessage());
     }
-    $options = $this->getOptions($request);
-    $this->memberId = $this->member->getId();
-    $this->events = $this->getEvents($target, $request['target_id'], $options);
 
     if (isset($request['format']) && $request['format'] == 'mini')
     {
@@ -49,7 +49,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     $eventId = $request['id'];
 
     $eventMember = Doctrine::getTable('CommunityEventMember')
-      ->retrieveByEventIdAndMemberId($eventId, $this->getUser()->getMemberId());
+      ->retrieveByEventIdAndMemberId($eventId, $this->memberId);
 
     if (isset($request['leave']))
     {
@@ -69,7 +69,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
       $event = new CommunityEventMember();
       $event->setCommunityEventId($eventId);
-      $event->setMemberId($this->getUser()->getMemberId());
+      $event->setMemberId($this->memberId);
 
       $event->save();
 

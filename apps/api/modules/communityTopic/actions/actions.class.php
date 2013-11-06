@@ -21,6 +21,7 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
   {
     parent::preExecute();
     $this->member = $this->getUser()->getMember();
+    $this->memberId = $this->member->getId();
   }
 
   public function executePost(sfWebRequest $request)
@@ -46,8 +47,6 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
     $topic->setBody($request['body']);
     $topic->save();
 
-
-    $this->memberId = $this->member->getId();
     $this->topic = $topic;
   }
 
@@ -68,15 +67,16 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    $target = $this->getValidTarget($request);
-    $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
-    $options = array(
-      'limit' => $limit,
-      'max_id' => $request['max_id'] ? $request['max_id'] : null,
-      'since_id' => $request['since_id'] ? $request['since_id'] : null,
-    );
-    $this->memberId = $this->member->getId();
-    $this->topics = $this->getTopics($target, $request['target_id'], $options);
+    try
+    {
+      $target = $this->getValidTarget($request);
+      $options = $this->getOptions($request);
+      $this->topics = $this->getTopics($target, $request['target_id'], $options);
+    }
+    catch (Exception $e)
+    {
+      $this->forward400($e->getMessage());
+    }
 
     if (isset($request['format']) && $request['format'] == 'mini')
     {

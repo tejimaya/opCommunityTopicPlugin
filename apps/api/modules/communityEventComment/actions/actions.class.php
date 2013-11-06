@@ -22,6 +22,7 @@ class communityEventCommentActions extends opJsonApiActions
   {
     parent::preExecute();
     $this->member = $this->getUser()->getMember();
+    $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
@@ -50,9 +51,7 @@ class communityEventCommentActions extends opJsonApiActions
       $query->addWhere('id < ?', $request['since_id']);
     }
 
-    $this->memberId = $this->getUser()->getMemberId();
     $this->comments = $query->execute();
-
   }
 
   public function executePost(sfWebRequest $request)
@@ -69,7 +68,6 @@ class communityEventCommentActions extends opJsonApiActions
     $comment->setBody($request['body']);
     $comment->save();
 
-    $this->memberId = $this->getUser()->getMemberId();
     $this->comment = $comment;
   }
 
@@ -81,7 +79,7 @@ class communityEventCommentActions extends opJsonApiActions
     $comment = Doctrine::getTable('CommunityEventComment')->findOneById($id);
 
     $this->forward400If(false === $comment, 'the comment does not exist. id:'.$id);
-    $this->forward400If(false === $comment->isDeletable($this->member->getId()), 'you can not delete this comment. id:'.$id);
+    $this->forward400If(false === $comment->isDeletable($this->memberId), 'you can not delete this comment. id:'.$id);
 
     $isDeleted = $comment->delete();
     if ($isDeleted)
