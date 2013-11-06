@@ -18,7 +18,7 @@ if (count($topics))
       $_topic['latest_comment'] = $latest_comment['body'];
       $_topic['latest_comment_id'] = $latest_comment['id'];
     }
-  
+
     $data[] = $_topic;
   }
 }

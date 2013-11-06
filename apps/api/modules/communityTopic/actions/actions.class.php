@@ -15,7 +15,7 @@
  * @subpackage action
  * @author     Shunsuke Watanabe <watanabe@craftgear.net>
  */
-class communityTopicActions extends opJsonApiActions
+class communityTopicActions extends opCommunityTopicPluginAPIActions
 {
   public function preExecute()
   {
@@ -26,24 +26,11 @@ class communityTopicActions extends opJsonApiActions
   public function executePost(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['id'] && '' === (string)$request['community_id'], 'community_id parameter is not specified.');
-
-    $validator = new opValidatorString(array('trim' => true));
-    try
-    {
-      $cleanName = $validator->clean($request['name']);
-      $cleanBody = $validator->clean($request['body']);
-    }
-    catch (sfValidatorError $e)
-    {
-      $this->forward400Unless(isset($cleanName), 'name parameter is not specified.');
-      $this->forward400Unless(isset($cleanBody), 'body parameter is not specified.');
-    }
+    $this->isValidNameAndBody($request);
 
     if(isset($request['id']) && '' !== $request['id'])
     {
-      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
-      $this->forward400If(false === $topic, 'the specified topic does not exit.');
-      $this->forward400If(false === $topic->isEditable($this->member->getId()), 'this topic is not yours.');
+      $topic = $this->getTopicByTopicId($request['id']);
     }
     else
     {
@@ -59,7 +46,8 @@ class communityTopicActions extends opJsonApiActions
     $topic->setBody($request['body']);
     $topic->save();
 
-    $this->memberId = $this->getUser()->getMemberId();
+
+    $this->memberId = $this->member->getId();
     $this->topic = $topic;
   }
 
@@ -67,9 +55,7 @@ class communityTopicActions extends opJsonApiActions
   {
     $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'a topic id is not specified');
 
-    $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
-    $this->forward400If(false === $topic->isEditable($this->member->getId()), 'this topic is not yours.');
-
+    $topic = $this->getTopicByTopicId($request['id']);
     $isDeleted = $topic->delete();
 
     if (!$isDeleted)
@@ -78,80 +64,23 @@ class communityTopicActions extends opJsonApiActions
     }
 
     $this->topic = $topic;
-
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forward400If(!isset($request['target']) || '' === (string)$request['target'], 'target is not specified');
+    $target = $this->getValidTarget($request);
     $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
-
-    if ($request['target'] == 'community')
-    {
-      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'community id is not specified');
-
-
-      $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
-        ->where('community_id = ?', $request['target_id'])
-        ->orderBy('topic_updated_at desc')
-        ->limit($limit);
-
-      if(isset($request['max_id']))
-      {
-        $query->addWhere('id <= ?', $request['max_id']);
-      }
-
-      if(isset($request['since_id']))
-      {
-        $query->addWhere('id > ?', $request['since_id']);
-      }
-
-      $this->topics = $query->execute();
-      $total = $query->count();
-    }
-    elseif($request['target'] == 'topic')
-    {
-      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'topic id is not specified');
-
-      $topic = Doctrine::getTable('CommunityTopic')->findOneById($request['target_id']);
-
-      $topic->actAs('opIsCreatableCommunityTopicBehavior');
-      $this->forward400If(false === $topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
-    
-      $this->memberId = $this->getUser()->getMemberId();
-      $this->topics = array($topic);
-    }
-    elseif ($request['target'] == 'member')
-    {
-      $this->forward400If(!isset($request['target_id']) || '' === (string)$request['target_id'], 'member id is not specified');
-      $memberId = $request['target_id'];
-
-      $communities = Doctrine::getTable('CommunityMember')->createQuery('q')
-        ->select('community_id')
-        ->where('member_id = ?', $memberId)
-        ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-        ->execute();
-      
-      $communityIds = array();
-      foreach($communities as $_community)
-      {
-        array_push($communityIds, $_community['community_id']);
-      }
-    
-      $topics = Doctrine::getTable('CommunityTopic')->createQuery('q')
-        ->whereIn('community_id', $communityIds)
-        ->orderBy('topic_updated_at desc')
-        ->limit($limit)
-        ->execute();
-
-      $this->topics = $topics;
-      $this->memberId = $memberId;
-    }
+    $options = array(
+      'limit' => $limit,
+      'max_id' => $request['max_id'] ? $request['max_id'] : null,
+      'since_id' => $request['since_id'] ? $request['since_id'] : null,
+    );
+    $this->memberId = $this->member->getId();
+    $this->topics = $this->getTopics($target, $request['target_id'], $options);
 
     if (isset($request['format']) && $request['format'] == 'mini')
     {
       $this->setTemplate('searchMini');
     }
   }
-
 }
