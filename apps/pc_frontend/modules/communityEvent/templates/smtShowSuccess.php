@@ -50,11 +50,6 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
   </div>
-  <div class="row">
-    <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
-  </div>
-  <div class="row comments" id="comments">
-  </div>
   <div class="row" id="commentForm">
     <div class="comment-wrapper">
     <div id="required" class="hide"><?php echo __('Required.') ?></div>
@@ -71,6 +66,11 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
         <?php echo op_image_tag('ajax-loader.gif', array()) ?>
       </div>
     </div>
+  </div>
+  <div class="row comments" id="comments">
+  </div>
+  <div class="row">
+    <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
   </div>
 </script>
 
@@ -149,14 +149,15 @@ function getComments(params){
       }
       else
       {
+        $('#loadmore').attr('x-since-id', res.data[0].id).show();
+        res.data.reverse();
         var comments = $('#eventComment').tmpl(res.data,
         {
           calcTimeAgo: function(){
             return _timeAgo(this.data.created_at);
           }
         });
-        $('#comments').prepend(comments);
-        $('#loadmore').attr('x-since-id', res.data[0].id).show();
+        $('#comments').append(comments);
       }
       $('#loading').hide();
     }
@@ -257,7 +258,7 @@ $(function(){
                               }
                             });
 
-        $('#comments').append(postedComment);
+        $('#comments').prepend(postedComment);
         $('input#commentBody').val('');
       }
     )
