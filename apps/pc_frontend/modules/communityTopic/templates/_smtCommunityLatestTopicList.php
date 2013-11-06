@@ -10,7 +10,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/gadget.js', 'last');
 <script id="topicEntry" type="text/x-jquery-tmpl">
 <div class="row">
   <div class="span3">${$item.calcTimeAgo()}</div>
-  <div class="span9"><a href="<?php echo public_path('communityTopic')?>/${id}">${name}</a> (${community_name})</div>
+  <div class="span9"><a href="<?php echo public_path('communityTopic')?>/${id}">${name}</a></div>
 </div>
 </script>
 

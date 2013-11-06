@@ -9,7 +9,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
   <span class="span3">
     ${$item.calcTimeAgo()}
   </span>
-  <span class="span9"><a href="<?php echo public_path('communityEvent'); ?>/${id}">${name}</a>（${community_name}）</span>
+  <span class="span9"><a href="<?php echo public_path('communityEvent'); ?>/${id}">${name}</a></span>
   <div class="span12">
     <div>
       <div class="event-comment-list" eventId="${id}"></div>

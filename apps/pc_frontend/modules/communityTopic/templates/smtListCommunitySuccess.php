@@ -9,7 +9,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
   <span class="span3">
     ${$item.calcTimeAgo()}
   </span>
-  <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a>（${community_name}）</span>
+  <span class="span9"><a href="<?php echo public_path('communityTopic'); ?>/${id}">${name}</a></span>
   <div class="span12">
     <div>
       {{if latest_comment}}

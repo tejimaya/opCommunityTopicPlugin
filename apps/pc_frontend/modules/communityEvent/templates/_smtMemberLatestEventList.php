@@ -27,7 +27,7 @@ $(function(){
 
 <hr class="toumei" />
 <div class="row">
-  <div class="gadget_header span12">イベント一覧</div>
+  <div class="gadget_header span12">コミュニティイベント一覧</div>
 </div>
 <hr class="toumei" />
 <div id="eventList" style="margin-left: 0px;">

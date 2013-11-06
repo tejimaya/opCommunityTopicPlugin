@@ -27,7 +27,7 @@ $(function(){
 
 <hr class="toumei" />
 <div class="row">
-  <div class="gadget_header span12">トピック一覧</div>
+  <div class="gadget_header span12">コミュニティトピック一覧</div>
 </div>
 <hr class="toumei" />
 <div id="topicList" style="margin-left: 0px;">
