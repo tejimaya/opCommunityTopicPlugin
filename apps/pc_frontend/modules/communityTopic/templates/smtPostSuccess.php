@@ -17,11 +17,6 @@ use_helper('opAsset');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 ?>
 
-<script id="successMessageTemplate" type="text/x-jquery-tmpl">
-    投稿しました<br/>
-    <a href="<?php echo public_path('communityTopic'); ?>/${id}">トピックを見る</a>
-</script>
-
 <script type="text/javascript">
 function getParams()
 {
@@ -44,7 +39,6 @@ function toggleSubmitState()
 
 function execute()
 {
-  $('#successMessage').html('');
   toggleSubmitState();
   var params = getParams();
 
@@ -60,8 +54,8 @@ function execute()
           $('#topic_name').val('');
           $('#topic_body').val('');
         }
-        var _mes = $('#successMessageTemplate').tmpl(res['data']);
-        $('#successMessage').html(_mes);
+
+        window.location.href = window.location.origin + '/communityTopic/' + res.data.id
       },
     error: function(res) {
         if (res.responseText.match('name parameter is not specified.'))
@@ -77,8 +71,7 @@ function execute()
           alert('トピック作成に失敗しました。');
           console.log(res)
         }
-      },
-    complete: function(res) {
+
         toggleSubmitState();
       },
   });
@@ -110,7 +103,5 @@ $(function(){
   <hr class="toumei">
   <div id="loading" class="center hide">
     <?php echo op_image_tag('ajax-loader.gif');?>
-  </div>
-  <div id="successMessage" class="center">
   </div>
 </div>
