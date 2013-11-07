@@ -312,7 +312,7 @@ $(function(){
                               }
                             });
 
-        $('#comments').append(postedComment);
+        $('#comments').prepend(postedComment);
         $('input#commentBody').val('');
 
         var params = {
