@@ -15,27 +15,25 @@
  * @subpackage action
  * @author     Shunsuke Watanabe <watanabe@craftgear.net>
  */
-class communityTopicCommentActions extends opJsonApiActions
+class communityTopicCommentActions extends opCommunityTopicPluginAPIActions
 {
   public function preExecute()
   {
     parent::preExecute();
+
+    $action = $this->getRequest()->getParameter('action');
+    if ('search' == $action || 'post' == $action)
+    {
+      $this->forward400If(!$this->getRequest()->getParameter('community_topic_id'), 'community_topic_id parameter is not specified.');
+    }
+
     $this->member = $this->getUser()->getMember();
     $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['community_topic_id'], 'community_topic_id parameter is not specified.');
-
-    if (!$topic = Doctrine::getTable('CommunityTopic')->findOneById($request['community_topic_id']))
-    {
-      $this->forward400('community_topic is not exist');
-    }
-
-    $topic->actAs('opIsCreatableCommunityTopicBehavior');
-    $this->forward400If(!$topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view this topic and comments on this community');
-
+    $topic = $this->getViewableTopic($request['community_topic_id'], $this->member->getId());
     $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
     $query = Doctrine::getTable('CommunityTopicComment')->createQuery('c')
@@ -60,7 +58,6 @@ class communityTopicCommentActions extends opJsonApiActions
 
   public function executePost(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['community_topic_id'], 'community_topic_id parameter is not specified.');
     $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
 
     $comment = new CommunityTopicComment();

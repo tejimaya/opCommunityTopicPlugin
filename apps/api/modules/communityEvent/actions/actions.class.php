@@ -20,17 +20,34 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   public function preExecute()
   {
     parent::preExecute();
+
+    $action = $this->getRequest()->getParameter('action');
+    if ('join' == $action || 'memberList' == $action)
+    {
+      $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
+    }
+
     $this->member = $this->getUser()->getMember();
     $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
+    $events = array();
     try
     {
       $target = $this->getValidTarget($request);
       $options = $this->getOptions($request);
-      $this->events = $this->getEvents($target, $request['target_id'], $options);
+      if ('event' == $target)
+      {
+        $events[] = $this->getViewableEvent($request['target_id'], $this->member->getId());
+      }
+      else
+      {
+        $events = $this->getEvents($target, $request['target_id'], $options);
+      }
+
+      $this->events = $events;
     }
     catch (Exception $e)
     {
@@ -45,7 +62,6 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
   public function executeJoin(sfWebRequest $request)
   {
-    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
     $eventId = $request['id'];
 
     $eventMember = Doctrine::getTable('CommunityEventMember')
@@ -83,7 +99,6 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
   public function executeMemberList(sfWebRequest $request)
   {
-    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
     $eventId = $request['id'];
 
     $this->eventMembers = Doctrine::getTable('Member')->createQuery('m')

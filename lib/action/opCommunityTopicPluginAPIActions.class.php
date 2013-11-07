@@ -55,13 +55,52 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     return $topic;
   }
 
-  protected function isValidNameAndBody($request)
+  protected function getViewableEvent($id, $memberId)
   {
+    $event = $this->getEventByEventId($id);
+    if ($event)
+    {
+      $event->actAs('opIsCreatableCommunityTopicBehavior');
+      if(!$event->isViewableCommunityTopic($event->getCommunity(), $memberId))
+      {
+        $this->forward400('you are not allowed to view event on this community');
+      }
+
+      return $event;
+    }
+
+    return false;
+  }
+
+  protected function getViewableTopic($id, $memberId)
+  {
+    $topic = $this->getTopicByTopicId($id);
+    if ($topic)
+    {
+      $topic->actAs('opIsCreatableCommunityTopicBehavior');
+      if (!$topic->isViewableCommunityTopic($topic->getCommunity(), $memberId))
+      {
+        $this->forward400('you are not allowed to view this topic and comments on this community');
+      }
+
+      return $topic;
+    }
+
+    return false;
+  }
+
+  protected function isValidNameAndBody($name, $body)
+  {
+    if (!$name || !$body)
+    {
+      $this->forward400('name and body parameter required');
+    }
+
     try
     {
       $validator = new opValidatorString(array('trim' => true));
-      $cleanName = $validator->clean($request['name']);
-      $cleanBody = $validator->clean($request['body']);
+      $cleanName = $validator->clean($name);
+      $cleanBody = $validator->clean($body);
     }
     catch (sfValidatorError $e)
     {
@@ -127,16 +166,6 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
       $events = Doctrine::getTable('CommunityEvent')->retrivesByMemberId($member->getId(), $options['limit']);
     }
-    elseif ('event' == $target)
-    {
-      $event = $this->getEventByEventId($targetId);
-      $event->actAs('opIsCreatableCommunityTopicBehavior');
-      if(!$event->isViewableCommunityTopic($event->getCommunity(), $this->member->getId()))
-      {
-        throw new Exception('you are not allowed to view event on this community');
-      }
-      $events = array($event);
-    }
 
     return $events;
   }
@@ -148,13 +177,6 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     if ('community' == $target)
     {
       $topics = $this->searchTopicsByCommunityId($targetId, $options);
-    }
-    elseif('topic' == $target)
-    {
-      $topic = $this->getTopicByTopicId($targetId);
-      $topic->actAs('opIsCreatableCommunityTopicBehavior');
-      $this->forward400If(!$topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
-      $topics = array($topic);
     }
     elseif ('member' == $target)
     {

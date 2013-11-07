@@ -27,7 +27,7 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
   public function executePost(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['id'] && '' === (string)$request['community_id'], 'community_id parameter is not specified.');
-    $this->isValidNameAndBody($request);
+    $this->isValidNameAndBody($request['name'], $request['body']);
 
     if(isset($request['id']) && '' !== $request['id'])
     {
@@ -55,6 +55,10 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
     $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'a topic id is not specified');
 
     $topic = $this->getTopicByTopicId($request['id']);
+
+    $topic->actAs('opIsCreatableCommunityTopicBehavior');
+    $this->forward400If(!$topic->isEditable($this->member->getId()), 'you are not allowed to delete this topic');
+
     $isDeleted = $topic->delete();
 
     if (!$isDeleted)
@@ -67,11 +71,21 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
 
   public function executeSearch(sfWebRequest $request)
   {
+    $topics = array();
     try
     {
       $target = $this->getValidTarget($request);
       $options = $this->getOptions($request);
-      $this->topics = $this->getTopics($target, $request['target_id'], $options);
+      if ('topic' == $target)
+      {
+        $topics[] = $this->getViewableTopic($request['target_id'], $this->memberId);
+      }
+      else
+      {
+        $topics = $this->getTopics($target, $request['target_id'], $options);
+      }
+
+      $this->topics = $topics;
     }
     catch (Exception $e)
     {

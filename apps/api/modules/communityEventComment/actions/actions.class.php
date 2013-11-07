@@ -16,29 +16,29 @@
  * @author     Shunsuke Watanabe <watanabe@craftgear.net>
  * @author     tatsuya ichikawa <ichikawa@tejimaya.com>
  */
-class communityEventCommentActions extends opJsonApiActions
+class communityEventCommentActions extends opCommunityTopicPluginAPIActions
 {
   public function preExecute()
   {
     parent::preExecute();
+    $action = $this->getRequest()->getParameter('action');
+    if ('search' == $action || 'post' == $action)
+    {
+      $this->forward400If('' === (string)$this->getRequest()->getParameter('community_event_id'), 'community_event_id parameter is not specified.');
+    }
+
     $this->member = $this->getUser()->getMember();
     $this->memberId = $this->member->getId();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['community_event_id'], 'community_event_id parameter is not specified.');
-
-    $event = Doctrine::getTable('CommunityEvent')->findOneById($request['community_event_id']);
-
-    $event->actAs('opIsCreatableCommunityTopicBehavior');
-    $this->forward400If(false === $event->isViewableCommunityTopic($event->getCommunity(), $this->member->getId()), 'you are not allowed to view this event and comments on this community');
-
+    $event = $this->getViewableEvent($request['community_event_id'], $this->member->getId());
     $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
 
     $query = Doctrine::getTable('CommunityEventComment')->createQuery('c')
       ->where('community_event_id = ?', $event->getId())
-      ->orderBy('created_at desc')
+      ->orderBy('created_at DESC')
       ->limit($limit);
 
     $this->count = $query->count();
@@ -58,7 +58,6 @@ class communityEventCommentActions extends opJsonApiActions
 
   public function executePost(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['community_event_id'], 'community_event_id parameter is not specified.');
     $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
 
     $comment = new CommunityEventComment();
