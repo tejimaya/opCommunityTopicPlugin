@@ -43,6 +43,8 @@ class communityTopicCommentActions extends opJsonApiActions
       ->orderBy('created_at desc')
       ->limit($limit);
 
+    $this->count = $query->count();
+
     if(isset($request['max_id']))
     {
       $query->addWhere('id <= ?', $request['max_id']);

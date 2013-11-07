@@ -82,6 +82,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 
 <script type="text/javascript">
 var topic_id = <?php echo $id ?>;
+var comment_count = 0;
 
 function _timeAgo(created_at){
   return moment(created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
@@ -112,30 +113,35 @@ function getComments(params){
   params.community_topic_id = topic_id;
   params.apiKey = openpne.apiKey;
 
-      $.getJSON( openpne.apiBase + 'topic_comment/search.json',
-        params,
-        function(res)
+  $.getJSON( openpne.apiBase + 'topic_comment/search.json',
+    params,
+    function(res)
+    {
+      comment_count += res.data.length;
+      if (0 == res.data_count)
+      {
+        $('#loadmore').hide();
+      }
+      else
+      {
+        $('#loadmore').attr('x-since-id', res.data[0].id).show();
+        res.data.reverse();
+        var comments = $('#topicComment').tmpl(res.data,
         {
-          if (res.data.length === 0)
-          {
-            $('#loadmore').hide();
+          calcTimeAgo: function(){
+            return _timeAgo(this.data.created_at);
           }
-          else
-          {
-            $('#loadmore').attr('x-since-id', res.data[0].id).show();
-            res.data.reverse();
-            var comments = $('#topicComment').tmpl(res.data,
-                            {
-                              calcTimeAgo: function(){
-                                return _timeAgo(this.data.created_at);
-                              }
-                            });
-            $('#comments').append(comments);
-          }
-          $('#loading').hide();
-        }
-      );
+        });
+        $('#comments').append(comments);
 
+        if (res.data_count - comment_count == 0)
+        {
+          $('#loadmore').hide();
+        }
+      }
+      $('#loading').hide();
+    }
+  );
 }
 
 function showModal(modal){

@@ -109,6 +109,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 
 <script type="text/javascript">
 var event_id = <?php echo $id ?>;
+var comment_count = 0;
 
 function _timeAgo(created_at){
   return moment(created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
@@ -143,12 +144,13 @@ function getComments(params){
     params,
     function(res)
     {
-      if (res.data.length === 0)
+      if (0 == res.data_count)
       {
         $('#loadmore').hide();
       }
       else
       {
+        comment_count += res.data.length;
         $('#loadmore').attr('x-since-id', res.data[0].id).show();
         res.data.reverse();
         var comments = $('#eventComment').tmpl(res.data,
@@ -158,6 +160,11 @@ function getComments(params){
           }
         });
         $('#comments').append(comments);
+
+        if (res.data_count - comment_count == 0)
+        {
+          $('#loadmore').hide();
+        }
       }
       $('#loading').hide();
     }
