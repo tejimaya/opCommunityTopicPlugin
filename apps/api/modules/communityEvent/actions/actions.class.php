@@ -76,6 +76,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       $events = Doctrine::getTable('CommunityEvent')->createQuery('q')
         ->where('id = ?', $eventId)
         ->execute();
+
       $this->events = $events;
     }
   }

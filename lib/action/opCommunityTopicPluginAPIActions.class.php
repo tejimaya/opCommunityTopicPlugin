@@ -39,7 +39,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     if (!$event = Doctrine::getTable('CommunityEvent')->findOneById($id))
     {
-      $this->forward400('the specified Event does not exist.');
+      $this->forward400('the specified event does not exist.');
     }
 
     return $event;
@@ -50,7 +50,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     if (!$topic = Doctrine::getTable('CommunityTopic')->findOneById($id))
     {
       $this->forward400('the specified topic does not exist.');
-    };
+    }
 
     return $topic;
   }
@@ -74,7 +74,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     $query = Doctrine::getTable('CommunityEvent')->createQuery()
       ->where('community_id = ?', $targetId)
-      ->orderBy('event_updated_at desc')
+      ->orderBy('event_updated_at, id DESC')
       ->limit($options['limit']);
 
     if($options['max_id'])
@@ -90,11 +90,11 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     return $query->execute();
   }
 
-  protected function searchTopicByCommunityId($targetId, $options)
+  protected function searchTopicsByCommunityId($targetId, $options)
   {
     $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
       ->where('community_id = ?', $targetId)
-      ->orderBy('topic_updated_at desc')
+      ->orderBy('topic_updated_at, id DESC')
       ->limit($options['limit']);
 
     if($options['max_id'])
@@ -147,12 +147,11 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
     if ('community' == $target)
     {
-      $topics = $this->searchTopicByCommunityId($targetId, $options);
+      $topics = $this->searchTopicsByCommunityId($targetId, $options);
     }
     elseif('topic' == $target)
     {
       $topic = $this->getTopicByTopicId($targetId);
-
       $topic->actAs('opIsCreatableCommunityTopicBehavior');
       $this->forward400If(!$topic->isViewableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to view topics on this community');
       $topics = array($topic);
