@@ -74,7 +74,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     $query = Doctrine::getTable('CommunityEvent')->createQuery()
       ->where('community_id = ?', $targetId)
-      ->orderBy('event_updated_at, id DESC')
+      ->orderBy('event_updated_at DESC')
       ->limit($options['limit']);
 
     if($options['max_id'])
@@ -94,7 +94,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
       ->where('community_id = ?', $targetId)
-      ->orderBy('topic_updated_at, id DESC')
+      ->orderBy('topic_updated_at DESC')
       ->limit($options['limit']);
 
     if($options['max_id'])

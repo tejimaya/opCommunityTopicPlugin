@@ -144,7 +144,7 @@ function getComments(params){
     params,
     function(res)
     {
-      if (0 == res.data_count)
+      if (0 == res.data.length)
       {
         $('#loadmore').hide();
       }
@@ -166,6 +166,7 @@ function getComments(params){
           $('#loadmore').hide();
         }
       }
+
       $('#loading').hide();
     }
   );

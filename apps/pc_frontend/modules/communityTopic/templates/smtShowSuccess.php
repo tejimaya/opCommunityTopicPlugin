@@ -117,13 +117,13 @@ function getComments(params){
     params,
     function(res)
     {
-      comment_count += res.data.length;
-      if (0 == res.data_count)
+      if (0 == res.data.length)
       {
         $('#loadmore').hide();
       }
       else
       {
+        comment_count += res.data.length;
         $('#loadmore').attr('x-since-id', res.data[0].id).show();
         res.data.reverse();
         var comments = $('#topicComment').tmpl(res.data,
@@ -139,6 +139,7 @@ function getComments(params){
           $('#loadmore').hide();
         }
       }
+
       $('#loading').hide();
     }
   );
