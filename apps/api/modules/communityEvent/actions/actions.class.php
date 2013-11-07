@@ -65,7 +65,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     $eventId = $request['id'];
 
     $eventMember = Doctrine::getTable('CommunityEventMember')
-      ->retrieveByEventIdAndMemberId($eventId, $this->memberId);
+      ->retrieveByEventIdAndMemberId($eventId, $this->member->getId());
 
     if (isset($request['leave']))
     {
@@ -85,7 +85,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
       $event = new CommunityEventMember();
       $event->setCommunityEventId($eventId);
-      $event->setMemberId($this->memberId);
+      $event->setMemberId($this->member->getId());
 
       $event->save();
 

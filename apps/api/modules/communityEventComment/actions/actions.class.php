@@ -80,7 +80,7 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
     $comment = Doctrine::getTable('CommunityEventComment')->findOneById($id);
 
     $this->forward400If(false === $comment, 'the comment does not exist. id:'.$id);
-    $this->forward400If(false === $comment->isDeletable($this->memberId), 'you can not delete this comment. id:'.$id);
+    $this->forward400If(false === $comment->isDeletable($this->member->getId()), 'you can not delete this comment. id:'.$id);
 
     $isDeleted = $comment->delete();
     if ($isDeleted)

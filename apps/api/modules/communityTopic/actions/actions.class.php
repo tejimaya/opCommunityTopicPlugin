@@ -78,7 +78,7 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
       $options = $this->getOptions($request);
       if ('topic' == $target)
       {
-        $topics[] = $this->getViewableTopic($request['target_id'], $this->memberId);
+        $topics[] = $this->getViewableTopic($request['target_id'], $this->member->getId());
       }
       else
       {
