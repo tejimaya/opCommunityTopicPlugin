@@ -6,11 +6,13 @@ topic_index:
 
 topic_post:
   url: /topic/post.json
+  class: sfRequestRoute
   param: { module: communityTopic, action: post, sf_format: json }
-  requirements: { sf_method: [post] }
+  requirements: { sf_method: [post]}
 
 topic_delete:
   url: /topic/delete.json
+  class: sfRequestRoute
   param: { module: communityTopic, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
 
@@ -21,11 +23,13 @@ topic_comment_index:
 
 topic_comment_post:
   url: /topic_comment/post.json
+  class: sfRequestRoute
   param: { module: communityTopicComment, action: post, sf_format: json }
   requirements: { sf_method: [post] }
 
 topic_comment_delete:
   url: /topic_comment/delete.json
+  class: sfRequestRoute
   param: { module: communityTopicComment, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
 
@@ -36,6 +40,7 @@ event_index:
 
 event_join:
   url: /event/join.json
+  class: sfRequestRoute
   param: { module: communityEvent, action: join, sf_format: json }
   requirements: { sf_method: [post] }
 
@@ -51,10 +56,29 @@ event_comment_index:
 
 event_comment_post:
   url: /event_comment/post.json
+  class: sfRequestRoute
   param: { module: communityEventComment, action: post, sf_format: json }
   requirements: { sf_method: [post] }
 
 event_comment_delete:
   url: /event_comment/delete.json
+  class: sfRequestRoute
   param: { module: communityEventComment, action: delete, sf_format: json }
   requirements: { sf_method: [post] }
+
+# no default
+topic_no_default:
+  url: /topic/*
+  param: { module: default, action: error }
+
+event_no_default:
+  url: /event/*
+  param: { module: default, action: error }
+
+topic_comment_no_default:
+  url: /topic_comment/*
+  param: { module: default, action: error }
+
+event_comment_no_default:
+  url: /event_comment/*
+  param: { module: default, action: error }
