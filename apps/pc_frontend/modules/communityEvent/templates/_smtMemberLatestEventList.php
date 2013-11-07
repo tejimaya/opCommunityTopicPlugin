@@ -34,7 +34,4 @@ $(function(){
 </div>
 
 <div class="row hide" id="eventreadmore">
-<?php if ($communityId)  { ?>
-  <a href="<?php echo public_path('communityEvent/listCommunity').'/'.$communityId ?>" class="btn btn-block span11"><?php echo __('More')?></a>
-<?php } ?>
 </div>
