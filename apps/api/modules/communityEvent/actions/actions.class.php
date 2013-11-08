@@ -24,7 +24,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     $action = $this->getRequest()->getParameter('action');
     if ('join' == $action || 'memberList' == $action)
     {
-      $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'event id is not specified');
+      $this->forward400If(!$this->getRequest()->getParameter('id'), 'event id is not specified');
     }
 
     $this->member = $this->getUser()->getMember();
