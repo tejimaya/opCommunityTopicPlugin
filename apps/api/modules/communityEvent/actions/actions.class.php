@@ -63,6 +63,10 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   public function executeJoin(sfWebRequest $request)
   {
     $eventId = $request['id'];
+    if(!$event = Doctrine::getTable('CommunityEvent')->findOneById($eventId))
+    {
+      $this->forward400('requested event does not exist');
+    }
 
     $eventMember = Doctrine::getTable('CommunityEventMember')
       ->retrieveByEventIdAndMemberId($eventId, $this->member->getId());
@@ -83,17 +87,13 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
         $this->forward400('You are already this event member.');
       }
 
-      $event = new CommunityEventMember();
-      $event->setCommunityEventId($eventId);
-      $event->setMemberId($this->member->getId());
+      $eventMember = new CommunityEventMember();
+      $eventMember->setCommunityEventId($eventId);
+      $eventMember->setMemberId($this->member->getId());
 
-      $event->save();
+      $eventMember->save();
 
-      $events = Doctrine::getTable('CommunityEvent')->createQuery('q')
-        ->where('id = ?', $eventId)
-        ->execute();
-
-      $this->events = $events;
+      $this->events = array($event);
     }
   }
 
