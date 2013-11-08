@@ -51,6 +51,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     {{/each}}
   </div>
   <div class="row" id="commentForm">
+    {{if isCreatableComment }}
     <div class="comment-wrapper">
     <div id="required" class="hide"><?php echo __('Required.') ?></div>
       <input class="event-comment-form-input" type="text" id="commentBody" />
@@ -66,6 +67,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
         <?php echo op_image_tag('ajax-loader.gif', array()) ?>
       </div>
     </div>
+    {{/if}}
   </div>
   <div class="row comments" id="comments">
   </div>
@@ -110,6 +112,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script type="text/javascript">
 var event_id = <?php echo $id ?>;
 var comment_count = 0;
+var isCreatableComment = <?php echo (int)$isCreatableComment ?>;
 
 function _timeAgo(created_at){
   return moment(created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
@@ -132,7 +135,6 @@ function getEntry(params)
       getComments();
     }
   );
-
 }
 
 function getComments(params){

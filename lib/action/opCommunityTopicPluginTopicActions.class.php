@@ -90,6 +90,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeSmtShow($request)
   {
     $this->id = $request['id'];
+    $this->isCreatableComment = $this->communityTopic->isCreatableCommunityTopicComment($this->getUser()->getMember()->getId());
     opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
 
     return sfView::SUCCESS;
