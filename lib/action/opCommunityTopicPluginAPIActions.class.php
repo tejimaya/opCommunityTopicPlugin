@@ -32,6 +32,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       'limit' => isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15),
       'max_id' => $request['max_id'] ? $request['max_id'] : null,
       'since_id' => $request['since_id'] ? $request['since_id'] : null,
+      'page' => $request->getParameter('page', 1),
     );
   }
 
@@ -111,10 +112,10 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
   protected function searchEventsByCommunityId($targetId, $options)
   {
-    $query = Doctrine::getTable('CommunityEvent')->createQuery()
+    $table = Doctrine::getTable('CommunityEvent');
+    $query = $table->createQuery()
       ->where('community_id = ?', $targetId)
-      ->orderBy('event_updated_at DESC')
-      ->limit($options['limit']);
+      ->orderBy('event_updated_at DESC');
 
     if($options['max_id'])
     {
@@ -126,15 +127,17 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       $query->addWhere('id > ?', $options['since_id']);
     }
 
-    return $query->execute();
+    $pager = $table->getResultListPager($query, $options['page'], $options['limit']);
+
+    return $pager->getResults();
   }
 
   protected function searchTopicsByCommunityId($targetId, $options)
   {
-    $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
+    $table = Doctrine::getTable('CommunityTopic');
+    $query = $table->createQuery('t')
       ->where('community_id = ?', $targetId)
-      ->orderBy('topic_updated_at DESC')
-      ->limit($options['limit']);
+      ->orderBy('topic_updated_at DESC');
 
     if($options['max_id'])
     {
@@ -146,7 +149,9 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       $query->addWhere('id > ?', $options['since_id']);
     }
 
-    return $query->execute();
+    $pager = $table->getResultListPager($query, $options['page'], $options['limit']);
+
+    return $pager->getResults();
   }
 
   protected function getEvents($target, $targetId, $options)

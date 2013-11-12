@@ -27,24 +27,19 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script type="text/javascript">
 function getList(params)
 {
-  var dataLength = $('#list').children().length;
-  var id = <?php echo $id ?>;
-  params.target = 'community';
-  params.format = 'mini';
-  params.target_id = id;
   $('#loading').show();
   $.getJSON( openpne.apiBase + 'topic/search.json',
     params,
     function(json)
     {
-      if (json.data.length === 0 || dataLength === json.data.length)
+      if (json.data.length === 0)
       {
         $('#noEntry').show();
         $('#loadmore').hide();
       }
       else
       {
-        var entry = $('#topicEntry').tmpl(json.data, 
+        var entry = $('#topicEntry').tmpl(json.data,
         {
           truncateComment: function(){
             return this.data.latest_comment.substr(0, 50);
@@ -53,9 +48,8 @@ function getList(params)
             return moment(this.data.created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
           }
         });
-        $('#list').children().remove();
         $('#list').append(entry);
-        $('#loadmore').attr('data-length', json.data.length).show();
+        $('#loadmore').show();
       }
       $('#loading').hide();
     }
@@ -63,14 +57,24 @@ function getList(params)
 }
 
 $(function(){
-  getList({apiKey: openpne.apiKey});
+  var params = {
+    apiKey: openpne.apiKey,
+    target: 'community',
+    format: 'mini',
+    target_id: <?php echo $id ?>,
+  }
+  getList(params);
 
   $('#loadmore').click(function()
   {
-    var params = {
-      apiKey: openpne.apiKey,
-      count: parseInt($(this).attr('data-length')) + 15
-    };
+    if (!params.page)
+    {
+      params.page = 2;
+    }
+    else
+    {
+      params.page++;
+    }
     getList(params);
   })
 })
