@@ -29,12 +29,15 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
   </div>
+  <div class="row">
+    <div class="gadget_header">コメント</div>
+  </div>
   <div class="row" id="commentForm">
     {{if isCreatableComment }}
           <div class="comment-wrapper">
             <div id="required" class="hide"><?php echo __('Required.') ?></div>
             <divclass="comment-form">
-            <input class="comment-form-input" type="text" id="commentBody" /><input type="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="投稿">
+            <input class="comment-form-input" type="text" id="commentBody" /><input type="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="コメント投稿">
             </div>
             <div class="comment-form-loader">
               <?php echo op_image_tag('ajax-loader.gif', array()) ?>

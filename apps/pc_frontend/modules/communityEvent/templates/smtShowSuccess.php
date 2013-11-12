@@ -28,10 +28,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="span3">企画者</div><div class="span9"><a href="${member.profile_url}">${member.name}</a></div>
   </div>
   <div class="row">
-    <div class="span3">開催日時</div><div class="span9">${open_date}</div>
-  </div>
-  <div class="row">
-    <div class="span3">開催日時補足</div><div class="span9">${open_date_comment}</div>
+    <div class="span3">開催日時</div><div class="span9">${open_date} ${open_date_comment}</div>
   </div>
   <div class="row">
     <div class="span3">開催場所</div><div class="span9">${area}</div>
@@ -49,6 +46,9 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     {{each images}}
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
+  </div>
+  <div class="row">
+    <div class="gadget_header">コメント</div>
   </div>
   <div class="row" id="commentForm">
     {{if isCreatableComment }}
