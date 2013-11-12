@@ -75,9 +75,12 @@ $(function(){
   })
 })
 </script>
+
+<?php if ($isTopicCreatable): ?>
 <div class="row">
   <a href="<?php echo public_path('communityTopic/new').'/'.$id ?>" class="btn span11"><?php echo __('Create a new topic');?></a>
 </div>
+<?php endif; ?>
 <hr class="toumei"/>
 <div class="row">
   <div class="gadget_header span12"><?php echo __('List of topics of this community'); ?></div>

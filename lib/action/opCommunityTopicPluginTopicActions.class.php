@@ -71,6 +71,8 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeSmtListCommunity($request)
   {
     $this->id = $this->community->getId();
+    $this->isTopicCreatable = $this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add');
+
     return sfView::SUCCESS;
   }
 
