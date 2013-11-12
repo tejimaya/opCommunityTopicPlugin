@@ -25,6 +25,8 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     if ('join' == $action || 'memberList' == $action)
     {
       $this->forward400If(!$this->getRequest()->getParameter('id'), 'event id is not specified');
+      $this->event = Doctrine::getTable('CommunityEvent')->findOneById($this->getRequest()->getParameter('id'));
+      $this->forward400If(!$this->event, 'requested event does not exist');
     }
 
     $this->member = $this->getUser()->getMember();
@@ -63,22 +65,18 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   public function executeJoin(sfWebRequest $request)
   {
     $eventId = $request['id'];
-    if(!$event = Doctrine::getTable('CommunityEvent')->findOneById($eventId))
-    {
-      $this->forward400('requested event does not exist');
-    }
 
     $eventMember = Doctrine::getTable('CommunityEventMember')
       ->retrieveByEventIdAndMemberId($eventId, $this->member->getId());
 
-    if (isset($request['leave']))
+    $flag = $request->getParameter('leave');
+    if ($flag && 'true' === $flag)
     {
       if (!$eventMember)
       {
         $this->forward400('You can\'t leave this event.');
       }
       $eventMember->delete();
-      $this->events = null;
     }
     else
     {
@@ -92,8 +90,6 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       $eventMember->setMemberId($this->member->getId());
 
       $eventMember->save();
-
-      $this->events = array($event);
     }
   }
 
