@@ -65,7 +65,6 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   public function executeJoin(sfWebRequest $request)
   {
     $eventId = $request['id'];
-
     $eventMember = Doctrine::getTable('CommunityEventMember')
       ->retrieveByEventIdAndMemberId($eventId, $this->member->getId());
 
@@ -80,16 +79,18 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     }
     else
     {
-      if ($eventMember)
+      try
       {
-        $this->forward400('You are already this event member.');
+        if ($eventMember)
+        {
+          throw new Exception('You are already this event member.');
+        }
+        $this->event->toggleEventMember($this->member->getId());
       }
-
-      $eventMember = new CommunityEventMember();
-      $eventMember->setCommunityEventId($eventId);
-      $eventMember->setMemberId($this->member->getId());
-
-      $eventMember->save();
+      catch (Exception $e)
+      {
+        $this->forward400($e->getMessage());
+      }
     }
   }
 

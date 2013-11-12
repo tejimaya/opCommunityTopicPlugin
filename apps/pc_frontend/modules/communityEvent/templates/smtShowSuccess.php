@@ -37,7 +37,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
   </div>
   <div class="row">
-    <div class="span3">募集人数</div><div class="span9">{{if capacity}}${capacity}{{else}}0{{/if}}</div>
+    <div class="span3">募集人数</div><div class="span9">${capacity}</div>
   </div>
   <div class="row">
   <div class="span3">参加人数</div><div class="span9" id="participants">${participants} {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
@@ -59,7 +59,13 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
         {{if is_event_member}}
           <button class=" btn btn-primary btn-mini comment-button " id="postCancel">参加をキャンセルする</button>
         {{else}}
-          <button class=" btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+          {{if !capacity}}
+            <button class=" btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+          {{else}}
+            {{if capacity - participants > 0}}
+              <button class=" btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+            {{/if}}
+          {{/if}}
         {{/if}}
         <button class=" btn btn-primary btn-mini comment-button " id="postComment">コメントのみ書き込む</button>
       </div>
