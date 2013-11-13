@@ -5,20 +5,23 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'las
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/functions.js', 'last');
+op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.js', 'last');
 ?>
+
 <script id="topicEntry" type="text/x-jquery-tmpl">
   <div class="row">
     <div class="gadget_header span12">トピック</div>
   </div>
   <div class="row">
     {{if editable}}
-    <h3 class="span9">${name}</h3>
-    <div class="btn-group span3">
-      <a href="<?php echo public_path('communityTopic/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
-      <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
-    </div>
+      <h3 class="span9">${name}</h3>
+      <div class="btn-group span3">
+        <a href="<?php echo public_path('communityTopic/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
+        <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
+      </div>
     {{else}}
-    <h3 class="span12">${name}</h3>
+      <h3 class="span12">${name}</h3>
     {{/if}}
   </div>
   <div class="row body">
@@ -33,16 +36,17 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div class="gadget_header">コメント</div>
   </div>
   <div class="row" id="commentForm">
-    {{if isCreatableComment }}
-          <div class="comment-wrapper">
-            <div id="required" class="hide"><?php echo __('Required.') ?></div>
-            <divclass="comment-form">
-            <input class="comment-form-input" type="text" id="commentBody" /><input type="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="コメント投稿">
-            </div>
-            <div class="comment-form-loader">
-              <?php echo op_image_tag('ajax-loader.gif', array()) ?>
-            </div>
-          </div>
+    {{if isCommentCreatable }}
+      <div class="comment-wrapper">
+        <div id="required" class="hide"><?php echo __('Required.') ?></div>
+        <divclass="comment-form">
+        <input class="comment-form-input" type="text" id="commentBody" />
+        <input type="submit" name="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="コメント投稿">
+        </div>
+        <div class="comment-form-loader">
+          <?php echo op_image_tag('ajax-loader.gif', array()) ?>
+        </div>
+      </div>
     {{/if}}
   </div>
   <div class="row comments" id="comments">
@@ -66,19 +70,19 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
         </span>
         </div>
         {{if images}}
-        <div class="row">
-          <div class="span11 images center">
-            {{each images}}
-              <div class="span2"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
-            {{/each}}
+          <div class="row">
+            <div class="span11 images center">
+              {{each images}}
+                <div class="span2"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
+              {{/each}}
+            </div>
           </div>
-        </div>
         {{/if}}
       </div>
       <div class="comment-control row">
         <span>${$item.calcTimeAgo()}</span>
         {{if deletable}}
-        <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
+          <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
         {{/if}}
       </div>
     </div>
@@ -88,95 +92,22 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 <script type="text/javascript">
 var topic_id = <?php echo $id ?>;
 var comment_count = 0;
-var isCreatableComment = <?php echo (int)$isCreatableComment ?>
-
-function _timeAgo(created_at){
-  return moment(created_at, 'YYYY-MM-DD HH:mm:ss').fromNow();
-}
-
-function getEntry(params)
-{
-  params = {} || params;
-  params.target = 'topic';
-  params.target_id = topic_id;
-  params.apiKey = openpne.apiKey;
-
-  $('#loading').show();
-  $.getJSON( openpne.apiBase + 'topic/search.json',
-    params,
-    function(json)
-    {
-      var entry = $('#topicEntry').tmpl(json.data);
-      $('#show').html(entry);
-      getComments();
-    }
-  );
-
-}
-
-function getComments(params){
-  params = params || {};
-  params.community_topic_id = topic_id;
-  params.apiKey = openpne.apiKey;
-
-  $.getJSON( openpne.apiBase + 'topic_comment/search.json',
-    params,
-    function(res)
-    {
-      if (0 == res.data.length)
-      {
-        $('#loadmore').hide();
-      }
-      else
-      {
-        comment_count += res.data.length;
-        $('#loadmore').attr('x-since-id', res.data[0].id).show();
-        res.data.reverse();
-        var comments = $('#topicComment').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return _timeAgo(this.data.created_at);
-          }
-        });
-        $('#comments').append(comments);
-
-        if (res.data_count - comment_count == 0)
-        {
-          $('#loadmore').hide();
-        }
-      }
-
-      $('#loading').hide();
-    }
-  );
-}
-
-function showModal(modal){
-  var windowHeight = window.outerHeight > $(window).height() ? window.outerHeight : $(window).height();
-  $('.modal-backdrop').css({'position': 'absolute','top': '0', 'height': windowHeight});
-
-  var scrollY = window.scrollY;
-  var viewHeight = window.innerHeight ? window.innerHeight : $(window).height();
-  var modalTop = scrollY + ((viewHeight - modal.height()) / 2 );
-
-  modal.css('top', modalTop);
-}
+var comment_page = 1;
+var isCommentCreatable = <?php echo (int)$isCommentCreatable ?>
 
 $(function(){
-  getEntry();
+
+  getEntry( getParams('topic') );
 
   $(document).on('click', '#loadmore', function()
   {
-    var params = {
-      since_id: $(this).attr('x-since-id')
-    };
-    getComments(params);
-  })
+    var params = getParams('topic_comment_search');
+    params.page = comment_page;
+    getComments( params );
+  });
 
   $(document).on('click', '#deleteEntry', function(e){
-    $('#deleteEntryModal')
-      .on('shown', function(e)
-      {
+    $('#deleteEntryModal').on('shown', function(e){
         showModal($(this));
         return this;
       })
@@ -184,38 +115,18 @@ $(function(){
 
     e.preventDefault();
     return false;
-  })
+  });
 
   $('#deleteEntryModal .modal-button').click(function(e){
     if(e.target.id == 'execute')
     {
-      var params = {
-        apiKey: openpne.apiKey,
-        id: topic_id,
-      };
-
-      $.post(openpne.apiBase + "topic/delete.json",
-        params,
-        'json'
-      )
-      .success(
-        function(res)
-        {
-          window.location = '/communityTopic/listCommunity/' + res.data.community_id;
-        }
-      )
-      .error(
-        function(res)
-        {
-          console.log(res);
-        }
-      )
+      deleteTopic( getParams('topic_delete') );
     }
     else
     {
       $('#deleteEntryModal').modal('hide');
     };
-  })
+  });
 
   $(document).on('click', '#postComment',function(){
     if (0 >= jQuery.trim($('input#commentBody').val()).length)
@@ -223,45 +134,9 @@ $(function(){
       $('#required').show();
       return -1;
     }
-    $('input[name=submit]').toggle();
-    var params = {
-      apiKey: openpne.apiKey,
-      community_topic_id: topic_id,
-      body: $('input#commentBody').val()
-    };
 
-    $.post(openpne.apiBase + "topic_comment/post.json",
-      params,
-      'json'
-    )
-    .success(
-      function(res)
-      {
-        $('#required').hide();
-        var postedComment = $('#topicComment').tmpl(res.data,
-                            {
-                              calcTimeAgo: function(){
-                                return _timeAgo(this.data.created_at);
-                              }
-                            });
-
-        $('#comments').prepend(postedComment);
-        $('input#commentBody').val('');
-      }
-    )
-    .error(
-      function(res)
-      {
-        console.log(res);
-      }
-    )
-    .complete(
-      function(res)
-      {
-        $('input[name=submit]').toggle();
-      }
-    );
-  })
+    postTopicComment(getParams('topic_comment_post'));
+  });
 
   $(document).on('click', '.deleteComment',function(e){
     $('#deleteCommentModal')
@@ -280,43 +155,16 @@ $(function(){
   $('#deleteCommentModal .modal-button').click(function(e){
     if(e.target.id == 'execute')
     {
-      var params = {
-        apiKey: openpne.apiKey,
-        id: $("#deleteCommentModal").attr('data-comment-id'),
-      };
-
-      $.post(openpne.apiBase + "topic_comment/delete.json",
-        params,
-        'json'
-      )
-      .success(
-        function(res)
-        {
-          $('#comment'+res.data.id).remove();
-        }
-      )
-      .error(
-        function(res)
-        {
-          console.log(res);
-        }
-      )
-      .complete(
-        function(res)
-        {
-          $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
-        }
-      );
+      deleteTopicComment( getParams('topic_comment_delete') );
     }
-    else
-    {
-      $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
-    };
+
+    $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
   });
 
 })
 
 </script>
+
 <div class="row">
   <div id="show"></div>
 </div>
@@ -351,6 +199,7 @@ $(function(){
     <button class="btn btn-primary modal-button" id="execute"><?php echo __('Delete');?></button>
   </div>
 </div>
+<!-- Modal end -->
 
 <ul class="footer">
   <li>

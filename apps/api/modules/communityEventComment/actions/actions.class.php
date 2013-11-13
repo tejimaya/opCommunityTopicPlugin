@@ -34,26 +34,25 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
   public function executeSearch(sfWebRequest $request)
   {
     $event = $this->getViewableEvent($request['community_event_id'], $this->member->getId());
-    $limit = isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15);
+    $options = $this->getOptions($request);
 
     $query = Doctrine::getTable('CommunityEventComment')->createQuery('c')
       ->where('community_event_id = ?', $event->getId())
-      ->orderBy('created_at DESC')
-      ->limit($limit);
+      ->orderBy('created_at DESC');
 
     $this->count = $query->count();
 
-    if(isset($request['max_id']))
+    if($options['max_id'])
     {
-      $query->addWhere('id <= ?', $request['max_id']);
+      $query->addWhere('id <= ?', $options['max_id']);
     }
 
-    if(isset($request['since_id']))
+    if($options['since_id'])
     {
-      $query->addWhere('id < ?', $request['since_id']);
+      $query->addWhere('id < ?', $options['since_id']);
     }
 
-    $this->comments = $query->execute();
+    $this->comments = $this->getPager('CommunityEventComment', $query, $options['page'], $options['limit'])->getResults();
   }
 
   public function executePost(sfWebRequest $request)

@@ -194,4 +194,14 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
     return $topics;
   }
+
+  protected function getPager($tableName, $query, $page = 1, $size = 15)
+  {
+    $pager = new sfDoctrinePager($tableName, $size);
+    $pager->setQuery($query);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
 }
