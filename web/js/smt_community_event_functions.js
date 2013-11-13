@@ -28,7 +28,7 @@ function getParams(target) { //{{{
   return params;
 } //}}}
 
-function getEntry(params) //{{{
+function getEntry(params, error) //{{{
 {
   var params = params || getParams('event_search');
 
@@ -39,6 +39,9 @@ function getEntry(params) //{{{
     {
       $('#show').html( $('#eventEntry').tmpl(json.data) );
       getComments();
+      if (error) {
+        $(error).show();
+      }
     }
   );
 } //}}}
@@ -138,6 +141,7 @@ function postEventJoin(params) { //{{{
     function(res)
     {
       console.log(res);
+      getEntry( getParams('event_search'), '#comment-error' );
     }
   )
 } //}}}

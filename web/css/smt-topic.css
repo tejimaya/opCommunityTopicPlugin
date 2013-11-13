@@ -114,6 +114,10 @@
   color: red;
 }
 
+#comment-error {
+  color: red;
+}
+
 .footer {
   margin-top: 20px;
 }

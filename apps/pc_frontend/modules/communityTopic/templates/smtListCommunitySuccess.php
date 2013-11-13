@@ -14,7 +14,6 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
     <div>
       {{if latest_comment}}
         {{html $item.truncateComment()}}
-        <a href="<?php echo public_path('communityTopic'); ?>/${id}#${latest_comment_id}" class="readmore">続き</a>
       {{else}}
         <span class="muted">（まだコメントはありません）</span>
       {{/if}}

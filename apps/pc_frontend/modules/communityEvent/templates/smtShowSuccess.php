@@ -9,19 +9,12 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/functions.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.js', 'last');
 ?>
 <script id="eventEntry" type="text/x-jquery-tmpl">
+  <!-- //event information -->
   <div class="row">
     <div class="gadget_header span12">イベント</div>
   </div>
   <div class="row">
-    {{if editable}}
-      <h3 class="span9">${name}</h3>
-      <div class="btn-group span3">
-        <a href="<?php echo public_path('communityEvent/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
-        <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
-      </div>
-    {{else}}
-      <h3 class="span12">${name}</h3>
-    {{/if}}
+    <h3 class="span12">${name}</h3>
   </div>
   <div class="row body">
     <div class="span12 body">{{html body}}</div>
@@ -49,13 +42,16 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
       <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
     {{/each}}
   </div>
+  <!-- //end event information -->
   <div class="row">
     <div class="gadget_header">コメント</div>
   </div>
+  <!-- //commetn form -->
   <div class="row" id="commentForm">
     {{if isCommentCreatable }}
       <div class="comment-wrapper">
       <div id="required" class="hide"><?php echo __('Required.') ?></div>
+      <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
         <input class="event-comment-form-input" type="text" id="commentBody" />
         <div class="btn-toolbar">
           {{if is_event_member}}
@@ -77,6 +73,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
       </div>
     {{/if}}
   </div>
+  <!-- //commetn form end -->
   <div class="row comments" id="comments">
   </div>
   <div class="row">
