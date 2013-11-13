@@ -121,3 +121,9 @@
 .footer {
   margin-top: 20px;
 }
+
+#new-topic-link {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  text-align: right;
+}

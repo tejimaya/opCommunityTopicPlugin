@@ -26,6 +26,10 @@
         <source>Edit the topic</source>
         <target>トピックを編集する</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>List of events of this community</source>
+        <target>イベント一覧</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

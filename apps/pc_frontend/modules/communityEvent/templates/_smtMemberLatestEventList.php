@@ -1,37 +1,21 @@
 <?php
 use_helper('Javascript', 'opUtil', 'opAsset');
-op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
-op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
-op_smt_use_javascript('/opCommunityTopicPlugin/js/gadget.js', 'last');
 ?>
-<script id="eventEntry" type="text/x-jquery-tmpl">
-<div class="row">
-  <div class="span3">${$item.calcTimeAgo()}</div>
-  <div class="span9"><a href="<?php echo public_path('communityEvent')?>/${id}">${name}</a> (${community_name})</div>
-</div>
-</script>
-
-<script type="text/javascript">
-$(function(){
-  var params = {
-    apiKey: openpne.apiKey,
-    format: 'mini',
-    target: 'member',
-    target_id: <?php echo $memberId ?>,
-    count: 4
-  }
-
-  gadget.search(params, 'event');
-})
-</script>
-
 <hr class="toumei" />
 <div class="row">
   <div class="gadget_header span12">コミュニティイベント一覧</div>
 </div>
 <hr class="toumei" />
 <div id="eventList" style="margin-left: 0px;">
-</div>
-
-<div class="row hide" id="eventreadmore">
+<?php foreach ($communityEvents as $key => $communityEvent): ?>
+  <div class="row">
+    <div class="span3">
+      <?php echo op_format_date($communityEvent->getUpdatedAt(), 'XShortDateJa'); ?>
+    </div>
+    <div class="span9">
+    <?php echo link_to(sprintf('%s', op_truncate($communityEvent->getName(), 36)), '@communityEvent_show?id='.$communityEvent->getId()) ?>
+    (<?php echo $communityEvent->getCommunity()->getName() ?>)
+    </div>
+  </div>
+<?php endforeach; ?>
 </div>
