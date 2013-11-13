@@ -195,11 +195,23 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     return $topics;
   }
 
-  protected function getPager($tableName, $query, $page = 1, $size = 15)
+  protected function getPager($tableName, $query, $options)
   {
+    $size = ('all' === $options['page']) ? null : $options['limit'];
+
+    if($options['max_id'])
+    {
+      $query->addWhere('id <= ?', $options['max_id']);
+    }
+
+    if($options['since_id'])
+    {
+      $query->addWhere('id < ?', $options['since_id']);
+    }
+
     $pager = new sfDoctrinePager($tableName, $size);
     $pager->setQuery($query);
-    $pager->setPage($page);
+    $pager->setPage($options['page']);
     $pager->init();
 
     return $pager;

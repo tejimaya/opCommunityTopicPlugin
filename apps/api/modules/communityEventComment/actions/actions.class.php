@@ -41,18 +41,7 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
       ->orderBy('created_at DESC');
 
     $this->count = $query->count();
-
-    if($options['max_id'])
-    {
-      $query->addWhere('id <= ?', $options['max_id']);
-    }
-
-    if($options['since_id'])
-    {
-      $query->addWhere('id < ?', $options['since_id']);
-    }
-
-    $this->comments = $this->getPager('CommunityEventComment', $query, $options['page'], $options['limit'])->getResults();
+    $this->comments = $this->getPager('CommunityEventComment', $query, $options)->getResults();
   }
 
   public function executePost(sfWebRequest $request)
