@@ -45,15 +45,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
       if ('event' == $target)
       {
-        if (!$this->isAllow($object, $this->member, 'view'))
-        {
-          $this->forward400('you are not allowed to view event on this community');
-        }
-        //$object->actAs('opIsCreatableCommunityTopicBehavior');
-        //if (!$object->isViewableCommunityTopic($object->getCommunity(), $this->member->getId()))
-        //{
-        //  $this->forward400('you are not allowed to view event on this community');
-        //}
+        $this->forward400If(!$this->isAllowed($object, $this->member, 'view'), 'you are not allowed to view event on this community');
         $this->events[] = $object;
         $this->count = 1;
       }

@@ -24,7 +24,7 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
     $action = $this->getRequest()->getParameter('action');
     if ('search' == $action || 'post' == $action)
     {
-      $this->forward400If('' === (string)$this->getRequest()->getParameter('community_event_id'), 'community_event_id parameter is not specified.');
+      $this->forward400If(!$this->getRequest()->getParameter('community_event_id'), 'community_event_id parameter is not specified.');
     }
 
     $this->member = $this->getUser()->getMember();
@@ -36,7 +36,7 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
     $event = $this->getViewableEvent($request['community_event_id'], $this->member);
     $options = $this->getOptions($request);
 
-    $query = Doctrine::getTable('CommunityEventComment')->createQuery('c')
+    $query = Doctrine::getTable('CommunityEventComment')->createQuery()
       ->where('community_event_id = ?', $event->getId())
       ->orderBy('created_at DESC');
 
