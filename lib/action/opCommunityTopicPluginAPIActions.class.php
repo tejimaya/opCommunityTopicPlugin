@@ -77,7 +77,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
   protected function getViewableTopic($id, $memberId)
   {
-    $topic = getTopicByTopicId($id);
+    $topic = $this->getTopicByTopicId($id);
     if ($topic)
     {
       $topic->actAs('opIsCreatableCommunityTopicBehavior');

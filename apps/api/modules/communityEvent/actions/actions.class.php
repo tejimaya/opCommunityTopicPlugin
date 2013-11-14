@@ -35,7 +35,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    $events = array();
+    $this->events = array();
     try
     {
       $target = $this->getValidTarget($request);
