@@ -127,3 +127,7 @@
   margin-bottom: 5px;
   text-align: right;
 }
+
+.row .topic_information {
+  margin-left: 10px;
+}

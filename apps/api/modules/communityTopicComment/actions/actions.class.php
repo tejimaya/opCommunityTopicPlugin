@@ -47,6 +47,10 @@ class communityTopicCommentActions extends opCommunityTopicPluginAPIActions
   public function executePost(sfWebRequest $request)
   {
     $this->forward400If('' === (string)$request['body'], 'body parameter is not specified.');
+    if ($limit = sfConfig::get('app_smt_comment_post_limit'))
+    {
+      $this->forward400If(mb_strlen($request['body']) > $limit, 'body parameter is too long');
+    }
 
     $comment = new CommunityTopicComment();
     $comment->setMemberId($this->member->getId());

@@ -11,7 +11,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
 
 <script id="topicEntry" type="text/x-jquery-tmpl">
   <div class="row">
-    <div class="gadget_header span12">トピック</div>
+    <div class="gadget_header span12"><?php echo __('Topic') ?></div>
   </div>
   <div class="row">
     {{if editable}}
@@ -24,8 +24,15 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
       <h3 class="span12">${name}</h3>
     {{/if}}
   </div>
-  <div class="row body">
-    <div class="span12">{{html body}}</div>
+  <div class="row topic_information">
+    <div class="row author">
+      <div class="span12">
+        <a href="<?php echo public_path('member') ?>/${member.id}">${member.screen_name}</a>
+      </div>
+    </div>
+    <div class="row body">
+      <div class="span12">{{html body}}</div>
+    </div>
   </div>
   <div class="row images center">
     {{each images}}
@@ -33,12 +40,14 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
     {{/each}}
   </div>
   <div class="row">
-    <div class="gadget_header">コメント</div>
+    <div class="gadget_header"><?php echo __('Comment') ?></div>
   </div>
+  <!-- //comment form -->
   <div class="row" id="commentForm">
     {{if isCommentCreatable }}
       <div class="comment-wrapper">
         <div id="required" class="hide"><?php echo __('Required.') ?></div>
+        <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
         <divclass="comment-form">
         <input class="comment-form-input" type="text" id="commentBody" />
         <input type="submit" name="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="コメント投稿">
@@ -49,6 +58,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
       </div>
     {{/if}}
   </div>
+  <!-- //comment form end -->
   <div class="row comments" id="comments">
   </div>
   <div class="row">

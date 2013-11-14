@@ -95,6 +95,7 @@ function deleteTopic(params) { //{{{
 
 function postTopicComment(params) { //{{{
   toggleSubmitState();
+  $('#comment-error').hide();
   $.post(openpne.apiBase + "topic_comment/post.json",
     params,
     'json'
@@ -117,6 +118,7 @@ function postTopicComment(params) { //{{{
   .error(
     function(res)
     {
+      $('#comment-error').show();
       console.log(res);
     }
   )

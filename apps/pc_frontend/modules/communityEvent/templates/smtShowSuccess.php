@@ -44,7 +44,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
   </div>
   <!-- //end event information -->
   <div class="row">
-    <div class="gadget_header">コメント</div>
+    <div class="gadget_header"><?php echo __('Comment') ?></div>
   </div>
   <!-- //commetn form -->
   <div class="row" id="commentForm">

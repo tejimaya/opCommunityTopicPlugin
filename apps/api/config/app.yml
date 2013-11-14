@@ -1,2 +1,3 @@
 all:
   json_api_limit: 15
+  smt_comment_post_limit: 250

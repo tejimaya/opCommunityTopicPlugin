@@ -42,7 +42,7 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
     $this->communityTopics = Doctrine::getTable('CommunityTopic')->createQuery('t')
       ->where('community_id = ?', $communityId)
       ->orderBy('topic_updated_at DESC')
-      ->limit(4)
+      ->limit(sfConfig::get('app_smt_community_topic_community_gadget_limit'), 4)
       ->execute();
 
     return sfView::SUCCESS;
@@ -73,7 +73,7 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
 
   public function executeSmtMemberLatestTopicList($request)
   {
-    $this->communityTopics = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($this->getUser()->getMemberId(), 4);
+    $this->communityTopics = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($this->getUser()->getMemberId(), sfConfig::get('app_smt_community_topic_community_gadget_limit'), 4);
 
     return sfView::SUCCESS;
   }
