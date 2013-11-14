@@ -31,7 +31,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   protected function getOptions($request)
   {
     return array(
-      'limit' => isset($request['count']) ? $request['count'] : sfConfig::get('op_json_api_limit', 15),
+      'limit' => isset($request['count']) ? $request['count'] : sfConfig::get('app_json_api_limit', 15),
       'max_id' => $request['max_id'] ? $request['max_id'] : null,
       'since_id' => $request['since_id'] ? $request['since_id'] : null,
       'page' => $request->getParameter('page', 1),
