@@ -1,14 +1,22 @@
 <?php
 class opCommunityTopicPluginAPIActions extends opJsonApiActions
 {
-  protected function getValidTarget($request)
+  protected function getValidTarget(sfWebRequest $request)
   {
     switch ($request['target'])
     {
-      case 'community': $table = 'Community';break;
-      case 'member': $table = 'Member';break;
-      case 'event': $table = 'CommunityEvent';break;
-      case 'topic': $table = 'CommunityTopic';break;
+      case 'community':
+        $table = 'Community';
+        break;
+      case 'member':
+        $table = 'Member';
+        break;
+      case 'event':
+        $table = 'CommunityEvent';
+        break;
+      case 'topic':
+        $table = 'CommunityTopic';
+        break;
       default:
         throw new Exception('invalid target');
     }

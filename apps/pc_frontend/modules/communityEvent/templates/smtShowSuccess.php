@@ -11,7 +11,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
 <script id="eventEntry" type="text/x-jquery-tmpl">
   <!-- //event information -->
   <div class="row">
-    <div class="gadget_header span12">イベント</div>
+    <div class="gadget_header span12"><?php echo __('Event') ?></div>
   </div>
   <div class="row">
     <h3 class="span12">${name}</h3>
@@ -81,38 +81,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
   </div>
 </script>
 
-<script id="eventComment" type="text/x-jquery-tmpl">
-  <div class="row" id="comment${id}">
-    <div class="span11 comment-wrapper">
-      <div class="comment-member-image">
-        <a href="${member.profile_url}"><img src="${member.profile_image}" alt="{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}" width="23" /></a>
-      </div>
-      <div class="comment-content">
-        <div class="comment-name-and-body">
-        <a href="${member.profile_url}">{{if member.screen_name}} ${member.screen_name} {{else}} ${member.name} {{/if}}</a>
-        <span class="comment-body">
-          {{html body}}
-        </span>
-        </div>
-        {{if images}}
-          <div class="row">
-            <div class="span11 images center">
-              {{each images}}
-                <div class="span2"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
-              {{/each}}
-            </div>
-          </div>
-        {{/if}}
-      </div>
-      <div class="comment-control row">
-        <span>${$item.calcTimeAgo()}</span>
-        {{if deletable}}
-          <a href="javascript:void(0);" class="deleteComment" data-comment-id="${id}"><i class="icon-remove"></i></a>
-        {{/if}}
-      </div>
-    </div>
-  </div>
-</script>
+<?php include_partial('communityTopic/smtCommentBox', array('target' => 'event')) ?>
 
 <script type="text/javascript">
 var event_id = <?php echo $id ?>;
@@ -199,19 +168,7 @@ $(function(){
 </div>
 
 <!-- Modal -->
-<div class="modal hide" id="deleteCommentModal">
-  <div class="modal-header">
-    <h5><?php echo __('Delete the comment');?></h5>
-  </div>
-  <div class="modal-body">
-    <p class="center"><?php echo __('Do you really delete this comment?');?></p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn modal-button" id="cancel"><?php echo __('Cancel ');?></button>
-    <button class="btn btn-primary modal-button" id="execute"><?php echo __('Delete');?></button>
-  </div>
-</div>
-<!-- Modal end -->
+<?php include_partial('communityTopic/modal') ?>
 
 <ul class="footer">
   <li>

@@ -69,9 +69,7 @@
 }
 
 .comment-form {
-  width: 285px;
   padding: 5px;
-  border-top: 1px solid #DDD;
 }
 
 .comment-form-loader {
