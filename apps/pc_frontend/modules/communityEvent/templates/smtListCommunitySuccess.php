@@ -29,6 +29,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/lang/ja.js', 'last');
 </script>
 
 <script type="text/javascript">
+var count = 0;
 function getList(params)
 {
   $('#loading').show();
@@ -53,7 +54,15 @@ function getList(params)
           }
         });
         $('#list').append(entry);
-        $('#loadmore').show();
+        count += json.data.length;
+        if (count < json.data_count)
+        {
+          $('#loadmore').show();
+        }
+        else
+        {
+          $('#loadmore').hide();
+        }
       }
       $('#loading').hide();
     }

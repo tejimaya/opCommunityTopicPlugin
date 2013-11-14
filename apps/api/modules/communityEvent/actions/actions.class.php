@@ -42,14 +42,15 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       $options = $this->getOptions($request);
       if ('event' == $target)
       {
-        $events[] = $this->getViewableEvent($request['target_id'], $this->member->getId());
+        $this->events[] = $this->getViewableEvent($request['target_id'], $this->member->getId());
+        $this->count = 1;
       }
       else
       {
-        $events = $this->getEvents($target, $request['target_id'], $options);
+        $pager = $this->getEventsPager($target, $request['target_id'], $options);
+        $this->events = $pager->getResults();
+        $this->count = $pager->count();
       }
-
-      $this->events = $events;
     }
     catch (Exception $e)
     {

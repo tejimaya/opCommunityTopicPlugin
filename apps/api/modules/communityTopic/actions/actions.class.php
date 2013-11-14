@@ -78,14 +78,15 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
       $options = $this->getOptions($request);
       if ('topic' == $target)
       {
-        $topics[] = $this->getViewableTopic($request['target_id'], $this->member->getId());
+        $this->topics[] = $this->getViewableTopic($request['target_id'], $this->member->getId());
+        $this->count = 1;
       }
       else
       {
-        $topics = $this->getTopics($target, $request['target_id'], $options);
+        $pager = $this->getTopicsPager($target, $request['target_id'], $options);
+        $this->topics = $pager->getResults();
+        $this->count = $pager->count();
       }
-
-      $this->topics = $topics;
     }
     catch (Exception $e)
     {

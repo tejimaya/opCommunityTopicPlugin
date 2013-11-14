@@ -28,4 +28,5 @@ if (isset($events[0]['id']))
 return array(
   'status' => 'success',
   'data' => $data,
+  'data_count' => $count,
 );

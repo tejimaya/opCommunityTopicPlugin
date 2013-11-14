@@ -3,27 +3,29 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 {
   protected function getValidTarget($request)
   {
-    if (!isset($request['target']))
+    switch ($request['target'])
     {
-      throw new Exception('target is not specified');
+      case 'community': $table = 'Community';break;
+      case 'member': $table = 'Member';break;
+      case 'event': $table = 'CommunityEvent';break;
+      case 'topic': $table = 'CommunityTopic';break;
+      default:
+        throw new Exception('invalid target');
     }
 
-    if (!isset($request['target_id']) || '' == $request['target_id'])
+    if ($targetId = $request->getParameter('target_id'))
+    {
+      if (!Doctrine::getTable($table)->findOneById($targetId))
+      {
+        throw new Exception('requested '.$request['target'].' does not exist');
+      }
+    }
+    else
     {
       throw new Exception($request['target'].'_id is not specified');
     }
 
-    switch ($request['target'])
-    {
-      case 'community':
-      case 'member':
-      case 'event':
-      case 'topic':
-        return $request['target'];
-        break;
-      default:
-        throw new Exception('invalid target');
-    }
+    return $request['target'];
   }
 
   protected function getOptions($request)
@@ -75,7 +77,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
   protected function getViewableTopic($id, $memberId)
   {
-    $topic = $this->getTopicByTopicId($id);
+    $topic = getTopicByTopicId($id);
     if ($topic)
     {
       $topic->actAs('opIsCreatableCommunityTopicBehavior');
@@ -116,7 +118,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       ->where('community_id = ?', $targetId)
       ->orderBy('event_updated_at DESC');
 
-    return $this->getPager('CommunityEvent', $query, $options)->getResults();
+    return $this->getPager('CommunityEvent', $query, $options);
   }
 
   protected function searchTopicsByCommunityId($targetId, $options)
@@ -125,53 +127,48 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       ->where('community_id = ?', $targetId)
       ->orderBy('topic_updated_at DESC');
 
-    return $this->getPager('CommunityTopic', $query, $options)->getResults();
+    return $this->getPager('CommunityTopic', $query, $options);
   }
 
-  protected function getEvents($target, $targetId, $options)
+  protected function getEventsPager($target, $targetId, $options)
   {
-    $events = array();
-
     if ('community' == $target)
     {
-      $events = $this->searchEventsByCommunityId($targetId, $options);
+      $pager = $this->searchEventsByCommunityId($targetId, $options);
     }
     elseif ('member' == $target)
     {
-      if (!$member = Doctrine::getTable('Member')->findOneById($targetId))
-      {
-        throw new Exception('target_id is invalid');
-      }
-
-      $events = Doctrine::getTable('CommunityEvent')->retrivesByMemberId($member->getId(), $options['limit']);
+      $communityIds = Doctrine::getTable('Community')->getIdsByMemberId($targetId);
+      $query = Doctrine::getTable('CommunityEvent')->createQuery()
+        ->whereIn('community_id', $communityIds)
+        ->orderBy('updated_at DESC');
+      $pager = $this->getPager('CommunityEvent', $query, $options);
     }
 
-    return $events;
+    return $pager;
   }
 
-  protected function getTopics($target, $targetId, $options)
+  protected function getTopicsPager($target, $targetId, $options)
   {
-    $topic = array();
-
     if ('community' == $target)
     {
-      $topics = $this->searchTopicsByCommunityId($targetId, $options);
+      $pager = $this->searchTopicsByCommunityId($targetId, $options);
     }
     elseif ('member' == $target)
     {
-      if (!$member = Doctrine::getTable('Member')->findOneById($targetId))
-      {
-        $this->forward400('target_id is invalid');
-      }
-      $topics = Doctrine::getTable('CommunityTopic')->retrivesByMemberId($member->getId(), $options['limit']);
+      $communityIds = Doctrine::getTable('Community')->getIdsByMemberId($targetId);
+      $query = Doctrine::getTable('CommunityTopic')->createQuery()
+        ->whereIn('community_id', $communityIds)
+        ->orderBy('updated_at DESC');
+      $pager = $this->getPager('CommunityTopic', $query, $options);
     }
 
-    return $topics;
+    return $pager;
   }
 
   protected function getPager($tableName, $query, $options)
   {
-    $size = ('all' === $options['page']) ? null : $options['limit'];
+    $limit = ('all' === $options['page']) ? null : $options['limit'];
 
     if($options['max_id'])
     {
@@ -183,7 +180,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
       $query->addWhere('id > ?', $options['since_id']);
     }
 
-    $pager = new sfDoctrinePager($tableName, $size);
+    $pager = new sfDoctrinePager($tableName, $limit);
     $pager->setQuery($query);
     $pager->setPage($options['page']);
     $pager->init();

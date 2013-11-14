@@ -25,4 +25,5 @@ if (count($topics))
 return array(
   'status' => 'success',
   'data' => $data,
+  'data_count' => $count,
 );
