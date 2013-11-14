@@ -33,7 +33,7 @@ class communityEventCommentActions extends opCommunityTopicPluginAPIActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    $event = $this->getViewableEvent($request['community_event_id'], $this->member->getId());
+    $event = $this->getViewableEvent($request['community_event_id'], $this->member);
     $options = $this->getOptions($request);
 
     $query = Doctrine::getTable('CommunityEventComment')->createQuery('c')

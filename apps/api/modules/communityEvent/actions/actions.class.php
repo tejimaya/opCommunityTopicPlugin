@@ -38,11 +38,23 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
     $this->events = array();
     try
     {
-      $target = $this->getValidTarget($request);
+      $target = $request->getParameter('target');
+      $this->forward400If('topic' === $target, 'invalid target');
+      $object = $this->getTargetObject($target, $request['target_id']);
       $options = $this->getOptions($request);
+
       if ('event' == $target)
       {
-        $this->events[] = $this->getViewableEvent($request['target_id'], $this->member->getId());
+        if (!$this->isAllow($object, $this->member, 'view'))
+        {
+          $this->forward400('you are not allowed to view event on this community');
+        }
+        //$object->actAs('opIsCreatableCommunityTopicBehavior');
+        //if (!$object->isViewableCommunityTopic($object->getCommunity(), $this->member->getId()))
+        //{
+        //  $this->forward400('you are not allowed to view event on this community');
+        //}
+        $this->events[] = $object;
         $this->count = 1;
       }
       else
@@ -52,7 +64,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
         $this->count = $pager->count();
       }
     }
-    catch (Exception $e)
+    catch (opCommunityTopicAPIRuntimeException $e)
     {
       $this->forward400($e->getMessage());
     }
@@ -84,11 +96,11 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       {
         if ($eventMember)
         {
-          throw new Exception('You are already this event member.');
+          throw new opCommunityTopicAPIRuntimeException('You are already this event member.');
         }
         $this->event->toggleEventMember($this->member->getId());
       }
-      catch (Exception $e)
+      catch (opCommunityTopicAPIRuntimeException $e)
       {
         $this->forward400($e->getMessage());
       }

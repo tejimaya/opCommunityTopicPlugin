@@ -33,7 +33,7 @@ class communityTopicCommentActions extends opCommunityTopicPluginAPIActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    $topic = $this->getViewableTopic($request['community_topic_id'], $this->member->getId());
+    $topic = $this->getViewableTopic($request['community_topic_id'], $this->member);
     $options = $this->getOptions($request);
 
     $query = Doctrine::getTable('CommunityTopicComment')->createQuery('c')

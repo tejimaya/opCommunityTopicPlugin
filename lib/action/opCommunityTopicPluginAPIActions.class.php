@@ -1,9 +1,9 @@
 <?php
 class opCommunityTopicPluginAPIActions extends opJsonApiActions
 {
-  protected function getValidTarget(sfWebRequest $request)
+  protected function getTargetObject($target, $targetId)
   {
-    switch ($request['target'])
+    switch ($target)
     {
       case 'community':
         $table = 'Community';
@@ -18,22 +18,20 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
         $table = 'CommunityTopic';
         break;
       default:
-        throw new Exception('invalid target');
+        throw new opCommunityTopicAPIRuntimeException('invalid target');
     }
 
-    if ($targetId = $request->getParameter('target_id'))
+    if (!$targetId)
     {
-      if (!Doctrine::getTable($table)->findOneById($targetId))
-      {
-        throw new Exception('requested '.$request['target'].' does not exist');
-      }
-    }
-    else
-    {
-      throw new Exception($request['target'].'_id is not specified');
+      throw new opCommunityTopicAPIRuntimeException('target_id is not specified');
     }
 
-    return $request['target'];
+    if (!$object = Doctrine::getTable($table)->findOneById($targetId))
+    {
+      throw new opCommunityTopicAPIRuntimeException($target.' does not exist');
+    }
+
+    return $object;
   }
 
   protected function getOptions($request)
@@ -46,58 +44,40 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     );
   }
 
-  protected function getEventByEventId($id)
+  protected function getViewableEvent($id, Member $member)
   {
-    if (!$event = Doctrine::getTable('CommunityEvent')->findOneById($id))
+    try
     {
-      $this->forward400('the specified event does not exist.');
+      $event = $this->getTargetObject('event', $id);
+      if (!$this->isAllowed($event, $member, 'view'))
+      {
+        throw new opCommunityTopicAPIRuntimeException('you are not allowed to view event on this community');
+      }
+    }
+    catch (opCommunityTopicAPIRuntimeException $e)
+    {
+      $this->forward400($e->getMessage());
     }
 
     return $event;
   }
 
-  protected function getTopicByTopicId($id)
+  protected function getViewableTopic($id, Member $member)
   {
-    if (!$topic = Doctrine::getTable('CommunityTopic')->findOneById($id))
+    try
     {
-      $this->forward400('the specified topic does not exist.');
+      $topic = $this->getTargetObject('topic', $id);
+      if (!$this->isAllowed($topic, $member, 'view'))
+      {
+        throw new opCommunityTopicAPIRuntimeException('you are not allowed to view event on this community');
+      }
+    }
+    catch (opCommunityTopicAPIRuntimeException $e)
+    {
+      $this->forward400($e->getMessage());
     }
 
     return $topic;
-  }
-
-  protected function getViewableEvent($id, $memberId)
-  {
-    $event = $this->getEventByEventId($id);
-    if ($event)
-    {
-      $event->actAs('opIsCreatableCommunityTopicBehavior');
-      if(!$event->isViewableCommunityTopic($event->getCommunity(), $memberId))
-      {
-        $this->forward400('you are not allowed to view event on this community');
-      }
-
-      return $event;
-    }
-
-    return false;
-  }
-
-  protected function getViewableTopic($id, $memberId)
-  {
-    $topic = $this->getTopicByTopicId($id);
-    if ($topic)
-    {
-      $topic->actAs('opIsCreatableCommunityTopicBehavior');
-      if (!$topic->isViewableCommunityTopic($topic->getCommunity(), $memberId))
-      {
-        $this->forward400('you are not allowed to view this topic and comments on this community');
-      }
-
-      return $topic;
-    }
-
-    return false;
   }
 
   protected function isValidNameAndBody($name, $body)
@@ -120,29 +100,14 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     }
   }
 
-  protected function searchEventsByCommunityId($targetId, $options)
-  {
-    $query = Doctrine::getTable('CommunityEvent')->createQuery()
-      ->where('community_id = ?', $targetId)
-      ->orderBy('event_updated_at DESC');
-
-    return $this->getPager('CommunityEvent', $query, $options);
-  }
-
-  protected function searchTopicsByCommunityId($targetId, $options)
-  {
-    $query = Doctrine::getTable('CommunityTopic')->createQuery('t')
-      ->where('community_id = ?', $targetId)
-      ->orderBy('topic_updated_at DESC');
-
-    return $this->getPager('CommunityTopic', $query, $options);
-  }
-
   protected function getEventsPager($target, $targetId, $options)
   {
     if ('community' == $target)
     {
-      $pager = $this->searchEventsByCommunityId($targetId, $options);
+      $query = Doctrine::getTable('CommunityEvent')->createQuery()
+        ->where('community_id = ?', $targetId)
+        ->orderBy('event_updated_at DESC');
+      $pager = $this->getPager('CommunityEvent', $query, $options);
     }
     elseif ('member' == $target)
     {
@@ -160,7 +125,11 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     if ('community' == $target)
     {
-      $pager = $this->searchTopicsByCommunityId($targetId, $options);
+      $query = Doctrine::getTable('CommunityTopic')->createQuery()
+        ->where('community_id = ?', $targetId)
+        ->orderBy('topic_updated_at DESC');
+
+      $pager = $this->getPager('CommunityTopic', $query, $options);
     }
     elseif ('member' == $target)
     {
@@ -194,5 +163,19 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
     $pager->init();
 
     return $pager;
+  }
+
+  protected function isAllowed(opDoctrineRecord $object, Member $member, $action)
+  {
+    if ($object instanceof Community)
+    {
+      $acl = opCommunityTopicAclBuilder::buildCollection($object, array($this->member));
+    }
+    elseif ($object instanceof CommunityTopic || $object instanceof CommunityEvent)
+    {
+      $acl = opCommunityTopicAclBuilder::buildResource($object, array($this->member));
+    }
+
+    return $acl->isAllowed($this->member->getId(), null, $action);
   }
 }

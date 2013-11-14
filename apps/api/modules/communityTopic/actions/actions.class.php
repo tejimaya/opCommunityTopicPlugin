@@ -26,37 +26,49 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
 
   public function executePost(sfWebRequest $request)
   {
-    $this->forward400If('' === (string)$request['id'] && '' === (string)$request['community_id'], 'community_id parameter is not specified.');
-    $this->isValidNameAndBody($request['name'], $request['body']);
-
-    if(isset($request['id']) && '' !== $request['id'])
+    try
     {
-      $topic = $this->getTopicByTopicId($request['id']);
+      $topicId = $request->getParameter('id');
+      $communityId = $request->getParameter('community_id');
+      $this->isValidNameAndBody($request['name'], $request['body']);
+
+      if($topicId)
+      {
+        $topic = $this->getTargetObject('topic', $topicId);
+      }
+      else
+      {
+        $this->forward400If(!$communityId, 'community_id parameter is not specified.');
+        $topic = new CommunityTopic();
+        $topic->setMemberId($this->member->getId());
+        $topic->setCommunityId($communityId);
+      }
+
+      $this->forward400If(!$this->isAllowed($topic->getCommunity(), $this->member, 'add'), 'you are not allowed to create or update topics on this community');
+
+      $topic->setName($request['name']);
+      $topic->setBody($request['body']);
+      $topic->save();
     }
-    else
+    catch (opCommunityTopicAPIRuntimeException $e)
     {
-      $topic = new CommunityTopic();
-      $topic->setMemberId($this->member->getId());
-      $topic->setCommunityId($request['community_id']);
+      $this->forward400($e->getMessage());
     }
-
-    $topic->actAs('opIsCreatableCommunityTopicBehavior');
-    $this->forward400If(false === $topic->isCreatableCommunityTopic($topic->getCommunity(), $this->member->getId()), 'you are not allowed to create or update topics on this community');
-
-    $topic->setName($request['name']);
-    $topic->setBody($request['body']);
-    $topic->save();
 
     $this->topic = $topic;
   }
 
   public function executeDelete(sfWebRequest $request)
   {
-    $this->forward400If(!isset($request['id']) || '' === (string)$request['id'], 'a topic id is not specified');
+    try
+    {
+      $topic = $this->getTargetObject('topic', $request['id']);
+    }
+    catch (opCommunityTopicAPIRuntimeException $e)
+    {
+      $this->forward400($e->getMessage());
+    }
 
-    $topic = $this->getTopicByTopicId($request['id']);
-
-    $topic->actAs('opIsCreatableCommunityTopicBehavior');
     $this->forward400If(!$topic->isEditable($this->member->getId()), 'you are not allowed to delete this topic');
 
     $isDeleted = $topic->delete();
@@ -74,11 +86,17 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
     $this->topics = array();
     try
     {
-      $target = $this->getValidTarget($request);
+      $target = $request->getParameter('target');
+      $this->forward400If('event' === $target, 'invalid target');
+      $object = $this->getTargetObject($target, $request['target_id']);
       $options = $this->getOptions($request);
       if ('topic' == $target)
       {
-        $this->topics[] = $this->getViewableTopic($request['target_id'], $this->member->getId());
+        if (!$this->isAllowed($object, $this->member, 'view'))
+        {
+          $this->forward400('you are not allowed to view topic on this community');
+        }
+        $this->topics[] = $object;
         $this->count = 1;
       }
       else
@@ -88,7 +106,7 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
         $this->count = $pager->count();
       }
     }
-    catch (Exception $e)
+    catch (opCommunityTopicAPIRuntimeException $e)
     {
       $this->forward400($e->getMessage());
     }
