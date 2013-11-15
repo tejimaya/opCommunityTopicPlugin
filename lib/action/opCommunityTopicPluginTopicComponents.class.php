@@ -39,7 +39,7 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
   {
     $communityId = $request->getParameter('id');
     $this->community = Doctrine::getTable('Community')->findOneById($communityId);
-    $this->communityTopics = Doctrine::getTable('CommunityTopic')->createQuery('t')
+    $this->communityTopics = Doctrine::getTable('CommunityTopic')->createQuery()
       ->where('community_id = ?', $communityId)
       ->orderBy('topic_updated_at DESC')
       ->limit(sfConfig::get('app_smt_community_topic_community_gadget_limit'), 4)

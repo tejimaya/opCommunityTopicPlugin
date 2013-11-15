@@ -90,12 +90,10 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
       $this->forward400If('event' === $target, 'invalid target');
       $object = $this->getTargetObject($target, $request['target_id']);
       $options = $this->getOptions($request);
+
       if ('topic' == $target)
       {
-        if (!$this->isAllowed($object, $this->member, 'view'))
-        {
-          $this->forward400('you are not allowed to view topic on this community');
-        }
+        $this->forward400If(!$this->isAllowed($object, $this->member, 'view'), 'you are not allowed to view topic on this community');
         $this->topics[] = $object;
         $this->count = 1;
       }

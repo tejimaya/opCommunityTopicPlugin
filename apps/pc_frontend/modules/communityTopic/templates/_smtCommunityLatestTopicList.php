@@ -25,9 +25,9 @@ $count = $communityTopics->count();
 </div>
 
 <?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
-<div class="row" id="new-topic-link">
-<?php echo link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId()) ?>
-</div>
+  <div class="row" id="new-topic-link">
+  <?php echo link_to(__('Create a new topic'), '@communityTopic_new?id='.$community->getId()) ?>
+  </div>
 <?php endif; ?>
 <?php if ($count): ?>
   <div class="row" id="topicreadmore">
