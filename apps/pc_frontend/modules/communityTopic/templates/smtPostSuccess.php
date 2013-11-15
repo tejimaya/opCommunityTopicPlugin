@@ -58,17 +58,17 @@ function execute()
         window.location.href = window.location.origin + '/communityTopic/' + res.data.id
       },
     error: function(res) {
-        if (res.responseText.match('name parameter is not specified.'))
+        if (res.responseText.match('name parameter is not specified'))
         {
-          alert('タイトルが空欄です。');
+          $('#error').show().html('タイトルが空欄です。')
         }
-        else if (res.responseText.match('body parameter is not specified.'))
+        else if (res.responseText.match('body parameter is not specified'))
         {
-          alert('本文が空欄です。');
+          $('#error').show().html('本文が空欄です。')
         }
         else
         {
-          alert('トピック作成に失敗しました。');
+          $('#error').show().html('トピック作成に失敗しました。')
           console.log(res)
         }
 
@@ -91,6 +91,7 @@ $(function(){
     <form>
     <input type="hidden" name="id" id="id" value="<?php echo $topicId ?>"/>
     <input type="hidden" name="community_id" id="community_id" value="<?php echo $communityId ?>"/>
+    <p id="error" class="row hide" style="color:red"></p>
     <label class="control-label span12"><?php echo __('Title') ?></label>
     <input type="text" name="name" id="topic_name" class="span12" value="<?php echo $topicName ?>">
     <label class="control-label span12"><?php echo __('Body') ?></label>

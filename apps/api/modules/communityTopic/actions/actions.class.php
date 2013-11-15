@@ -30,7 +30,7 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
     {
       $topicId = $request->getParameter('id');
       $communityId = $request->getParameter('community_id');
-      $this->isValidNameAndBody($request['name'], $request['body']);
+      $this->isValidNameAndBody($request->getParameter('name'), $request->getParameter('body'));
 
       if($topicId)
       {

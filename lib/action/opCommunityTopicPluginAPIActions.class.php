@@ -82,14 +82,9 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
   protected function isValidNameAndBody($name, $body)
   {
-    if (!$name || !$body)
-    {
-      $this->forward400('name and body parameter required');
-    }
-
     try
     {
-      $validator = new opValidatorString(array('trim' => true));
+      $validator = new opValidatorString(array('trim' => true, 'required' => true));
       $cleanName = $validator->clean($name);
       $cleanBody = $validator->clean($body);
     }
