@@ -10,60 +10,66 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
 ?>
 
 <script id="topicEntry" type="text/x-jquery-tmpl">
-  <div class="row">
-    <div class="gadget_header span12"><?php echo __('Topic') ?></div>
-  </div>
-  <div class="row">
-    {{if editable}}
-      <h3 class="span9">${name}</h3>
-      <div class="btn-group span3">
-        <a href="<?php echo public_path('communityTopic/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
-        <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
-      </div>
-    {{else}}
-      <h3 class="span12">${name}</h3>
-    {{/if}}
-  </div>
-  <div class="row topic_information">
-    <div class="row author">
-      <div class="span12">
-        <a href="<?php echo public_path('member') ?>/${member.id}">${member.screen_name}</a>
-      </div>
+  <!-- //topic -->
+  <div id="topic">
+    <div class="row">
+      <div class="gadget_header span12"><?php echo __('Topic') ?></div>
     </div>
-    <div class="row body">
-      <div class="span12">{{html body}}</div>
-    </div>
-  </div>
-  <div class="row images center">
-    {{each images}}
-      <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
-    {{/each}}
-  </div>
-  <div class="row">
-    <div class="gadget_header"><?php echo __('Comment') ?></div>
-  </div>
-  <!-- //comment form -->
-  <div class="row" id="commentForm">
-    {{if isCommentCreatable }}
-      <div class="comment-wrapper">
-        <div id="required" class="hide"><?php echo __('Required.') ?></div>
-        <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
-        <div class="comment-form">
-          <input class="comment-form-input" type="text" id="commentBody" />
-          <input type="submit" name="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="コメント投稿">
-        </div>
-        <div class="comment-form-loader">
-          <?php echo op_image_tag('ajax-loader.gif', array()) ?>
+    <div class="row topic_information">
+      <div class="row title">
+        <h3 class="span9">${name}</h3>
+        {{if editable}}
+          <div class="btn-group span3">
+            <a href="<?php echo public_path('communityTopic/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
+            <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
+          </div>
+        {{/if}}
+      </div>
+      <div class="row author">
+        <div class="span12">
+          <a href="<?php echo public_path('member') ?>/${member.id}">${member.screen_name}</a>
         </div>
       </div>
-    {{/if}}
+      <div class="row body">
+        <div class="span12">{{html body}}</div>
+      </div>
+      <div class="row images center">
+        {{each images}}
+          <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
+        {{/each}}
+      </div>
+    </div>
   </div>
-  <!-- //comment form end -->
-  <div class="row comments" id="comments">
+  <!-- //topic end -->
+  <!-- //comment -->
+  <div id="comment">
+    <div class="row">
+      <div class="gadget_header"><?php echo __('Comment') ?></div>
+    </div>
+    <!-- //comment form -->
+    <div class="row" id="commentForm">
+      {{if isCommentCreatable }}
+        <div class="comment-wrapper">
+          <div id="required" class="hide"><?php echo __('Required.') ?></div>
+          <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
+          <div class="comment-form">
+            <input class="comment-form-input" type="text" id="commentBody" />
+            <input type="submit" name="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="<?php echo __('Post a new topic comment') ?>">
+          </div>
+          <div class="comment-form-loader">
+            <?php echo op_image_tag('ajax-loader.gif', array()) ?>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <!-- //comment form end -->
+    <div class="row comments" id="comments">
+    </div>
+    <div class="row">
+      <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
+    </div>
   </div>
-  <div class="row">
-    <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
-  </div>
+  <!-- //comment end -->
 </script>
 
 <?php include_partial('communityTopic/smtCommentBox', array('target' => 'topic')) ?>

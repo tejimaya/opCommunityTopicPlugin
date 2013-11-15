@@ -133,7 +133,7 @@ function postEventJoin(params) { //{{{
         $('#postCancel').attr({id: 'postJoin'}).html('このイベントに参加する');
       }
       else {
-        $('#postJoin').attr({id: 'postCancel'}).html('参加をキャンセルする');
+        $('#postJoin').attr({id: 'postCancel'}).html('参加を取り消す');
       }
     }
   )

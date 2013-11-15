@@ -9,76 +9,78 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/functions.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.js', 'last');
 ?>
 <script id="eventEntry" type="text/x-jquery-tmpl">
-  <!-- //event information -->
-  <div class="row">
-    <div class="gadget_header span12"><?php echo __('Event') ?></div>
+  <!-- //event -->
+  <div id="event">
+    <div class="row">
+      <div class="gadget_header span12"><?php echo __('Event') ?></div>
+    </div>
+    <div class="row">
+      <h3 class="span12">${name}</h3>
+    </div>
+    <div class="row body">
+      <div class="span12 body">{{html body}}</div>
+    </div>
+    <div class="row">
+      <div class="span3">企画者</div><div class="span9"><a href="${member.profile_url}">${member.name}</a></div>
+    </div>
+    <div class="row">
+      <div class="span3">開催日時</div><div class="span9">${open_date} ${open_date_comment}</div>
+    </div>
+    <div class="row">
+      <div class="span3">開催場所</div><div class="span9">${area}</div>
+    </div>
+    <div class="row">
+      <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
+    </div>
+    <div class="row">
+      <div class="span3">募集人数</div><div class="span9">${capacity}</div>
+    </div>
+    <div class="row">
+    <div class="span3">参加人数</div><div class="span9" id="participants">${participants} {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
+    </div>
+    <div class="row images center">
+      {{each images}}
+        <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
+      {{/each}}
+    </div>
   </div>
-  <div class="row">
-    <h3 class="span12">${name}</h3>
-  </div>
-  <div class="row body">
-    <div class="span12 body">{{html body}}</div>
-  </div>
-  <div class="row">
-    <div class="span3">企画者</div><div class="span9"><a href="${member.profile_url}">${member.name}</a></div>
-  </div>
-  <div class="row">
-    <div class="span3">開催日時</div><div class="span9">${open_date} ${open_date_comment}</div>
-  </div>
-  <div class="row">
-    <div class="span3">開催場所</div><div class="span9">${area}</div>
-  </div>
-  <div class="row">
-    <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
-  </div>
-  <div class="row">
-    <div class="span3">募集人数</div><div class="span9">${capacity}</div>
-  </div>
-  <div class="row">
-  <div class="span3">参加人数</div><div class="span9" id="participants">${participants} {{if 0 < participants}}(<a href="${id}/memberList">参加者一覧</a>){{/if}}</div>
-  </div>
-  <div class="row images center">
-    {{each images}}
-      <div class="span4"><a href="${$value.filename}" target="_blank">{{html $value.imagetag}}</a></div>
-    {{/each}}
-  </div>
-  <!-- //end event information -->
-  <div class="row">
-    <div class="gadget_header"><?php echo __('Comment') ?></div>
-  </div>
-  <!-- //commetn form -->
-  <div class="row" id="commentForm">
-    {{if isCommentCreatable }}
-      <div class="comment-wrapper">
-      <div id="required" class="hide"><?php echo __('Required.') ?></div>
-      <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
-        <input class="event-comment-form-input" type="text" id="commentBody" />
-        <div class="btn-toolbar">
-          {{if is_event_member}}
-            <button class="btn btn-primary btn-mini comment-button " id="postCancel">参加をキャンセルする</button>
-          {{else}}
-            {{if !capacity}}
-              <button class="btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+  <!-- //event end -->
+  <!-- //comment -->
+  <div id="comment">
+    <div class="row">
+      <div class="gadget_header"><?php echo __('Comment') ?></div>
+    </div>
+    <!-- //commetn form -->
+    <div class="row" id="commentForm">
+      {{if isCommentCreatable }}
+        <div class="comment-wrapper">
+          <div id="required" class="hide"><?php echo __('Required.') ?></div>
+          <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
+          <input class="event-comment-form-input" type="text" id="commentBody" />
+          <div class="btn-toolbar">
+            {{if is_event_member}}
+              <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel') ?></button>
             {{else}}
-              {{if capacity - participants > 0}}
-                <button class="btn btn-primary btn-mini comment-button " id="postJoin">このイベントに参加する</button>
+              {{if !capacity || capacity - participants > 0}}
+                <button class="btn btn-primary btn-mini comment-button " id="postJoin"><?php echo __('Participate in this event') ?></button>
               {{/if}}
             {{/if}}
-          {{/if}}
-          <button class="btn btn-primary btn-mini comment-button " id="postComment">コメントのみ書き込む</button>
+            <button class="btn btn-primary btn-mini comment-button " id="postComment"><?php echo __('Add a comment only') ?></button>
+          </div>
+          <div class="comment-form-loader">
+            <?php echo op_image_tag('ajax-loader.gif', array()) ?>
+          </div>
         </div>
-        <div class="comment-form-loader">
-          <?php echo op_image_tag('ajax-loader.gif', array()) ?>
-        </div>
-      </div>
-    {{/if}}
+      {{/if}}
+    </div>
+    <!-- //commetn form end -->
+    <div class="row comments" id="comments">
+    </div>
+    <div class="row">
+      <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
+    </div>
   </div>
-  <!-- //commetn form end -->
-  <div class="row comments" id="comments">
-  </div>
-  <div class="row">
-    <button class="span12 btn small hide" id="loadmore"><?php echo __('More'); ?></button>
-  </div>
+  <!-- //comment end -->
 </script>
 
 <?php include_partial('communityTopic/smtCommentBox', array('target' => 'event')) ?>
