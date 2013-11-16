@@ -30,138 +30,134 @@ function getParams(target) { //{{{
 
 function getEntry(params, error) //{{{
 {
-  var params = params || getParams('event_search');
+  var success = function (res) {
+    $('#show').html( $('#eventEntry').tmpl(res.data) );
+    getComments();
+    if (error) {
+      $(error).show();
+    }
+  }
 
   $('#loading').show();
-  $.getJSON( openpne.apiBase + 'event/search.json',
-    params,
-    function(json)
-    {
-      $('#show').html( $('#eventEntry').tmpl(json.data) );
-      getComments();
-      if (error) {
-        $(error).show();
-      }
-    }
-  );
+
+  ajax({
+    url: 'event/search.json',
+    data: params || getParams('event_search'),
+    success: success,
+  });
 } //}}}
 
 function getComments(params){ //{{{
-  var params = params || getParams('event_comment_search');
-
-  $.getJSON( openpne.apiBase + 'event_comment/search.json',
-    params,
-    function(res)
+  var success = function (res) {
+    if (0 == res.data.length)
     {
-      if (0 == res.data.length)
+      $('#loadmore').hide();
+    }
+    else
+    {
+      comment_count += res.data.length;
+      $('#loadmore').attr('x-since-id', res.data[0].id).show();
+      res.data.reverse();
+      var comments = $('#eventComment').tmpl(res.data,
+      {
+        calcTimeAgo: function(){
+          return _timeAgo(this.data.created_at);
+        }
+      });
+      $('#comments').append(comments);
+
+      if (res.data_count - comment_count == 0)
       {
         $('#loadmore').hide();
       }
-      else
-      {
-        comment_count += res.data.length;
-        $('#loadmore').attr('x-since-id', res.data[0].id).show();
-        res.data.reverse();
-        var comments = $('#eventComment').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return _timeAgo(this.data.created_at);
-          }
-        });
-        $('#comments').append(comments);
-
-        if (res.data_count - comment_count == 0)
-        {
-          $('#loadmore').hide();
-        }
-      }
-
-      $('#loading').hide();
-      comment_page++
     }
-  );
+
+    $('#loading').hide();
+    comment_page++
+  };
+
+  ajax({
+    url: 'event_comment/search.json',
+    data: params || getParams( 'event_comment_search' ),
+    success: success,
+  });
 } //}}}
 
 function postEventComment(params) { //{{{
   toggleSubmitState();
-  $.post(openpne.apiBase + "event_comment/post.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      $('#required').hide();
-      var postedComment = $('#eventComment').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return _timeAgo(this.data.created_at);
-          }
-        });
+  var success = function (res) {
+    $('#required').hide();
+    var postedComment = $('#eventComment').tmpl(res.data,
+      {
+        calcTimeAgo: function(){
+          return _timeAgo(this.data.created_at);
+        }
+      });
 
-        $('#comments').prepend(postedComment);
-        $('input#commentBody').val('');
-      }
-    )
-  .error(
-    function(res)
-    {
-      console.log(res);
-    }
-  )
-  .complete(toggleSubmitState);
+    $('#comments').prepend(postedComment);
+    $('input#commentBody').val('');
+  }
+  ajax({
+    url: 'event_comment/post.json',
+    data: params,
+    type: 'POST',
+    success: success,
+    complete: toggleSubmitState,
+  })
 } //}}}
 
 function postEventJoin(params) { //{{{
-  $.post(openpne.apiBase + "event/join.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      postEventComment( getParams('event_comment_post') );
+  var success = function (res) {
+    postEventComment( getParams('event_comment_post') );
 
-      if (res.data[0].participants) {
-        $('#participants').html(res.data[0].participants + '(<a href="${id}/memberList">参加者一覧</a>)')
-      }
-      else {
-        $('#participants').html(res.data[0].participants);
-      }
+    if (res.data[0].participants) {
+      $('#participants').html(res.data[0].participants + '(<a href="${id}/memberList">参加者一覧</a>)')
+    }
+    else {
+      $('#participants').html(res.data[0].participants);
+    }
 
-      if (!res.data[0].is_event_member) {
-        $('#postCancel').attr({id: 'postJoin'}).html('このイベントに参加する');
-      }
-      else {
-        $('#postJoin').attr({id: 'postCancel'}).html('参加を取り消す');
-      }
+    if (!res.data[0].is_event_member) {
+      $('#postCancel').attr({id: 'postJoin'}).html('このイベントに参加する');
     }
-  )
-  .error(
-    function(res)
-    {
-      console.log(res);
-      getEntry( getParams('event_search'), '#comment-error' );
+    else {
+      $('#postJoin').attr({id: 'postCancel'}).html('参加を取り消す');
     }
-  )
+  }
+
+  var error = function (res) {
+    console.log(res);
+    getEntry( getParams('event_search'), '#comment-error' );
+  }
+
+  ajax({
+    url: 'event/join.json',
+    type: 'POST',
+    data: params,
+    success: success,
+    error: error,
+  })
 } //}}}
 
 function deleteComment(params) { //{{{
-  $.post(openpne.apiBase + "event_comment/delete.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      $('#comment'+res.data.id).remove();
-    }
-  )
-  .error(
-    function(res)
-    {
-      console.log(res);
-    }
+  ajax({
+    url: 'event_comment/delete.json',
+    data: params,
+    type: 'POST',
+    success: function (res) { $('#comment' + res.data.id).remove(); },
+  })
+} //}}}
+
+function ajax(args) { //{{{
+  $.ajax({
+    url: openpne.apiBase + args.url,
+    type: args.type || 'GET',
+    data: args.data,
+    dataType: 'json',
+    success: args.success,
+    error: args.error || function (res) { console.log(res); },
+    complete: args.complete,
+  }
   );
 } //}}}
 

@@ -26,17 +26,16 @@ function getParams(target) { //{{{
 
 function getEntry(params) { //{{{
   var success = function (res) {
-    $('#show').html($('#topicEntry').tmpl(res.data));
+    $('#show').html( $('#topicEntry').tmpl(res.data) );
     getComments();
-  }
+  };
 
-  var args = {
+  $('#loading').show();
+  ajax({
     url: 'topic/search.json',
     data: params || getParams('topic_search'),
     success: success,
-  }
-  $('#loading').show();
-  ajax(args);
+  });
 } //}}}
 
 function getComments(params) { //{{{
@@ -68,26 +67,24 @@ function getComments(params) { //{{{
     comment_page++;
   }
 
-  var args = {
+  ajax({
     url: 'topic_comment/search.json',
     data: params || getParams('topic_comment_search'),
     success: success,
-  };
-
-  ajax(args);
+  });
 } //}}}
 
 function deleteTopic(params) { //{{{
   var success = function (res) {
     window.location = '/communityTopic/listCommunity/' + res.data.community_id;
   }
-  var args = {
+
+  ajax({
     url: 'topic/delete.json',
     type: 'POST',
     data: params,
     success: success,
-  };
-  ajax(args);
+  });
 } //}}}
 
 function postTopicComment(params) { //{{{
@@ -112,25 +109,23 @@ function postTopicComment(params) { //{{{
     console.log(res);
   }
 
-  var args = {
+  ajax({
     url: 'topic_comment/post.json',
     data: params,
     type: 'POST',
     success: success,
     error: error,
     complete: toggleSubmitState,
-  }
-  ajax(args);
+  });
 } //}}}
 
 function deleteTopicComment(params) { //{{{
-  var args = {
+  ajax({
     url: 'topic_comment/delete.json',
     type: 'POST',
     data: params,
     success: function(res) { $('#comment' + res.data.id).remove(); },
-  };
-  ajax(args);
+  });
 } //}}}
 
 function ajax(args) { //{{{
@@ -142,8 +137,7 @@ function ajax(args) { //{{{
     success: args.success,
     error: args.error || function (res) { console.log(res); },
     complete: args.complete,
-  }
-  );
+  });
 } //}}}
 
 function toggleSubmitState() { //{{{

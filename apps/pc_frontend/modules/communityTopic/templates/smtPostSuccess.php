@@ -39,6 +39,17 @@ function toggleSubmitState()
 
 function execute()
 {
+  if (0 >= jQuery.trim($('input#topic_name').val()).length)
+  {
+    $('#error').show().html('タイトルを入力してください。');
+    return -1;
+  }
+  else if (0 >= jQuery.trim($('textarea#topic_body').val()).length)
+  {
+    $('#error').show().html('本文を入力してください。');
+    return -1;
+  }
+
   toggleSubmitState();
   var params = getParams();
 
@@ -55,21 +66,21 @@ function execute()
           $('#topic_body').val('');
         }
 
-        window.location.href = window.location.origin + '/communityTopic/' + res.data.id
+        window.location.href = window.location.origin + '/communityTopic/' + res.data.id;
       },
     error: function(res) {
         if (res.responseText.match('name parameter is not specified'))
         {
-          $('#error').show().html('タイトルが空欄です。')
+          $('#error').show().html('タイトルが空欄です。');
         }
         else if (res.responseText.match('body parameter is not specified'))
         {
-          $('#error').show().html('本文が空欄です。')
+          $('#error').show().html('本文が空欄です。');
         }
         else
         {
           $('#error').show().html('トピック作成に失敗しました。')
-          console.log(res)
+          console.log(res);
         }
 
         toggleSubmitState();
