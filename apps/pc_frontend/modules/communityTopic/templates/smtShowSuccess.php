@@ -1,6 +1,5 @@
 <?php
 use_helper('opAsset');
-op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
@@ -27,7 +26,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
       </div>
       <div class="row author">
         <div class="span12">
-          <a href="<?php echo public_path('member') ?>/${member.id}">${member.screen_name}</a>
+          <a href="${member.profile_url}">${member.screen_name}</a>
         </div>
       </div>
       <div class="row body">
@@ -91,26 +90,13 @@ $(function(){
     getComments( params );
   });
 
-  $(document).on('click', '#deleteEntry', function(e){
-    $('#deleteEntryModal').on('shown', function(e){
-        showModal($(this));
-        return this;
-      })
-      .modal('show');
-
-    e.preventDefault();
-    return false;
-  });
-
   $('#deleteEntryModal .modal-button').click(function(e){
     if(e.target.id == 'execute')
     {
       deleteTopic( getParams('topic_delete') );
     }
-    else
-    {
-      $('#deleteEntryModal').modal('hide');
-    };
+
+    $('#deleteEntryModal').modal('hide');
   });
 
   $(document).on('click', '#postComment',function(){
@@ -121,20 +107,6 @@ $(function(){
     }
 
     postTopicComment(getParams('topic_comment_post'));
-  });
-
-  $(document).on('click', '.deleteComment',function(e){
-    $('#deleteCommentModal')
-      .attr('data-comment-id', $(this).attr('data-comment-id'))
-      .on('shown', function(e)
-      {
-        showModal($(this));
-        return this;
-      })
-      .modal('show');
-    e.preventDefault();
-
-    return false;
   });
 
   $('#deleteCommentModal .modal-button').click(function(e){
@@ -159,13 +131,13 @@ $(function(){
   </div>
 </div>
 <!-- Modal -->
-<?php include_partial('communityTopic/modal') ?>
+<?php include_partial('communityTopic/modal', array('target' => 'topic')) ?>
 
 <ul class="footer">
   <li>
-    <a href="<?php echo public_path('communityTopic/listCommunity').'/'.$community->getId() ?>"><?php echo __('List of topics') ?></a>
+    <?php echo link_to(__('List of topics'), '@communityTopic_list_community?id='.$community->getId()) ?>
   </li>
   <li>
-    <a href="<?php echo public_path('community').'/'.$community->getId() ?>"><?php echo __('%Community% Top Page') ?></a>
+    <?php echo link_to(__('%Community% Top Page'), '@community_home?id='.$community->getId()) ?>
   </li>
 </ul>

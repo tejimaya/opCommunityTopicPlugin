@@ -1,6 +1,5 @@
 <?php
 use_helper('opAsset');
-op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-modal.js', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/bootstrap-transition.js', 'last');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 op_smt_use_javascript('/opCommunityTopicPlugin/js/moment.min.js', 'last');
@@ -132,34 +131,19 @@ $(function(){
     postEventJoin( getParams('event_join_leave') );
   })
 
-  $(document).on('click', '.deleteComment',function(e){
-    $('#deleteCommentModal')
-      .attr('data-comment-id', $(this).attr('data-comment-id'))
-      .on('shown', function(e)
-      {
-        showModal($(this));
-        return this;
-      })
-      .modal('show');
-    e.preventDefault();
-
-    return false;
-  });
-
   $('#deleteCommentModal .modal-button').click(function(e){
     if(e.target.id == 'execute')
     {
       deleteComment( getParams('event_comment_delete') );
     }
-    else
-    {
-      $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
-    };
+
+    $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
   });
 
 })
 
 </script>
+
 <div class="row">
   <div id="show"></div>
 </div>
@@ -170,13 +154,13 @@ $(function(){
 </div>
 
 <!-- Modal -->
-<?php include_partial('communityTopic/modal') ?>
+<?php include_partial('communityTopic/modal', array('target', 'event')) ?>
 
 <ul class="footer">
   <li>
-    <a href="<?php echo public_path('communityEvent/listCommunity').'/'.$community->getId() ?>"><?php echo __('List of events') ?></a>
+    <?php echo link_to(__('List of events'), '@communityEvent_list_community?id='.$community->getId()) ?>
   </li>
   <li>
-    <a href="<?php echo public_path('community').'/'.$community->getId() ?>"><?php echo __('%Community% Top Page') ?></a>
+    <?php echo link_to(__('%Community% Top Page'), '@community_home?id='.$community->getId()) ?>
   </li>
 </ul>
