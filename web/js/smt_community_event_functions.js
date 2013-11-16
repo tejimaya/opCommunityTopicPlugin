@@ -162,12 +162,6 @@ function deleteComment(params) { //{{{
     {
       console.log(res);
     }
-  )
-  .complete(
-    function(res)
-    {
-      $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
-    }
   );
 } //}}}
 

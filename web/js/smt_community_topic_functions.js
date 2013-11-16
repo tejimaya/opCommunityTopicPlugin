@@ -25,123 +25,125 @@ function getParams(target) { //{{{
 } //}}}
 
 function getEntry(params) { //{{{
-  var params = params || getParams('event_search');
+  var success = function (res) {
+    $('#show').html($('#topicEntry').tmpl(res.data));
+    getComments();
+  }
 
+  var args = {
+    url: 'topic/search.json',
+    data: params || getParams('topic_search'),
+    success: success,
+  }
   $('#loading').show();
-  $.getJSON( openpne.apiBase + 'topic/search.json',
-    params,
-    function(json)
-    {
-      $('#show').html($('#topicEntry').tmpl(json.data));
-      getComments();
-    }
-  );
+  ajax(args);
 } //}}}
 
 function getComments(params) { //{{{
-  var params = params || getParams('topic_comment_search');
-
-  $.getJSON( openpne.apiBase + 'topic_comment/search.json',
-    params,
-    function(res)
+  var success = function (res) {
+    if (0 == res.data.length)
     {
-      if (0 == res.data.length)
+      $('#loadmore').hide();
+    }
+    else
+    {
+      comment_count += res.data.length;
+      $('#loadmore').attr('x-since-id', res.data[0].id).show();
+      res.data.reverse();
+      var comments = $('#topicComment').tmpl(res.data,
+      {
+        calcTimeAgo: function(){
+          return _timeAgo(this.data.created_at);
+        }
+      });
+      $('#comments').append(comments);
+
+      if (res.data_count - comment_count == 0)
       {
         $('#loadmore').hide();
       }
-      else
-      {
-        comment_count += res.data.length;
-        $('#loadmore').attr('x-since-id', res.data[0].id).show();
-        res.data.reverse();
-        var comments = $('#topicComment').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return _timeAgo(this.data.created_at);
-          }
-        });
-        $('#comments').append(comments);
-
-        if (res.data_count - comment_count == 0)
-        {
-          $('#loadmore').hide();
-        }
-      }
-
-      $('#loading').hide();
-      comment_page++;
     }
-  );
+
+    $('#loading').hide();
+    comment_page++;
+  }
+
+  var args = {
+    url: 'topic_comment/search.json',
+    data: params || getParams('topic_comment_search'),
+    success: success,
+  };
+
+  ajax(args);
 } //}}}
 
 function deleteTopic(params) { //{{{
-  $.post(openpne.apiBase + "topic/delete.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      window.location = '/communityTopic/listCommunity/' + res.data.community_id;
-    }
-  )
-  .error(
-    function(res)
-    {
-      console.log(res);
-    }
-  )
+  var success = function (res) {
+    window.location = '/communityTopic/listCommunity/' + res.data.community_id;
+  }
+  var args = {
+    url: 'topic/delete.json',
+    type: 'POST',
+    data: params,
+    success: success,
+  };
+  ajax(args);
 } //}}}
 
 function postTopicComment(params) { //{{{
   toggleSubmitState();
   $('#comment-error').hide();
-  $.post(openpne.apiBase + "topic_comment/post.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      $('#required').hide();
-      var postedComment = $('#topicComment').tmpl(res.data,
-        {
-          calcTimeAgo: function(){
-            return _timeAgo(this.data.created_at);
-          }
-        });
 
-      $('#comments').prepend(postedComment);
-      $('input#commentBody').val('');
-    }
-  )
-  .error(
-    function(res)
-    {
-      $('#comment-error').show();
-      console.log(res);
-    }
-  )
-  .complete(toggleSubmitState);
+  var success = function (res) {
+    $('#required').hide();
+    var postedComment = $('#topicComment').tmpl(res.data,
+      {
+        calcTimeAgo: function(){
+          return _timeAgo(this.data.created_at);
+        }
+      });
+
+    $('#comments').prepend(postedComment);
+    $('input#commentBody').val('');
+  }
+
+  var error = function (res) {
+    $('#comment-error').show();
+    console.log(res);
+  }
+
+  var args = {
+    url: 'topic_comment/post.json',
+    data: params,
+    type: 'POST',
+    success: success,
+    error: error,
+    complete: toggleSubmitState,
+  }
+  ajax(args);
 } //}}}
 
 function deleteTopicComment(params) { //{{{
-  $.post(openpne.apiBase + "topic_comment/delete.json",
-    params,
-    'json'
-  )
-  .success(
-    function(res)
-    {
-      $('#comment'+res.data.id).remove();
-    }
-  )
-  .error(
-    function(res)
-    {
-      console.log(res);
-    }
-  )
+  var args = {
+    url: 'topic_comment/delete.json',
+    type: 'POST',
+    data: params,
+    success: function(res) { $('#comment' + res.data.id).remove(); },
+  };
+  ajax(args);
+} //}}}
+
+function ajax(args) { //{{{
+  $.ajax({
+    url: openpne.apiBase + args.url,
+    type: args.type || 'GET',
+    data: args.data,
+    dataType: 'json',
+    success: args.success,
+    error: args.error || function (res) { console.log(res); },
+    complete: args.complete,
+  }
+  );
 } //}}}
 
 function toggleSubmitState() { //{{{
