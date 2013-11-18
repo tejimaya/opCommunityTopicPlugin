@@ -29,7 +29,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
       <div class="span3">開催場所</div><div class="span9">${area}</div>
     </div>
     <div class="row">
-      <div class="span3">募集期日</div><div class="span9">${$item.getJaDate( application_deadline )}</div>
+      <div class="span3">募集期日</div>
+      <div class="span9">
+      {{if application_deadline}}${$item.getJaDate( application_deadline )}{{/if}}
+      </div>
     </div>
     <div class="row">
       <div class="span3">募集人数</div><div class="span9">${capacity}</div>
@@ -60,7 +63,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
             {{if is_event_member}}
               <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel') ?></button>
             {{else}}
-              {{if $item.isStillApply( application_deadline )}}
+              {{if !application_deadline || $item.isStillApply( application_deadline )}}
                 {{if !capacity || capacity - participants > 0}}
                   <button class="btn btn-primary btn-mini comment-button " id="postJoin"><?php echo __('Participate in this event') ?></button>
                 {{/if}}
