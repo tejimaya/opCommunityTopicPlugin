@@ -36,10 +36,14 @@ function getEntry(params, error) //{{{
         var d = new Date(date.replace(/-/g, '/'));
         return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
       },
-      isApplicationDeadlineOver: function (date) {
+      isStillApply: function (date) {
         var d = new Date(date.replace(/-/g, '/'));
         var today = new Date();
-        return d > today;
+        today.setHours(0)
+        today.setMinutes(0)
+        today.setSeconds(0)
+        today.setMilliseconds(0)
+        return today.getTime() <= d.getTime();
       },
     }
     $('#show').html( $('#eventEntry').tmpl(res.data, options) );

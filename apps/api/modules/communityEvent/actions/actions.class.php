@@ -92,7 +92,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
         }
         $this->event->toggleEventMember($this->member->getId());
       }
-      catch (opCommunityTopicAPIRuntimeException $e)
+      catch (RuntimeException $e)
       {
         $this->forward400($e->getMessage());
       }
