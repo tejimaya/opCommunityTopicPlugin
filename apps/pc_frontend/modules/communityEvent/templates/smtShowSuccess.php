@@ -23,13 +23,13 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
       <div class="span3">企画者</div><div class="span9"><a href="${member.profile_url}">${member.name}</a></div>
     </div>
     <div class="row">
-      <div class="span3">開催日時</div><div class="span9">${open_date} ${open_date_comment}</div>
+      <div class="span3">開催日時</div><div class="span9">${$item.getJaDate( open_date )} ${open_date_comment}</div>
     </div>
     <div class="row">
       <div class="span3">開催場所</div><div class="span9">${area}</div>
     </div>
     <div class="row">
-      <div class="span3">募集期日</div><div class="span9">${application_deadline}</div>
+      <div class="span3">募集期日</div><div class="span9">${$item.getJaDate( application_deadline )}</div>
     </div>
     <div class="row">
       <div class="span3">募集人数</div><div class="span9">${capacity}</div>
@@ -60,8 +60,10 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
             {{if is_event_member}}
               <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel') ?></button>
             {{else}}
-              {{if !capacity || capacity - participants > 0}}
-                <button class="btn btn-primary btn-mini comment-button " id="postJoin"><?php echo __('Participate in this event') ?></button>
+              {{if !$item.isApplicationDeadlineOver( application_deadline )}}
+                {{if !capacity || capacity - participants > 0}}
+                  <button class="btn btn-primary btn-mini comment-button " id="postJoin"><?php echo __('Participate in this event') ?></button>
+                {{/if}}
               {{/if}}
             {{/if}}
             <button class="btn btn-primary btn-mini comment-button " id="postComment"><?php echo __('Add a comment only') ?></button>

@@ -8,8 +8,8 @@ if (isset($events[0]['id']))
 {
   foreach ($events as $event)
   {
-    $event->setOpenDate(op_format_date($event->getOpenDate(), 'D'));
-    $event->setApplicationDeadline(op_format_date($event->getApplicationDeadline(), 'D'));
+    $event->setOpenDate(date($event->getOpenDate()));
+    $event->setApplicationDeadline(date($event->getApplicationDeadline()));
     $_event = op_api_community_event($event);
     $_event['images'] = array('');
     $images = $event->getImages();

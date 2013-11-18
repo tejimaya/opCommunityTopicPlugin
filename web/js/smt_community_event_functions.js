@@ -31,7 +31,18 @@ function getParams(target) { //{{{
 function getEntry(params, error) //{{{
 {
   var success = function (res) {
-    $('#show').html( $('#eventEntry').tmpl(res.data) );
+    var options = {
+      getJaDate: function (date){
+        var d = new Date(date.replace(/-/g, '/'));
+        return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+      },
+      isApplicationDeadlineOver: function (date) {
+        var d = new Date(date.replace(/-/g, '/'));
+        var today = new Date();
+        return d > today;
+      },
+    }
+    $('#show').html( $('#eventEntry').tmpl(res.data, options) );
     getComments();
     if (error) {
       $(error).show();
