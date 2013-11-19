@@ -99,6 +99,14 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
       }
       else
       {
+        if ('community' == $target)
+        {
+          $this->forward400If(!$this->isAllowed($object, $this->member, 'view'), 'you are not allowed to view topic on this community');
+        }
+        elseif ('member' == $target)
+        {
+          $this->forward400If($this->member->getId() !== $object->getId(), 'this is not your member_id');
+        }
         $pager = $this->getTopicsPager($target, $request['target_id'], $options);
         $this->topics = $pager->getResults();
         $this->count = $pager->count();

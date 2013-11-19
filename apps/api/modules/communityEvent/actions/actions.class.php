@@ -51,6 +51,14 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       }
       else
       {
+        if ('community' == $target)
+        {
+          $this->forward400If(!$this->isAllowed($object, $this->member, 'view'), 'you are not allowed to view event on this community');
+        }
+        elseif ('member' == $target)
+        {
+          $this->forward400If($this->member->getId() !== $object->getId(), 'this is not your member_id');
+        }
         $pager = $this->getEventsPager($target, $request['target_id'], $options);
         $this->events = $pager->getResults();
         $this->count = $pager->count();

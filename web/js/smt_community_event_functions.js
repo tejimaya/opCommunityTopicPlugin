@@ -126,7 +126,7 @@ function postEventJoin(params) { //{{{
     postEventComment( getParams('event_comment_post') );
 
     if (res.data[0].participants) {
-      $('#participants').html(res.data[0].participants + '(<a href="${id}/memberList">参加者一覧</a>)')
+      $('#participants').html(res.data[0].participants + '(<a href="' + res.data[0].id + '/memberList">参加者一覧</a>)')
     }
     else {
       $('#participants').html(res.data[0].participants);
