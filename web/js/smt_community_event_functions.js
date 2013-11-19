@@ -122,7 +122,9 @@ function postEventComment(params) { //{{{
 } //}}}
 
 function postEventJoin(params) { //{{{
+  toggleSubmitState();
   var success = function (res) {
+    toggleSubmitState();
     postEventComment( getParams('event_comment_post') );
 
     if (res.data[0].participants) {

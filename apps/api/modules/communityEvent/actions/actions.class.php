@@ -78,6 +78,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
   public function executeJoin(sfWebRequest $request)
   {
     $eventId = $request['id'];
+    $this->forward400If(!$this->isAllowed($this->event, $this->getUser()->getMember(), 'addComment'), 'You are not allowed to join this event');
     $eventMember = Doctrine::getTable('CommunityEventMember')
       ->retrieveByEventIdAndMemberId($eventId, $this->member->getId());
 
@@ -88,6 +89,17 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       {
         $this->forward400('You can\'t leave this event.');
       }
+
+      if ($this->event->isClosed())
+      {
+        $this->forward400('This event has already been finished.');
+      }
+
+      if ($this->event->isExpired())
+      {
+        $this->forward400('This event has already been expired.');
+      }
+
       $eventMember->delete();
     }
     else
@@ -109,6 +121,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
   public function executeMemberList(sfWebRequest $request)
   {
+    $this->forward400If(!$this->isAllowed($this->event, $this->getUser()->getMember(), 'addComment'), 'You are not allowed to view this event');
     $eventId = $request['id'];
 
     $this->eventMembers = Doctrine::getTable('Member')->createQuery('m')

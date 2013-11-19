@@ -142,6 +142,10 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
   {
     $limit = ('all' === $options['page']) ? null : $options['limit'];
 
+    if ($options['max_id'] && $options['since_id'] && $options['max_id'] < $options['since_id'])
+    {
+      throw new opCommunityTopicAPIRuntimeException('please set since_id to max_id or less');
+    }
     if($options['max_id'])
     {
       $query->addWhere('id <= ?', $options['max_id']);
@@ -149,7 +153,7 @@ class opCommunityTopicPluginAPIActions extends opJsonApiActions
 
     if($options['since_id'])
     {
-      $query->addWhere('id > ?', $options['since_id']);
+      $query->addWhere('id >= ?', $options['since_id']);
     }
 
     $pager = new sfDoctrinePager($tableName, $limit);
