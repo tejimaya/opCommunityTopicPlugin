@@ -61,7 +61,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
           <input class="event-comment-form-input" type="text" id="commentBody" />
           <div class="btn-toolbar">
             {{if is_event_member}}
-              <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel') ?></button>
+              <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel to join') ?></button>
             {{else}}
               {{if !application_deadline || $item.isStillApply( application_deadline )}}
                 {{if !capacity || capacity - participants > 0}}

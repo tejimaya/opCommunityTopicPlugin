@@ -95,7 +95,7 @@
         <target>コメントのみ書き込む</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Cancel</source>
+        <source>Cancel to join</source>
         <target>参加を取り消す</target>
       </trans-unit>
       <trans-unit id="">
