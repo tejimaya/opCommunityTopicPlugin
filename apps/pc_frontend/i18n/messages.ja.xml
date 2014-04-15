@@ -218,6 +218,10 @@
         <source>[1]1 topic has new comments|(1,Inf]%1% topics have new comments</source>
         <target>[1,Inf]%1% 件のトピックに新着コメントがあります</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted %Community% Topics By This Member</source>
+        <target>書き込み一覧</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
