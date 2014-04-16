@@ -49,6 +49,8 @@ function op_api_community_topic($topic)
     'member'         => op_api_member($topic->getMember()),
     'body'           => nl2br($topic->getBody()),
     'created_at'     => $topic->getCreatedAt(),
+    'updated_at'     => $topic->getUpdatedAt(),
+    'comment_num'    => $topic->getCommunityTopicComment()->count(),
   );
 }
 
