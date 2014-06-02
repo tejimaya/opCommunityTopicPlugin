@@ -29,3 +29,19 @@ recentCommunityEventComment:
       IsRequired: true
       Default:    5
       Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}
+
+recentCommunityTopicCommentSns:
+  caption:
+    ja_JP: "SNS全体のコミュニティ最新トピックリスト"
+  description:
+    ja_JP: "SNS全体のコミュニティトピックの最新書き込みリストを表示します"
+  component: [communityTopic, topicCommentSnsListBox]
+  config:
+    col:
+      Name:       "col"
+      Caption:    "表示するトピック数"
+      FormType:   "select"
+      ValueType:  "integer"
+      IsRequired: true
+      Default:    5
+      Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}
