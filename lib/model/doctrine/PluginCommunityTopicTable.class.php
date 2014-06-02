@@ -82,6 +82,15 @@ class PluginCommunityTopicTable extends Doctrine_Table
     return $pager;
   }
 
+  public function getRecentlyUpdatedTopicsSns($limit = 5)
+  {
+    return $this->createQuery()
+      ->whereIn('community_id', opCommunityTopicToolkit::getPublicCommunityIdList())
+      ->orderBy('updated_at DESC')
+      ->limit($limit)
+      ->execute();
+  }
+
   public function getSearchQuery($communityId = null, $target = null, $keyword = null)
   {
     $q = $this->createQuery();
