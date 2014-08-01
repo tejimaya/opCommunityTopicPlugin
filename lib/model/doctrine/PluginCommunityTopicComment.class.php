@@ -46,6 +46,7 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     $comments = Doctrine::getTable('CommunityTopicComment')
                 ->createQuery('q')
                 ->where('community_topic_id = ?', $this->getCommunityTopic()->getId())
+                ->andWhere('member_id IS NOT NULL')
                 ->execute();
     $toMembers = array();
     foreach($comments as $comment)
