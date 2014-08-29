@@ -60,5 +60,6 @@
   width: 10em;
 }
 
-
-
+.title .heading .reply {
+  float: right;
+}

@@ -1,3 +1,13 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.reply').click(function() {
+    var element = $('#community_event_comment_body'); 
+    element.val(element.val() + '@' + $(this).attr('value') + "\n");
+    element.focus();
+  })
+})
+</script>
+    
 <?php use_helper('opCommunityTopic'); ?>
 <?php if ($commentPager->getNbResults()) : ?>
 <div class="dparts commentList"><div class="parts">
@@ -20,6 +30,7 @@
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
  <?php echo link_to(__('Delete'), '@communityEvent_comment_delete_confirm?id='.$comment->getId()) ?>
 <?php endif; ?>
+<a class="reply" href="javascript:void(0);" value="<?php echo $comment->Member->name ?>"><?php echo __('Reply') ?></a>
 </p>
 </div>
 <div class="body">
