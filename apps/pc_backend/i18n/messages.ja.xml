@@ -218,6 +218,22 @@
         <source>Notification of %Community% Posting</source>
         <target>%Community%書き込みお知らせメール</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>%Community% Topic comment reply</source>
+        <target>%Community%トピックコメント返信機能設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, you can reply to the %Community% topic comment.</source>
+        <target>使用するに設定した場合、クリックした%Community%トピックコメントに返信することができます。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>%Community% Event comment reply</source>
+        <target>%Community%イベントコメント返信機能設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, you can reply to the %Community% event comment.</source>
+        <target>使用するに設定した場合、クリックした%Community%イベントコメントに返信することができます。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

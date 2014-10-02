@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('.reply').click(function() {
     var element = $('#community_topic_comment_body'); 
-    element.val(element.val() + '@' + $(this).attr('value') + "\n");
+    element.val(element.val() + '>>' + $(this).attr('number') + ' ' + $(this).attr('name') + "\n");
     element.focus();
   })
 })
@@ -29,7 +29,9 @@ $(document).ready(function() {
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
  <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>
 <?php endif; ?>
-<a class="reply" href="javascript:void(0);" value="<?php echo $comment->Member->name ?>"><?php echo __('Reply') ?></a>
+<?php if('1'== Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_community_topic_comment_reply')): ?>
+  <a class="reply" href="javascript:void(0);" name="<?php echo $comment->Member->name; ?>" number="<?php echo $comment->number; ?>"><?php echo __('Reply') ?></a>
+<?php endif; ?>
 </p>
 </div>
 <div class="body">
