@@ -34,7 +34,7 @@ class opCommunityTopicToolkit
     );
 
     $rs = Doctrine::getTable('CommunityMember')->createQuery()
-      ->where('community_id = ?', array($community->getId()))
+      ->where('community_id = ? AND is_pre = 0', array($community->getId()))
       ->andWhere('is_receive_mail_pc = ? OR is_receive_mail_mobile = ?', array(true, true))
       ->execute(array(), Doctrine::HYDRATE_ON_DEMAND);
 
