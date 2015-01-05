@@ -393,6 +393,7 @@ CommunityEvent:
 
 CommunityEventComment:
   community_event_comment_a_2:
+    id: 1
     CommunityEvent: community_event_a_2
     Member: member_5
     body: 'こんにちは'
@@ -405,6 +406,15 @@ CommunityEventComment:
     CommunityEvent: community_event_html_1
     Member: member_html_1
     body: "<&\"'>CommunityEventComment.body ESCAPING HTML TEST DATA"
+
+CommunityEventCommentImage:
+  community_event_comment_a_2_image:
+    CommunityEventComment: community_event_comment_a_2
+    number: 1
+    File:
+      name: dummy_community_event_comment_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
 
 CommunityEventMember:
   community_event_member_a_1:
