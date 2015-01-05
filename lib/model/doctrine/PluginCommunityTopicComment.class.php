@@ -31,4 +31,12 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
       $this->setNumber(Doctrine::getTable('CommunityTopicComment')->getMaxNumber($this->getCommunityTopicId()) + 1);
     }
   }
+
+  public function preDelete($event)
+  {
+    foreach ($this->Images as $topicCommentImage)
+    {
+      $topicCommentImage->delete();
+    }
+  }
 }

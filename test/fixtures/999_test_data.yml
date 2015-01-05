@@ -255,6 +255,7 @@ CommunityTopic:
 
 CommunityTopicComment:
   community_topic_comment_a_2:
+    id: 1
     body: "こんにちは"
     CommunityTopic: community_topic_a_2
     Member: member_5
@@ -291,6 +292,15 @@ CommunityTopicComment:
     body: "<&\"'>CommunityTopicComment.body ESCAPING HTML TEST DATA"
     CommunityTopic: community_topic_html_1
     Member: member_html_1
+
+CommunityTopicCommentImage:
+  community_topic_comment_a_2_image:
+    CommunityTopicComment: community_topic_comment_a_2
+    number: 1
+    File:
+      name: dummy_community_topic_comment_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
 
 CommunityEvent:
   community_event_a_2:
