@@ -207,6 +207,7 @@ CommunityMemberPosition:
 
 CommunityTopic:
   community_topic_a_2:
+    id: 1
     name: "_aトピ主"
     body: "こんにちは"
     Community: community_a
@@ -252,6 +253,15 @@ CommunityTopic:
     body: "<&\"'>CommunityTopic.body ESCAPING HTML TEST DATA"
     Community: community_a
     Member: member_html_1
+
+CommunityTopicImage:
+  community_topic_a_2_image:
+    CommunityTopic: community_topic_a_2
+    number: 1
+    File:
+      name: dummy_community_topic_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
 
 CommunityTopicComment:
   community_topic_comment_a_2:
