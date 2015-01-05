@@ -3,7 +3,7 @@
 include(dirname(__FILE__).'/../../bootstrap/unit.php');
 include(dirname(__FILE__).'/../../bootstrap/database.php');
 
-$t = new lime_test(64, new lime_output_color());
+$t = new lime_test(72);
 
 $members = Doctrine::getTable('Member')->createQuery()->orderBy('id')->execute();
 $communities = Doctrine::getTable('Community')->createQuery()->orderBy('id')->execute();
@@ -192,3 +192,37 @@ $acl = getAcl($communities[3]);
 $t->cmp_ok($acl->isAllowed(1, null, 'view'), '===', true, 'returns true for the community admin');
 $t->cmp_ok($acl->isAllowed(3, null, 'view'), '===', true, 'returns true for a community member');
 $t->cmp_ok($acl->isAllowed(4, null, 'view'), '===', true, 'returns true for a non-community member');
+
+//------------------------------------------------------------
+$t->diag('CommunityTopic: Cascading Delete');
+$conn->beginTransaction();
+
+$topic = Doctrine_Core::getTable('CommunityTopic')->find(1);
+$topicImage = $topic->Images[0];
+$file1Id = $topicImage->file_id;
+$topicComment = Doctrine_Core::getTable('CommunityTopicComment')->find(1);
+$topicCommentImage = $topicComment->Images[0];
+$file2Id = $topicCommentImage->file_id;
+
+/*
+ * community_topic
+ *  |- community_topic_image
+ *  |   +- file
+ *  |       +- file_bin
+ *  +- community_topic_comment
+ *      +- community_topic_comment_image
+ *          +- file
+ *              +- file_bin
+ */
+$topic->delete($conn);
+
+$t->ok(!Doctrine_Core::getTable('CommunityTopic')->find($topic->id), 'community_topic is deleted.');
+$t->ok(!Doctrine_Core::getTable('CommunityTopicImage')->find($topicImage->id), 'community_topic_image is deleted.');
+$t->ok(!Doctrine_Core::getTable('File')->find($file1Id), 'file is deleted.');
+$t->ok(!Doctrine_Core::getTable('FileBin')->find($file1Id), 'file_bin is deleted.');
+$t->ok(!Doctrine_Core::getTable('CommunityTopicComment')->find($topicComment->id), 'community_topic_comment is deleted.');
+$t->ok(!Doctrine_Core::getTable('CommunityTopicCommentImage')->find($topicCommentImage->id), 'community_topic_comment_image is deleted.');
+$t->ok(!Doctrine_Core::getTable('File')->find($file2Id), 'file is deleted.');
+$t->ok(!Doctrine_Core::getTable('FileBin')->find($file2Id), 'file_bin is deleted.');
+
+$conn->rollback();
