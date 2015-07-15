@@ -1,5 +1,5 @@
 <?php
-use_helper('opCommunityEvent');
+use_helper('opCommunityEvent', 'opCommunityTopic');
 
 $data = array();
 
@@ -13,7 +13,7 @@ if (isset($comments[0]['id']))
     if (count($images) > 0)
     {
       foreach($images as $image){
-        $_comment['images'][] = op_api_event_image($image);
+        $_comment['images'][] = op_api_topic_image($image);
       }
     }
     $data[] = $_comment;
