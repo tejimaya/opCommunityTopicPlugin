@@ -61,6 +61,8 @@ class communityTopicCommentActions extends opCommunityTopicPluginAPIActions
     $comment->setBody($request['body']);
     $comment->save();
 
+    opCommunityTopicToolkit::sendNotificationMail($comment);
+
     $this->comment = $comment;
   }
 
