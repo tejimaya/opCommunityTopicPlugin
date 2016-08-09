@@ -10,7 +10,7 @@ function op_api_community_event($event)
     'body'                 => nl2br(op_auto_link_text($event->getBody())),
     'open_date'            => $event->getOpenDate(),
     'open_date_comment'    => $event->getOpenDateComment(),
-    'area'                 => $event->getArea(),
+    'area'                 => nl2br(op_auto_link_text($event->getArea())),
     'application_deadline' => $event->getApplicationDeadline(),
     'capacity'             => $event->getCapacity(),
     'participants'         => count($event->getCommunityEventMember()),
