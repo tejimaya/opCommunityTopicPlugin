@@ -56,4 +56,21 @@ class PluginCommunityTopicCommentTable extends Doctrine_Table
 
     return 0;
   }
+
+  public function getCommentedIdsByMemberId($memberId)
+  {
+    $result = array();
+
+    $resultSet = $this->createQuery()
+      ->select('community_topic_id')
+      ->where('member_id = ?', $memberId)
+      ->execute(array(), Doctrine::HYDRATE_NONE);
+
+    foreach ($resultSet as $value)
+    {
+      $result[] = $value[0];
+    }
+
+    return $result;
+  }
 }

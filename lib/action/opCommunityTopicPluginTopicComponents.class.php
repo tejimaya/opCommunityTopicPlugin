@@ -77,4 +77,17 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
 
     return sfView::SUCCESS;
   }
+
+  public function executeTopicCommentByMemberListBox($request)
+  {
+    if ($request->hasParameter('id') && $request->getParameter('module') == 'member' && $request->getParameter('action') == 'profile')
+    {
+      $this->member = Doctrine::getTable('Member')->find($request->getParameter('id'));
+    }
+    else
+    {
+      $this->member = $this->getUser()->getMember();
+    }
+    $this->communityTopic = Doctrine::getTable('CommunityTopic')->retrivesCommentsByMemberId($this->member->getId(), $this->gadget->getConfig('col'));
+  }
 }

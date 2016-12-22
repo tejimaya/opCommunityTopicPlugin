@@ -120,4 +120,34 @@ class PluginCommunityTopicTable extends Doctrine_Table
 
     return $pager;
   }
+
+  public function retrivesCommentsByMemberId($memberId, $limit = 5)
+  {
+    $communityTopicIdsComment = Doctrine::getTable('CommunityTopicComment')->getCommentedIdsByMemberId($memberId);
+    $communityTopicIdsTopic = Doctrine::getTable('CommunityTopic')->getCommentedIdsByMemberId($memberId);
+    $communityTopicIds = array_merge($communityTopicIdsComment, $communityTopicIdsTopic);
+
+    return $this->createQuery()
+      ->whereIn('id', $communityTopicIds)
+      ->limit($limit)
+      ->orderBy('updated_at DESC')
+      ->execute();
+  }
+
+  public function getCommentedIdsByMemberId($memberId)
+  {
+    $result = array();
+
+    $resultSet = $this->createQuery()
+      ->select('id')
+      ->where('member_id = ?', $memberId)
+      ->execute(array(), Doctrine::HYDRATE_NONE);
+
+    foreach ($resultSet as $value)
+    {
+      $result[] = $value[0];
+    }
+
+    return $result;
+  }
 }
