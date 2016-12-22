@@ -42,6 +42,7 @@ class communityTopicActions extends sfActions
     {
       $this->pager->setQuery($this->form->getQuery());
     }
+    $this->pager->setQuery($this->pager->getQuery()->orderBy('created_at DESC'));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
     return sfView::SUCCESS;
@@ -82,6 +83,7 @@ class communityTopicActions extends sfActions
     {
       $this->pager->setQuery($this->form->getQuery());
     }
+    $this->pager->setQuery($this->pager->getQuery()->orderBy('created_at DESC'));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
     return sfView::SUCCESS;
@@ -122,6 +124,7 @@ class communityTopicActions extends sfActions
     {
       $this->pager->setQuery($this->form->getQuery());
     }
+    $this->pager->setQuery($this->pager->getQuery()->orderBy('created_at DESC'));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
     return sfView::SUCCESS;
@@ -202,6 +205,7 @@ class communityTopicActions extends sfActions
     {
       $this->pager->setQuery($this->form->getQuery());
     }
+    $this->pager->setQuery($this->pager->getQuery()->orderBy('created_at DESC'));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
     return sfView::SUCCESS;
