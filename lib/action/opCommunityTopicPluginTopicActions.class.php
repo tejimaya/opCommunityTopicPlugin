@@ -229,7 +229,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
       $this->pageUrl .= '?id='.$this->communityId;
     }
 
-    $q = $table->getSearchQuery($request->getParameter('id'), $request->getParameter('target'), $request->getParameter('keyword'));
+    $q = $table->getSearchQuery($request->getParameter('id'), $request->getParameter('target'), $request->getParameter('keyword'), $this->getUser()->getMemberId());
     $this->pager = $table->getResultListPager($q, $request->getParameter('page'));
 
     $this->isResult = false;
