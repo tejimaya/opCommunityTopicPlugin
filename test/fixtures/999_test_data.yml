@@ -207,6 +207,7 @@ CommunityMemberPosition:
 
 CommunityTopic:
   community_topic_a_2:
+    id: 1
     name: "_aトピ主"
     body: "こんにちは"
     Community: community_a
@@ -253,8 +254,18 @@ CommunityTopic:
     Community: community_a
     Member: member_html_1
 
+CommunityTopicImage:
+  community_topic_a_2_image:
+    CommunityTopic: community_topic_a_2
+    number: 1
+    File:
+      name: dummy_community_topic_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
+
 CommunityTopicComment:
   community_topic_comment_a_2:
+    id: 1
     body: "こんにちは"
     CommunityTopic: community_topic_a_2
     Member: member_5
@@ -292,8 +303,18 @@ CommunityTopicComment:
     CommunityTopic: community_topic_html_1
     Member: member_html_1
 
+CommunityTopicCommentImage:
+  community_topic_comment_a_2_image:
+    CommunityTopicComment: community_topic_comment_a_2
+    number: 1
+    File:
+      name: dummy_community_topic_comment_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
+
 CommunityEvent:
   community_event_a_2:
+    id: 1
     Community: community_a
     Member: member_2
     name: '_aイベ主'
@@ -320,9 +341,18 @@ CommunityEvent:
     open_date: '2009-06-11'
     open_date_comment: "<&\"'>CommunityEvent.open_date_comment ESCAPING HTML TEST DATA"
     area: "<&\"'>CommunityEvent.area ESCAPING HTML TEST DATA"
+CommunityEventImage:
+  community_event_a_2_image:
+    CommunityEvent: community_event_a_2
+    number: 1
+    File:
+      name: dummy_community_event_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
 
 CommunityEventComment:
   community_event_comment_a_2:
+    id: 1
     CommunityEvent: community_event_a_2
     Member: member_5
     body: 'こんにちは'
@@ -335,6 +365,15 @@ CommunityEventComment:
     CommunityEvent: community_event_html_1
     Member: member_html_1
     body: "<&\"'>CommunityEventComment.body ESCAPING HTML TEST DATA"
+
+CommunityEventCommentImage:
+  community_event_comment_a_2_image:
+    CommunityEventComment: community_event_comment_a_2
+    number: 1
+    File:
+      name: dummy_community_event_comment_a_2_image
+      type: text/plain
+      FileBin: { bin: hogehoge }
 
 CommunityEventMember:
   community_event_member_a_1:

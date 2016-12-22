@@ -53,6 +53,19 @@ abstract class PluginCommunityEvent extends BaseCommunityEvent
     }
   }
 
+  public function preDelete($event)
+  {
+    foreach ($this->Images as $eventImage)
+    {
+      $eventImage->delete();
+    }
+
+    foreach ($this->CommunityEventComment as $eventComment)
+    {
+      $eventComment->delete();
+    }
+  }
+
   public function toggleEventMember($memberId)
   {
     if ($this->isClosed())

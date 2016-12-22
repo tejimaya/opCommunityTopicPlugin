@@ -47,6 +47,19 @@ abstract class PluginCommunityTopic extends BaseCommunityTopic
     }
   }
 
+  public function preDelete($event)
+  {
+    foreach ($this->Images as $topicImage)
+    {
+      $topicImage->delete();
+    }
+
+    foreach ($this->CommunityTopicComment as $topicComment)
+    {
+      $topicComment->delete();
+    }
+  }
+
   // for pager
   public function getImageFilename()
   {
