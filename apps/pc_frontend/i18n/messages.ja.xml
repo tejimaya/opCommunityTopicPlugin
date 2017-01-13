@@ -183,6 +183,10 @@
         <target>設定を保存しました</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Failed to configure.</source>
+        <target>設定変更に失敗しました。</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>[%Community% Topic] (%1% %community%) %2%</source>
         <target>[%Community%トピック] (%1% %community%) %2%</target>
       </trans-unit>
