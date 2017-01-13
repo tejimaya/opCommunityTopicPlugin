@@ -47,7 +47,7 @@ class opConfigCommunityTopicNotificationMailForm extends BaseForm
     )));
     $this->setValidator('to_pc_address', new sfValidatorChoice(array(
       'choices' => array_keys($this->choices),
-      'required' => false,
+      'required' => true,
     )));
 
     $this->setWidget('to_mobile_address', new sfWidgetFormSelectRadio(array(
@@ -57,7 +57,7 @@ class opConfigCommunityTopicNotificationMailForm extends BaseForm
     )));
     $this->setValidator('to_mobile_address', new sfValidatorChoice(array(
       'choices'  => array_keys($this->choices),
-      'required' => false,
+      'required' => true,
     )));
 
     $this->widgetSchema->setNameFormat('topic_notify[%s]');
