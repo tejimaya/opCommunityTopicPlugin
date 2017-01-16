@@ -123,8 +123,8 @@
         <target>%Community%イベント削除確認画面</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Nickname</source>
-        <target>ニックネーム</target>
+        <source>%nickname%</source>
+        <target>%nickname%</target>
       </trans-unit>
       <trans-unit id="">
         <source>Event Member List</source>
