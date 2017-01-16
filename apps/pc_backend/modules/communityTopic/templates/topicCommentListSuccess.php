@@ -9,6 +9,7 @@
 <?php echo $form ?>
 <tr>
 <td colspan="2"><input type="submit" value="<?php echo __('Search') ?>" /></td>
+</tr>
 </table>
 </form>
 
