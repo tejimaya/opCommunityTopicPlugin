@@ -121,7 +121,7 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
 
   public function executeMemberList(sfWebRequest $request)
   {
-    $this->forward400If(!$this->isAllowed($this->event, $this->getUser()->getMember(), 'addComment'), 'You are not allowed to view this event');
+    $this->forward400If(!$this->isAllowed($this->event, $this->getUser()->getMember(), 'view'), 'You are not allowed to view this event');
     $eventId = $request['id'];
 
     $this->eventMembers = Doctrine::getTable('Member')->createQuery('m')
