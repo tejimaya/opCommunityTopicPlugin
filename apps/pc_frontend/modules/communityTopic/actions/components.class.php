@@ -10,9 +10,4 @@
 
 class communityTopicComponents extends opCommunityTopicPluginTopicComponents
 {
-  public function executeTopicCommentSnsListBox()
-  {
-    $this->communityTopic = Doctrine_Core::getTable('CommunityTopic')
-      ->getRecentlyUpdatedTopicsSns($this->gadget->getConfig('col'));
-  }
 }

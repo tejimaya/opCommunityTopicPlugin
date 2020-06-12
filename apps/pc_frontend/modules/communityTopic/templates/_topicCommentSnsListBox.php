@@ -12,7 +12,7 @@
 <?php endforeach ?>
 <?php end_slot() ?>
 <?php echo op_include_parts('topicRecentList', 'homeRecentList_'.$gadget->id, array(
-  'title' => 'SNS全体のコミュニティ最新書き込み',
+  'title' => 'SNS全体のコミュニティ最新トピック',
   'listBody' => get_slot('body'),
   'moreInfo' => array(
     link_to(__('More'), array('sf_route' => 'communityTopic_search_all')),

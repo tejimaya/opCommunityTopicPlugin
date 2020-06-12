@@ -56,4 +56,18 @@ abstract class opCommunityTopicPluginEventComponents extends sfComponents
 
     return sfView::SUCCESS;
   }
+
+  public function executeEventCommentSnsListBox()
+  {
+    $this->communityEvent = Doctrine_Core::getTable('CommunityEvent')
+      ->getRecentlyUpdatedEventsSns($this->gadget->getConfig('col'));
+  }
+
+  public function executeSmtSnsLatestEventList()
+  {
+    $this->communityEvents = Doctrine_Core::getTable('CommunityEvent')
+      ->getRecentlyUpdatedEventsSns(4);
+
+    return sfView::SUCCESS;
+  }
 }
