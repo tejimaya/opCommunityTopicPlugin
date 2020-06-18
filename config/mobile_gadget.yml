@@ -29,3 +29,35 @@ recentCommunityEventComment:
       IsRequired: true
       Default:    5
       Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}
+
+recentSnsLatestTopicList:
+  caption:
+    ja_JP: "SNS全体の%Community%の最新トピックリスト"
+  description:
+    ja_JP: "SNS全体の%Community%トピックの最新書き込みリストを表示します"
+  component: [communityTopic, topicCommentSnsListBox]
+  config:
+    col:
+      Name:       "col"
+      Caption:    "表示するトピック数"
+      FormType:   "select"
+      ValueType:  "integer"
+      IsRequired: true
+      Default:    5
+      Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}
+
+recentSnsLatestEventList:
+  caption:
+    ja_JP: "SNS全体の%Community%の最新イベントリスト"
+  description:
+    ja_JP: "SNS全体の%Community%イベントの最新書き込みリストを表示します"
+  component: [communityEvent, eventCommentSnsListBox]
+  config:
+    col:
+      Name:       "col"
+      Caption:    "表示するイベント数"
+      FormType:   "select"
+      ValueType:  "integer"
+      IsRequired: true
+      Default:    5
+      Choices:    {1: 1, 3: 3, 5: 5, 7: 7, 10: 10}

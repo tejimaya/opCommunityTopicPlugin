@@ -34,6 +34,10 @@ communityTopic_search_all:
   url: /communityTopic/search
   param: { module: communityTopic, action: search }
 
+communityEvent_search_all:
+  url: /communityEvent/search
+  param: { module: communityTopic, action: search }
+
 communityTopic_search_form:
   url: /communityTopic/searchForm
   param: { module: communityTopic, action: searchForm }

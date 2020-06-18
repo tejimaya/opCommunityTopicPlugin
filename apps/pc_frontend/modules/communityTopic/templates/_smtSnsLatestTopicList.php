@@ -3,7 +3,7 @@ use_helper('Javascript', 'opUtil', 'opAsset');
 ?>
 <hr class="toumei" />
 <div class="row">
-  <div class="gadget_header span12">メンバーの所属するコミュニティトピック一覧</div>
+  <div class="gadget_header span12">SNS全体のコミュニティトピック一覧</div>
 </div>
 <hr class="toumei" />
 <div id="topicList" style="margin-left: 0px;">
