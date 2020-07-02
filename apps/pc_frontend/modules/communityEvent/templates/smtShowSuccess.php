@@ -26,7 +26,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
       <div class="span3">開催日時</div><div class="span9">${$item.getJaDate( open_date )} ${open_date_comment}</div>
     </div>
     <div class="row">
-      <div class="span3">開催場所</div><div class="span9">${area}</div>
+      <div class="span3">開催場所</div><div class="span9">{{html area}}</div>
     </div>
     <div class="row">
       <div class="span3">募集期日</div>
