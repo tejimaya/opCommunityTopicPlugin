@@ -91,7 +91,7 @@ class PluginCommunityTopicTable extends Doctrine_Table
       ->execute();
   }
 
-  public function getSearchQuery($communityId = null, $target = null, $keyword = null)
+  public function getSearchQuery($communityId = null, $target = null, $keyword = null, $memberId = null)
   {
     $q = $this->createQuery();
 
@@ -114,7 +114,14 @@ class PluginCommunityTopicTable extends Doctrine_Table
       }
     }
 
-    $q->andWhereIn('community_id', opCommunityTopicToolkit::getPublicCommunityIdList())
+    $targetCommunityIds = opCommunityTopicToolkit::getPublicCommunityIdList();
+    if (!is_null($memberId))
+    {
+      $targetCommunityIds = array_merge($targetCommunityIds,
+        Doctrine_Core::getTable('Community')->getIdsByMemberId($memberId));
+    }
+
+    $q->andWhereIn('community_id', $targetCommunityIds)
       ->orderBy('updated_at DESC');
 
     return $q;
