@@ -37,37 +37,31 @@ abstract class PluginCommunityTopicComment extends BaseCommunityTopicComment
     $fromMember = Doctrine::getTable('Member')->findOneById($this->getMemberId());
 
     //トピック主に通知を飛ばす
-    if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId())
-    {
+    if ($this->getMemberId() !== $this->getCommunityTopic()->getMemberId()) {
       opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $this->getCommunityTopic()->getMember(), $this->getCommunityTopic()->getId());
     }
 
     //同じトピックにコメントをしている人に通知を飛ばす
-    $comments = Doctrine::getTable('CommunityTopicComment')
-                ->createQuery('q')
-                ->where('community_topic_id = ?', $this->getCommunityTopic()->getId())
-                ->andWhere('member_id IS NOT NULL')
-                ->execute();
+    $comments = Doctrine::getTable('CommunityTopicComment')->createQuery('q')->where('community_topic_id = ?', $this->getCommunityTopic()->getId())->andWhere('member_id IS NOT NULL')->execute();
     $toMembers = array();
-    foreach($comments as $comment)
-    {
+    foreach ($comments as $comment) {
       $_commentOwnerId = $comment->getMember()->getId();
-      if(null !== $_commentOwnerId
-        && false == array_key_exists($_commentOwnerId, $toMembers)
-        && $_commentOwnerId !== $this->getCommunityTopic()->getMemberId()
-        && $_commentOwnerId !== $this->getMemberId()
-      )
-      {
+      if (null !== $_commentOwnerId && false == array_key_exists($_commentOwnerId, $toMembers) && $_commentOwnerId !== $this->getCommunityTopic()->getMemberId() && $_commentOwnerId !== $this->getMemberId()) {
         $toMembers[$_commentOwnerId] = $comment->getMember();
       }
     }
-    if( count($toMembers) > 0)
-    {
-      foreach($toMembers as $key => $toMember)
-      {
+    if (count($toMembers) > 0) {
+      foreach ($toMembers as $key => $toMember) {
         opCommunityTopicPluginUtil::sendNewCommentNotification($fromMember, $toMember, $this->getCommunityTopic()->getId());
       }
     }
+  }
 
+  public function preDelete($event)
+  {
+    foreach ($this->Images as $topicCommentImage)
+    {
+      $topicCommentImage->delete();
+    }
   }
 }

@@ -258,6 +258,14 @@
         <source>There are no topics.</source>
         <target>ﾄﾋﾟｯｸはありません。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted SNS %Community% Topics</source>
+        <target>SNS全体の%Community%最新書き込み</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Recently Posted SNS %Community% Events</source>
+        <target>SNS全体の%Community%最新ｲﾍﾞﾝﾄ</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

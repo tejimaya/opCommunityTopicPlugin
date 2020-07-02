@@ -183,6 +183,10 @@
         <target>設定を保存しました</target>
       </trans-unit>
       <trans-unit id="">
+        <source>Failed to configure.</source>
+        <target>設定変更に失敗しました。</target>
+      </trans-unit>
+      <trans-unit id="">
         <source>[%Community% Topic] (%1% %community%) %2%</source>
         <target>[%Community%トピック] (%1% %community%) %2%</target>
       </trans-unit>
@@ -218,6 +222,11 @@
         <source>[1]1 topic has new comments|(1,Inf]%1% topics have new comments</source>
         <target>[1,Inf]%1% 件のトピックに新着コメントがあります</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Reply</source>
+        <target>返信する</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

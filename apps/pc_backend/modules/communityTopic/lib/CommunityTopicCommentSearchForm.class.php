@@ -47,7 +47,7 @@ class CommunityTopicCommentSearchForm extends PluginCommunityTopicCommentFormFil
 
     $this->widgetSchema->setLabel('community_topic_id', sfContext::getInstance()->getI18N()->__('Topic ID'));
     $this->widgetSchema->setLabel('number', sfContext::getInstance()->getI18N()->__('Comment Number'));
-    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('Nickname'));
+    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('%nickname%'));
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Topic Comment Description'));
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

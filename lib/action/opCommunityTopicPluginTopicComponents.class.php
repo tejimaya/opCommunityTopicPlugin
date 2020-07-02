@@ -77,4 +77,18 @@ abstract class opCommunityTopicPluginTopicComponents extends sfComponents
 
     return sfView::SUCCESS;
   }
+
+  public function executeTopicCommentSnsListBox()
+  {
+    $this->communityTopic = Doctrine_Core::getTable('CommunityTopic')
+      ->getRecentlyUpdatedTopicsSns($this->gadget->getConfig('col'));
+  }
+
+  public function executeSmtSnsLatestTopicList($request)
+  {
+    $this->communityTopics = Doctrine_Core::getTable('CommunityTopic')
+      ->getRecentlyUpdatedTopicsSns(4);
+
+    return sfView::SUCCESS;
+  }
 }

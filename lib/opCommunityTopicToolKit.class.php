@@ -43,19 +43,20 @@ class opCommunityTopicToolkit
       $member = $r->getMember();
       $memberPcAddress = $member->getConfig('pc_address');
       $memberMobileAddress = $member->getConfig('mobile_address');
-      $from = self::getPostMailAddress('mail_community_'.$type.'_comment_create', array(
-        'id'   => $id,
-        'hash' => $member->getMailAddressHash(),
-      ));
 
       if ($r->getIsReceiveMailPc() && $memberPcAddress)
       {
+        $from = opConfig::get('admin_mail_address');
         $params['url'] = app_url_for('pc_frontend', '@community'.ucfirst($type).'_show?id='.$id, true);
         opMailSend::sendTemplateMail('notifyCommunityPosting', $memberPcAddress, $from, $params);
       }
 
       if ($r->getIsReceiveMailMobile() && $memberMobileAddress)
       {
+        $from = self::getPostMailAddress('mail_community_'.$type.'_comment_create', array(
+          'id'   => $id,
+          'hash' => $member->getMailAddressHash(),
+        ));
         $params['url'] = app_url_for('mobile_frontend', '@community'.ucfirst($type).'_show?id='.$id, true);
         opMailSend::sendTemplateMail('notifyCommunityPosting', $memberMobileAddress, $from, $params);
       }
