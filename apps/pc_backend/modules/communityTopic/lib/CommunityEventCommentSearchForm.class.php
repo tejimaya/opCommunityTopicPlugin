@@ -47,7 +47,7 @@ class CommunityEventCommentSearchForm extends PluginCommunityEventCommentFormFil
 
     $this->widgetSchema->setLabel('community_event_id', sfContext::getInstance()->getI18N()->__('Event ID'));
     $this->widgetSchema->setLabel('number', sfContext::getInstance()->getI18N()->__('Comment Number'));
-    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('Nickname'));
+    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('%nickname%'));
     $this->widgetSchema->setLabel('body', sfContext::getInstance()->getI18N()->__('Event Comment Description'));
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

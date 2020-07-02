@@ -36,7 +36,7 @@ class CommunityEventMemberSearchForm extends PluginCommunityEventMemberFormFilte
     ));
 
     $this->widgetSchema->setLabel('community_event_id', sfContext::getInstance()->getI18N()->__('Event ID'));
-    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('Nickname'));
+    $this->widgetSchema->setLabel('member_name', sfContext::getInstance()->getI18N()->__('%nickname%'));
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
     $this->widgetSchema->setNameFormat('communityEventMember[%s]');
