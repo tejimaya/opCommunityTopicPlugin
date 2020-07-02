@@ -29,6 +29,10 @@ $task->run(array(), array(
 
 $task = new sfDoctrineDataLoadTask($configuration->getEventDispatcher(), new sfFormatter());
 $task->setConfiguration($configuration);
+if (!sfContext::hasInstance())
+{
+  sfContext::createInstance($configuration);
+}
 $task->run(dirname(__FILE__).'/../fixtures');
 
 $conn = Doctrine_Manager::getInstance()->getCurrentConnection();

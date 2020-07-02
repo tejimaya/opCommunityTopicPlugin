@@ -19,10 +19,6 @@ Member:
     id: 5
     name: "Tom"
     is_active: 1
-  member_html_1:
-    id: 1055
-    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
-    is_active: 1
 
 MemberConfig:
   member_address_1:
@@ -274,12 +270,6 @@ CommunityTopic:
     body: "こんにちは"
     Community: community_e
     Member: member_4
-  community_topic_html_1:
-    id: 1055
-    name: "<&\"'>CommunityTopic.name ESCAPING HTML TEST DATA"
-    body: "<&\"'>CommunityTopic.body ESCAPING HTML TEST DATA"
-    Community: community_a
-    Member: member_html_1
 
 CommunityTopicImage:
   community_topic_a_2_image:
@@ -336,11 +326,6 @@ CommunityTopicComment:
     body: "こんにちは"
     CommunityTopic: community_topic_e_4
     Member: member_5
-  community_topic_comment_html_1:
-    id: 1055
-    body: "<&\"'>CommunityTopicComment.body ESCAPING HTML TEST DATA"
-    CommunityTopic: community_topic_html_1
-    Member: member_html_1
 
 CommunityTopicCommentImage:
   community_topic_comment_a_2_image:
@@ -392,15 +377,7 @@ CommunityEvent:
     open_date_comment: 'あかさたな'
     area: '福岡県'
 <?php endfor; ?>
-  community_event_html_1:
-    id: 1055
-    Community: community_i
-    Member: member_2
-    name: "<&\"'>CommunityEvent.name ESCAPING HTML TEST DATA"
-    body: "<&\"'>CommunityEvent.body ESCAPING HTML TEST DATA"
-    open_date: '2009-06-11'
-    open_date_comment: "<&\"'>CommunityEvent.open_date_comment ESCAPING HTML TEST DATA"
-    area: "<&\"'>CommunityEvent.area ESCAPING HTML TEST DATA"
+
 CommunityEventImage:
   community_event_a_2_image:
     CommunityEvent: community_event_a_2
@@ -420,11 +397,6 @@ CommunityEventComment:
     CommunityEvent: community_event_i_2
     Member: member_5
     body: 'こんにちは'
-  community_event_comment_html_1:
-    id: 1055
-    CommunityEvent: community_event_html_1
-    Member: member_html_1
-    body: "<&\"'>CommunityEventComment.body ESCAPING HTML TEST DATA"
 
 CommunityEventCommentImage:
   community_event_comment_a_2_image:
@@ -451,7 +423,3 @@ CommunityEventMember:
   community_event_member_a_5:
     CommunityEvent: community_event_a_5
     Member: member_1
-  community_event_member_html_1:
-    id: 1055
-    CommunityEvent: community_event_html_1
-    Member: member_html_1
