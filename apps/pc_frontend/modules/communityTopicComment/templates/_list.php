@@ -1,3 +1,13 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.reply').click(function() {
+    var element = $('#community_topic_comment_body'); 
+    element.val(element.val() + '>>' + $(this).attr('number') + ' ' + $(this).attr('name') + "\n");
+    element.focus();
+  })
+})
+</script>
+
 <?php use_helper('opCommunityTopic'); ?>
 <?php if ($commentPager->getNbResults()) : ?>
 <div class="dparts commentList"><div class="parts">
@@ -18,6 +28,9 @@
 <?php if ($_member = $comment->getMember()) : ?> <?php echo op_community_topic_link_to_member($_member) ?><?php endif; ?>
 <?php if ($comment->isDeletable($sf_user->getMemberId())): ?>
  <?php echo link_to(__('Delete'), '@communityTopic_comment_delete_confirm?id='.$comment->getId()) ?>
+<?php endif; ?>
+<?php if('1'== Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_community_topic_comment_reply')): ?>
+  <a class="reply" href="javascript:void(0);" name="<?php echo $comment->Member->name; ?>" number="<?php echo $comment->number; ?>"><?php echo __('Reply') ?></a>
 <?php endif; ?>
 </p>
 </div>

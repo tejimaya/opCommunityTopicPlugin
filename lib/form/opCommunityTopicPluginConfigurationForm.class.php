@@ -27,6 +27,18 @@ class opCommunityTopicPluginConfigurationForm extends BaseForm
     $this->widgetSchema->setLabel('update_activity', 'Update %activity%');
     $this->widgetSchema->setHelp('update_activity', 'If this is used, %activity% message is updated automatically by posting a topic. To show the %Activity% list, see "Appearance" > "ガジェット設定".');
 
+    $this->setWidget('community_topic_comment_reply', new sfWidgetFormSelectRadio(array('choices' => $choices)));
+    $this->setValidator('community_topic_comment_reply', new sfValidatorChoice(array('choices' => array_keys($choices))));
+    $this->setDefault('community_topic_comment_reply', Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_community_topic_comment_reply', '0'));
+    $this->widgetSchema->setLabel('community_topic_comment_reply', '%Community% Topic comment reply');
+    $this->widgetSchema->setHelp('community_topic_comment_reply', 'If this is used, you can reply to the %Community% topic comment.');
+
+    $this->setWidget('community_event_comment_reply', new sfWidgetFormSelectRadio(array('choices' => $choices)));
+    $this->setValidator('community_event_comment_reply', new sfValidatorChoice(array('choices' => array_keys($choices))));
+    $this->setDefault('community_event_comment_reply', Doctrine::getTable('SnsConfig')->get('op_community_topic_plugin_community_event_comment_reply', '0'));
+    $this->widgetSchema->setLabel('community_event_comment_reply', '%Community% Event comment reply');
+    $this->widgetSchema->setHelp('community_event_comment_reply', 'If this is used, you can reply to the %Community% event comment.');
+
     if (version_compare(OPENPNE_VERSION, '3.6beta1-dev', '<'))
     {
       unset($this['update_activity']);
@@ -37,7 +49,7 @@ class opCommunityTopicPluginConfigurationForm extends BaseForm
 
   public function save()
   {
-    $names = array('update_activity');
+    $names = array('update_activity','community_topic_comment_reply','community_event_comment_reply' );
 
     foreach ($names as $name)
     {
