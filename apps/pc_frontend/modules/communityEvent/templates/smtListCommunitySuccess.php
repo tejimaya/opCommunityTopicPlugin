@@ -114,7 +114,7 @@ $(function(){
 })
 </script>
 <div class="row">
-  <div class="gadget_header span12"><?php echo __('List of events'); ?></div>
+  <div class="gadget_header span12"><?php echo __('List of events of this %Community%'); ?></div>
 </div>
 <div id="list"></div>
 <div class="row hide" id="noEntry">

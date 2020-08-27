@@ -95,7 +95,7 @@ $(function(){
 <?php endif; ?>
 <hr class="toumei"/>
 <div class="row">
-  <div class="gadget_header span12"><?php echo __('List of topics of this community'); ?></div>
+  <div class="gadget_header span12"><?php echo __('List of topics of this %Community%'); ?></div>
 </div>
 <div id="list"></div>
 <div class="row hide" id="noEntry">

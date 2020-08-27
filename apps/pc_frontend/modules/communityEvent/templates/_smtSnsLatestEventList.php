@@ -3,7 +3,7 @@ use_helper('Javascript', 'opUtil', 'opAsset');
 ?>
 <hr class="toumei" />
 <div class="row">
-  <div class="gadget_header span12">SNS全体のコミュニティイベント一覧</div>
+  <div class="gadget_header span12"><?php echo __('List of %Community% events for all SNS') ?></div>
 </div>
 <hr class="toumei" />
 <div id="eventList" style="margin-left: 0px;">

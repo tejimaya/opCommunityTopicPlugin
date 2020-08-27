@@ -3,7 +3,7 @@ use_helper('Javascript', 'opUtil', 'opAsset');
 ?>
 <hr class="toumei" />
 <div class="row">
-  <div class="gadget_header span12">メンバーの所属するコミュニティイベント一覧</div>
+  <div class="gadget_header span12"><?php echo __('List of %Community% events to which the members belong') ?></div>
 </div>
 <hr class="toumei" />
 <div id="eventList" style="margin-left: 0px;">

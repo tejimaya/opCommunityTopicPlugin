@@ -15,8 +15,8 @@
         <target>キャンセル</target>
       </trans-unit>
       <trans-unit id="">
-        <source>List of topics of this community</source>
-        <target>トピック一覧</target>
+        <source>List of topics of this %Community%</source>
+        <target>%Community%トピック一覧</target>
       </trans-unit>
       <trans-unit id="">
         <source>Create a new topic</source>
@@ -27,8 +27,24 @@
         <target>トピックを編集する</target>
       </trans-unit>
       <trans-unit id="">
-        <source>List of events of this community</source>
-        <target>イベント一覧</target>
+        <source>List of events of this %Community%</source>
+        <target>%Community%イベント一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of %Community% topics to which the members belong</source>
+        <target>メンバーの所属する%Community%トピック一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of %Community% events to which the members belong</source>
+        <target>メンバーの所属する%Community%イベント一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of %Community% topics for all SNS</source>
+        <target>SNS全体の%Community%トピック一覧</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>List of %Community% events for all SNS</source>
+        <target>SNS全体の%Community%イベント一覧</target>
       </trans-unit>
     </body>
   </file>

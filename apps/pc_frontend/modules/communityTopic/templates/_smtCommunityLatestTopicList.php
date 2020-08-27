@@ -8,7 +8,7 @@ $count = $communityTopics->count();
 ?>
 <hr class="toumei" />
 <div class="row">
-<div class="gadget_header span12"><?php echo __('List of topics of this community') ?></div>
+<div class="gadget_header span12"><?php echo __('List of topics of this %Community%') ?></div>
 </div>
 <hr class="toumei" />
 <div id="topicList" style="margin-left: 0px;">
