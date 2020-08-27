@@ -55,6 +55,8 @@ class communityTopicActions extends opCommunityTopicPluginAPIActions
       $this->forward400($e->getMessage());
     }
 
+    opCommunityTopicToolkit::sendNotificationMail($topic->getCommunity(), $topic->getId(), 'topic', $this->member->getName(), $topic->getName(), $topic->getBody());
+
     $this->topic = $topic;
   }
 

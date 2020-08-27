@@ -4,6 +4,9 @@ include dirname(__FILE__).'/../../bootstrap/functional.php';
 
 $t = new opTestFunctional(new sfBrowser());
 
+opMailSend::initialize();
+Zend_Mail::setDefaultTransport(new opZendMailTransportMock());
+
 include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $t->info('should be able to post a new topic');
