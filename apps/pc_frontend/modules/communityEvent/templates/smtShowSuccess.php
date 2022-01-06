@@ -58,7 +58,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
         <div class="comment-wrapper">
           <div id="required" class="hide"><?php echo __('Required.') ?></div>
           <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
-          <input class="event-comment-form-input" type="text" id="commentBody" />
+          <textarea name="commentBody" id="commentBody" class="comment-form-input" style="width: 90%;" cols="35" rows="7"></textarea>
           <div class="btn-toolbar">
             {{if is_event_member}}
               <button class="btn btn-primary btn-mini comment-button " id="postCancel"><?php echo __('Cancel to join') ?></button>
@@ -107,7 +107,7 @@ $(function(){
   })
 
   $(document).on('click', '#postComment',function(){
-    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    if (0 >= jQuery.trim($('#commentBody').val()).length)
     {
       $('#required').show();
       return -1;
@@ -117,7 +117,7 @@ $(function(){
   })
 
   $(document).on('click', '#postJoin',function(){
-    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    if (0 >= jQuery.trim($('#commentBody').val()).length)
     {
       $('#required').show();
       return -1;
@@ -127,7 +127,7 @@ $(function(){
   })
 
   $(document).on('click', '#postCancel',function(){
-    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    if (0 >= jQuery.trim($('#commentBody').val()).length)
     {
       $('#required').show();
       return -1;
