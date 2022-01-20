@@ -15,7 +15,7 @@ function getParams(target) { //{{{
   }
   else if ('topic_comment_post' == target) {
     params.community_topic_id = topic_id;
-    params.body = $('input#commentBody').val();
+    params.body = $('#commentBody').val();
   }
   else if ('topic_comment_delete' == target) {
     params.id = $("#deleteCommentModal").attr('data-comment-id');
@@ -101,7 +101,7 @@ function postTopicComment(params) { //{{{
       });
 
     $('#comments').prepend(postedComment);
-    $('input#commentBody').val('');
+    $('#commentBody').val('');
   }
 
   var error = function (res) {
@@ -113,6 +113,7 @@ function postTopicComment(params) { //{{{
     url: 'topic_comment/post.json',
     data: params,
     type: 'POST',
+    contentType: "application/json",
     success: success,
     error: error,
     complete: toggleSubmitState,

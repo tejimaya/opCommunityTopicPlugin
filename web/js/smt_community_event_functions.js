@@ -19,7 +19,7 @@ function getParams(target) { //{{{
   }
   else if ('event_comment_post' == target) {
     params.community_event_id = event_id;
-    params.body = $('input#commentBody').val();
+    params.body = $('#commentBody').val();
   }
   else if ('event_comment_delete' == target) {
     params.id = $("#deleteCommentModal").attr('data-comment-id');
@@ -100,6 +100,8 @@ function getComments(params){ //{{{
 
 function postEventComment(params) { //{{{
   toggleSubmitState();
+  $('#comment-error').hide();
+
   var success = function (res) {
     $('#required').hide();
     var postedComment = $('#eventComment').tmpl(res.data,
@@ -110,19 +112,28 @@ function postEventComment(params) { //{{{
       });
 
     $('#comments').prepend(postedComment);
-    $('input#commentBody').val('');
+    $('#commentBody').val('');
   }
+
+  var error = function (res) {
+    $('#comment-error').show();
+    console.log(res);
+  }
+
   ajax({
     url: 'event_comment/post.json',
     data: params,
     type: 'POST',
     success: success,
+    error: error,
     complete: toggleSubmitState,
   })
 } //}}}
 
 function postEventJoin(params) { //{{{
   toggleSubmitState();
+  $('#comment-error').hide();
+
   var success = function (res) {
     toggleSubmitState();
     postEventComment( getParams('event_comment_post') );
@@ -143,8 +154,8 @@ function postEventJoin(params) { //{{{
   }
 
   var error = function (res) {
+    $('#comment-error').show();
     console.log(res);
-    getEntry( getParams('event_search'), '#comment-error' );
   }
 
   ajax({

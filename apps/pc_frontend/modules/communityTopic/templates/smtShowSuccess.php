@@ -51,8 +51,8 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
         <div class="comment-wrapper">
           <div id="required" class="hide"><?php echo __('Required.') ?></div>
           <div id="comment-error" class="hide"><?php echo '投稿に失敗しました。' ?></div>
-          <div class="comment-form">
-            <input class="comment-form-input" type="text" id="commentBody" />
+          <div class="comment-form" style="padding-right: 12px;">
+            <textarea name="commentBody" id="commentBody" class="comment-form-input" style="width: 100%" cols="35" rows="7"></textarea>
             <input type="submit" name="submit" class="btn btn-primary btn-mini comment-button " id="postComment" value="<?php echo __('Post a new topic comment') ?>">
           </div>
           <div class="comment-form-loader">
@@ -100,7 +100,7 @@ $(function(){
   });
 
   $(document).on('click', '#postComment',function(){
-    if (0 >= jQuery.trim($('input#commentBody').val()).length)
+    if (0 >= jQuery.trim($('#commentBody').val()).length)
     {
       $('#required').show();
       return -1;
