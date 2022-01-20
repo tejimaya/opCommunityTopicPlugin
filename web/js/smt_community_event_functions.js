@@ -14,6 +14,9 @@ function getParams(target) { //{{{
     params.id = event_id;
     params.leave = true;
   }
+  else if ('event_delete' == target) {
+    params.id = event_id;
+  }
   else if ('event_comment_search' == target) {
     params.community_event_id = event_id;
   }
@@ -154,6 +157,19 @@ function postEventJoin(params) { //{{{
     success: success,
     error: error,
   })
+} //}}}
+
+function deleteEvent(params) { //{{{
+  var success = function (res) {
+    window.location = '/communityEvent/listCommunity/' + res.data.community_id;
+  }
+
+  ajax({
+    url: 'event/delete.json',
+    type: 'POST',
+    data: params,
+    success: success,
+  });
 } //}}}
 
 function deleteComment(params) { //{{{

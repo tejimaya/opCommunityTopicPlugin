@@ -67,6 +67,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeSmtListCommunity($request)
   {
     $this->id = $this->community->getId();
+    $this->isEventCreatable = $this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add');
 
     return sfView::SUCCESS;
   }
@@ -90,6 +91,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   {
     $this->id = $this->communityEvent->getId();
     $this->isCommentCreatable = $this->communityEvent->isCreatableCommunityEventComment($this->getUser()->getMember()->getId());
+    $this->isEditable = $this->communityEvent->isEditable($this->getUser()->getMember()->getId());
     opSmartphoneLayoutUtil::setLayoutParameters(array('community' => $this->community));
 
     return sfView::SUCCESS;
@@ -130,10 +132,22 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeNew($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtNew');
 
     $this->form = new CommunityEventForm();
 
     return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes new action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSmtNew($request)
+  {
+    $this->event = null;
+    $this->smtPost($request);
   }
 
   /**
@@ -144,6 +158,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeCreate($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtCreate');
 
     $this->form = new CommunityEventForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
@@ -151,6 +166,20 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
+
+    return sfView::SUCCESS;
+  }
+
+  public function executeSmtCreate($request)
+  {
+    $this->communityId = $this->community->getId();
+    $this->form = new CommunityEventForm();
+    $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
+    $this->form->getObject()->setCommunity($this->community);
+    $this->processForm($request, $this->form);
+
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtPost');
 
     return sfView::SUCCESS;
   }
@@ -253,5 +282,13 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
 
       $this->redirect('@communityEvent_show?id='.$communityEvent->getId());
     }
+  }
+
+  protected function smtPost(sfWebRequest $request)
+  {
+    $this->communityId = $this->community->getId();
+    $this->form = new CommunityEventForm();
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtPost');
   }
 }

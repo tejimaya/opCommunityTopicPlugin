@@ -15,6 +15,12 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
     </div>
     <div class="row">
       <h3 class="span12">${name}</h3>
+        {{if isEditable}}
+          <div class="btn-group span3">
+            <a href="<?php echo public_path('communityEvent/edit')?>/${id}" class="btn"><i class="icon-pencil"></i></a>
+            <a href="javascript:void(0)" class="btn" id="deleteEntry"><i class="icon-remove"></i></a>
+          </div>
+        {{/if}}
     </div>
     <div class="row body">
       <div class="span12 body">{{html body}}</div>
@@ -94,6 +100,7 @@ var event_id = <?php echo $id ?>;
 var comment_count = 0;
 var comment_page = 1;
 var isCommentCreatable = <?php echo (int)$isCommentCreatable ?>;
+var isEditable = <?php echo (int)$isEditable ?>;
 
 $(function(){
 
@@ -145,6 +152,14 @@ $(function(){
     $('#deleteCommentModal').attr('data-comment-id', '').modal('hide');
   });
 
+  $('#deleteEntryModal .modal-button').click(function(e){
+    if(e.target.id == 'execute')
+    {
+      deleteEvent( getParams('event_delete') );
+    }
+
+    $('#deleteEntryModal').modal('hide');
+  });
 })
 
 </script>
@@ -159,7 +174,7 @@ $(function(){
 </div>
 
 <!-- Modal -->
-<?php include_partial('communityTopic/modal', array('target', 'event')) ?>
+<?php include_partial('communityEvent/modal', array('target' => 'event')) ?>
 
 <ul class="footer">
   <li>

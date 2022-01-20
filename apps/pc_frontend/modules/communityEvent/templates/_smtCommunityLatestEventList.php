@@ -23,6 +23,11 @@ $count = $communityEvents->count();
 <?php endif; ?>
 </div>
 
+<?php if ($acl->isAllowed($sf_user->getMemberId(), null, 'add')): ?>
+  <div class="row" id="new-topic-link">
+    <?php echo link_to(__('Create a new event'), '@communityEvent_new?id='.$community->getId()) ?>
+  </div>
+<?php endif; ?>
 <?php if ($count): ?>
   <div class="row" id="eventreadmore">
   <?php echo link_to(__('More'), 'communityEvent/listCommunity?id='.$community->getId(), array('class' => 'btn btn-block span11')) ?>
