@@ -192,10 +192,27 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeEdit($request)
   {
     $this->forward404Unless($this->communityEvent->isEditable($this->getUser()->getMemberId()));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtEdit');
 
     $this->form = new CommunityEventForm($this->communityEvent);
 
     return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes edit action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSmtEdit($request)
+  {
+    $this->event = Doctrine::getTable('CommunityEvent')->findOneById($request['id']);
+    $this->forward404Unless($this->event->isEditable($this->getUser()->getMemberId()));
+
+    $this->communityId = $this->community->getId();
+    $this->form = new CommunityEventForm($this->communityEvent);
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtEdit');
   }
 
   /**
@@ -206,6 +223,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
   public function executeUpdate($request)
   {
     $this->forward404Unless($this->communityEvent->isEditable($this->getUser()->getMemberId()));
+    $this->forwardIf($request->isSmartphone(), 'communityEvent', 'smtUpdate');
 
     $this->form = new CommunityEventForm($this->communityEvent);
     $this->processForm($request, $this->form);
@@ -215,6 +233,21 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
     return sfView::SUCCESS;
   }
 
+  /**
+   * Executes update action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSmtUpdate($request)
+  {
+    $this->forward404Unless($this->communityEvent->isEditable($this->getUser()->getMemberId()));
+
+    $this->form = new CommunityEventForm($this->communityEvent);
+    $this->processForm($request, $this->form);
+    $this->setTemplate('smtEdit');
+
+    return sfView::SUCCESS;
+  }
 
   /**
    * Executes deleteConfirm action
