@@ -120,9 +120,6 @@ $options['url'] = url_for('communityEvent_update', $communityEvent);
         <div class="parts-label">
           <?php echo $form['photo_1']->renderLabel() ?>
         </div>
-        <div class="error">
-          <?php echo $form['photo_1']->renderError() ?>
-        </div>
         <div class="parts-body parts-photo">
           <?php echo $form['photo_1']->render() ?>
         </div>
@@ -133,9 +130,6 @@ $options['url'] = url_for('communityEvent_update', $communityEvent);
         <div class="parts-label">
           <?php echo $form['photo_2']->renderLabel() ?>
         </div>
-        <div class="error">
-          <?php echo $form['photo_2']->renderError() ?>
-        </div>
         <div class="parts-body parts-photo">
           <?php echo $form['photo_2']->render() ?>
         </div>
@@ -145,9 +139,6 @@ $options['url'] = url_for('communityEvent_update', $communityEvent);
       <div class="">
         <div class="parts-label">
           <?php echo $form['photo_3']->renderLabel() ?>
-        </div>
-        <div class="error">
-          <?php echo $form['photo_3']->renderError() ?>
         </div>
         <div class="parts-body parts-photo">
           <?php echo $form['photo_3']->render() ?>

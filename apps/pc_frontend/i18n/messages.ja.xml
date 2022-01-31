@@ -226,6 +226,10 @@
         <source>Reply</source>
         <target>返信する</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>File is too large (maximum is %max_size% kilobytes).</source>
+        <target>ファイルサイズが大きすぎます。(最大 %max_size% KB まで)</target>
+      </trans-unit>
 
     </body>
   </file>

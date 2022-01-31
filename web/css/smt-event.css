@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-strong, .error {
+strong, .error, .error_list {
   color: #ff0000;
 }
 

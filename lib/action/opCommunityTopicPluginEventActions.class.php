@@ -244,6 +244,7 @@ abstract class opCommunityTopicPluginEventActions extends sfActions
 
     $this->form = new CommunityEventForm($this->communityEvent);
     $this->processForm($request, $this->form);
+    $this->setLayout('smtLayoutSns');
     $this->setTemplate('smtEdit');
 
     return sfView::SUCCESS;
