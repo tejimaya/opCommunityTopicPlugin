@@ -1,0 +1,44 @@
+.gadget_header {
+  margin-bottom: 5px;
+  height: 26px;
+  line-height: 26px;
+  color: #FFFFFF;
+  font-size: 100%;
+  text-align: center;
+}
+
+strong, .error, .error_list {
+  color: #ff0000;
+}
+
+.help {
+  margin-bottom: 5px;
+}
+
+.row {
+  padding: 5px;
+}
+
+.parts-label > label {
+  font-weight: bold;
+}
+
+.parts-body {
+  padding-right: 18px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+}
+
+.parts-date > input[type="text"], .parts-date > select {
+  width: 30%;
+}
+
+.parts-photo > ul {
+  list-style: none;
+}
+
+.parts-button {
+  padding-right: 18px;
+}

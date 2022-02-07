@@ -113,6 +113,13 @@ $(function(){
   })
 })
 </script>
+
+<?php if ($isEventCreatable): ?>
+  <div class="row">
+    <a href="<?php echo public_path('communityEvent/new').'/'.$id ?>" class="btn span11"><?php echo __('Create a new event');?></a>
+  </div>
+<?php endif; ?>
+<hr class="toumei"/>
 <div class="row">
   <div class="gadget_header span12"><?php echo __('List of events of this %Community%'); ?></div>
 </div>

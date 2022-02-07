@@ -129,4 +129,27 @@ class communityEventActions extends opCommunityTopicPluginAPIActions
       ->limit(200)
       ->execute();
   }
+
+  public function executeDelete(sfWebRequest $request)
+  {
+    try
+    {
+      $event = $this->getTargetObject('event', $request['id']);
+    }
+    catch (opCommunityTopicAPIRuntimeException $e)
+    {
+      $this->forward400($e->getMessage());
+    }
+
+    $this->forward400If(!$event->isEditable($this->member->getId()), 'you are not allowed to delete this event');
+
+    $isDeleted = $event->delete();
+
+    if (!$isDeleted)
+    {
+      $this->forward400('failed to delete the entry. errorStack:'.$event->getErrorStackAsString());
+    }
+
+    $this->event = $event;
+  }
 }
