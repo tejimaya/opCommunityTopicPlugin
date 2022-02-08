@@ -1,119 +1,98 @@
 <?php
-if ($topic)
-{
-  $title = __('Edit the topic');
-  $topicId    = $topic->getId();
-  $topicName = $topic->getName();
-  $topicBody  = $topic->getBody();
-}
-else
-{
-  $title = __('Create a new topic');
-  $topicId    = '';
-  $topicName = '';
-  $topicBody  = '';
-}
 use_helper('opAsset');
 op_smt_use_stylesheet('/opCommunityTopicPlugin/css/smt-topic.css', 'last');
 ?>
+<?php
+$options = array();
+$options['title'] = __('Create a new topic');
+$options['url'] = url_for('communityTopic_create', $community);
+$options['isMultipart'] = true;
+?>
 
-<script type="text/javascript">
-function getParams()
-{
-  var query = $('form').serializeArray(),
-  json = {apiKey: openpne.apiKey};
-
-  for (i in query)
-  {
-    json[query[i].name] = query[i].value
-  }
-
-  return json;
-}
-
-function toggleSubmitState()
-{
-  $('#loading').toggle();
-  $('input[name=submit]').toggle();
-}
-
-function execute()
-{
-  if (0 >= jQuery.trim($('input#topic_name').val()).length)
-  {
-    $('#error').show().html('タイトルを入力してください。');
-    return -1;
-  }
-  else if (0 >= jQuery.trim($('textarea#topic_body').val()).length)
-  {
-    $('#error').show().html('本文を入力してください。');
-    return -1;
-  }
-
-  toggleSubmitState();
-  var params = getParams();
-
-  $.ajax({
-    url: openpne.apiBase + 'topic/post.json',
-    type: 'POST',
-    data: params,
-    dataType: 'json',
-    success: function(res) {
-        if (params['id'] == '')
-        {
-          $('#id').val('');
-          $('#topic_name').val('');
-          $('#topic_body').val('');
-        }
-
-        window.location.href = window.location.origin + '/communityTopic/' + res.data.id;
-      },
-    error: function(res) {
-        if (res.responseText.match('name parameter is not specified'))
-        {
-          $('#error').show().html('タイトルが空欄です。');
-        }
-        else if (res.responseText.match('body parameter is not specified'))
-        {
-          $('#error').show().html('本文が空欄です。');
-        }
-        else
-        {
-          $('#error').show().html('トピック作成に失敗しました。')
-          console.log(res);
-        }
-
-        toggleSubmitState();
-      },
-  });
-}
-
-$(function(){
-  $("#post_topic").click(execute);
-})
-</script>
-
-<div class="row">
-  <div class="gadget_header span12"><?php echo __($title) ?></div>
+<div class="gadget_header">
+  <?php echo __($options['title']) ?>
 </div>
 
 <div class="row">
   <div class="span12">
-    <form>
-    <input type="hidden" name="id" id="id" value="<?php echo $topicId ?>"/>
-    <input type="hidden" name="community_id" id="community_id" value="<?php echo $communityId ?>"/>
-    <p id="error" class="row hide" style="color:red"></p>
-    <label class="control-label span12"><?php echo __('Title') ?></label>
-    <input type="text" name="name" id="topic_name" class="span12" value="<?php echo $topicName ?>">
-    <label class="control-label span12"><?php echo __('Body') ?></label>
-    <textarea name="body" id="topic_body" class="span12" rows="10"><?php echo $topicBody ?></textarea>
-    </form>
-    <div class="center">
-      <input type="submit" name="submit" value="<?php echo __('Post') ?>" id="post_topic" class="btn btn-primary span12" />
+    <div class="help">
+      <?php echo __('%0% is required field.', array('%0%' => '<strong>*</strong>')) ?>
     </div>
-  </div>
-  <hr class="toumei">
-  <div id="loading" class="center hide">
-    <?php echo op_image_tag('ajax-loader.gif');?>
+    <?php echo $form->renderFormTag($options['url']) ?>
+    <?php echo $form->renderHiddenFields() ?>
+    <div class="span12 error">
+      <?php echo $form->renderGlobalErrors() ?>
+    </div>
+
+    <!-- タイトル -->
+    <div class="">
+      <div class="parts-label">
+        <?php echo $form['name']->renderLabel().' <strong>*</strong>' ?>
+      </div>
+      <div class="error">
+        <?php echo $form['name']->renderError() ?>
+      </div>
+      <div class="parts-body">
+        <?php echo $form['name']->render() ?>
+      </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="">
+      <div class="parts-label">
+        <?php echo $form['body']->renderLabel().' <strong>*</strong>' ?>
+      </div>
+      <div class="error">
+        <?php echo $form['body']->renderError() ?>
+      </div>
+      <div class="parts-body">
+        <?php echo $form['body']->render() ?>
+      </div>
+    </div>
+
+    <!-- 写真1 -->
+    <div class="">
+      <div class="parts-label">
+        <?php echo $form['photo_1']->renderLabel() ?>
+      </div>
+      <div class="error">
+        <?php echo $form['photo_1']->renderError() ?>
+      </div>
+      <div class="parts-body parts-photo">
+        <?php echo $form['photo_1']->render() ?>
+      </div>
+    </div>
+
+    <!-- 写真2 -->
+    <div class="">
+      <div class="parts-label">
+        <?php echo $form['photo_2']->renderLabel() ?>
+      </div>
+      <div class="error">
+        <?php echo $form['photo_2']->renderError() ?>
+      </div>
+      <div class="parts-body parts-photo">
+        <?php echo $form['photo_2']->render() ?>
+      </div>
+    </div>
+
+    <!-- 写真3 -->
+    <div class="">
+      <div class="parts-label">
+        <?php echo $form['photo_3']->renderLabel() ?>
+      </div>
+      <div class="error">
+        <?php echo $form['photo_3']->renderError() ?>
+      </div>
+      <div class="parts-body parts-photo">
+        <?php echo $form['photo_3']->render() ?>
+      </div>
+    </div>
+
+    <div class="center parts-button">
+      <input type="submit" name="submit" value="<?php echo __('Post') ?>" class="btn btn-primary span12" />
+    </div>
+
+    </form>
   </div>
 </div>

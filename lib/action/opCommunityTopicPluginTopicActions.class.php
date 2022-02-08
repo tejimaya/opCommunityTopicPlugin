@@ -126,6 +126,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeCreate($request)
   {
     $this->forward404Unless($this->acl->isAllowed($this->getUser()->getMemberId(), null, 'add'));
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtCreate');
 
     $this->form = new CommunityTopicForm();
     $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
@@ -133,10 +134,24 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
-    
+
     return sfView::SUCCESS;
   }
- 
+
+  public function executeSmtCreate($request)
+  {
+    $this->communityId = $this->community->getId();
+    $this->form = new CommunityTopicForm();
+    $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
+    $this->form->getObject()->setCommunity($this->community);
+    $this->processForm($request, $this->form);
+
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtPost');
+
+    return sfView::SUCCESS;
+  }
+
   /**
    * Executes edit action
    *
@@ -146,7 +161,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   {
     $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtEdit');
     $this->form = new CommunityTopicForm($this->communityTopic);
-    
+
     return sfView::SUCCESS;
   }
 
@@ -156,10 +171,12 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
     $this->topic = Doctrine::getTable('CommunityTopic')->findOneById($request['id']);
     $this->forward404Unless($this->topic->isEditable($this->getUser()->getMemberId()));
 
-    $this->smtPost($request);
+    $this->communityId = $this->community->getId();
+    $this->form = new CommunityTopicForm($this->communityTopic);
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtEdit');
   }
 
- 
   /**
    * Executes update action
    *
@@ -167,11 +184,28 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
    */
   public function executeUpdate($request)
   {
+    $this->forwardIf($request->isSmartphone(), 'communityTopic', 'smtUpdate');
+
     $this->form = new CommunityTopicForm($this->communityTopic);
     $this->processForm($request, $this->form);
 
     $this->setTemplate('edit');
-    
+
+    return sfView::SUCCESS;
+  }
+
+  /**
+   * Executes update action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSmtUpdate($request)
+  {
+    $this->form = new CommunityTopicForm($this->communityTopic);
+    $this->processForm($request, $this->form);
+    $this->setLayout('smtLayoutSns');
+    $this->setTemplate('smtEdit');
+
     return sfView::SUCCESS;
   }
 
@@ -183,10 +217,10 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   public function executeDeleteConfirm(sfWebRequest $request)
   {
     $this->form = new sfForm();
-    
+
     return sfView::SUCCESS;
   }
- 
+
   /**
    * Executes delete action
    *
@@ -312,6 +346,7 @@ abstract class opCommunityTopicPluginTopicActions extends sfActions
   protected function smtPost(sfWebRequest $request)
   {
     $this->communityId = $this->community->getId();
+    $this->form = new CommunityTopicForm();
     $this->setLayout('smtLayoutSns');
     $this->setTemplate('smtPost');
   }
