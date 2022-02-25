@@ -11,7 +11,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_event_functions.
   <!-- //event -->
   <div id="event">
     <div class="row">
-      <div class="gadget_header span12"><?php echo __('Event') ?></div>
+      <div class="gadget_header span12" style="margin-left: -10px;"><?php echo __('Event') ?></div>
     </div>
     <div class="row">
       <h3 class="span12">${name}</h3>

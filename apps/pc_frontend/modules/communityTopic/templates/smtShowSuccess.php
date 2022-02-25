@@ -12,7 +12,7 @@ op_smt_use_javascript('/opCommunityTopicPlugin/js/smt_community_topic_functions.
   <!-- //topic -->
   <div id="topic">
     <div class="row">
-      <div class="gadget_header span12"><?php echo __('Topic') ?></div>
+      <div class="gadget_header span12" style="margin-left: -10px;"><?php echo __('Topic') ?></div>
     </div>
     <div class="row topic_information">
       <div class="row title">
